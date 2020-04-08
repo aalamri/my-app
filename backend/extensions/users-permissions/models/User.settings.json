@@ -1,0 +1,93 @@
+{
+  "connection": "default",
+  "collectionName": "users-permissions_user",
+  "info": {
+    "name": "user",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "model": "role",
+      "via": "users",
+      "plugin": "users-permissions",
+      "configurable": false
+    },
+    "can_create_articles": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_create_cards": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_create_tests": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_review_articles": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_review_cards": {
+      "type": "boolean",
+      "default": false
+    },
+    "can_review_tests": {
+      "type": "boolean",
+      "default": false
+    },
+    "applying_about_me": {
+      "type": "text"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "stats": {
+      "type": "json"
+    }
+  }
+}

@@ -16,6 +16,9 @@
     "articles": {
       "via": "category",
       "collection": "article"
+    },
+    "stats": {
+      "type": "json"
     }
   }
 }

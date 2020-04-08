@@ -1,4 +1,6 @@
 {
+  "name": "modrek-app",
+  "version": "1.0.0",
   "scripts": {
     "setup:npm": "npm install && npm-run-all -p setup:npm:*",
     "setup:npm:backend": "cd backend && npm install",

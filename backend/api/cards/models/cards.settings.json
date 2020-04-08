@@ -1,21 +1,28 @@
 {
   "connection": "default",
-  "collectionName": "articles",
+  "collectionName": "cards",
   "info": {
-    "name": "article"
+    "name": "Cards"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "title": {
+    "Title": {
       "type": "string",
       "required": true
     },
-    "content": {
+    "Content": {
       "type": "richtext",
       "required": true
+    },
+    "Tags": {
+      "type": "string"
+    },
+    "is_approved": {
+      "type": "boolean",
+      "default": false
     },
     "image": {
       "model": "file",
@@ -24,12 +31,11 @@
       "required": false
     },
     "published_at": {
-      "type": "date",
-      "required": false
+      "type": "date"
     },
-    "category": {
-      "model": "category",
-      "via": "articles"
+    "is_featured": {
+      "type": "boolean",
+      "default": false
     },
     "stats": {
       "type": "json"
