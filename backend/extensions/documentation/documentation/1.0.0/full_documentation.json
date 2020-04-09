@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/08/2020 7:14:40 PM"
+    "x-generation-date": "04/09/2020 12:15:08 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1563,6 +1563,517 @@
         "summary": "",
         "tags": [
           "Category"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/tags": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tag"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tag"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tag"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tag"
+        ],
+        "parameters": []
+      }
+    },
+    "/tags/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tag"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tag"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTag"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tag"
         ],
         "parameters": [
           {
@@ -3740,7 +4251,9 @@
         "required": [
           "id",
           "title",
-          "content"
+          "content",
+          "image",
+          "Langauge"
         ],
         "properties": {
           "id": {
@@ -3804,7 +4317,8 @@
           "category": {
             "required": [
               "id",
-              "name"
+              "name",
+              "Description"
             ],
             "properties": {
               "id": {
@@ -3821,18 +4335,30 @@
               },
               "stats": {
                 "type": "object"
+              },
+              "Description": {
+                "type": "string"
               }
             }
           },
           "stats": {
             "type": "object"
+          },
+          "Langauge": {
+            "type": "string",
+            "default": "English",
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           }
         }
       },
       "NewArticle": {
         "required": [
           "title",
-          "content"
+          "content",
+          "Langauge"
         ],
         "properties": {
           "title": {
@@ -3849,6 +4375,14 @@
           },
           "stats": {
             "type": "object"
+          },
+          "Langauge": {
+            "type": "string",
+            "default": "English",
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           }
         }
       },
@@ -3856,7 +4390,9 @@
         "required": [
           "id",
           "Title",
-          "Content"
+          "Content",
+          "image",
+          "Language"
         ],
         "properties": {
           "id": {
@@ -3866,9 +4402,6 @@
             "type": "string"
           },
           "Content": {
-            "type": "string"
-          },
-          "Tags": {
             "type": "string"
           },
           "is_approved": {
@@ -3930,22 +4463,51 @@
           },
           "stats": {
             "type": "object"
+          },
+          "Language": {
+            "type": "string",
+            "default": "English",
+            "enum": [
+              "English",
+              "Arabic"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "Subject"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Subject": {
+                  "type": "string"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "card": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
       "NewCards": {
         "required": [
           "Title",
-          "Content"
+          "Content",
+          "Language"
         ],
         "properties": {
           "Title": {
             "type": "string"
           },
           "Content": {
-            "type": "string"
-          },
-          "Tags": {
             "type": "string"
           },
           "is_approved": {
@@ -3961,13 +4523,28 @@
           },
           "stats": {
             "type": "object"
+          },
+          "Language": {
+            "type": "string",
+            "default": "English",
+            "enum": [
+              "English",
+              "Arabic"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
       "Category": {
         "required": [
           "id",
-          "name"
+          "name",
+          "Description"
         ],
         "properties": {
           "id": {
@@ -3982,7 +4559,9 @@
               "required": [
                 "id",
                 "title",
-                "content"
+                "content",
+                "image",
+                "Langauge"
               ],
               "properties": {
                 "id": {
@@ -4005,18 +4584,25 @@
                 },
                 "stats": {
                   "type": "object"
+                },
+                "Langauge": {
+                  "type": "string"
                 }
               }
             }
           },
           "stats": {
             "type": "object"
+          },
+          "Description": {
+            "type": "string"
           }
         }
       },
       "NewCategory": {
         "required": [
-          "name"
+          "name",
+          "Description"
         ],
         "properties": {
           "name": {
@@ -4030,6 +4616,86 @@
           },
           "stats": {
             "type": "object"
+          },
+          "Description": {
+            "type": "string"
+          }
+        }
+      },
+      "Tag": {
+        "required": [
+          "id",
+          "Subject"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "Subject": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "card": {
+            "required": [
+              "id",
+              "Title",
+              "Content",
+              "image",
+              "Language"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Title": {
+                "type": "string"
+              },
+              "Content": {
+                "type": "string"
+              },
+              "is_approved": {
+                "type": "boolean"
+              },
+              "image": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "is_featured": {
+                "type": "boolean"
+              },
+              "stats": {
+                "type": "object"
+              },
+              "Language": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewTag": {
+        "required": [
+          "Subject"
+        ],
+        "properties": {
+          "Subject": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "card": {
+            "type": "string"
           }
         }
       },
@@ -4392,6 +5058,9 @@
     },
     {
       "name": "Category"
+    },
+    {
+      "name": "Tag"
     },
     {
       "name": "Email - Email"

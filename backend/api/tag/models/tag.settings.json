@@ -1,29 +1,26 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "categories",
+  "collectionName": "tags",
   "info": {
-    "name": "category"
+    "name": "Tag"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "name": {
+    "Subject": {
       "type": "string",
       "required": true
     },
-    "articles": {
-      "via": "category",
-      "collection": "article"
-    },
-    "stats": {
-      "type": "json"
-    },
     "Description": {
       "type": "richtext",
-      "required": true
+      "required": false
+    },
+    "card": {
+      "via": "tags",
+      "model": "cards"
     }
   }
 }

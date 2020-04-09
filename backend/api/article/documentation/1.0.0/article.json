@@ -518,7 +518,9 @@
         "required": [
           "id",
           "title",
-          "content"
+          "content",
+          "image",
+          "Langauge"
         ],
         "properties": {
           "id": {
@@ -582,7 +584,8 @@
           "category": {
             "required": [
               "id",
-              "name"
+              "name",
+              "Description"
             ],
             "properties": {
               "id": {
@@ -599,18 +602,30 @@
               },
               "stats": {
                 "type": "object"
+              },
+              "Description": {
+                "type": "string"
               }
             }
           },
           "stats": {
             "type": "object"
+          },
+          "Langauge": {
+            "type": "string",
+            "default": "English",
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           }
         }
       },
       "NewArticle": {
         "required": [
           "title",
-          "content"
+          "content",
+          "Langauge"
         ],
         "properties": {
           "title": {
@@ -627,6 +642,14 @@
           },
           "stats": {
             "type": "object"
+          },
+          "Langauge": {
+            "type": "string",
+            "default": "English",
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           }
         }
       }

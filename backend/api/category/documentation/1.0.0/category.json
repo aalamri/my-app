@@ -517,7 +517,8 @@
       "Category": {
         "required": [
           "id",
-          "name"
+          "name",
+          "Description"
         ],
         "properties": {
           "id": {
@@ -532,7 +533,9 @@
               "required": [
                 "id",
                 "title",
-                "content"
+                "content",
+                "image",
+                "Langauge"
               ],
               "properties": {
                 "id": {
@@ -555,18 +558,25 @@
                 },
                 "stats": {
                   "type": "object"
+                },
+                "Langauge": {
+                  "type": "string"
                 }
               }
             }
           },
           "stats": {
             "type": "object"
+          },
+          "Description": {
+            "type": "string"
           }
         }
       },
       "NewCategory": {
         "required": [
-          "name"
+          "name",
+          "Description"
         ],
         "properties": {
           "name": {
@@ -580,6 +590,9 @@
           },
           "stats": {
             "type": "object"
+          },
+          "Description": {
+            "type": "string"
           }
         }
       }

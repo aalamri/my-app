@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "cards",
   "info": {
@@ -17,9 +18,6 @@
       "type": "richtext",
       "required": true
     },
-    "Tags": {
-      "type": "string"
-    },
     "is_approved": {
       "type": "boolean",
       "default": false
@@ -28,7 +26,7 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "published_at": {
       "type": "date"
@@ -39,6 +37,19 @@
     },
     "stats": {
       "type": "json"
+    },
+    "Language": {
+      "type": "enumeration",
+      "enum": [
+        "English",
+        "Arabic"
+      ],
+      "default": "English",
+      "required": true
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "card"
     }
   }
 }

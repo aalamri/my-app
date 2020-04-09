@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/cards": {
+    "/tags": {
       "get": {
         "deprecated": false,
-        "description": "Find all the cards's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve cards document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Cards"
+                    "$ref": "#/components/schemas/Tag"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Cards"
+          "Tag"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new cards record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve cards document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cards"
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Cards"
+          "Tag"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewCards"
+                "$ref": "#/components/schemas/NewTag"
               }
             }
           }
         }
       }
     },
-    "/cards/count": {
+    "/tags/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of cards documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve cards document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Cards"
+          "Tag"
         ],
         "parameters": []
       }
     },
-    "/cards/{id}": {
+    "/tags/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one cards record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve cards document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cards"
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Cards"
+          "Tag"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single cards record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve cards document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Cards"
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Cards"
+          "Tag"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewCards"
+                "$ref": "#/components/schemas/NewTag"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single cards record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single cards based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Cards"
+          "Tag"
         ],
         "parameters": [
           {
@@ -514,110 +514,60 @@
   },
   "components": {
     "schemas": {
-      "Cards": {
+      "Tag": {
         "required": [
           "id",
-          "Title",
-          "Content",
-          "image",
-          "Language"
+          "Subject"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Title": {
+          "Subject": {
             "type": "string"
           },
-          "Content": {
+          "Description": {
             "type": "string"
           },
-          "is_approved": {
-            "type": "boolean",
-            "default": false
-          },
-          "image": {
+          "card": {
             "required": [
               "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
+              "Title",
+              "Content",
+              "image",
+              "Language"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "name": {
+              "Title": {
                 "type": "string"
               },
-              "hash": {
+              "Content": {
                 "type": "string"
               },
-              "sha256": {
+              "is_approved": {
+                "type": "boolean"
+              },
+              "image": {
                 "type": "string"
               },
-              "ext": {
+              "published_at": {
                 "type": "string"
               },
-              "mime": {
-                "type": "string"
+              "is_featured": {
+                "type": "boolean"
               },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
+              "stats": {
                 "type": "object"
               },
-              "related": {
+              "Language": {
                 "type": "string"
-              }
-            }
-          },
-          "published_at": {
-            "type": "string"
-          },
-          "is_featured": {
-            "type": "boolean",
-            "default": false
-          },
-          "stats": {
-            "type": "object"
-          },
-          "Language": {
-            "type": "string",
-            "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "Subject"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "Subject": {
-                  "type": "string"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "card": {
+              },
+              "tags": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
               }
@@ -625,46 +575,19 @@
           }
         }
       },
-      "NewCards": {
+      "NewTag": {
         "required": [
-          "Title",
-          "Content",
-          "Language"
+          "Subject"
         ],
         "properties": {
-          "Title": {
+          "Subject": {
             "type": "string"
           },
-          "Content": {
+          "Description": {
             "type": "string"
           },
-          "is_approved": {
-            "type": "boolean",
-            "default": false
-          },
-          "published_at": {
+          "card": {
             "type": "string"
-          },
-          "is_featured": {
-            "type": "boolean",
-            "default": false
-          },
-          "stats": {
-            "type": "object"
-          },
-          "Language": {
-            "type": "string",
-            "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       }
@@ -672,7 +595,7 @@
   },
   "tags": [
     {
-      "name": "Cards"
+      "name": "Tag"
     }
   ]
 }
