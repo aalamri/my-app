@@ -9,7 +9,10 @@ const CARD_QUERY = gql`
       image {
         url
       }
-      Tags
+      tags {
+        id
+        Subject
+      }
       published_at
       stats
     }

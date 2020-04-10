@@ -5,7 +5,10 @@ const CARDS_QUERY = gql`
     cards {
       id
       Title
-      Tags
+      tags {
+        id
+        Subject
+      }
       image {
         url
       }

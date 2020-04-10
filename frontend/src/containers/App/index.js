@@ -3,6 +3,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Nav from "../../components/Nav";
+import Login from "../../components/Login";
+import Registration from "../../components/Registration";
 import Home from "../../components/Home";
 import Articles from "../Articles";
 import Article from "../Article";
@@ -21,6 +23,9 @@ function App() {
         <Route path="/cards" component={Cards} exact />
         <Route path="/card/:id" component={Card} exact />
         <Route path="/category/:id" component={Category} exact />
+        <Route path="/registration" component={Registration} exact />
+        <Route path="/login" component={Login} exact />
+
       </Switch>
     </div>
   );

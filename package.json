@@ -22,5 +22,10 @@
   "devDependencies": {
     "npm-run-all": "^4.1.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "js-cookie": "^2.2.1",
+    "jwt-decode": "^2.2.0",
+    "strapi-sdk-javascript": "^0.3.3"
+  }
 }
