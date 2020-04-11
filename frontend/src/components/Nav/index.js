@@ -39,6 +39,16 @@ const Nav = () => {
                     })}
                   </ul>
                 </div>
+                <div className="uk-navbar-right">
+                  <ul className="uk-navbar-nav">
+                    <li>
+                      <Link to="/">Login</Link>
+                    </li>
+                    <li>
+                      <Link to="/registration">Sign up</Link>
+                    </li>
+                  </ul>
+                </div>
               </nav>
             </div>
           );
