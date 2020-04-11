@@ -15,6 +15,7 @@ const Articles = ({ articles }) => {
               >
                 <div className="uk-card uk-card-muted">
                   <div className="uk-card-media-top">
+                  {article.image && (
                     <img
                       src={
                         process.env.REACT_APP_BACKEND_URL + article.image.url
@@ -22,6 +23,7 @@ const Articles = ({ articles }) => {
                       alt={article.image.url}
                       height="100"
                     />
+                  )}
                   </div>
                   <div className="uk-card-body">
                     <p id="category" className="uk-text-uppercase">

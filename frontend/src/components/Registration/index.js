@@ -3,11 +3,12 @@ import { Mutation } from "react-apollo";
 import { gql }  from "apollo-boost";
 
 const registerMutation = gql`
-mutation Register ($email: String!,$username: String!, $password: String!) {
+mutation Register ($email: String!,$username: String!, $password: String!, $applying_about_me: String!) {
    register(input: {
     email: $email,
     username: $username,
-    password: $password
+    password: $password,
+    applying_about_me: $applying_about_me
    })
   {
     jwt
@@ -21,7 +22,8 @@ export class Registration extends React.PureComponent {
   state = {
     email: '',
     username: '',
-    password: ''
+    password: '',
+    applying_about_me: ''
   }
 
   handleChange = (e) => {
@@ -34,7 +36,7 @@ export class Registration extends React.PureComponent {
   };
 
   render() {
-    const {password, email, username} = this.state;
+    const {password, email, username, applying_about_me} = this.state;
     return (
     <Mutation mutation={registerMutation}>
       {mutate => (
@@ -79,13 +81,16 @@ export class Registration extends React.PureComponent {
                 ></input>
               </div>
             </div>
-            {/* <div class="uk-margin">
+            <div class="uk-margin">
               <textarea
                 class="uk-form-width-large"
                 rows="5"
+                name="applying_about_me"
+                value={applying_about_me}
+                onChange={this.handleChange}
                 placeholder="Tell us about you"
               ></textarea>
-            </div> */}
+            </div>
           </fieldset>
           <button onClick={async () => {
             const response = await mutate({
