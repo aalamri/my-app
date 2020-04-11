@@ -17,7 +17,11 @@
     "seed:yarn": "cd backend && yarn seed",
     "seed:npm": "cd backend && npm run seed",
     "build:npm": "cd backend && npm run build",
-    "build:yarn": "cd backend && yarn build"
+    "build:yarn": "cd backend && yarn build",
+    "setup": "yarn && npm-run-all -p setup:yarn:*",
+    "build": "cd backend && yarn build",
+    "start": "yarn seed:yarn && npm-run-all -p develop:yarn:*"
+
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
