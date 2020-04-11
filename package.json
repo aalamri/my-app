@@ -19,7 +19,7 @@
     "build:npm": "cd backend && npm run build",
     "build:yarn": "cd backend && yarn build",
     "setup": "yarn && npm-run-all -p setup:yarn:*",
-    "build": "cd backend && yarn build",
+    "build": "npm run setup && cd backend && yarn build",
     "start": "yarn seed:yarn && npm-run-all -p develop:yarn:*"
 
   },
