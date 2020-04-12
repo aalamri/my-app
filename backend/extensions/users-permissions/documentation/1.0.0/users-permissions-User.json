@@ -1280,6 +1280,47 @@
           },
           "stats": {
             "type": "object"
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "content",
+                "image",
+                "Langauge"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "stats": {
+                  "type": "object"
+                },
+                "Langauge": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1353,6 +1394,12 @@
           },
           "stats": {
             "type": "object"
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

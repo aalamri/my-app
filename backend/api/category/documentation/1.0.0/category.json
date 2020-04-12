@@ -561,6 +561,9 @@
                 },
                 "Langauge": {
                   "type": "string"
+                },
+                "user": {
+                  "type": "string"
                 }
               }
             }
