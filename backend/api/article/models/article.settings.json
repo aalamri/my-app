@@ -43,6 +43,11 @@
       ],
       "required": true,
       "default": "English"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "articles"
     }
   }
 }

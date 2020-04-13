@@ -35,19 +35,32 @@ export class Registration extends React.PureComponent {
     );
   };
 
+  handleSubmit = (e) => {
+  if(!this.isFormEmpty(this.state)) {
+    console.log("submitted");
+  }
+  };
+
+  isFormEmpty = ({ username,email, password, applying_about_me}) => {
+  return !username || !email || !password || !applying_about_me;
+  }
+  
+  showToast = toastMessage => {
+
+  }
   render() {
     const {password, email, username, applying_about_me} = this.state;
     return (
     <Mutation mutation={registerMutation}>
       {mutate => (
         <div>
-      <div class="uk-child-width-expand@s uk-text-center">
-        <from class="uk-grid-small">
-          <fieldset class="uk-fieldset">
-            <legend class="uk-legend">Join As Content Creator</legend>
-            <div class="uk-margin">
+      <div className="uk-child-width-expand@s uk-text-center">
+        <form className="uk-grid-small">
+          <fieldset className="uk-fieldset">
+            <legend className="uk-legend">Join As Content Creator</legend>
+            <div className="uk-margin">
               <input
-                class="uk-input uk-form-width-medium"
+                className="uk-input uk-form-width-medium"
                 type="text"
                 name="username"
                 placeholder="Username"
@@ -55,9 +68,9 @@ export class Registration extends React.PureComponent {
                 onChange={this.handleChange}
               ></input>
             </div>
-            <div class="uk-margin">
+            <div className="uk-margin">
               <input
-                class="uk-input uk-form-width-medium"
+                className="uk-input uk-form-width-medium"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -65,14 +78,14 @@ export class Registration extends React.PureComponent {
                 onChange={this.handleChange}
               ></input>
             </div>
-            <div class="uk-margin">
-              <div class="uk-inline">
+            <div className="uk-margin">
+              <div className="uk-inline">
                 <span
-                  class="uk-form-icon uk-form-icon-flip"
+                  className="uk-form-icon uk-form-icon-flip"
                   uk-icon="icon: lock"
                 ></span>
                 <input
-                  class="uk-input uk-form-width-medium"
+                  className="uk-input uk-form-width-medium"
                   type="password"
                   name="password"
                   placeholder="password"
@@ -81,9 +94,9 @@ export class Registration extends React.PureComponent {
                 ></input>
               </div>
             </div>
-            <div class="uk-margin">
+            <div className="uk-margin">
               <textarea
-                class="uk-form-width-large"
+                className="uk-form-width-large"
                 rows="5"
                 name="applying_about_me"
                 value={applying_about_me}
@@ -92,14 +105,14 @@ export class Registration extends React.PureComponent {
               ></textarea>
             </div>
           </fieldset>
-          <button onClick={async () => {
+          <button onSubmit={this.handleSubmit} onClick={async () => {
             const response = await mutate({
               variables: this.state
             });
             console.log(response);
-            this.props.history.push("/");
-          }} class="uk-button uk-button-primary" type="submit">Apply</button>
-        </from>
+            this.props.history.push("/Dashboard");
+          }} className="uk-button uk-button-primary" type="submit">Apply</button>
+        </form>
       </div>
     </div>
     )}</Mutation>
