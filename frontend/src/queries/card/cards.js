@@ -12,7 +12,7 @@ const CARDS_QUERY = gql`
       image {
         url
       }
-      stats
+      meta
     }
   }
 `;

@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const ARTICLES_QUERY = gql`
+export const ARTICLES_QUERY = gql`
   query Articles {
     articles {
       id
@@ -12,9 +12,21 @@ const ARTICLES_QUERY = gql`
       image {
         url
       }
-      stats
+      meta
     }
   }
 `;
 
 export default ARTICLES_QUERY;
+
+export const CREATE_ARTICLE = gql`
+  mutation createArticle($data: ArticleInput!) {
+    createArticle(input: { data: $data }) {
+      article {
+        id
+        title
+        published_at
+      }
+    }
+  }
+`;

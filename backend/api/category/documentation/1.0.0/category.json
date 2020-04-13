@@ -557,7 +557,7 @@
                 "category": {
                   "type": "string"
                 },
-                "stats": {
+                "meta": {
                   "type": "object"
                 },
                 "Langauge": {

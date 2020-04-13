@@ -589,7 +589,7 @@
             "type": "boolean",
             "default": false
           },
-          "stats": {
+          "meta": {
             "type": "object"
           },
           "Language": {
@@ -649,7 +649,7 @@
             "type": "boolean",
             "default": false
           },
-          "stats": {
+          "meta": {
             "type": "object"
           },
           "Language": {

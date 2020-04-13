@@ -4,6 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import Nav from "../../components/Nav";
 import RegistrationOrLogIn from "../../components/RegistrationOrLogIn";
 import Home from "../../components/Home";
+import CreateArticle from "../../components/Articles/CreateArticle";
+import CreateCard from "../../components/Cards/CreateCard";
 import Articles from "../Articles";
 import Article from "../Article";
 import Cards from "../Cards";
@@ -31,6 +33,8 @@ class App extends React.Component {
           <Route path="/cards" component={Cards} exact />
           <Route path="/card/:id" component={Card} exact />
           <Route path="/category/:id" component={Category} exact />
+          <Route path="/create-article" component={CreateArticle} exact />
+          <Route path="/create-card" component={CreateCard} exact />
           {!user &&
           <RegistrationOrLogIn updateUser={(user) =>this.setState({user})}/>
           }
