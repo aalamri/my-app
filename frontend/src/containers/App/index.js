@@ -6,6 +6,8 @@ import Nav from "../../components/Nav";
 import Login from "../../components/Login";
 import Registration from "../../components/Registration";
 import Home from "../../components/Home";
+import CreateArticle from "../../components/Articles/CreateArticle";
+import CreateCard from "../../components/Cards/CreateCard";
 import Articles from "../Articles";
 import Article from "../Article";
 import Cards from "../Cards";
@@ -23,9 +25,10 @@ function App() {
         <Route path="/cards" component={Cards} exact />
         <Route path="/card/:id" component={Card} exact />
         <Route path="/category/:id" component={Category} exact />
+        <Route path="/create-article" component={CreateArticle} exact />
+        <Route path="/create-card" component={CreateCard} exact />
         <Route path="/registration" component={Registration} exact />
         <Route path="/login" component={Login} exact />
-
       </Switch>
     </div>
   );

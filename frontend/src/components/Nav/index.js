@@ -25,6 +25,12 @@ const Nav = () => {
                     <li>
                       <Link to="/cards">Cards</Link>
                     </li>
+                    <li>
+                      <Link to="/create-article">Create Article</Link>
+                    </li>
+                    <li>
+                      <Link to="/create-card">Create Card</Link>
+                    </li>
                     {categories.map((category, i) => {
                       return (
                         <li key={category.id}>

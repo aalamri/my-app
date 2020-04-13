@@ -14,7 +14,7 @@ const CARD_QUERY = gql`
         Subject
       }
       published_at
-      stats
+      meta
     }
   }
 `;

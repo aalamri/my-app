@@ -32,7 +32,7 @@
       "model": "category",
       "via": "articles"
     },
-    "stats": {
+    "meta": {
       "type": "json"
     },
     "Langauge": {

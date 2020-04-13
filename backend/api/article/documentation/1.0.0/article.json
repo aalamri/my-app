@@ -608,7 +608,7 @@
               }
             }
           },
-          "stats": {
+          "meta": {
             "type": "object"
           },
           "Langauge": {
@@ -640,7 +640,7 @@
           "category": {
             "type": "string"
           },
-          "stats": {
+          "meta": {
             "type": "object"
           },
           "Langauge": {

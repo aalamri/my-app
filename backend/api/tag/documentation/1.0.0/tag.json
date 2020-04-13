@@ -559,7 +559,7 @@
               "is_featured": {
                 "type": "boolean"
               },
-              "stats": {
+              "meta": {
                 "type": "object"
               },
               "Language": {
