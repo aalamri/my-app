@@ -585,7 +585,8 @@
             "required": [
               "id",
               "name",
-              "Description"
+              "Description",
+              "icon"
             ],
             "properties": {
               "id": {
@@ -605,6 +606,12 @@
               },
               "Description": {
                 "type": "string"
+              },
+              "icon": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },

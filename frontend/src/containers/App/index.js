@@ -13,24 +13,36 @@ import Category from "../Category";
 import Dashboard from "../../components/Dashboard";
 import Profile from "../../components/Profile";
 
-function App() {
-  return (
-    <div className="App">
-      <Nav />
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/Dashboard" component={Dashboard} exact />
-        <Route path="/Profile" component={Profile} exact />
-        <Route path="/articles" component={Articles} exact />
-        <Route path="/article/:id" component={Article} exact />
-        <Route path="/cards" component={Cards} exact />
-        <Route path="/card/:id" component={Card} exact />
-        <Route path="/category/:id" component={Category} exact />
-        <Route path="/registration" component={Registration} exact />
-        <Route path="/login" component={Login} exact />
-      </Switch>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    user: null
+  }
+  render() {
+    const {user} = this.state
+
+    return (
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route path="/" component={Home} exact/>
+          <Route path="/Dashboard" component={Dashboard} exact/>
+          <Route path="/Profile" component={Profile} exact/>
+          <Route path="/Profile" component={Profile} exact />
+          <Route path="/articles" component={Articles} exact />
+          <Route path="/article/:id" component={Article} exact />
+          <Route path="/cards" component={Cards} exact />
+          <Route path="/card/:id" component={Card} exact />
+          <Route path="/category/:id" component={Category} exact />
+          {!user &&
+          <Registration updateUser={(user) =>this.setState({user})}/>
+          }
+          <Route path="/login" component={Login} exact />
+        </Switch>
+      </div>
+    );
+  }
 }
+
 
 export default App;

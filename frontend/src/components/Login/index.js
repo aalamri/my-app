@@ -72,7 +72,7 @@ export class Login extends React.PureComponent {
                       variables: this.state,
                     });
                     console.log(response);
-                    this.props.history.push("/Profile");
+                    this.props.history.push("/Dashboard");
                   }}
                   className="uk-button uk-button-primary"
                   type="submit"

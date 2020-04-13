@@ -1,123 +1,93 @@
 import React from "react";
-import { Mutation } from "react-apollo";
-import { gql }  from "apollo-boost";
+import axios from "axios";
 
-const registerMutation = gql`
-mutation Register ($email: String!,$username: String!, $password: String!, $applying_about_me: String!) {
-   register(input: {
-    email: $email,
-    username: $username,
-    password: $password,
-    applying_about_me: $applying_about_me
-   })
-  {
-    jwt
-    user { id email }
-  }
-}
-`;
-
-export class Registration extends React.PureComponent {
-
+export class Registration extends React.Component {
   state = {
-    email: '',
-    username: '',
-    password: '',
-    applying_about_me: ''
-  }
+    email: "",
+    password: "",
+    applying_about_me: ""
+  };
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState( 
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState(
       {
         [name]: value
       }
     );
   };
 
-  handleSubmit = (e) => {
-  if(!this.isFormEmpty(this.state)) {
-    console.log("submitted");
-  }
-  };
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    // console.log("Registration.handleSubmit")
+    const {email,password,applying_about_me} = this.state
 
-  isFormEmpty = ({ username,email, password, applying_about_me}) => {
-  return !username || !email || !password || !applying_about_me;
-  }
-  
-  showToast = toastMessage => {
+    const data = {
+      email,
+      password,
+      applying_about_me,
+      username: email
+    }
 
+    const userCreationRes = await axios ({
+      method: 'POST',
+      url: process.env.REACT_APP_BACKEND_URL + '/auth/local/register',
+      data
+    })
+    // console.log("Registration.handleSubmit userCreationRes", userCreationRes)
+
+    if(this.props.updateUser && typeof this.props.updateUser === 'function'){
+      this.props.updateUser(userCreationRes.data)
+
+    }
   }
   render() {
-    const {password, email, username, applying_about_me} = this.state;
+    const { email, password, applying_about_me} = this.state;
     return (
-    <Mutation mutation={registerMutation}>
-      {mutate => (
-        <div>
       <div className="uk-child-width-expand@s uk-text-center">
-        <form className="uk-grid-small">
+        <legend className="uk-legend">Join As Content Creator</legend>
+        <br></br>
+        <form className="uk-grid-small" onSubmit={this.handleSubmit}>
           <fieldset className="uk-fieldset">
-            <legend className="uk-legend">Join As Content Creator</legend>
             <div className="uk-margin">
               <input
                 className="uk-input uk-form-width-medium"
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={username}
-                onChange={this.handleChange}
-              ></input>
-            </div>
-            <div className="uk-margin">
-              <input
-                className="uk-input uk-form-width-medium"
-                type="email"
+                id="email"
                 name="email"
-                placeholder="Email"
                 value={email}
+                placeholder="Email"
                 onChange={this.handleChange}
-              ></input>
+              />
             </div>
             <div className="uk-margin">
-              <div className="uk-inline">
-                <span
-                  className="uk-form-icon uk-form-icon-flip"
-                  uk-icon="icon: lock"
-                ></span>
-                <input
-                  className="uk-input uk-form-width-medium"
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                  value={password}
-                  onChange={this.handleChange}
-                ></input>
-              </div>
+              <input
+                className="uk-input uk-form-width-medium"
+                id="password"
+                type="password"
+                name="password"
+                value={password}
+                placeholder="password"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="uk-margin">
               <textarea
                 className="uk-form-width-large"
                 rows="5"
+                id="applying_about_me"
+                type="text"
                 name="applying_about_me"
                 value={applying_about_me}
-                onChange={this.handleChange}
                 placeholder="Tell us about you"
-              ></textarea>
+                onChange={this.handleChange}
+              />
             </div>
           </fieldset>
-          <button onSubmit={this.handleSubmit} onClick={async () => {
-            const response = await mutate({
-              variables: this.state
-            });
-            console.log(response);
-            this.props.history.push("/Dashboard");
-          }} className="uk-button uk-button-primary" type="submit">Apply</button>
+          <button type="submit">Apply</button>
         </form>
       </div>
-    </div>
-    )}</Mutation>
     );
   }
-}
 
+}
 export default Registration;

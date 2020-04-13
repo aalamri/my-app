@@ -15,14 +15,20 @@
       "required": true
     },
     "articles": {
-      "via": "category",
-      "collection": "article"
+      "collection": "article",
+      "via": "category"
     },
     "stats": {
       "type": "json"
     },
     "Description": {
       "type": "richtext",
+      "required": true
+    },
+    "icon": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
       "required": true
     }
   }

@@ -29,8 +29,8 @@
       "required": false
     },
     "category": {
-      "model": "category",
-      "via": "articles"
+      "via": "articles",
+      "model": "category"
     },
     "stats": {
       "type": "json"
