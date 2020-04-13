@@ -42,10 +42,7 @@ const Nav = () => {
                 <div className="uk-navbar-right">
                   <ul className="uk-navbar-nav">
                     <li>
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                      <Link to="/registration">Sign up</Link>
+                      <Link to="/registration">Join As us</Link>
                     </li>
                   </ul>
                 </div>

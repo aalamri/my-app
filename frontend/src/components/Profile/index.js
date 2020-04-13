@@ -1,6 +1,6 @@
 import React from "react";
 
-class Profile extends React.PureComponent {
+class Profile extends React.Component {
 
 componentDidMount() {
     console.log("Profile.componentDidMount")
