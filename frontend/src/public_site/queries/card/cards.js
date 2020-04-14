@@ -4,7 +4,7 @@ const CARDS_QUERY = gql`
   query Cards {
     cards {
       id
-      Title
+      title
       tags {
         id
         Subject

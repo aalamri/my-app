@@ -517,7 +517,7 @@
       "Cards": {
         "required": [
           "id",
-          "Title",
+          "title",
           "Content",
           "image",
           "Language"
@@ -526,7 +526,7 @@
           "id": {
             "type": "string"
           },
-          "Title": {
+          "title": {
             "type": "string"
           },
           "Content": {
@@ -627,12 +627,12 @@
       },
       "NewCards": {
         "required": [
-          "Title",
+          "title",
           "Content",
           "Language"
         ],
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
           "Content": {

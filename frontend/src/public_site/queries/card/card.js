@@ -4,7 +4,7 @@ const CARD_QUERY = gql`
   query Cards($id: ID!) {
     card(id: $id) {
       id
-      Title
+      title
       Content
       image {
         url

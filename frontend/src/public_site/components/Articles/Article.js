@@ -1,9 +1,8 @@
 import React from "react";
 import { useParams } from "react-router";
-import Query from "../../components/Query";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
-
+import Query from "../../components/Query";
 import ARTICLE_QUERY from "../../queries/article/article";
 
 const Article = () => {

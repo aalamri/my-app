@@ -532,7 +532,7 @@
           "card": {
             "required": [
               "id",
-              "Title",
+              "title",
               "Content",
               "image",
               "Language"
@@ -541,7 +541,7 @@
               "id": {
                 "type": "string"
               },
-              "Title": {
+              "title": {
                 "type": "string"
               },
               "Content": {

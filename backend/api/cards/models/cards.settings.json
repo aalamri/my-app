@@ -10,7 +10,7 @@
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },

@@ -1,6 +1,6 @@
 import React from "react";
-import ArticlesComponent from "../../components/Articles";
-import Query from "../../components/Query";
+import ArticlesRow from "./ArticlesRow";
+import Query from "../Query";
 import ARTICLES_QUERY from "../../queries/article/articles";
 
 const Articles = () => {
@@ -11,7 +11,7 @@ const Articles = () => {
           <h1>Articles</h1>
           <Query query={ARTICLES_QUERY}>
             {({ data: { articles } }) => {
-              return <ArticlesComponent articles={articles} />;
+              return <ArticlesRow articles={articles} />;
             }}
           </Query>
         </div>

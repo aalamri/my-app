@@ -1,6 +1,6 @@
 import React from "react";
-import CardsComponent from "../../components/Cards";
-import Query from "../../components/Query";
+import CardsRow from "./CardsRow";
+import Query from "../Query";
 import CARDS_QUERY from "../../queries/card/cards";
 
 const Cards = () => {
@@ -11,7 +11,7 @@ const Cards = () => {
           <h1>Cards</h1>
           <Query query={CARDS_QUERY}>
             {({ data: { cards } }) => {
-              return <CardsComponent cards={cards} />;
+              return <CardsRow cards={cards} />;
             }}
           </Query>
         </div>
