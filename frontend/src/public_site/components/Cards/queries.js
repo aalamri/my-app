@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const CARD_QUERY = gql`
+export const CARD_QUERY = gql`
   query Cards($id: ID!) {
     card(id: $id) {
       id
@@ -19,4 +19,19 @@ const CARD_QUERY = gql`
   }
 `;
 
-export default CARD_QUERY;
+export const CARDS_QUERY = gql`
+  query Cards {
+    cards {
+      id
+      title
+      tags {
+        id
+        Subject
+      }
+      image {
+        url
+      }
+      meta
+    }
+  }
+`;

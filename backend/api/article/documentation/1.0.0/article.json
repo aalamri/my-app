@@ -519,8 +519,7 @@
           "id",
           "title",
           "content",
-          "image",
-          "Langauge"
+          "image"
         ],
         "properties": {
           "id": {
@@ -703,8 +702,7 @@
       "NewArticle": {
         "required": [
           "title",
-          "content",
-          "Langauge"
+          "content"
         ],
         "properties": {
           "title": {

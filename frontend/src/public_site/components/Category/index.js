@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import ArticlesList from "../../components/Articles/ArticlesList";
 import Query from "../../components/Query";
-import CATEGORY_ARTICLES_QUERY from "../../queries/category/articles";
+import { CATEGORY_ARTICLES_QUERY } from "./queries";
 
 const Category = () => {
   let { id } = useParams();

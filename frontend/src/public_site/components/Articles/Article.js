@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import Query from "../../components/Query";
-import ARTICLE_QUERY from "../../queries/article/article";
+import { ARTICLE_QUERY } from "./queries";
 
 const Article = () => {
   let { id } = useParams();

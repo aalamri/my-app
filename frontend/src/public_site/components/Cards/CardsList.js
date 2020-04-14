@@ -1,7 +1,7 @@
 import React from "react";
 import CardsRow from "./CardsRow";
 import Query from "../Query";
-import CARDS_QUERY from "../../queries/card/cards";
+import { CARDS_QUERY } from "./queries";
 
 const Cards = () => {
   return (

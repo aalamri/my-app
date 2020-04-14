@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import Query from "../../components/Query";
-import CARD_QUERY from "../../queries/card/card";
+import { CARD_QUERY } from "./queries";
 
 const Card = () => {
   let { id } = useParams();

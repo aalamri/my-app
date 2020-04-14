@@ -2,7 +2,7 @@ import React from "react";
 import Query from "../Query";
 import { Link } from "react-router-dom";
 
-import CATEGORIES_QUERY from "../../queries/category/categories";
+import { CATEGORIES_QUERY } from "../Category/queries";
 
 const Nav = () => {
   return (

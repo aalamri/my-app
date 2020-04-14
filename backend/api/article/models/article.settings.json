@@ -41,7 +41,7 @@
         "English",
         "Arabic"
       ],
-      "required": true,
+      "required": false,
       "default": "English"
     },
     "user": {

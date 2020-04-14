@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const CATEGORY_ARTICLES_QUERY = gql`
+export const CATEGORY_ARTICLES_QUERY = gql`
   query Category($id: ID!) {
     category(id: $id) {
       id
@@ -21,4 +21,11 @@ const CATEGORY_ARTICLES_QUERY = gql`
   }
 `;
 
-export default CATEGORY_ARTICLES_QUERY;
+export const CATEGORIES_QUERY = gql`
+  query Categories {
+    categories {
+      id
+      name
+    }
+  }
+`;

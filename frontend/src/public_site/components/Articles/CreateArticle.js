@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import CATEGORIES_QUERY from "../../queries/category/categories";
-import { CREATE_ARTICLE, ARTICLES_QUERY } from "../../queries/article/articles";
+import { CATEGORIES_QUERY } from "../Category/queries";
+import { CREATE_ARTICLE, ARTICLES_QUERY } from "./queries";
 import Editor from "../Editor";
 import "react-quill/dist/quill.snow.css";
 
