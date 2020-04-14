@@ -1,10 +1,45 @@
 import React from "react";
 import Query from "../Query";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { CATEGORIES_QUERY } from "../Category/queries";
+import { getToken, clearToken } from "../../../utils/index";
 
-const Nav = () => {
+
+class Navbar extends React.Component{
+
+  handleSignout = () => {
+    clearToken();
+    this.props.history.push('/');
+  }
+  render () {
+    return getToken() !== null ?  
+    <AuthNav handleSignout={this.handleSignout}/> : <UnAuthNav/>;
+  }
+}
+
+const AuthNav = ({handleSignout}) => {
+  return (
+      <nav className="uk-navbar-container" data-uk-navbar>
+        <div className="uk-navbar-left">
+          <ul className="uk-navbar-nav">
+            <li>
+              <Link to="/">Modrek</Link>
+            </li>
+            </ul>
+            <div className="uk-navbar-right">
+            <ul className="uk-navbar-nav">
+            <li>
+              <button class="uk-button uk-button-danger uk-button-large" onClick={handleSignout}>Sing out</button>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+  );
+};
+
+const UnAuthNav = () => {
   return (
     <div>
       <Query query={CATEGORIES_QUERY} id={null}>
@@ -48,7 +83,10 @@ const Nav = () => {
                 <div className="uk-navbar-right">
                   <ul className="uk-navbar-nav">
                     <li>
-                      <Link to="/registration">Join As us</Link>
+                      <Link to="/signin">Login</Link>
+                    </li>
+                    <li>
+                      <Link to="/signup">Signup</Link>
                     </li>
                   </ul>
                 </div>
@@ -61,4 +99,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default withRouter(Navbar);

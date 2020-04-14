@@ -564,6 +564,9 @@
                 },
                 "user": {
                   "type": "string"
+                },
+                "tag": {
+                  "type": "string"
                 }
               }
             }
