@@ -15,10 +15,10 @@
       "required": true
     },
     "articles": {
-      "via": "category",
-      "collection": "article"
+      "collection": "article",
+      "via": "category"
     },
-    "stats": {
+    "meta": {
       "type": "json"
     },
     "Description": {

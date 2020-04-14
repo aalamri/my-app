@@ -568,7 +568,7 @@
               }
             }
           },
-          "stats": {
+          "meta": {
             "type": "object"
           },
           "Description": {
@@ -640,7 +640,7 @@
               "type": "string"
             }
           },
-          "stats": {
+          "meta": {
             "type": "object"
           },
           "Description": {

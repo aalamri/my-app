@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/articles": {
+    "/tests": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the tests's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tests document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Article"
+                    "$ref": "#/components/schemas/Tests"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Tests"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new tests record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tests document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Tests"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Tests"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewTests"
               }
             }
           }
         }
       }
     },
-    "/articles/count": {
+    "/tests/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of tests documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tests document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Tests"
         ],
         "parameters": []
       }
     },
-    "/articles/{id}": {
+    "/tests/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one tests record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tests document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Tests"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Tests"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single tests record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tests document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Tests"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Tests"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewTests"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single tests record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single tests based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Tests"
         ],
         "parameters": [
           {
@@ -514,12 +514,10 @@
   },
   "components": {
     "schemas": {
-      "Article": {
+      "Tests": {
         "required": [
           "id",
-          "title",
-          "content",
-          "image"
+          "title"
         ],
         "properties": {
           "id": {
@@ -528,7 +526,7 @@
           "title": {
             "type": "string"
           },
-          "content": {
+          "description": {
             "type": "string"
           },
           "image": {
@@ -577,159 +575,126 @@
               }
             }
           },
-          "published_at": {
-            "type": "string"
-          },
-          "category": {
-            "required": [
-              "id",
-              "name",
-              "Description",
-              "icon"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
+          "question": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "questions-group.new-question"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "wrong_answer_1": {
+                      "type": "string"
+                    },
+                    "wrong_answer_2": {
+                      "type": "string"
+                    },
+                    "multiple_choices": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "wrong_answer_3": {
+                      "type": "string"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "wrong_answer_4": {
+                      "type": "string"
+                    },
+                    "correct_answer": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "wrong_answer_1",
+                    "correct_answer",
+                    "title"
+                  ]
                 }
-              },
-              "meta": {
-                "type": "object"
-              },
-              "Description": {
-                "type": "string"
-              },
-              "icon": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "meta": {
-            "type": "object"
-          },
-          "Langauge": {
-            "type": "string",
-            "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
-          },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "can_create_articles": {
-                "type": "boolean"
-              },
-              "can_create_cards": {
-                "type": "boolean"
-              },
-              "can_create_tests": {
-                "type": "boolean"
-              },
-              "can_review_articles": {
-                "type": "boolean"
-              },
-              "can_review_cards": {
-                "type": "boolean"
-              },
-              "can_review_tests": {
-                "type": "boolean"
-              },
-              "applying_about_me": {
-                "type": "string"
-              },
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              },
-              "stats": {
-                "type": "object"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
+              ]
             }
           }
         }
       },
-      "NewArticle": {
+      "NewTests": {
         "required": [
-          "title",
-          "content"
+          "title"
         ],
         "properties": {
           "title": {
             "type": "string"
           },
-          "content": {
+          "description": {
             "type": "string"
           },
-          "published_at": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "meta": {
-            "type": "object"
-          },
-          "Langauge": {
-            "type": "string",
-            "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
-          },
-          "user": {
-            "type": "string"
+          "question": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "questions-group.new-question"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "wrong_answer_1": {
+                      "type": "string"
+                    },
+                    "wrong_answer_2": {
+                      "type": "string"
+                    },
+                    "multiple_choices": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "wrong_answer_3": {
+                      "type": "string"
+                    },
+                    "meta": {
+                      "type": "object"
+                    },
+                    "wrong_answer_4": {
+                      "type": "string"
+                    },
+                    "correct_answer": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "wrong_answer_1",
+                    "correct_answer",
+                    "title"
+                  ]
+                }
+              ]
+            }
           }
         }
       }
@@ -737,7 +702,7 @@
   },
   "tags": [
     {
-      "name": "Article"
+      "name": "Tests"
     }
   ]
 }

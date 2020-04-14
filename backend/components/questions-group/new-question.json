@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "components_questions_group_new_questions",
+  "info": {
+    "name": "New Question",
+    "icon": "plus"
+  },
+  "options": {},
+  "attributes": {
+    "wrong_answer_1": {
+      "type": "string",
+      "required": true
+    },
+    "wrong_answer_2": {
+      "type": "string"
+    },
+    "multiple_choices": {
+      "type": "boolean",
+      "default": false
+    },
+    "wrong_answer_3": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "json"
+    },
+    "wrong_answer_4": {
+      "type": "string"
+    },
+    "correct_answer": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
