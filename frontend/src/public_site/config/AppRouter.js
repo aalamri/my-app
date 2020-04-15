@@ -14,6 +14,8 @@ import Category from "../components/Category";
 // import Profile from "../components/Profile";
 import Signup from "../components/Signup";
 import Dashboard from "../../dashboard";
+import DBCards from '../../dashboard/Cards/CardsList'
+import DBCard from '../../dashboard/Cards/Card'
 import Signin from "../components/Signin";
 
 class AppRouter extends React.Component {
@@ -38,7 +40,8 @@ class AppRouter extends React.Component {
           <Route path="/dashboard" component={Dashboard} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/signin" component={Signin} exact />
-
+          <Route path="/cardsTable" component={DBCards} exact />
+          <Route path="/dbcard/:id" component={DBCard} exact />
         </Switch>
       </div>
     );

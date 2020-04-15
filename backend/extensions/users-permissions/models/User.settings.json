@@ -93,6 +93,10 @@
     "articles": {
       "via": "user",
       "collection": "article"
+    },
+    "cards": {
+      "via": "user",
+      "collection": "cards"
     }
   }
 }

@@ -644,6 +644,12 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "cards": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }

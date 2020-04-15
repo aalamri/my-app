@@ -26,7 +26,22 @@ const AuthNav = ({handleSignout}) => {
             <li>
               <Link to="/">Modrek</Link>
             </li>
-            </ul>
+          </ul>
+          <ul className="uk-navbar-nav">
+            <li>
+            <Link to="/cardsTable">Cards</Link>
+            </li>
+          </ul>
+          <ul className="uk-navbar-nav">
+            <li>
+            <Link to="/cardsTable">Article</Link>
+            </li>
+          </ul>
+          <ul className="uk-navbar-nav">
+            <li>
+            <Link to="/cardsTable">Test</Link>
+            </li>
+          </ul>
             <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
             <li>

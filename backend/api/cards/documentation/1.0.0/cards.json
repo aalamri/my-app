@@ -628,6 +628,84 @@
                 }
               }
             }
+          },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "can_create_articles": {
+                "type": "boolean"
+              },
+              "can_create_cards": {
+                "type": "boolean"
+              },
+              "can_create_tests": {
+                "type": "boolean"
+              },
+              "can_review_articles": {
+                "type": "boolean"
+              },
+              "can_review_cards": {
+                "type": "boolean"
+              },
+              "can_review_tests": {
+                "type": "boolean"
+              },
+              "applying_about_me": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "stats": {
+                "type": "object"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -671,6 +749,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "user": {
+            "type": "string"
           }
         }
       }
