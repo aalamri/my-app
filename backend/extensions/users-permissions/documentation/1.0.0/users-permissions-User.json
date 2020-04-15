@@ -1317,6 +1317,59 @@
                 },
                 "user": {
                   "type": "string"
+                },
+                "tag": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "Content",
+                "image",
+                "Language"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "Content": {
+                  "type": "string"
+                },
+                "is_approved": {
+                  "type": "boolean"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "is_featured": {
+                  "type": "boolean"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "Language": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
                 }
               }
             }
@@ -1395,6 +1448,12 @@
             "type": "object"
           },
           "articles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cards": {
             "type": "array",
             "items": {
               "type": "string"

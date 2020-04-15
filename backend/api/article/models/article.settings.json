@@ -29,8 +29,8 @@
       "required": false
     },
     "category": {
-      "via": "articles",
-      "model": "category"
+      "model": "category",
+      "via": "articles"
     },
     "meta": {
       "type": "json"
@@ -47,6 +47,10 @@
     "user": {
       "plugin": "users-permissions",
       "model": "user",
+      "via": "articles"
+    },
+    "tag": {
+      "model": "tag",
       "via": "articles"
     }
   }

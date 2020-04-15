@@ -694,6 +694,38 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tag": {
+            "required": [
+              "id",
+              "Subject"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Subject": {
+                "type": "string"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "card": {
+                "type": "string"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -729,6 +761,9 @@
             ]
           },
           "user": {
+            "type": "string"
+          },
+          "tag": {
             "type": "string"
           }
         }

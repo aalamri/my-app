@@ -50,6 +50,12 @@
     "tags": {
       "collection": "tag",
       "via": "card"
+    },
+    "user": {
+      "columnName": "email",
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "cards"
     }
   }
 }

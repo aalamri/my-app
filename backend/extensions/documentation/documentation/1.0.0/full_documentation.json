@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/14/2020 4:31:26 AM"
+    "x-generation-date": "04/15/2020 1:11:16 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4938,6 +4938,38 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tag": {
+            "required": [
+              "id",
+              "Subject"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Subject": {
+                "type": "string"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "card": {
+                "type": "string"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -4973,6 +5005,9 @@
             ]
           },
           "user": {
+            "type": "string"
+          },
+          "tag": {
             "type": "string"
           }
         }
@@ -5082,6 +5117,90 @@
                 },
                 "card": {
                   "type": "string"
+                },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "can_create_articles": {
+                "type": "boolean"
+              },
+              "can_create_cards": {
+                "type": "boolean"
+              },
+              "can_create_tests": {
+                "type": "boolean"
+              },
+              "can_review_articles": {
+                "type": "boolean"
+              },
+              "can_review_cards": {
+                "type": "boolean"
+              },
+              "can_review_tests": {
+                "type": "boolean"
+              },
+              "applying_about_me": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "stats": {
+                "type": "object"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
                 }
               }
             }
@@ -5128,6 +5247,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "user": {
+            "type": "string"
           }
         }
       },
@@ -5180,6 +5302,9 @@
                   "type": "string"
                 },
                 "user": {
+                  "type": "string"
+                },
+                "tag": {
                   "type": "string"
                 }
               }
@@ -5321,6 +5446,52 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "content",
+                "image"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "Langauge": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -5339,6 +5510,12 @@
           },
           "card": {
             "type": "string"
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -5651,6 +5828,12 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "cards": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -5819,6 +6002,59 @@
                 },
                 "user": {
                   "type": "string"
+                },
+                "tag": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "Content",
+                "image",
+                "Language"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "Content": {
+                  "type": "string"
+                },
+                "is_approved": {
+                  "type": "boolean"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "is_featured": {
+                  "type": "boolean"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "Language": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
                 }
               }
             }
@@ -5897,6 +6133,12 @@
             "type": "object"
           },
           "articles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cards": {
             "type": "array",
             "items": {
               "type": "string"

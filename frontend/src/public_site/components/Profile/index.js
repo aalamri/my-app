@@ -4,7 +4,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "t",
+      email: "",
     };
     this.handleChange = handleChange.bind(this);
   }
