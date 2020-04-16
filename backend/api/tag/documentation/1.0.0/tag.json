@@ -535,7 +535,8 @@
               "title",
               "Content",
               "image",
-              "Language"
+              "Language",
+              "status"
             ],
             "properties": {
               "id": {
@@ -546,9 +547,6 @@
               },
               "Content": {
                 "type": "string"
-              },
-              "is_approved": {
-                "type": "boolean"
               },
               "image": {
                 "type": "string"
@@ -572,6 +570,9 @@
                 }
               },
               "user": {
+                "type": "string"
+              },
+              "status": {
                 "type": "string"
               }
             }

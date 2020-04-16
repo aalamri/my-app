@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/15/2020 1:11:16 PM"
+    "x-generation-date": "04/15/2020 9:23:33 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5018,7 +5018,8 @@
           "title",
           "Content",
           "image",
-          "Language"
+          "Language",
+          "status"
         ],
         "properties": {
           "id": {
@@ -5029,10 +5030,6 @@
           },
           "Content": {
             "type": "string"
-          },
-          "is_approved": {
-            "type": "boolean",
-            "default": false
           },
           "image": {
             "required": [
@@ -5204,6 +5201,15 @@
                 }
               }
             }
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
           }
         }
       },
@@ -5211,7 +5217,8 @@
         "required": [
           "title",
           "Content",
-          "Language"
+          "Language",
+          "status"
         ],
         "properties": {
           "title": {
@@ -5219,10 +5226,6 @@
           },
           "Content": {
             "type": "string"
-          },
-          "is_approved": {
-            "type": "boolean",
-            "default": false
           },
           "published_at": {
             "type": "string"
@@ -5250,6 +5253,15 @@
           },
           "user": {
             "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
           }
         }
       },
@@ -5411,7 +5423,8 @@
               "title",
               "Content",
               "image",
-              "Language"
+              "Language",
+              "status"
             ],
             "properties": {
               "id": {
@@ -5422,9 +5435,6 @@
               },
               "Content": {
                 "type": "string"
-              },
-              "is_approved": {
-                "type": "boolean"
               },
               "image": {
                 "type": "string"
@@ -5448,6 +5458,9 @@
                 }
               },
               "user": {
+                "type": "string"
+              },
+              "status": {
                 "type": "string"
               }
             }
@@ -6017,7 +6030,8 @@
                 "title",
                 "Content",
                 "image",
-                "Language"
+                "Language",
+                "status"
               ],
               "properties": {
                 "id": {
@@ -6028,9 +6042,6 @@
                 },
                 "Content": {
                   "type": "string"
-                },
-                "is_approved": {
-                  "type": "boolean"
                 },
                 "image": {
                   "type": "string"
@@ -6054,6 +6065,9 @@
                   }
                 },
                 "user": {
+                  "type": "string"
+                },
+                "status": {
                   "type": "string"
                 }
               }

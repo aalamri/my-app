@@ -18,10 +18,6 @@
       "type": "richtext",
       "required": true
     },
-    "is_approved": {
-      "type": "boolean",
-      "default": false
-    },
     "image": {
       "model": "file",
       "via": "related",
@@ -56,6 +52,16 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "cards"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Rejected",
+        "Approved"
+      ],
+      "default": "Pending",
+      "required": true
     }
   }
 }
