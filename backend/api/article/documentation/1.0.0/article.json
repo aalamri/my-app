@@ -519,7 +519,8 @@
           "id",
           "title",
           "content",
-          "image"
+          "image",
+          "status"
         ],
         "properties": {
           "id": {
@@ -617,7 +618,7 @@
           "meta": {
             "type": "object"
           },
-          "Langauge": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -728,13 +729,23 @@
                 }
               }
             }
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
           }
         }
       },
       "NewArticle": {
         "required": [
           "title",
-          "content"
+          "content",
+          "status"
         ],
         "properties": {
           "title": {
@@ -752,7 +763,7 @@
           "meta": {
             "type": "object"
           },
-          "Langauge": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -765,6 +776,15 @@
           },
           "tag": {
             "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
           }
         }
       }

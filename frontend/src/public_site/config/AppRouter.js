@@ -15,8 +15,11 @@ import Category from "../components/Category";
 import Signup from "../components/Signup";
 import Dashboard from "../../dashboard";
 import DBCards from '../../dashboard/Cards/CardsList'
+import DBArticles from '../../dashboard/Article/ArticlesList'
 import DBCard from '../../dashboard/Cards/Card'
+import DBArticle from '../../dashboard/Article/Article'
 import Signin from "../components/Signin";
+import { isMoment } from "moment";
 
 class AppRouter extends React.Component {
   state = {
@@ -42,6 +45,8 @@ class AppRouter extends React.Component {
           <Route path="/signin" component={Signin} exact />
           <Route path="/cardsTable" component={DBCards} exact />
           <Route path="/dbcard/:id" component={DBCard} exact />
+          <Route path="/dbarticle/:id" component={DBArticle} exact />
+          <Route path="/articlesTable" component={DBArticles} exact />
         </Switch>
       </div>
     );
