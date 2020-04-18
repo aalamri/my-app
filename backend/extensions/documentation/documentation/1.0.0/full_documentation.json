@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/17/2020 7:11:16 PM"
+    "x-generation-date": "04/18/2020 4:38:20 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -95,9 +95,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Article"
-        ],
+        "tags": ["Article"],
         "parameters": [
           {
             "name": "_limit",
@@ -283,9 +281,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Article"
-        ],
+        "tags": ["Article"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -350,9 +346,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Article"
-        ],
+        "tags": ["Article"],
         "parameters": []
       }
     },
@@ -403,9 +397,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Article"
-        ],
+        "tags": ["Article"],
         "parameters": [
           {
             "name": "id",
@@ -465,9 +457,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Article"
-        ],
+        "tags": ["Article"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -539,9 +529,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Article"
-        ],
+        "tags": ["Article"],
         "parameters": [
           {
             "name": "id",
@@ -606,9 +594,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Cards"
-        ],
+        "tags": ["Cards"],
         "parameters": [
           {
             "name": "_limit",
@@ -794,9 +780,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Cards"
-        ],
+        "tags": ["Cards"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -861,9 +845,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Cards"
-        ],
+        "tags": ["Cards"],
         "parameters": []
       }
     },
@@ -914,9 +896,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Cards"
-        ],
+        "tags": ["Cards"],
         "parameters": [
           {
             "name": "id",
@@ -976,9 +956,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Cards"
-        ],
+        "tags": ["Cards"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1050,9 +1028,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Cards"
-        ],
+        "tags": ["Cards"],
         "parameters": [
           {
             "name": "id",
@@ -1117,9 +1093,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "_limit",
@@ -1305,9 +1279,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1372,9 +1344,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": []
       }
     },
@@ -1425,9 +1395,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "id",
@@ -1487,9 +1455,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1561,9 +1527,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "id",
@@ -1628,9 +1592,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tag"
-        ],
+        "tags": ["Tag"],
         "parameters": [
           {
             "name": "_limit",
@@ -1816,9 +1778,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tag"
-        ],
+        "tags": ["Tag"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1883,9 +1843,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tag"
-        ],
+        "tags": ["Tag"],
         "parameters": []
       }
     },
@@ -1936,9 +1894,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tag"
-        ],
+        "tags": ["Tag"],
         "parameters": [
           {
             "name": "id",
@@ -1998,9 +1954,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tag"
-        ],
+        "tags": ["Tag"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2072,9 +2026,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tag"
-        ],
+        "tags": ["Tag"],
         "parameters": [
           {
             "name": "id",
@@ -2139,9 +2091,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tests"
-        ],
+        "tags": ["Tests"],
         "parameters": [
           {
             "name": "_limit",
@@ -2327,9 +2277,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tests"
-        ],
+        "tags": ["Tests"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2394,9 +2342,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tests"
-        ],
+        "tags": ["Tests"],
         "parameters": []
       }
     },
@@ -2447,9 +2393,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tests"
-        ],
+        "tags": ["Tests"],
         "parameters": [
           {
             "name": "id",
@@ -2509,9 +2453,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tests"
-        ],
+        "tags": ["Tests"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2583,9 +2525,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Tests"
-        ],
+        "tags": ["Tests"],
         "parameters": [
           {
             "name": "id",
@@ -2651,9 +2591,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Email - Email"
-        ],
+        "tags": ["Email - Email"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2722,9 +2660,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Upload - File"
-        ],
+        "tags": ["Upload - File"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2793,9 +2729,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Upload - File"
-        ],
+        "tags": ["Upload - File"],
         "parameters": []
       }
     },
@@ -2850,9 +2784,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Upload - File"
-        ],
+        "tags": ["Upload - File"],
         "parameters": []
       }
     },
@@ -2907,9 +2839,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Upload - File"
-        ],
+        "tags": ["Upload - File"],
         "parameters": [
           {
             "name": "id",
@@ -2973,9 +2903,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Upload - File"
-        ],
+        "tags": ["Upload - File"],
         "parameters": [
           {
             "name": "id",
@@ -3041,9 +2969,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Upload - File"
-        ],
+        "tags": ["Upload - File"],
         "parameters": [
           {
             "name": "id",
@@ -3109,9 +3035,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - Role"
-        ],
+        "tags": ["UsersPermissions - Role"],
         "parameters": []
       }
     },
@@ -3162,9 +3086,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - Role"
-        ],
+        "tags": ["UsersPermissions - Role"],
         "parameters": [
           {
             "name": "id",
@@ -3229,9 +3151,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - Role"
-        ],
+        "tags": ["UsersPermissions - Role"],
         "parameters": [
           {
             "name": "_limit",
@@ -3417,9 +3337,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - Role"
-        ],
+        "tags": ["UsersPermissions - Role"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -3480,9 +3398,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - Role"
-        ],
+        "tags": ["UsersPermissions - Role"],
         "parameters": [
           {
             "name": "role",
@@ -3557,9 +3473,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - Role"
-        ],
+        "tags": ["UsersPermissions - Role"],
         "parameters": [
           {
             "name": "role",
@@ -3624,9 +3538,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": [
           {
             "name": "id",
@@ -3828,9 +3740,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": []
       }
     },
@@ -3885,9 +3795,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -3952,9 +3860,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4019,9 +3925,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": [
           {
             "name": "provider",
@@ -4087,9 +3991,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4158,9 +4060,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4229,9 +4129,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": []
       }
     },
@@ -4286,9 +4184,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4356,9 +4252,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": [
           {
             "name": "_limit",
@@ -4546,9 +4440,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": []
       }
     },
@@ -4599,9 +4491,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": [
           {
             "name": "id",
@@ -4661,9 +4551,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": [
           {
             "name": "id",
@@ -4738,9 +4626,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "UsersPermissions - User"
-        ],
+        "tags": ["UsersPermissions - User"],
         "parameters": [
           {
             "name": "id",
@@ -4759,13 +4645,7 @@
   "components": {
     "schemas": {
       "Article": {
-        "required": [
-          "id",
-          "title",
-          "content",
-          "image",
-          "status"
-        ],
+        "required": ["id", "title", "content", "image", "status"],
         "properties": {
           "id": {
             "type": "string"
@@ -4826,12 +4706,7 @@
             "type": "string"
           },
           "category": {
-            "required": [
-              "id",
-              "name",
-              "Description",
-              "icon"
-            ],
+            "required": ["id", "name", "Description", "icon"],
             "properties": {
               "id": {
                 "type": "string"
@@ -4865,17 +4740,10 @@
           "language": {
             "type": "string",
             "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
+            "enum": ["English", "Arabic"]
           },
           "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
+            "required": ["id", "username", "email"],
             "properties": {
               "id": {
                 "type": "string"
@@ -4949,10 +4817,7 @@
             }
           },
           "tag": {
-            "required": [
-              "id",
-              "Subject"
-            ],
+            "required": ["id", "Subject"],
             "properties": {
               "id": {
                 "type": "string"
@@ -4977,20 +4842,12 @@
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": [
-              "Pending",
-              "Rejected",
-              "Approved"
-            ]
+            "enum": ["Pending", "Rejected", "Approved"]
           }
         }
       },
       "NewArticle": {
-        "required": [
-          "title",
-          "content",
-          "status"
-        ],
+        "required": ["title", "content", "status"],
         "properties": {
           "title": {
             "type": "string"
@@ -5010,10 +4867,7 @@
           "language": {
             "type": "string",
             "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
+            "enum": ["English", "Arabic"]
           },
           "user": {
             "type": "string"
@@ -5024,23 +4878,12 @@
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": [
-              "Pending",
-              "Rejected",
-              "Approved"
-            ]
+            "enum": ["Pending", "Rejected", "Approved"]
           }
         }
       },
       "Cards": {
-        "required": [
-          "id",
-          "title",
-          "Content",
-          "image",
-          "Language",
-          "status"
-        ],
+        "required": ["id", "title", "Content", "image", "Language", "status"],
         "properties": {
           "id": {
             "type": "string"
@@ -5110,18 +4953,12 @@
           "Language": {
             "type": "string",
             "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
+            "enum": ["English", "Arabic"]
           },
           "tags": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "Subject"
-              ],
+              "required": ["id", "Subject"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5145,11 +4982,7 @@
             }
           },
           "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
+            "required": ["id", "username", "email"],
             "properties": {
               "id": {
                 "type": "string"
@@ -5225,21 +5058,12 @@
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": [
-              "Pending",
-              "Rejected",
-              "Approved"
-            ]
+            "enum": ["Pending", "Rejected", "Approved"]
           }
         }
       },
       "NewCards": {
-        "required": [
-          "title",
-          "Content",
-          "Language",
-          "status"
-        ],
+        "required": ["title", "Content", "Language", "status"],
         "properties": {
           "title": {
             "type": "string"
@@ -5260,10 +5084,7 @@
           "Language": {
             "type": "string",
             "default": "English",
-            "enum": [
-              "English",
-              "Arabic"
-            ]
+            "enum": ["English", "Arabic"]
           },
           "tags": {
             "type": "array",
@@ -5277,21 +5098,12 @@
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": [
-              "Pending",
-              "Rejected",
-              "Approved"
-            ]
+            "enum": ["Pending", "Rejected", "Approved"]
           }
         }
       },
       "Category": {
-        "required": [
-          "id",
-          "name",
-          "Description",
-          "icon"
-        ],
+        "required": ["id", "name", "Description", "icon"],
         "properties": {
           "id": {
             "type": "string"
@@ -5302,13 +5114,7 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "image",
-                "status"
-              ],
+              "required": ["id", "title", "content", "image", "status"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5404,10 +5210,7 @@
         }
       },
       "NewCategory": {
-        "required": [
-          "name",
-          "Description"
-        ],
+        "required": ["name", "Description"],
         "properties": {
           "name": {
             "type": "string"
@@ -5427,10 +5230,7 @@
         }
       },
       "Tag": {
-        "required": [
-          "id",
-          "Subject"
-        ],
+        "required": ["id", "Subject"],
         "properties": {
           "id": {
             "type": "string"
@@ -5492,13 +5292,7 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "image",
-                "status"
-              ],
+              "required": ["id", "title", "content", "image", "status"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5539,9 +5333,7 @@
         }
       },
       "NewTag": {
-        "required": [
-          "Subject"
-        ],
+        "required": ["Subject"],
         "properties": {
           "Subject": {
             "type": "string"
@@ -5561,10 +5353,7 @@
         }
       },
       "Tests": {
-        "required": [
-          "id",
-          "title"
-        ],
+        "required": ["id", "title"],
         "properties": {
           "id": {
             "type": "string"
@@ -5629,9 +5418,7 @@
                   "properties": {
                     "__component": {
                       "type": "string",
-                      "enum": [
-                        "questions-group.new-question"
-                      ]
+                      "enum": ["questions-group.new-question"]
                     },
                     "id": {
                       "type": "string"
@@ -5678,9 +5465,7 @@
         }
       },
       "NewTests": {
-        "required": [
-          "title"
-        ],
+        "required": ["title"],
         "properties": {
           "title": {
             "type": "string"
@@ -5696,9 +5481,7 @@
                   "properties": {
                     "__component": {
                       "type": "string",
-                      "enum": [
-                        "questions-group.new-question"
-                      ]
+                      "enum": ["questions-group.new-question"]
                     },
                     "id": {
                       "type": "string"
@@ -5745,10 +5528,7 @@
         }
       },
       "UsersPermissionsRole": {
-        "required": [
-          "id",
-          "name"
-        ],
+        "required": ["id", "name"],
         "properties": {
           "id": {
             "type": "string"
@@ -5766,13 +5546,7 @@
           "permissions": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "type",
-                "controller",
-                "action",
-                "enabled"
-              ],
+              "required": ["id", "type", "controller", "action", "enabled"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5801,11 +5575,7 @@
           "users": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "username",
-                "email"
-              ],
+              "required": ["id", "username", "email"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5882,9 +5652,7 @@
         }
       },
       "NewUsersPermissionsRole": {
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "properties": {
           "name": {
             "type": "string",
@@ -5911,11 +5679,7 @@
         }
       },
       "UsersPermissionsUser": {
-        "required": [
-          "id",
-          "username",
-          "email"
-        ],
+        "required": ["id", "username", "email"],
         "properties": {
           "id": {
             "type": "string"
@@ -5940,10 +5704,7 @@
             "default": false
           },
           "role": {
-            "required": [
-              "id",
-              "name"
-            ],
+            "required": ["id", "name"],
             "properties": {
               "id": {
                 "type": "string"
@@ -6010,13 +5771,7 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "image",
-                "status"
-              ],
+              "required": ["id", "title", "content", "image", "status"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -6108,10 +5863,7 @@
         }
       },
       "NewUsersPermissionsUser": {
-        "required": [
-          "username",
-          "email"
-        ],
+        "required": ["username", "email"],
         "properties": {
           "username": {
             "type": "string",
@@ -6193,10 +5945,7 @@
         }
       },
       "Error": {
-        "required": [
-          "code",
-          "message"
-        ],
+        "required": ["code", "message"],
         "properties": {
           "code": {
             "type": "integer",

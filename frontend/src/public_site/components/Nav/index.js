@@ -85,6 +85,12 @@ const UnAuthNav = () => {
                     <li>
                       <Link to="/create-card">Create Card</Link>
                     </li>
+                    <li>
+                      <Link to="/create-test">Create Test</Link>
+                    </li>
+                    <li>
+                      <Link to="/tests">All Tests</Link>
+                    </li>
                     {categories.map((category, i) => {
                       return (
                         <li key={category.id}>
