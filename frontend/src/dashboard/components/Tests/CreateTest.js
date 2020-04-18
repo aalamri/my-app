@@ -1,39 +1,17 @@
 import React, { useState } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import "react-quill/dist/quill.snow.css";
 
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { CREATE_TEST, TESTS_QUERY } from "./queries";
 import Editor from "../Editor";
 import Questions from "./Questions";
 
 const CreateTest = () => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
-  const [createTest, { data: createTestData }] = useMutation(CREATE_TEST, {
-    update(cache, { data: { createTest } }) {
-      try {
-        const { tests } = cache.readQuery({ query: TESTS_QUERY });
-        cache.writeQuery({
-          query: TESTS_QUERY,
-          data: { tests: tests.concat([createTest]) },
-        });
-      } catch (error) {
-        if (error.message.startsWith("Can't find field tests on object")) {
-          console.log("tf is createTestData", createTestData);
 
-          cache.writeQuery({
-            query: TESTS_QUERY,
-            data: { tests: [createTest] },
-          });
-        } else {
-          console.log("CreateTest error:", error);
-        }
-      }
-    },
-  });
-  const [editorValue, setEditorValue] = useState(
-    "Lorem ipsum Do ea deserunt ipsam eligendi, et corporis ducimus nihil hic qui, possimus ea aut excepturi quisquam, quae veritatis qui doloremque architecto aspernatur, iusto earum ut quis ipsam accusantium, et ea consequatur nihil quo perferendis neque, quo temporibus voluptates quam et."
-  );
+  const [testTitle, setTestTitle] = useState("");
+  const [editorValue, setEditorValue] = useState("");
+  const [questions, setQuestion] = useState([]);
 
   const intialCategories = data ? data.categories : [];
 
@@ -47,38 +25,31 @@ const CreateTest = () => {
   function handleCreateTest(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const date = new Date();
-    const title = formData.get("title");
-    const content = editorValue;
+    const newTest = {
+      testTitle,
+      description: editorValue,
+      category: getCatID(intialCategories, formData.get("category")),
+      questions,
+      meta: {
+        likes: 0,
+        taken: 0,
+        completed: 0,
+      },
+    };
+    console.log("newTest ready to mutation", newTest);
 
-    if (title && content) {
-      const payload = {
-        title,
-        content,
-        category: getCatID(intialCategories, formData.get("category")),
-        published_at: getDate(date),
-        meta: {
-          visits: 0,
-          likes: 0,
-          publish_status: "DRAFT/UNDER_REVIEW/REVIEWED/PUBLISHED",
-          reviewes: [
-            {
-              id: "s98uj",
-              reviewer: "Ahmad",
-              comment: "please fix that",
-              timestamp: Date.now(),
-            },
-          ],
-        },
-      };
-      createTest({ variables: { data: payload } });
-    } else {
-      console.log("Error: 'title' AND 'content' must not be empty!");
-    }
+    // createTest({ variables: { data: payload } });
   }
 
   function handleChangeEditorValue(value) {
     setEditorValue(value);
+  }
+
+  function updateQuestion(qid, update) {
+    const updated = questions.map((q) =>
+      q.id !== qid ? q : { ...q, ...update }
+    );
+    setQuestion(updated);
   }
 
   return (
@@ -88,7 +59,8 @@ const CreateTest = () => {
         name="title"
         type="text"
         placeholder="Test title"
-        value="Title Here"
+        value={testTitle}
+        onChange={({ target }) => setTestTitle(target.value)}
       />
       <br />
       <label>Test description</label>
@@ -98,7 +70,7 @@ const CreateTest = () => {
       />
       <br />
       <label>Select category:</label>
-      <select name="category" id="cars">
+      <select name="category" id="cars" defaultValue="black">
         {intialCategories.length > 0 &&
           intialCategories.map((cat) => {
             return (
@@ -109,8 +81,12 @@ const CreateTest = () => {
           })}
       </select>
       <br />
-      <Questions />
-
+      <Questions
+        updateQuestion={updateQuestion}
+        questions={questions}
+        setQuestion={setQuestion}
+      />
+      <br />
       <button type="submit">Create Test</button>
     </form>
   );

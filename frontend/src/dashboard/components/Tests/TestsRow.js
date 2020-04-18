@@ -29,6 +29,9 @@ const TestsRow = ({ tests }) => {
                   {test.title}
                 </p>
                 <p id="title" className="">
+                  {test.description}
+                </p>
+                <p id="title" className="">
                   Likes {test.meta?.likes ?? 0}
                 </p>
               </div>

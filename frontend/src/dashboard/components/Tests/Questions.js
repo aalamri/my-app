@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import TestsRow from "./TestsRow";
-import Query from "../Query";
-import { TESTS_QUERY } from "./queries";
+import React from "react";
 import Editor from "../Editor";
 
 const Question = ({ index, qid, updateQuestion }) => {
-  const [editorValue, setEditorValue] = useState("");
-
   function handleChangeEditorValue(value) {
     updateQuestion(qid, { content: value });
   }
@@ -23,20 +18,10 @@ const Question = ({ index, qid, updateQuestion }) => {
     <div>
       <h4>Question {index + 1}</h4>
       <label>Question title</label>
-      <input
-        id="title"
-        type="text"
-        name={`question-title-${qid}`}
-        onChange={handleOnChange}
-      />
+      <input id="title" type="text" onChange={handleOnChange} />
       <br />
       <label>Question content</label>
-      <textarea id="content" name={`question-content-${qid}`}></textarea>
-      <Editor
-        handleChangeEditorValue={handleChangeEditorValue}
-        value={editorValue}
-        qid={qid}
-      />
+      <Editor handleChangeEditorValue={handleChangeEditorValue} qid={qid} />
       <br />
       <label htmlFor={`multiple-answers-${qid}`}>Multiple answers?</label>
       <input type="radio" name={`multiple-answers-${qid}`} value={true} />
@@ -88,11 +73,11 @@ const Question = ({ index, qid, updateQuestion }) => {
   );
 };
 
-const Questions = () => {
-  const [questions, setQuestion] = useState([]);
+const Questions = ({ questions, setQuestion, updateQuestion }) => {
   function addQuestion(e) {
     e.preventDefault();
     const newQuestion = {
+      __typename: "ComponentQuestionsGroupNewQuestion", // the group name used for this dynamic zone in Strapi
       id: newID(),
       title: "",
       content: "",
@@ -105,24 +90,12 @@ const Questions = () => {
     };
     setQuestion([...questions, newQuestion]);
   }
+
   function removeQuestion(e, qid) {
     e.preventDefault();
     setQuestion(questions.filter(({ id }) => id !== qid));
   }
-  function updateQuestion(qid, update) {
-    console.log("uuu, update", update);
 
-    const updated = questions.map((q) => {
-      if (q.id !== qid) {
-        return q;
-      } else {
-        return { ...q, ...update };
-      }
-    });
-    console.log("updated", updated);
-
-    setQuestion(updated); // TODO
-  }
   return (
     <div>
       <h2>Questions {questions.length}:</h2>
@@ -139,7 +112,6 @@ const Questions = () => {
           </div>
         );
       })}
-      <br />
       <button onClick={addQuestion}>Add question</button>
     </div>
   );

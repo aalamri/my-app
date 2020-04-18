@@ -29,7 +29,7 @@ export const TEST_QUERY = gql`
 
 export const TESTS_QUERY = gql`
   query Tests {
-    test {
+    tests {
       id
       title
       description
