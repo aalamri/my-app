@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { setToken } from "../../../utils/index";
+import { setUser } from "../../../utils/index";
 
 const url = process.env.REACT_APP_BACKEND_URL + '/auth/local';
 
@@ -41,6 +42,7 @@ class Signin extends React.Component {
         });
           this.setState({loading: false});
           setToken(response.data.jwt);
+          setUser(response.data.user);
           this.redirectUser('/dashboard');
     } catch (err) {
         this.setState({loading: false});
@@ -69,6 +71,7 @@ class Signin extends React.Component {
                 name="identifier"
                 type="identifier"
                 placeholder="Email"
+                required="true"
                 onChange={this.handleChange}
               />
             </div>
@@ -79,6 +82,7 @@ class Signin extends React.Component {
                 type="password"
                 name="password"
                 placeholder="password"
+                required="true"
                 onChange={this.handleChange}
               />
             </div>

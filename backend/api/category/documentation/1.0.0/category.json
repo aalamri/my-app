@@ -535,7 +535,8 @@
                 "id",
                 "title",
                 "content",
-                "image"
+                "image",
+                "status"
               ],
               "properties": {
                 "id": {
@@ -559,13 +560,16 @@
                 "meta": {
                   "type": "object"
                 },
-                "Langauge": {
+                "language": {
                   "type": "string"
                 },
                 "user": {
                   "type": "string"
                 },
                 "tag": {
+                  "type": "string"
+                },
+                "status": {
                   "type": "string"
                 }
               }

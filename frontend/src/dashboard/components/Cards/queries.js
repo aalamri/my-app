@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const CARDS_QUERY = gql`
   query Cards {
-    cards {
+    cards (where: {status: "Pending"}) {
       id
       createdAt
       updatedAt
