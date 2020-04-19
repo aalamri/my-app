@@ -1,5 +1,5 @@
 {
-  "host": "localhost",
+  "host": "${process.env.APP_HOST || '127.0.0.1'}",
   "port": "${process.env.PORT || 1337}",
   "production": true,
   "proxy": {
@@ -8,7 +8,7 @@
   "cron": {
     "enabled": false
   },
-  "admin": {
-    "autoOpen": false
+  "autoReload": {
+    "enabled": false
   }
 }
