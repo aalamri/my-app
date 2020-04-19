@@ -17,7 +17,7 @@ const CardsTable = ({ cards }) => {
         </thead>
         {cards.map((card) => {
           return (
-            <tbody>
+            <tbody key={card.id}>
               <tr>
                 <td>{card.title}</td>
                 <td>{card.status}</td>
@@ -27,8 +27,8 @@ const CardsTable = ({ cards }) => {
                 <td>{card.Language}</td>
                 <td>
                   <Link
-                    key={`dbcard__${card.id}`}
-                    to={`/dbcard/${card.id}`}
+                    key={card.id}
+                    to={`/dashboard/card/edit/${card.id}`}
                     className="uk-link-reset"
                   >
                     <button class="uk-button uk-button-default">View</button>

@@ -17,21 +17,23 @@ const ArticlesTable = ({ articles }) => {
         </thead>
         {articles.map((article) => {
           return (
-            <tbody>
+            <tbody key={article.id}>
               <tr>
                 <td>{article.title}</td>
                 <td>{article.status}</td>
                 <td>
                   <Moment format="MMM Do YYYY">{article.published_at}</Moment>
                 </td>
-                <td>{article.Language}</td>
+                <td>{article.language}</td>
                 <td>
                   <Link
-                    key={`dbarticle__${article.id}`}
-                    to={`/dbarticle/${article.id}`}
+                    key={article.id}
+                    to={`/dashboard/article/edit/${article.id}`}
                     className="uk-link-reset"
                   >
                     <button class="uk-button uk-button-default">View</button>
+                    <button class="uk-button uk-button-default">Edit</button>
+
                   </Link>
                 </td>
               </tr>

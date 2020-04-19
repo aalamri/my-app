@@ -3,19 +3,20 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import {useMutation } from "@apollo/react-hooks";
-import Query from "../../dashboard/Query";
-import { CARD_QUERY, UPDATE_CARD } from "../../dashboard/Cards/queries";
-import Dashboard from "../../dashboard";
-import { getToken } from "../../utils/index";
+import Query from "../Query";
+import { ARTICLE_QUERY, UPDATE_ARTICLE } from "./queries";
+import Dashboard from "../MainDash";
+import { getToken } from "../../../utils";
 
 const token = getToken();
 
-const Card = () => {
-    
+const Article = () => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  console.log("userdsfaasdfasd", user);
     let { id } = useParams();
     const [cardStatus,setCardStatus] = useState("Pending")
-    const [updatCard, { data: updateCardData }] = useMutation(
-        UPDATE_CARD,
+    const [updatArticle, { data: updateCardData }] = useMutation(
+      UPDATE_ARTICLE,
     )
 
     function handleSubmit(e) {
@@ -23,7 +24,7 @@ const Card = () => {
         const payload = {
             status: cardStatus
         }
-        updatCard (
+        updatArticle (
             {
                 context: {
                         headers: {
@@ -49,9 +50,9 @@ const Card = () => {
     <div className="uk-container uk-container-medium">
       <Dashboard />
       <div class="uk-container uk-container-medium"></div>
-      <Query query={CARD_QUERY} id={id}>
-        {({ data: { card } }) => {
-            console.log("is approve", card.is_approved )
+      <Query query={ARTICLE_QUERY} id={id}>
+        {({ data: { article } }) => {
+            console.log("is approve", article.is_approved )
         return (
             <div>
         <form class="uk-form-horizontal uk-margin-large">
@@ -63,7 +64,7 @@ const Card = () => {
             type="text"
             name="title"
             id="title"
-            value={card.title}
+            value={article.title}
             // onChange={this.handleChange}
           ></input>
         </div>
@@ -72,26 +73,20 @@ const Card = () => {
         <label class="uk-form-label" for="form-horizontal-text">Content</label>
         <div class="uk-width-1-4@s">
           <label htmlFor="Content"></label>
-          <input class="uk-input" 
-            type="text"
-            name="Content"
-            id="Content"
-            value={card.Content}
-            // onChange={this.handleChange}
-          ></input>
+        <ReactMarkdown source={article.content} escapeHtml={false} />
         </div>
         </div>             
          <div
                 id=""
                 className="uk-margin"
                 data-src={
-                  card.image.url
-                    ? process.env.REACT_APP_BACKEND_URL + card.image.url
+                  article.image.url
+                    ? process.env.REACT_APP_BACKEND_URL + article.image.url
                     : ""
                 }
                 data-srcset={
-                  card.image.url
-                    ? process.env.REACT_APP_BACKEND_URL + card.image.url
+                  article.image.url
+                    ? process.env.REACT_APP_BACKEND_URL + article.image.url
                     : ""
                 }
                 data-uk-img
@@ -101,16 +96,15 @@ const Card = () => {
             <label class="uk-form-label" for="form-horizontal-select">Language</label>
                 <select>
                     <option>
-                    {card.Language}
+                    {article.language}
                     </option>
                 </select>
             </div>
               <div className="uk-margin">
               <label class="uk-form-label" for="form-horizontal-select">Published</label>
                 <div className="">
-                  <ReactMarkdown source={card.content} escapeHtml={false} />
                   <p>
-                    <Moment format="MMM Do YYYY">{card.published_at}</Moment>
+                    <Moment format="MMM Do YYYY">{article.published_at}</Moment>
                   </p>
                 </div>
               </div>
@@ -140,4 +134,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default Article;

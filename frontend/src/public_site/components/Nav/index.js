@@ -3,13 +3,14 @@ import Query from "../Query";
 import { Link, withRouter } from "react-router-dom";
 
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { getToken, clearToken } from "../../../utils/index";
+import { getToken, clearToken, clearUser } from "../../../utils/index";
 
 
 class Navbar extends React.Component{
 
   handleSignout = () => {
     clearToken();
+    clearUser();
     this.props.history.push('/');
   }
   render () {
@@ -29,21 +30,24 @@ const AuthNav = ({handleSignout}) => {
           </ul>
           <ul className="uk-navbar-nav">
             <li>
-            <Link to="/cardsTable">Cards</Link>
+            <Link to="/dashboard/cards">Cards</Link>
             </li>
           </ul>
           <ul className="uk-navbar-nav">
             <li>
-            <Link to="/articlesTable">Article</Link>
+            <Link to="/dashboard/articles">Article</Link>
             </li>
           </ul>
           <ul className="uk-navbar-nav">
             <li>
-            <Link to="/cardsTable">Test</Link>
+            <Link to="/dashboard/cards">Test</Link>
             </li>
           </ul>
             <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
+            <li>
+            <Link to="/profile">Profile</Link>
+            </li>
             <li>
               <button class="uk-button uk-button-danger uk-button-large" onClick={handleSignout}>Sing out</button>
             </li>

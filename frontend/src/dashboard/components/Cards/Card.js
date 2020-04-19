@@ -3,19 +3,19 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import {useMutation } from "@apollo/react-hooks";
-import Query from "../../dashboard/Query";
-import { ARTICLE_QUERY, UPDATE_ARTICLE } from "../../dashboard/Article/queries";
-import Dashboard from "../../dashboard";
-import { getToken } from "../../utils/index";
+import Query from "../Query";
+import { CARD_QUERY, UPDATE_CARD } from "./queries";
+import Dashboard from "../MainDash";
+import { getToken } from "../../../utils";
 
 const token = getToken();
 
-const Article = () => {
+const Card = () => {
     
     let { id } = useParams();
     const [cardStatus,setCardStatus] = useState("Pending")
-    const [updatArticle, { data: updateCardData }] = useMutation(
-      UPDATE_ARTICLE,
+    const [updatCard, { data: updateCardData }] = useMutation(
+        UPDATE_CARD,
     )
 
     function handleSubmit(e) {
@@ -23,7 +23,7 @@ const Article = () => {
         const payload = {
             status: cardStatus
         }
-        updatArticle (
+        updatCard (
             {
                 context: {
                         headers: {
@@ -49,9 +49,9 @@ const Article = () => {
     <div className="uk-container uk-container-medium">
       <Dashboard />
       <div class="uk-container uk-container-medium"></div>
-      <Query query={ARTICLE_QUERY} id={id}>
-        {({ data: { article } }) => {
-            console.log("is approve", article.is_approved )
+      <Query query={CARD_QUERY} id={id}>
+        {({ data: { card } }) => {
+            console.log("is approve", card.is_approved )
         return (
             <div>
         <form class="uk-form-horizontal uk-margin-large">
@@ -63,7 +63,7 @@ const Article = () => {
             type="text"
             name="title"
             id="title"
-            value={article.title}
+            value={card.title}
             // onChange={this.handleChange}
           ></input>
         </div>
@@ -72,27 +72,26 @@ const Article = () => {
         <label class="uk-form-label" for="form-horizontal-text">Content</label>
         <div class="uk-width-1-4@s">
           <label htmlFor="Content"></label>
-          {/* <textarea class="uk-textarea" rows="10"
+          <input class="uk-input" 
+            type="text"
             name="Content"
             id="Content"
-            value={article.content}
+            value={card.Content}
             // onChange={this.handleChange}
-          ></textarea> */}
-          <ReactMarkdown source={article.content} escapeHtml={false} />
-
+          ></input>
         </div>
         </div>             
          <div
                 id=""
                 className="uk-margin"
                 data-src={
-                  article.image.url
-                    ? process.env.REACT_APP_BACKEND_URL + article.image.url
+                  card.image.url
+                    ? process.env.REACT_APP_BACKEND_URL + card.image.url
                     : ""
                 }
                 data-srcset={
-                  article.image.url
-                    ? process.env.REACT_APP_BACKEND_URL + article.image.url
+                  card.image.url
+                    ? process.env.REACT_APP_BACKEND_URL + card.image.url
                     : ""
                 }
                 data-uk-img
@@ -102,15 +101,16 @@ const Article = () => {
             <label class="uk-form-label" for="form-horizontal-select">Language</label>
                 <select>
                     <option>
-                    {article.language}
+                    {card.Language}
                     </option>
                 </select>
             </div>
               <div className="uk-margin">
               <label class="uk-form-label" for="form-horizontal-select">Published</label>
                 <div className="">
+                  <ReactMarkdown source={card.content} escapeHtml={false} />
                   <p>
-                    <Moment format="MMM Do YYYY">{article.published_at}</Moment>
+                    <Moment format="MMM Do YYYY">{card.published_at}</Moment>
                   </p>
                 </div>
               </div>
@@ -140,4 +140,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default Card;

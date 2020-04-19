@@ -2,7 +2,7 @@ import React from "react";
 import ArticlesTable from "./ArticlesTable";
 import Query from "../Query";
 import { ARTICLES_QUERY } from "./queries";
-import Dashboard from "../../dashboard";
+import Dashboard from "../MainDash";
 
 const Articles = () => {
   return (
