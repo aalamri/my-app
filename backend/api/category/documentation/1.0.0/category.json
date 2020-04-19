@@ -629,6 +629,38 @@
                 }
               }
             }
+          },
+          "test": {
+            "required": [
+              "id",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "questions": {
+                "type": "dynamiczone"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "meta": {
+                "type": "object"
+              }
+            }
           }
         }
       },
@@ -651,6 +683,9 @@
             "type": "object"
           },
           "Description": {
+            "type": "string"
+          },
+          "test": {
             "type": "string"
           }
         }

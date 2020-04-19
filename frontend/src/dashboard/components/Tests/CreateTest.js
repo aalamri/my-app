@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import "react-quill/dist/quill.snow.css";
 
 import { CATEGORIES_QUERY } from "../Category/queries";
+import { CREATE_TEST, TESTS_QUERY } from "./queries";
 import Editor from "../Editor";
 import Questions from "./Questions";
 
@@ -12,7 +13,26 @@ const CreateTest = () => {
   const [testTitle, setTestTitle] = useState("");
   const [editorValue, setEditorValue] = useState("");
   const [questions, setQuestion] = useState([]);
-
+  const [createTest, { data: createTestData }] = useMutation(CREATE_TEST, {
+    update(cache, { data: { createTest } }) {
+      try {
+        const { tests } = cache.readQuery({ query: TESTS_QUERY });
+        cache.writeQuery({
+          query: TESTS_QUERY,
+          data: { tests: tests.concat([createTest]) },
+        });
+      } catch (error) {
+        if (error.message.startsWith("Can't find field tests on object")) {
+          cache.writeQuery({
+            query: TESTS_QUERY,
+            data: { tests: [createTest] },
+          });
+        } else {
+          console.log("createTest error:", error);
+        }
+      }
+    },
+  });
   const intialCategories = data ? data.categories : [];
 
   if (loading) {
@@ -25,11 +45,17 @@ const CreateTest = () => {
   function handleCreateTest(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const questionsX = questions.map((q) => {
+      delete q.id;
+      return q;
+    });
+    console.log("questionsX", questionsX);
+
     const newTest = {
-      testTitle,
+      title: testTitle,
       description: editorValue,
-      category: getCatID(intialCategories, formData.get("category")),
-      questions,
+      categories: getCatID(intialCategories, formData.get("category")),
+      questions: questionsX,
       meta: {
         likes: 0,
         taken: 0,
@@ -38,7 +64,11 @@ const CreateTest = () => {
     };
     console.log("newTest ready to mutation", newTest);
 
-    // createTest({ variables: { data: payload } });
+    createTest({
+      variables: {
+        data: newTest,
+      },
+    });
   }
 
   function handleChangeEditorValue(value) {
@@ -47,7 +77,7 @@ const CreateTest = () => {
 
   function updateQuestion(qid, update) {
     const updated = questions.map((q) =>
-      q.id !== qid ? q : { ...q, ...update }
+      q.qid !== qid ? q : { ...q, ...update }
     );
     setQuestion(updated);
   }

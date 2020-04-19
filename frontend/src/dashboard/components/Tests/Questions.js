@@ -3,7 +3,7 @@ import Editor from "../Editor";
 
 const Question = ({ index, qid, updateQuestion }) => {
   function handleChangeEditorValue(value) {
-    updateQuestion(qid, { content: value });
+    updateQuestion(qid, { description: value });
   }
 
   function handleOnChange({ target }) {
@@ -14,20 +14,30 @@ const Question = ({ index, qid, updateQuestion }) => {
     // }
   }
 
+  function updateType() {}
+
   return (
     <div>
       <h4>Question {index + 1}</h4>
-      <label>Question title</label>
-      <input id="title" type="text" onChange={handleOnChange} />
+      <label>title</label>
+      <input id="title" name="title" type="text" onChange={handleOnChange} />
       <br />
-      <label>Question content</label>
+      <label>content</label>
       <Editor handleChangeEditorValue={handleChangeEditorValue} qid={qid} />
       <br />
-      <label htmlFor={`multiple-answers-${qid}`}>Multiple answers?</label>
-      <input type="radio" name={`multiple-answers-${qid}`} value={true} />
-      Yes
-      <input type="radio" name={`multiple-answers-${qid}`} value={false} />
-      No
+      <label htmlFor={`multiple-answers-${qid}`}>Answers type</label>
+      <input
+        type="radio"
+        name={`multiple-answers-${qid}`}
+        onClick={() => updateQuestion(qid, { multiple_choices: true })}
+      />
+      Multiple answers
+      <input
+        type="radio"
+        name={`multiple-answers-${qid}`}
+        onClick={() => updateQuestion(qid, { multiple_choices: false })}
+      />
+      Single Answer
       <br />
       <label>Correct answer</label>
       <input
@@ -77,23 +87,33 @@ const Questions = ({ questions, setQuestion, updateQuestion }) => {
   function addQuestion(e) {
     e.preventDefault();
     const newQuestion = {
-      __typename: "ComponentQuestionsGroupNewQuestion", // the group name used for this dynamic zone in Strapi
-      id: newID(),
+      qid: newID(),
       title: "",
-      content: "",
-      multiple_answers: false,
-      correctAnswer: "",
-      wrongAnswer1: "",
-      wrongAnswer2: "",
-      wrongAnswer3: "",
-      wrongAnswer4: "",
+      description: "",
+      questions: [
+        {
+          __typename: "ComponentQuestionsGroupNewQuestion",
+          //   __component: "questions-group.new-question",
+          title: "",
+          content: "",
+          multiple_choices: false,
+          correct_answer: "",
+          wrong_answer_1: "",
+          wrong_answer_2: "",
+          wrong_answer_3: "",
+          wrong_answer_4: "",
+          meta: { likes: 0, taken: 0, completed: 0 },
+        },
+      ],
     };
+    console.log("newid", newQuestion.qid);
+
     setQuestion([...questions, newQuestion]);
   }
 
   function removeQuestion(e, qid) {
     e.preventDefault();
-    setQuestion(questions.filter(({ id }) => id !== qid));
+    setQuestion(questions.filter((q) => q.qid !== qid));
   }
 
   return (
@@ -101,13 +121,13 @@ const Questions = ({ questions, setQuestion, updateQuestion }) => {
       <h2>Questions {questions.length}:</h2>
       {questions.map((question, i) => {
         return (
-          <div key={question.id}>
+          <div key={question.qid}>
             <Question
               index={i}
-              qid={question.id}
+              qid={question.qid}
               updateQuestion={updateQuestion}
             />
-            <button onClick={(e) => removeQuestion(e, question.id)}>X</button>
+            <button onClick={(e) => removeQuestion(e, question.qid)}>X</button>
             <hr />
           </div>
         );

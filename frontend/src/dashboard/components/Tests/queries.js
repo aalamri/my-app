@@ -46,8 +46,6 @@ export const CREATE_TEST = gql`
     createTest(input: { data: $data }) {
       test {
         id
-        title
-        createdAt
       }
     }
   }
