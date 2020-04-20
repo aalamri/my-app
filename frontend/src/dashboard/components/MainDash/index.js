@@ -1,47 +1,42 @@
 import React from "react";
-import Strapi from "strapi-sdk-javascript/build/main";
 
-const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:1337';
-const strapi = new Strapi(apiUrl);
-
-class Dashboard extends React.Component {
-
-  state = {
-    cards: []
-  }
-  async componentDidMount() {
-    try {
-      const response = await strapi.request('POST','/graphql', {
-        data: {
-          query: `query {
-            cards {
-              id
-              title
-              tags {
-                id
-                Subject
-              }
-              image {
-                url
-              }
-              meta
-            }
-         }`
-        }
-      });
-      console.log(response);
-      this.setState({cards: response.data.cards});
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        
+const Dashboard = () => {
+  return (
+    <div>
+      <div className="uk-child-width-1-2" data-uk-grid dir="auto">
+        <h3>Welcome to Modrek</h3>
       </div>
-    );
-  }
-}
+      <div class="uk-width-1-2@s uk-width-2-5@m">
+        <ul class="uk-nav uk-nav-default">
+          <li class="uk-nav-header">Menu</li>
+          <li>
+            <a href="/articles">
+              <span
+                class="uk-margin-small-right"
+                uk-icon="icon: file-text"
+              ></span>{" "}
+              Article
+            </a>
+          </li>
+          <li>
+            <a href="/cards">
+              <span class="uk-margin-small-right" uk-icon="icon: album"></span>{" "}
+              Card
+            </a>
+          </li>
+          <li>
+            <a href="/tests">
+              <span
+                class="uk-margin-small-right"
+                uk-icon="icon: file-edit"
+              ></span>{" "}
+              Test
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 export default Dashboard;

@@ -15,10 +15,10 @@ const ArticlesTable = ({ articles }) => {
             <th> Action </th>
           </tr>
         </thead>
-        {articles.map((article) => {
-          return (
-            <tbody key={article.id}>
-              <tr>
+        <tbody>
+          {articles.map((article) => {
+            return (
+              <tr key={article.id}>
                 <td>{article.title}</td>
                 <td>{article.status}</td>
                 <td>
@@ -26,23 +26,24 @@ const ArticlesTable = ({ articles }) => {
                 </td>
                 <td>{article.language}</td>
                 <td>
+                  <Link to={`/article/${article.id}`} className="uk-link-reset">
+                    <button class="uk-button uk-button-default">View</button>
+                  </Link>
                   <Link
-                    key={article.id}
-                    to={`/dashboard/article/edit/${article.id}`}
+                    to={`/dashboard/articles/edit/${article.id}`}
                     className="uk-link-reset"
                   >
-                    <button class="uk-button uk-button-default">View</button>
                     <button class="uk-button uk-button-default">Edit</button>
-
                   </Link>
                 </td>
               </tr>
-            </tbody>
-          );
-        })}
+            );
+          })}
+        </tbody>
       </table>
-      <Link to="/create-article"><button class="uk-button uk-button-primary">Create Article</button></Link>
-
+      <Link to="/dashboard/create-article">
+        <button class="uk-button uk-button-primary">Create Article</button>
+      </Link>
     </div>
   );
 };

@@ -518,9 +518,9 @@
         "required": [
           "id",
           "title",
-          "Content",
+          "content",
           "image",
-          "Language",
+          "language",
           "status"
         ],
         "properties": {
@@ -530,7 +530,7 @@
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "image": {
@@ -589,7 +589,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -718,15 +718,15 @@
       "NewCards": {
         "required": [
           "title",
-          "Content",
-          "Language",
+          "content",
+          "language",
           "status"
         ],
         "properties": {
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "published_at": {
@@ -739,7 +739,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [

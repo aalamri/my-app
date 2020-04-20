@@ -36,20 +36,24 @@ export const ARTICLE_QUERY = gql`
 `;
 
 export const UPDATE_ARTICLE = gql`
-mutation UpdateArticle ($id: ID!, $data: editArticleInput!){
-  updateArticle(input:{
-    where: {
-      id: $id
+  mutation UpdateArticle($id: ID!, $data: editArticleInput!) {
+    updateArticle(input: { where: { id: $id }, data: $data }) {
+      article {
+        id
+        title
+      }
     }
-    data: $data 
   }
+`;
 
-  )
-  {
-    article {
-      id
-      title
+export const CREATE_ARTICLE = gql`
+  mutation createArticle($data: ArticleInput!) {
+    createArticle(input: { data: $data }) {
+      article {
+        id
+        title
+        published_at
+      }
     }
   }
-}
 `;

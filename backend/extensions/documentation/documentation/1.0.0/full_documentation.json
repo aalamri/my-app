@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/17/2020 7:11:16 PM"
+    "x-generation-date": "04/20/2020 9:00:05 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4856,6 +4856,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "test": {
+                "type": "string"
               }
             }
           },
@@ -5036,9 +5039,9 @@
         "required": [
           "id",
           "title",
-          "Content",
+          "content",
           "image",
-          "Language",
+          "language",
           "status"
         ],
         "properties": {
@@ -5048,7 +5051,7 @@
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "image": {
@@ -5107,7 +5110,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -5236,15 +5239,15 @@
       "NewCards": {
         "required": [
           "title",
-          "Content",
-          "Language",
+          "content",
+          "language",
           "status"
         ],
         "properties": {
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "published_at": {
@@ -5257,7 +5260,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -5400,6 +5403,38 @@
                 }
               }
             }
+          },
+          "test": {
+            "required": [
+              "id",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "questions": {
+                "type": "dynamiczone"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "meta": {
+                "type": "object"
+              }
+            }
           }
         }
       },
@@ -5423,6 +5458,9 @@
           },
           "Description": {
             "type": "string"
+          },
+          "test": {
+            "type": "string"
           }
         }
       },
@@ -5445,9 +5483,9 @@
             "required": [
               "id",
               "title",
-              "Content",
+              "content",
               "image",
-              "Language",
+              "language",
               "status"
             ],
             "properties": {
@@ -5457,7 +5495,7 @@
               "title": {
                 "type": "string"
               },
-              "Content": {
+              "content": {
                 "type": "string"
               },
               "image": {
@@ -5472,7 +5510,7 @@
               "meta": {
                 "type": "object"
               },
-              "Language": {
+              "language": {
                 "type": "string"
               },
               "tags": {
@@ -5621,7 +5659,7 @@
               }
             }
           },
-          "question": {
+          "questions": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -5630,10 +5668,85 @@
                     "__component": {
                       "type": "string",
                       "enum": [
-                        "questions-group.new-question"
+                        "questions.question",
+                        "questions.question-single-answer"
                       ]
                     },
                     "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "choice_1": {
+                      "type": "string"
+                    },
+                    "choice_1_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_2": {
+                      "type": "string"
+                    },
+                    "choice_2_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_3": {
+                      "type": "string"
+                    },
+                    "choice_3_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_4": {
+                      "type": "string"
+                    },
+                    "choice_4_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_5": {
+                      "type": "string"
+                    },
+                    "choice_5_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_6": {
+                      "type": "string"
+                    },
+                    "choice_6_is_correct": {
+                      "type": "boolean"
+                    },
+                    "meta": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "choice_1",
+                    "choice_2"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "questions.question",
+                        "questions.question-single-answer"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "correct_answer": {
                       "type": "string"
                     },
                     "wrong_answer_1": {
@@ -5642,38 +5755,71 @@
                     "wrong_answer_2": {
                       "type": "string"
                     },
-                    "multiple_choices": {
-                      "type": "boolean",
-                      "default": false
-                    },
                     "wrong_answer_3": {
                       "type": "string"
-                    },
-                    "meta": {
-                      "type": "object"
                     },
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "correct_answer": {
+                    "wrong_answer_6": {
                       "type": "string"
                     },
-                    "title": {
-                      "type": "string"
-                    },
-                    "content": {
-                      "type": "string"
+                    "meta": {
+                      "type": "object"
                     }
                   },
                   "required": [
                     "id",
-                    "wrong_answer_1",
+                    "title",
                     "correct_answer",
-                    "title"
+                    "wrong_answer_1"
                   ]
                 }
               ]
             }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "Description",
+                "icon"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "test": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "meta": {
+            "type": "object"
           }
         }
       },
@@ -5688,7 +5834,7 @@
           "description": {
             "type": "string"
           },
-          "question": {
+          "questions": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -5697,10 +5843,85 @@
                     "__component": {
                       "type": "string",
                       "enum": [
-                        "questions-group.new-question"
+                        "questions.question",
+                        "questions.question-single-answer"
                       ]
                     },
                     "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "choice_1": {
+                      "type": "string"
+                    },
+                    "choice_1_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_2": {
+                      "type": "string"
+                    },
+                    "choice_2_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_3": {
+                      "type": "string"
+                    },
+                    "choice_3_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_4": {
+                      "type": "string"
+                    },
+                    "choice_4_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_5": {
+                      "type": "string"
+                    },
+                    "choice_5_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_6": {
+                      "type": "string"
+                    },
+                    "choice_6_is_correct": {
+                      "type": "boolean"
+                    },
+                    "meta": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "choice_1",
+                    "choice_2"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "questions.question",
+                        "questions.question-single-answer"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "correct_answer": {
                       "type": "string"
                     },
                     "wrong_answer_1": {
@@ -5709,38 +5930,37 @@
                     "wrong_answer_2": {
                       "type": "string"
                     },
-                    "multiple_choices": {
-                      "type": "boolean",
-                      "default": false
-                    },
                     "wrong_answer_3": {
                       "type": "string"
-                    },
-                    "meta": {
-                      "type": "object"
                     },
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "correct_answer": {
+                    "wrong_answer_6": {
                       "type": "string"
                     },
-                    "title": {
-                      "type": "string"
-                    },
-                    "content": {
-                      "type": "string"
+                    "meta": {
+                      "type": "object"
                     }
                   },
                   "required": [
                     "id",
-                    "wrong_answer_1",
+                    "title",
                     "correct_answer",
-                    "title"
+                    "wrong_answer_1"
                   ]
                 }
               ]
             }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "meta": {
+            "type": "object"
           }
         }
       },
@@ -6060,9 +6280,9 @@
               "required": [
                 "id",
                 "title",
-                "Content",
+                "content",
                 "image",
-                "Language",
+                "language",
                 "status"
               ],
               "properties": {
@@ -6072,7 +6292,7 @@
                 "title": {
                   "type": "string"
                 },
-                "Content": {
+                "content": {
                   "type": "string"
                 },
                 "image": {
@@ -6087,7 +6307,7 @@
                 "meta": {
                   "type": "object"
                 },
-                "Language": {
+                "language": {
                   "type": "string"
                 },
                 "tags": {

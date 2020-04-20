@@ -23,11 +23,19 @@
       "plugin": "upload",
       "required": false
     },
-    "question": {
+    "questions": {
       "type": "dynamiczone",
       "components": [
-        "questions-group.new-question"
+        "questions.question",
+        "questions.question-single-answer"
       ]
+    },
+    "categories": {
+      "collection": "category",
+      "via": "test"
+    },
+    "meta": {
+      "type": "json"
     }
   }
 }

@@ -30,6 +30,10 @@
       "via": "related",
       "plugin": "upload",
       "required": true
+    },
+    "test": {
+      "via": "categories",
+      "model": "tests"
     }
   }
 }

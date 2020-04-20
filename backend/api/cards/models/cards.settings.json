@@ -14,7 +14,7 @@
       "type": "string",
       "required": true
     },
-    "Content": {
+    "content": {
       "type": "richtext",
       "required": true
     },
@@ -34,7 +34,7 @@
     "meta": {
       "type": "json"
     },
-    "Language": {
+    "language": {
       "type": "enumeration",
       "enum": [
         "English",

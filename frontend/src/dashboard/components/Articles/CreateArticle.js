@@ -20,8 +20,6 @@ const CreateArticle = () => {
           });
         } catch (error) {
           if (error.message.startsWith("Can't find field articles on object")) {
-            console.log("tf is createArticleData", createArticleData);
-
             cache.writeQuery({
               query: ARTICLES_QUERY,
               data: { articles: [createArticle] },

@@ -612,6 +612,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "test": {
+                "type": "string"
               }
             }
           },

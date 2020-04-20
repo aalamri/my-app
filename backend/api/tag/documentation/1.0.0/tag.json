@@ -533,9 +533,9 @@
             "required": [
               "id",
               "title",
-              "Content",
+              "content",
               "image",
-              "Language",
+              "language",
               "status"
             ],
             "properties": {
@@ -545,7 +545,7 @@
               "title": {
                 "type": "string"
               },
-              "Content": {
+              "content": {
                 "type": "string"
               },
               "image": {
@@ -560,7 +560,7 @@
               "meta": {
                 "type": "object"
               },
-              "Language": {
+              "language": {
                 "type": "string"
               },
               "tags": {
