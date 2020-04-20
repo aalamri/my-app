@@ -5,7 +5,7 @@ export const CARD_QUERY = gql`
     card(id: $id) {
       id
       title
-      Content
+      content
       image {
         url
       }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/19/2020 3:42:21 AM"
+    "x-generation-date": "04/20/2020 9:00:05 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4886,7 +4886,7 @@
         }
       },
       "Cards": {
-        "required": ["id", "title", "Content", "image", "Language", "status"],
+        "required": ["id", "title", "content", "image", "language", "status"],
         "properties": {
           "id": {
             "type": "string"
@@ -4894,7 +4894,7 @@
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "image": {
@@ -4953,7 +4953,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": ["English", "Arabic"]
@@ -5066,12 +5066,12 @@
         }
       },
       "NewCards": {
-        "required": ["title", "Content", "Language", "status"],
+        "required": ["title", "content", "language", "status"],
         "properties": {
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "published_at": {
@@ -5084,7 +5084,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": ["English", "Arabic"]
@@ -5280,9 +5280,9 @@
             "required": [
               "id",
               "title",
-              "Content",
+              "content",
               "image",
-              "Language",
+              "language",
               "status"
             ],
             "properties": {
@@ -5292,7 +5292,7 @@
               "title": {
                 "type": "string"
               },
-              "Content": {
+              "content": {
                 "type": "string"
               },
               "image": {
@@ -5307,7 +5307,7 @@
               "meta": {
                 "type": "object"
               },
-              "Language": {
+              "language": {
                 "type": "string"
               },
               "tags": {
@@ -5705,7 +5705,7 @@
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "wrong_answer_6": {
+                    "wrong_answer_5": {
                       "type": "string"
                     },
                     "meta": {
@@ -6021,9 +6021,9 @@
               "required": [
                 "id",
                 "title",
-                "Content",
+                "content",
                 "image",
-                "Language",
+                "language",
                 "status"
               ],
               "properties": {
@@ -6033,7 +6033,7 @@
                 "title": {
                   "type": "string"
                 },
-                "Content": {
+                "content": {
                   "type": "string"
                 },
                 "image": {
@@ -6048,7 +6048,7 @@
                 "meta": {
                   "type": "object"
                 },
-                "Language": {
+                "language": {
                   "type": "string"
                 },
                 "tags": {
