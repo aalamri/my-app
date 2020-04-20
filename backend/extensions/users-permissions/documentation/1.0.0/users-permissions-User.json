@@ -1281,53 +1281,6 @@
           "stats": {
             "type": "object"
           },
-          "articles": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "image",
-                "status"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "image": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "language": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "cards": {
             "type": "array",
             "items": {
@@ -1374,6 +1327,9 @@
                   "type": "string"
                 },
                 "status": {
+                  "type": "string"
+                },
+                "card_url_in_other_language": {
                   "type": "string"
                 }
               }
@@ -1451,12 +1407,6 @@
           },
           "stats": {
             "type": "object"
-          },
-          "articles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "cards": {
             "type": "array",

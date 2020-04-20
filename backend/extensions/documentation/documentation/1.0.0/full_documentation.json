@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/20/2020 9:00:05 AM"
+    "x-generation-date": "04/20/2020 12:56:44 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -95,7 +95,9 @@
           }
         },
         "summary": "",
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -281,7 +283,9 @@
           }
         },
         "summary": "",
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -346,7 +350,9 @@
           }
         },
         "summary": "",
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": []
       }
     },
@@ -397,7 +403,9 @@
           }
         },
         "summary": "",
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -457,7 +465,9 @@
           }
         },
         "summary": "",
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -529,7 +539,9 @@
           }
         },
         "summary": "",
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -594,7 +606,9 @@
           }
         },
         "summary": "",
-        "tags": ["Cards"],
+        "tags": [
+          "Cards"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -780,7 +794,9 @@
           }
         },
         "summary": "",
-        "tags": ["Cards"],
+        "tags": [
+          "Cards"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -845,7 +861,9 @@
           }
         },
         "summary": "",
-        "tags": ["Cards"],
+        "tags": [
+          "Cards"
+        ],
         "parameters": []
       }
     },
@@ -896,7 +914,9 @@
           }
         },
         "summary": "",
-        "tags": ["Cards"],
+        "tags": [
+          "Cards"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -956,7 +976,9 @@
           }
         },
         "summary": "",
-        "tags": ["Cards"],
+        "tags": [
+          "Cards"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1028,7 +1050,9 @@
           }
         },
         "summary": "",
-        "tags": ["Cards"],
+        "tags": [
+          "Cards"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -1093,7 +1117,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -1279,7 +1305,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1344,7 +1372,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": []
       }
     },
@@ -1395,7 +1425,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -1455,7 +1487,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1527,7 +1561,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -1592,7 +1628,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -1778,7 +1816,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -1843,7 +1883,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": []
       }
     },
@@ -1894,7 +1936,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -1954,7 +1998,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2026,7 +2072,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -2091,7 +2139,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tests"],
+        "tags": [
+          "Tests"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -2277,7 +2327,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tests"],
+        "tags": [
+          "Tests"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2342,7 +2394,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tests"],
+        "tags": [
+          "Tests"
+        ],
         "parameters": []
       }
     },
@@ -2393,7 +2447,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tests"],
+        "tags": [
+          "Tests"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -2453,7 +2509,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tests"],
+        "tags": [
+          "Tests"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2525,7 +2583,9 @@
           }
         },
         "summary": "",
-        "tags": ["Tests"],
+        "tags": [
+          "Tests"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -2591,7 +2651,9 @@
           }
         },
         "summary": "",
-        "tags": ["Email - Email"],
+        "tags": [
+          "Email - Email"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2660,7 +2722,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -2729,7 +2793,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "parameters": []
       }
     },
@@ -2784,7 +2850,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "parameters": []
       }
     },
@@ -2839,7 +2907,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -2903,7 +2973,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -2969,7 +3041,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -3035,7 +3109,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - Role"],
+        "tags": [
+          "UsersPermissions - Role"
+        ],
         "parameters": []
       }
     },
@@ -3086,7 +3162,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - Role"],
+        "tags": [
+          "UsersPermissions - Role"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -3151,7 +3229,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - Role"],
+        "tags": [
+          "UsersPermissions - Role"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -3337,7 +3417,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - Role"],
+        "tags": [
+          "UsersPermissions - Role"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -3398,7 +3480,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - Role"],
+        "tags": [
+          "UsersPermissions - Role"
+        ],
         "parameters": [
           {
             "name": "role",
@@ -3473,7 +3557,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - Role"],
+        "tags": [
+          "UsersPermissions - Role"
+        ],
         "parameters": [
           {
             "name": "role",
@@ -3538,7 +3624,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -3740,7 +3828,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": []
       }
     },
@@ -3795,7 +3885,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -3860,7 +3952,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -3925,7 +4019,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": [
           {
             "name": "provider",
@@ -3991,7 +4087,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4060,7 +4158,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4129,7 +4229,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": []
       }
     },
@@ -4184,7 +4286,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -4252,7 +4356,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -4440,7 +4546,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": []
       }
     },
@@ -4491,7 +4599,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -4551,7 +4661,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -4626,7 +4738,9 @@
           }
         },
         "summary": "",
-        "tags": ["UsersPermissions - User"],
+        "tags": [
+          "UsersPermissions - User"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -4645,7 +4759,14 @@
   "components": {
     "schemas": {
       "Article": {
-        "required": ["id", "title", "content", "image", "status"],
+        "required": [
+          "id",
+          "title",
+          "content",
+          "image",
+          "status",
+          "author_id"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -4706,7 +4827,12 @@
             "type": "string"
           },
           "category": {
-            "required": ["id", "name", "Description", "icon"],
+            "required": [
+              "id",
+              "name",
+              "Description",
+              "icon"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -4743,114 +4869,39 @@
           "language": {
             "type": "string",
             "default": "English",
-            "enum": ["English", "Arabic"]
-          },
-          "user": {
-            "required": ["id", "username", "email"],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "can_create_articles": {
-                "type": "boolean"
-              },
-              "can_create_cards": {
-                "type": "boolean"
-              },
-              "can_create_tests": {
-                "type": "boolean"
-              },
-              "can_review_articles": {
-                "type": "boolean"
-              },
-              "can_review_cards": {
-                "type": "boolean"
-              },
-              "can_review_tests": {
-                "type": "boolean"
-              },
-              "applying_about_me": {
-                "type": "string"
-              },
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              },
-              "stats": {
-                "type": "object"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cards": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "tag": {
-            "required": ["id", "Subject"],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "Subject": {
-                "type": "string"
-              },
-              "Description": {
-                "type": "string"
-              },
-              "card": {
-                "type": "string"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           },
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": ["Pending", "Rejected", "Approved"]
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "article_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
+            "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
       "NewArticle": {
-        "required": ["title", "content", "status"],
+        "required": [
+          "title",
+          "content",
+          "status",
+          "author_id"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -4870,23 +4921,41 @@
           "language": {
             "type": "string",
             "default": "English",
-            "enum": ["English", "Arabic"]
-          },
-          "user": {
-            "type": "string"
-          },
-          "tag": {
-            "type": "string"
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           },
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": ["Pending", "Rejected", "Approved"]
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "article_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
+            "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
       "Cards": {
-        "required": ["id", "title", "content", "image", "language", "status"],
+        "required": [
+          "id",
+          "title",
+          "content",
+          "image",
+          "language",
+          "status"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -4956,12 +5025,18 @@
           "language": {
             "type": "string",
             "default": "English",
-            "enum": ["English", "Arabic"]
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           },
           "tags": {
             "type": "array",
             "items": {
-              "required": ["id", "Subject"],
+              "required": [
+                "id",
+                "Subject"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -4974,18 +5049,16 @@
                 },
                 "card": {
                   "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
           },
           "user": {
-            "required": ["id", "username", "email"],
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -5044,12 +5117,6 @@
               "stats": {
                 "type": "object"
               },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "cards": {
                 "type": "array",
                 "items": {
@@ -5061,12 +5128,24 @@
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": ["Pending", "Rejected", "Approved"]
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "card_url_in_other_language": {
+            "type": "string"
           }
         }
       },
       "NewCards": {
-        "required": ["title", "content", "language", "status"],
+        "required": [
+          "title",
+          "content",
+          "language",
+          "status"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -5087,7 +5166,10 @@
           "language": {
             "type": "string",
             "default": "English",
-            "enum": ["English", "Arabic"]
+            "enum": [
+              "English",
+              "Arabic"
+            ]
           },
           "tags": {
             "type": "array",
@@ -5101,12 +5183,24 @@
           "status": {
             "type": "string",
             "default": "Pending",
-            "enum": ["Pending", "Rejected", "Approved"]
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "card_url_in_other_language": {
+            "type": "string"
           }
         }
       },
       "Category": {
-        "required": ["id", "name", "Description", "icon"],
+        "required": [
+          "id",
+          "name",
+          "Description",
+          "icon"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -5117,7 +5211,14 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": ["id", "title", "content", "image", "status"],
+              "required": [
+                "id",
+                "title",
+                "content",
+                "image",
+                "status",
+                "author_id"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5143,14 +5244,17 @@
                 "language": {
                   "type": "string"
                 },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
                 "status": {
                   "type": "string"
+                },
+                "article_url_in_other_language": {
+                  "type": "string"
+                },
+                "author_id": {
+                  "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
                 }
               }
             }
@@ -5211,7 +5315,10 @@
             }
           },
           "test": {
-            "required": ["id", "title"],
+            "required": [
+              "id",
+              "title"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -5236,13 +5343,31 @@
               },
               "meta": {
                 "type": "object"
+              },
+              "language": {
+                "type": "string"
+              },
+              "is_archived": {
+                "type": "boolean"
+              },
+              "is_deleted": {
+                "type": "boolean"
+              },
+              "test_url_in_other_language": {
+                "type": "string"
+              },
+              "is_featured": {
+                "type": "boolean"
               }
             }
           }
         }
       },
       "NewCategory": {
-        "required": ["name", "Description"],
+        "required": [
+          "name",
+          "Description"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -5265,7 +5390,10 @@
         }
       },
       "Tag": {
-        "required": ["id", "Subject"],
+        "required": [
+          "id",
+          "Subject"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -5321,54 +5449,18 @@
               },
               "status": {
                 "type": "string"
-              }
-            }
-          },
-          "articles": {
-            "type": "array",
-            "items": {
-              "required": ["id", "title", "content", "image", "status"],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "image": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "language": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "string"
-                }
+              },
+              "card_url_in_other_language": {
+                "type": "string"
               }
             }
           }
         }
       },
       "NewTag": {
-        "required": ["Subject"],
+        "required": [
+          "Subject"
+        ],
         "properties": {
           "Subject": {
             "type": "string"
@@ -5378,17 +5470,14 @@
           },
           "card": {
             "type": "string"
-          },
-          "articles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       },
       "Tests": {
-        "required": ["id", "title"],
+        "required": [
+          "id",
+          "title"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -5507,7 +5596,12 @@
                       "type": "object"
                     }
                   },
-                  "required": ["id", "title", "choice_1", "choice_2"]
+                  "required": [
+                    "id",
+                    "title",
+                    "choice_1",
+                    "choice_2"
+                  ]
                 },
                 {
                   "properties": {
@@ -5562,7 +5656,12 @@
           "categories": {
             "type": "array",
             "items": {
-              "required": ["id", "name", "Description", "icon"],
+              "required": [
+                "id",
+                "name",
+                "Description",
+                "icon"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5596,11 +5695,32 @@
           },
           "meta": {
             "type": "object"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "Arabic",
+              "English"
+            ]
+          },
+          "is_archived": {
+            "type": "boolean"
+          },
+          "is_deleted": {
+            "type": "boolean"
+          },
+          "test_url_in_other_language": {
+            "type": "string"
+          },
+          "is_featured": {
+            "type": "boolean"
           }
         }
       },
       "NewTests": {
-        "required": ["title"],
+        "required": [
+          "title"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -5670,7 +5790,12 @@
                       "type": "object"
                     }
                   },
-                  "required": ["id", "title", "choice_1", "choice_2"]
+                  "required": [
+                    "id",
+                    "title",
+                    "choice_1",
+                    "choice_2"
+                  ]
                 },
                 {
                   "properties": {
@@ -5705,7 +5830,7 @@
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "wrong_answer_5": {
+                    "wrong_answer_6": {
                       "type": "string"
                     },
                     "meta": {
@@ -5730,11 +5855,33 @@
           },
           "meta": {
             "type": "object"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "Arabic",
+              "English"
+            ]
+          },
+          "is_archived": {
+            "type": "boolean"
+          },
+          "is_deleted": {
+            "type": "boolean"
+          },
+          "test_url_in_other_language": {
+            "type": "string"
+          },
+          "is_featured": {
+            "type": "boolean"
           }
         }
       },
       "UsersPermissionsRole": {
-        "required": ["id", "name"],
+        "required": [
+          "id",
+          "name"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -5752,7 +5899,13 @@
           "permissions": {
             "type": "array",
             "items": {
-              "required": ["id", "type", "controller", "action", "enabled"],
+              "required": [
+                "id",
+                "type",
+                "controller",
+                "action",
+                "enabled"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5781,7 +5934,11 @@
           "users": {
             "type": "array",
             "items": {
-              "required": ["id", "username", "email"],
+              "required": [
+                "id",
+                "username",
+                "email"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -5840,12 +5997,6 @@
                 "stats": {
                   "type": "object"
                 },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "cards": {
                   "type": "array",
                   "items": {
@@ -5858,7 +6009,9 @@
         }
       },
       "NewUsersPermissionsRole": {
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -5885,7 +6038,11 @@
         }
       },
       "UsersPermissionsUser": {
-        "required": ["id", "username", "email"],
+        "required": [
+          "id",
+          "username",
+          "email"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -5910,7 +6067,10 @@
             "default": false
           },
           "role": {
-            "required": ["id", "name"],
+            "required": [
+              "id",
+              "name"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -5974,47 +6134,6 @@
           "stats": {
             "type": "object"
           },
-          "articles": {
-            "type": "array",
-            "items": {
-              "required": ["id", "title", "content", "image", "status"],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "image": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "language": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "cards": {
             "type": "array",
             "items": {
@@ -6062,6 +6181,9 @@
                 },
                 "status": {
                   "type": "string"
+                },
+                "card_url_in_other_language": {
+                  "type": "string"
                 }
               }
             }
@@ -6069,7 +6191,10 @@
         }
       },
       "NewUsersPermissionsUser": {
-        "required": ["username", "email"],
+        "required": [
+          "username",
+          "email"
+        ],
         "properties": {
           "username": {
             "type": "string",
@@ -6136,12 +6261,6 @@
           "stats": {
             "type": "object"
           },
-          "articles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "cards": {
             "type": "array",
             "items": {
@@ -6151,7 +6270,10 @@
         }
       },
       "Error": {
-        "required": ["code", "message"],
+        "required": [
+          "code",
+          "message"
+        ],
         "properties": {
           "code": {
             "type": "integer",

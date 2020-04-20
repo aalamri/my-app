@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CATEGORIES_QUERY } from "../Category/queries";
+import "react-quill/dist/quill.snow.css";
+
 import { CREATE_ARTICLE, ARTICLES_QUERY } from "./queries";
 import Editor from "../Editor";
-import "react-quill/dist/quill.snow.css";
 
 const CreateArticle = () => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
@@ -31,9 +31,8 @@ const CreateArticle = () => {
       },
     }
   );
-  const [editorValue, setEditorValue] = useState(
-    "Lorem ipsum Do ea deserunt ipsam eligendi, et corporis ducimus nihil hic qui, possimus ea aut excepturi quisquam, quae veritatis qui doloremque architecto aspernatur, iusto earum ut quis ipsam accusantium, et ea consequatur nihil quo perferendis neque, quo temporibus voluptates quam et."
-  );
+  const [editorValue, setEditorValue] = useState("");
+  const [language, setLanguage] = useState("Arabic");
 
   const intialCategories = data ? data.categories : [];
 
@@ -49,29 +48,35 @@ const CreateArticle = () => {
     const formData = new FormData(e.target);
     const date = new Date();
     const title = formData.get("title");
+    const article_url_in_other_language = formData.get(
+      "article_url_in_other_language"
+    );
     const content = editorValue;
 
     if (title && content) {
       const payload = {
+        language,
+        article_url_in_other_language,
         title,
         content,
         category: getCatID(intialCategories, formData.get("category")),
         published_at: getDate(date),
+        status: "Pending",
         meta: {
           visits: 0,
           likes: 0,
-          publish_status: "DRAFT/UNDER_REVIEW/REVIEWED/PUBLISHED",
-          reviewes: [
-            {
-              id: "s98uj",
-              reviewer: "Ahmad",
-              comment: "please fix that",
-              timestamp: Date.now(),
-            },
-          ],
+          last_review: {
+            // example of 'reviewes' data
+            id: "s98uj",
+            reviewer: "Ahmad",
+            comment: "please fix that",
+            timestamp: Date.now(),
+          },
         },
       };
-      createArticle({ variables: { data: payload } });
+      createArticle({
+        variables: { data: payload } /*TODO add headers token here*/,
+      });
     } else {
       console.log("Error: 'title' AND 'content' must not be empty!");
     }
@@ -83,13 +88,36 @@ const CreateArticle = () => {
 
   return (
     <form onSubmit={handleCreateArticle}>
-      <label>Article title</label>
+      <label htmlFor="language">Language</label>
       <input
-        name="title"
-        type="text"
-        placeholder="Article title"
-        value="Title Here"
+        type="radio"
+        name="language"
+        onClick={() => setLanguage("Arabic")}
+        defaultChecked={language === "Arabic"}
       />
+      Arabic
+      <input
+        type="radio"
+        name="language"
+        onClick={() => setLanguage("English")}
+        defaultChecked={language === "English"}
+      />
+      English
+      <br />
+      <label>
+        Article URL in {language === "Arabic" ? "English" : "Arabic"} language
+      </label>
+      <input
+        name="article_url_in_other_language"
+        type="text"
+        placeholder="URL"
+      />
+      <br />
+      <label htmlFor="img">Cover image:</label>
+      <input type="file" id="img" name="img" accept="image/*" />
+      <br />
+      <label>Article title</label>
+      <input name="title" type="text" placeholder="Article title" />
       <br />
       <label>Article content</label>
       <Editor

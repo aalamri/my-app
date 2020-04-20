@@ -36,6 +36,25 @@
     },
     "meta": {
       "type": "json"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": [
+        "Arabic",
+        "English"
+      ]
+    },
+    "is_archived": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
+    },
+    "test_url_in_other_language": {
+      "type": "string"
+    },
+    "is_featured": {
+      "type": "boolean"
     }
   }
 }

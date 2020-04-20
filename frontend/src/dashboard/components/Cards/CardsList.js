@@ -8,7 +8,7 @@ const Cards = () => {
   return (
     <div>
       <Dashboard />
-      <div class="uk-container uk-container-medium">
+      <div className="uk-container uk-container-medium">
         <Query query={CARDS_QUERY}>
           {({ data: { cards } }) => {
             return <CardTable cards={cards} />;

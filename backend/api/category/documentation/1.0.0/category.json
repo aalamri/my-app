@@ -536,7 +536,8 @@
                 "title",
                 "content",
                 "image",
-                "status"
+                "status",
+                "author_id"
               ],
               "properties": {
                 "id": {
@@ -563,14 +564,17 @@
                 "language": {
                   "type": "string"
                 },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
                 "status": {
                   "type": "string"
+                },
+                "article_url_in_other_language": {
+                  "type": "string"
+                },
+                "author_id": {
+                  "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
                 }
               }
             }
@@ -659,6 +663,21 @@
               },
               "meta": {
                 "type": "object"
+              },
+              "language": {
+                "type": "string"
+              },
+              "is_archived": {
+                "type": "boolean"
+              },
+              "is_deleted": {
+                "type": "boolean"
+              },
+              "test_url_in_other_language": {
+                "type": "string"
+              },
+              "is_featured": {
+                "type": "boolean"
               }
             }
           }

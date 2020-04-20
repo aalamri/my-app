@@ -1,71 +1,66 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
 import { setToken } from "../../../utils/index";
 
-const url = process.env.REACT_APP_BACKEND_URL + '/auth/local/register';
+const url = process.env.REACT_APP_BACKEND_URL + "/auth/local/register";
 
 class Signup extends React.Component {
+  state = {
+    username: "",
+    email: "",
+    password: "",
+    loading: false,
+  };
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
 
-    
-    state = {
-        username: '',
-        email: '',
-        password: '',
-        loading: false
-    };
-    handleChange = (event) => {
-        const { name, value } = event.target;
-        this.setState(
-            {
-            [name]: value
-            }
-        );
-    };
-    
-    handleSubmit = async (event) => {
-        event.preventDefault();
-        const {username,email,password} = this.state
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { username, email, password } = this.state;
 
-        const data = {
-            username,
-            email,
-            password,
-          }
-        if(this.isFormEmpty(this.state)) {
-        console.log("Signup.handleSubmit")
-        }
-    
+    const data = {
+      username,
+      email,
+      password,
+    };
+    if (this.isFormEmpty(this.state)) {
+      console.log("Signup.handleSubmit");
+    }
+
     try {
-        this.setState({loading: true});
-        const response = await axios({
-            method: 'POST',
-            url,
-            data
-        });
-          this.setState({loading: false});
-          setToken(response.data.jwt);
-          this.redirectUser('/');
+      this.setState({ loading: true });
+      const response = await axios({
+        method: "POST",
+        url,
+        data,
+      });
+      this.setState({ loading: false });
+      setToken(response.data.jwt);
+      this.redirectUser("/");
     } catch (err) {
-        this.setState({loading: false});
-
+      this.setState({ loading: false });
     }
-};
+  };
 
-    redirectUser = path => this.props.history.push(path);
+  redirectUser = (path) => this.props.history.push(path);
 
-    isFormEmpty ({username,email,password}) {
-        return !username || !email || !password;
-    }
+  isFormEmpty({ username, email, password }) {
+    return !username || !email || !password;
+  }
 
-    render() {
-        const {loading } = this.state;
-        return (
-        <div className="uk-child-width-expand@s uk-text-center">
+  render() {
+    const { loading } = this.state;
+    return (
+      <div className="uk-child-width-expand@s uk-text-center">
         <legend className="uk-legend">Join us Content</legend>
         <br></br>
         <form className="uk-grid-small" onSubmit={this.handleSubmit}>
           <fieldset className="uk-fieldset">
-          <div className="uk-margin">
+            <div className="uk-margin">
               <input
                 className="uk-input uk-form-width-medium"
                 id="username"
@@ -95,11 +90,17 @@ class Signup extends React.Component {
               />
             </div>
           </fieldset>
-          <button class="uk-button uk-button-primary" disabled={loading} type="submit">Apply</button>
+          <button
+            className="uk-button uk-button-primary"
+            disabled={loading}
+            type="submit"
+          >
+            Apply
+          </button>
         </form>
-        </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
-export default Signup
+export default Signup;

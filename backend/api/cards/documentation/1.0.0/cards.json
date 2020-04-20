@@ -616,12 +616,6 @@
                 },
                 "card": {
                   "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
@@ -690,12 +684,6 @@
               "stats": {
                 "type": "object"
               },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "cards": {
                 "type": "array",
                 "items": {
@@ -712,6 +700,9 @@
               "Rejected",
               "Approved"
             ]
+          },
+          "card_url_in_other_language": {
+            "type": "string"
           }
         }
       },
@@ -764,6 +755,9 @@
               "Rejected",
               "Approved"
             ]
+          },
+          "card_url_in_other_language": {
+            "type": "string"
           }
         }
       }

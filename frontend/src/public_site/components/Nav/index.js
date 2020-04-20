@@ -60,7 +60,7 @@ const AuthNav = ({ handleSignout }) => {
             </li>
             <li>
               <button
-                class="uk-button uk-button-danger uk-button-large"
+                className="uk-button uk-button-danger uk-button-large"
                 onClick={handleSignout}
               >
                 Sing out

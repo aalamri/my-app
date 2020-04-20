@@ -21,10 +21,6 @@
     "card": {
       "via": "tags",
       "model": "cards"
-    },
-    "articles": {
-      "via": "tag",
-      "collection": "article"
     }
   }
 }

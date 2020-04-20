@@ -5,7 +5,7 @@ import Moment from "react-moment";
 const CardsTable = ({ cards }) => {
   return (
     <div>
-      <table class="uk-table uk-table-striped">
+      <table className="uk-table uk-table-striped">
         <thead>
           <tr>
             <th> Title</th>
@@ -27,13 +27,17 @@ const CardsTable = ({ cards }) => {
                 <td>{card.language}</td>
                 <td>
                   <Link to={`/card/${card.id}`} className="uk-link-reset">
-                    <button class="uk-button uk-button-default">View</button>
+                    <button className="uk-button uk-button-default">
+                      View
+                    </button>
                   </Link>
                   <Link
                     to={`/dashboard/cards/edit/${card.id}`}
                     className="uk-link-reset"
                   >
-                    <button class="uk-button uk-button-default">Edit</button>
+                    <button className="uk-button uk-button-default">
+                      Edit
+                    </button>
                   </Link>
                 </td>
               </tr>
@@ -42,7 +46,7 @@ const CardsTable = ({ cards }) => {
         </tbody>
       </table>
       <Link to="/dashboard/create-card">
-        <button class="uk-button uk-button-primary">Create Card</button>
+        <button className="uk-button uk-button-primary">Create Card</button>
       </Link>
     </div>
   );

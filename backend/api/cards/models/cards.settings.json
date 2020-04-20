@@ -62,6 +62,9 @@
       ],
       "default": "Pending",
       "required": true
+    },
+    "card_url_in_other_language": {
+      "type": "string"
     }
   }
 }
