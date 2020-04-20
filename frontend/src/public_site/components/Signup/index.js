@@ -44,7 +44,7 @@ class Signup extends React.Component {
         });
           this.setState({loading: false});
           setToken(response.data.jwt);
-          this.redirectUser('/dashboard');
+          this.redirectUser('/');
     } catch (err) {
         this.setState({loading: false});
 

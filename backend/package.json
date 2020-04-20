@@ -5,10 +5,12 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
-    "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "setup": "cd admin && npm run setup",
+    "start": "node server.js",
+    "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js"
   },
   "devDependencies": {},
   "dependencies": {

@@ -2,7 +2,7 @@ import React from "react";
 import CardTable from "./CardsTable";
 import Query from "../Query";
 import { CARDS_QUERY } from "./queries";
-import Dashboard from "../../dashboard";
+import Dashboard from "../MainDash";
 
 const Cards = () => {
   return (

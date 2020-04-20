@@ -3,10 +3,10 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import {useMutation } from "@apollo/react-hooks";
-import Query from "../../dashboard/Query";
-import { CARD_QUERY, UPDATE_CARD } from "../../dashboard/Cards/queries";
-import Dashboard from "../../dashboard";
-import { getToken } from "../../utils/index";
+import Query from "../Query";
+import { CARD_QUERY, UPDATE_CARD } from "./queries";
+import Dashboard from "../MainDash";
+import { getToken } from "../../../utils";
 
 const token = getToken();
 

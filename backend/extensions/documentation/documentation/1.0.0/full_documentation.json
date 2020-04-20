@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/15/2020 9:23:33 PM"
+    "x-generation-date": "04/17/2020 7:11:16 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4763,7 +4763,8 @@
           "id",
           "title",
           "content",
-          "image"
+          "image",
+          "status"
         ],
         "properties": {
           "id": {
@@ -4861,7 +4862,7 @@
           "meta": {
             "type": "object"
           },
-          "Langauge": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -4972,13 +4973,23 @@
                 }
               }
             }
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
           }
         }
       },
       "NewArticle": {
         "required": [
           "title",
-          "content"
+          "content",
+          "status"
         ],
         "properties": {
           "title": {
@@ -4996,7 +5007,7 @@
           "meta": {
             "type": "object"
           },
-          "Langauge": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -5009,6 +5020,15 @@
           },
           "tag": {
             "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
           }
         }
       },
@@ -5286,7 +5306,8 @@
                 "id",
                 "title",
                 "content",
-                "image"
+                "image",
+                "status"
               ],
               "properties": {
                 "id": {
@@ -5310,13 +5331,16 @@
                 "meta": {
                   "type": "object"
                 },
-                "Langauge": {
+                "language": {
                   "type": "string"
                 },
                 "user": {
                   "type": "string"
                 },
                 "tag": {
+                  "type": "string"
+                },
+                "status": {
                   "type": "string"
                 }
               }
@@ -5472,7 +5496,8 @@
                 "id",
                 "title",
                 "content",
-                "image"
+                "image",
+                "status"
               ],
               "properties": {
                 "id": {
@@ -5496,13 +5521,16 @@
                 "meta": {
                   "type": "object"
                 },
-                "Langauge": {
+                "language": {
                   "type": "string"
                 },
                 "user": {
                   "type": "string"
                 },
                 "tag": {
+                  "type": "string"
+                },
+                "status": {
                   "type": "string"
                 }
               }
@@ -5986,7 +6014,8 @@
                 "id",
                 "title",
                 "content",
-                "image"
+                "image",
+                "status"
               ],
               "properties": {
                 "id": {
@@ -6010,13 +6039,16 @@
                 "meta": {
                   "type": "object"
                 },
-                "Langauge": {
+                "language": {
                   "type": "string"
                 },
                 "user": {
                   "type": "string"
                 },
                 "tag": {
+                  "type": "string"
+                },
+                "status": {
                   "type": "string"
                 }
               }

@@ -35,7 +35,7 @@
     "meta": {
       "type": "json"
     },
-    "Langauge": {
+    "language": {
       "type": "enumeration",
       "enum": [
         "English",
@@ -52,6 +52,16 @@
     "tag": {
       "model": "tag",
       "via": "articles"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Rejected",
+        "Approved"
+      ],
+      "default": "Pending",
+      "required": true
     }
   }
 }
