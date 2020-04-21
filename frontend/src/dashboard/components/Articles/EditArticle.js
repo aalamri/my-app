@@ -14,46 +14,6 @@ const author_id = "123"; // TODO get user's id
 
 const EditArticle = () => {
   let { id } = useParams();
-  const [editorValue, setEditorValue] = useState("");
-  const [language, setLanguage] = useState("");
-  const [urlOtherLanguage, setUrlOtherLanguage] = useState("");
-
-  const { data, loading, error } = useQuery(GET_ARTICLE, {
-    variables: { id },
-  });
-
-  useEffect(() => {
-    if (data) {
-      console.log("useEffect", data.article.language);
-      setLanguage(data.article.language);
-      setUrlOtherLanguage(data.article.article_url_in_other_language || "");
-    }
-  }, [data]);
-
-  if (id == null) {
-    return <p>Error: Invalid Article id!</p>;
-  }
-
-  if (data?.article.is_deleted) {
-    return <p>Error: This article is deleted!</p>;
-  }
-  // const intialCategories = article ? article.categories : [];
-
-  function handleChangeEditorValue(value) {
-    setEditorValue(value);
-  }
-
-  function handleUpdateArticle() {}
-
-  if (loading) {
-    return <span>loading</span>;
-  }
-  if (error) {
-    console.log("error", error);
-
-    return <span>error</span>;
-  }
-  console.log("data", data);
 
   const { data, loading, error } = useQuery(GET_ARTICLE, {
     variables: { id },
