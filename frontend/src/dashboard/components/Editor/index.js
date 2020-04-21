@@ -37,6 +37,7 @@ const Editor = (props) => {
         modules={modules}
         formats={formats}
         onChange={props.handleChangeEditorValue}
+        value={props.value || ""}
       ></ReactQuill>
     </div>
   );

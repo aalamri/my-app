@@ -1,5 +1,8 @@
 import gql from "graphql-tag";
 
+/*
+ * Queries
+ */
 export const ARTICLES_QUERY = gql`
   query Articles {
     articles {
@@ -10,6 +13,7 @@ export const ARTICLES_QUERY = gql`
       language
       content
       status
+      is_deleted
     }
   }
 `;
@@ -44,6 +48,7 @@ export const GET_ARTICLE = gql`
       title
       content
       category {
+        id
         name
       }
       published_at
@@ -54,12 +59,34 @@ export const GET_ARTICLE = gql`
   }
 `;
 
+export const GET_CATEGORIES = gql`
+  query {
+    categories {
+      id
+      name
+    }
+  }
+`;
+
+/*
+ * Mutationn
+ */
 export const UPDATE_ARTICLE = gql`
   mutation UpdateArticle($id: ID!, $data: editArticleInput!) {
     updateArticle(input: { where: { id: $id }, data: $data }) {
       article {
         id
+        language
+        article_url_in_other_language
         title
+        content
+        category {
+          id
+          name
+        }
+        published_at
+        status
+        author_id
       }
     }
   }
@@ -72,6 +99,18 @@ export const CREATE_ARTICLE = gql`
         id
         title
         published_at
+      }
+    }
+  }
+`;
+
+// Soft delete only, will flag the article as is_deleted only
+export const DELETE_ARTICLE = gql`
+  mutation deleteArticle($id: ID!) {
+    updateArticle(input: { where: { id: $id }, data: { is_deleted: true } }) {
+      article {
+        id
+        is_deleted
       }
     }
   }

@@ -10,6 +10,9 @@ const Article = () => {
   return (
     <Query query={ARTICLE_QUERY} id={id}>
       {({ data: { article } }) => {
+        if (article.is_deleted) {
+          return <p>DELETED article</p>;
+        }
         return (
           <div>
             <div

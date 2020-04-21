@@ -10,8 +10,6 @@ const Test = () => {
   return (
     <Query query={TEST_QUERY} id={id}>
       {({ data: { test } }) => {
-        console.log("sssssdata", test);
-
         return (
           <div>
             <div

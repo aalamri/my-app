@@ -16,33 +16,39 @@ const ArticlesTable = ({ articles }) => {
           </tr>
         </thead>
         <tbody>
-          {articles.map((article) => {
-            return (
-              <tr key={article.id}>
-                <td>{article.title}</td>
-                <td>{article.status}</td>
-                <td>
-                  <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-                </td>
-                <td>{article.language}</td>
-                <td>
-                  <Link to={`/article/${article.id}`} className="uk-link-reset">
-                    <button className="uk-button uk-button-default">
-                      View
-                    </button>
-                  </Link>
-                  <Link
-                    to={`/dashboard/articles/edit/${article.id}`}
-                    className="uk-link-reset"
-                  >
-                    <button className="uk-button uk-button-default">
-                      Edit
-                    </button>
-                  </Link>
-                </td>
-              </tr>
-            );
-          })}
+          {articles
+            .filter(({ is_deleted }) => !is_deleted)
+            .map((article) => {
+              return (
+                <tr key={article.id}>
+                  <td>{article.title}</td>
+                  <td>{article.status}</td>
+                  <td>
+                    <Moment format="MMM Do YYYY">{article.published_at}</Moment>
+                  </td>
+                  <td>{article.language}</td>
+                  <td>
+                    <Link
+                      to={`/article/${article.id}`}
+                      className="uk-link-reset"
+                    >
+                      <button className="uk-button uk-button-default">
+                        View
+                      </button>
+                    </Link>
+                    <Link
+                      to={`/dashboard/articles/edit/${article.id}`}
+                      className="uk-link-reset"
+                    >
+                      <button className="uk-button uk-button-default">
+                        Edit
+                      </button>
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
+
         </tbody>
       </table>
       <Link to="/dashboard/create-article">

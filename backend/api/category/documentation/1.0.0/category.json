@@ -535,7 +535,6 @@
                 "id",
                 "title",
                 "content",
-                "image",
                 "status",
                 "author_id"
               ],
@@ -575,6 +574,9 @@
                 },
                 "is_deleted": {
                   "type": "boolean"
+                },
+                "last_update": {
+                  "type": "datetime"
                 }
               }
             }

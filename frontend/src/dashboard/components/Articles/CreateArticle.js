@@ -46,7 +46,6 @@ const CreateArticle = () => {
   function handleCreateArticle(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const date = new Date();
     const title = formData.get("title");
     const article_url_in_other_language = formData.get(
       "article_url_in_other_language"
@@ -60,15 +59,17 @@ const CreateArticle = () => {
         title,
         content,
         category: getCatID(intialCategories, formData.get("category")),
-        published_at: getDate(date),
+        published_at: getDate(new Date()),
         status: "Pending",
+        author_id: "123",
         meta: {
           visits: 0,
           likes: 0,
           last_review: {
             // example of 'reviewes' data
             id: "s98uj",
-            reviewer: "Ahmad",
+            reviewer_id: "214356",
+            reviewer_name: "Ahmad",
             comment: "please fix that",
             timestamp: Date.now(),
           },
