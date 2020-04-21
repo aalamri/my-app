@@ -22,7 +22,7 @@
   },
   "cors": {
     "enabled": true,
-    "origin": "https://modrek-app.herokuapp.com/",
+    "origin": "https://modrek-app.herokuapp.com",
     "expose": [
       "WWW-Authenticate",
       "Server-Authorization"
