@@ -74,10 +74,7 @@ const AuthNav = ({ handleSignout }) => {
 };
 
 const UnAuthNav = () => {
-  return (
-    <div>
-      <Query query={CATEGORIES_QUERY} id={null}>
-        {({ data: { categories } }) => {
+
           return (
             <div>
               <nav className="uk-navbar-container" data-uk-navbar>
@@ -103,7 +100,7 @@ const UnAuthNav = () => {
                     <li>
                       <Link to="/tests">All Tests</Link>
                     </li>
-                    {categories.map((category, i) => {
+                    {/* {categories.map((category, i) => {
                       return (
                         <li key={category.id}>
                           <Link
@@ -114,7 +111,7 @@ const UnAuthNav = () => {
                           </Link>
                         </li>
                       );
-                    })}
+                    })} */}
                   </ul>
                 </div>
                 <div className="uk-navbar-right">
@@ -130,10 +127,7 @@ const UnAuthNav = () => {
               </nav>
             </div>
           );
-        }}
-      </Query>
-    </div>
-  );
+
 };
 
 export default withRouter(Navbar);
