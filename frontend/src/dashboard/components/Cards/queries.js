@@ -45,3 +45,25 @@ export const UPDATE_CARD = gql`
     }
   }
 `;
+
+export const CREATE_CARD = gql`
+  mutation createCard($data: CardInput!) {
+    createCard(input: { data: $data }) {
+      card {
+        id
+        title
+        content
+        published_at
+      }
+    }
+  }
+`;
+
+export const GET_TAGS = gql`
+  query {
+    tags {
+      id
+      Subject
+    }
+  }
+`;

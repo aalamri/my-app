@@ -521,7 +521,8 @@
           "content",
           "image",
           "language",
-          "status"
+          "status",
+          "author_id"
         ],
         "properties": {
           "id": {
@@ -703,6 +704,9 @@
           },
           "card_url_in_other_language": {
             "type": "string"
+          },
+          "author_id": {
+            "type": "string"
           }
         }
       },
@@ -711,7 +715,8 @@
           "title",
           "content",
           "language",
-          "status"
+          "status",
+          "author_id"
         ],
         "properties": {
           "title": {
@@ -757,6 +762,9 @@
             ]
           },
           "card_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
             "type": "string"
           }
         }

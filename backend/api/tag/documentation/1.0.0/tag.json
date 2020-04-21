@@ -536,7 +536,8 @@
               "content",
               "image",
               "language",
-              "status"
+              "status",
+              "author_id"
             ],
             "properties": {
               "id": {
@@ -576,6 +577,9 @@
                 "type": "string"
               },
               "card_url_in_other_language": {
+                "type": "string"
+              },
+              "author_id": {
                 "type": "string"
               }
             }
