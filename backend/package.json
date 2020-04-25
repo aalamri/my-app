@@ -9,7 +9,7 @@
     "strapi": "strapi",
     "seed": "node scripts/seed.js",
     "setup": "cd admin && npm run setup",
-    "start": "node server.js",
+    "start": "strapi start",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js"
   },
   "devDependencies": {},
