@@ -575,7 +575,7 @@
               }
             }
           },
-          "question": {
+          "questions": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -584,10 +584,85 @@
                     "__component": {
                       "type": "string",
                       "enum": [
-                        "questions-group.new-question"
+                        "questions.question",
+                        "questions.question-single-answer"
                       ]
                     },
                     "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "choice_1": {
+                      "type": "string"
+                    },
+                    "choice_1_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_2": {
+                      "type": "string"
+                    },
+                    "choice_2_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_3": {
+                      "type": "string"
+                    },
+                    "choice_3_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_4": {
+                      "type": "string"
+                    },
+                    "choice_4_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_5": {
+                      "type": "string"
+                    },
+                    "choice_5_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_6": {
+                      "type": "string"
+                    },
+                    "choice_6_is_correct": {
+                      "type": "boolean"
+                    },
+                    "meta": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "choice_1",
+                    "choice_2"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "questions.question",
+                        "questions.question-single-answer"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "correct_answer": {
                       "type": "string"
                     },
                     "wrong_answer_1": {
@@ -596,38 +671,90 @@
                     "wrong_answer_2": {
                       "type": "string"
                     },
-                    "multiple_choices": {
-                      "type": "boolean",
-                      "default": false
-                    },
                     "wrong_answer_3": {
                       "type": "string"
-                    },
-                    "meta": {
-                      "type": "object"
                     },
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "correct_answer": {
+                    "wrong_answer_6": {
                       "type": "string"
                     },
-                    "title": {
-                      "type": "string"
-                    },
-                    "content": {
-                      "type": "string"
+                    "meta": {
+                      "type": "object"
                     }
                   },
                   "required": [
                     "id",
-                    "wrong_answer_1",
+                    "title",
                     "correct_answer",
-                    "title"
+                    "wrong_answer_1"
                   ]
                 }
               ]
             }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "Description",
+                "icon"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "test": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "meta": {
+            "type": "object"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "Arabic",
+              "English"
+            ]
+          },
+          "is_archived": {
+            "type": "boolean"
+          },
+          "is_deleted": {
+            "type": "boolean"
+          },
+          "test_url_in_other_language": {
+            "type": "string"
+          },
+          "is_featured": {
+            "type": "boolean"
           }
         }
       },
@@ -642,7 +769,7 @@
           "description": {
             "type": "string"
           },
-          "question": {
+          "questions": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -651,10 +778,85 @@
                     "__component": {
                       "type": "string",
                       "enum": [
-                        "questions-group.new-question"
+                        "questions.question",
+                        "questions.question-single-answer"
                       ]
                     },
                     "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "choice_1": {
+                      "type": "string"
+                    },
+                    "choice_1_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_2": {
+                      "type": "string"
+                    },
+                    "choice_2_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_3": {
+                      "type": "string"
+                    },
+                    "choice_3_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_4": {
+                      "type": "string"
+                    },
+                    "choice_4_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_5": {
+                      "type": "string"
+                    },
+                    "choice_5_is_correct": {
+                      "type": "boolean"
+                    },
+                    "choice_6": {
+                      "type": "string"
+                    },
+                    "choice_6_is_correct": {
+                      "type": "boolean"
+                    },
+                    "meta": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "choice_1",
+                    "choice_2"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "questions.question",
+                        "questions.question-single-answer"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "correct_answer": {
                       "type": "string"
                     },
                     "wrong_answer_1": {
@@ -663,38 +865,56 @@
                     "wrong_answer_2": {
                       "type": "string"
                     },
-                    "multiple_choices": {
-                      "type": "boolean",
-                      "default": false
-                    },
                     "wrong_answer_3": {
                       "type": "string"
-                    },
-                    "meta": {
-                      "type": "object"
                     },
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "correct_answer": {
+                    "wrong_answer_6": {
                       "type": "string"
                     },
-                    "title": {
-                      "type": "string"
-                    },
-                    "content": {
-                      "type": "string"
+                    "meta": {
+                      "type": "object"
                     }
                   },
                   "required": [
                     "id",
-                    "wrong_answer_1",
+                    "title",
                     "correct_answer",
-                    "title"
+                    "wrong_answer_1"
                   ]
                 }
               ]
             }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "meta": {
+            "type": "object"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "Arabic",
+              "English"
+            ]
+          },
+          "is_archived": {
+            "type": "boolean"
+          },
+          "is_deleted": {
+            "type": "boolean"
+          },
+          "test_url_in_other_language": {
+            "type": "string"
+          },
+          "is_featured": {
+            "type": "boolean"
           }
         }
       }

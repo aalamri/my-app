@@ -533,10 +533,11 @@
             "required": [
               "id",
               "title",
-              "Content",
+              "content",
               "image",
-              "Language",
-              "status"
+              "language",
+              "status",
+              "author_id"
             ],
             "properties": {
               "id": {
@@ -545,7 +546,7 @@
               "title": {
                 "type": "string"
               },
-              "Content": {
+              "content": {
                 "type": "string"
               },
               "image": {
@@ -560,7 +561,7 @@
               "meta": {
                 "type": "object"
               },
-              "Language": {
+              "language": {
                 "type": "string"
               },
               "tags": {
@@ -574,53 +575,12 @@
               },
               "status": {
                 "type": "string"
-              }
-            }
-          },
-          "articles": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "image",
-                "status"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "image": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "language": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "string"
-                }
+              },
+              "card_url_in_other_language": {
+                "type": "string"
+              },
+              "author_id": {
+                "type": "string"
               }
             }
           }
@@ -639,12 +599,6 @@
           },
           "card": {
             "type": "string"
-          },
-          "articles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       }

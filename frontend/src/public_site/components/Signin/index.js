@@ -1,65 +1,61 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
 import { setToken } from "../../../utils/index";
 import { setUser } from "../../../utils/index";
 
-const url = process.env.REACT_APP_BACKEND_URL + '/auth/local';
+const url = process.env.REACT_APP_BACKEND_URL + "/auth/local";
 
 class Signin extends React.Component {
+  state = {
+    identifier: "",
+    password: "",
+    loading: false,
+  };
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
 
-    state = {
-        identifier: '',
-        password: '',
-        loading: false
-    };
-    handleChange = (event) => {
-        const { name, value } = event.target;
-        this.setState(
-            {
-            [name]: value
-            }
-        );
-    };
-    
-    handleSubmit = async (event) => {
-        event.preventDefault();
-        const {identifier,password} = this.state
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { identifier, password } = this.state;
 
-        const data = {
-            identifier,
-            password,
-          }
-        if(this.isFormEmpty(this.state)) {
-        console.log("Signin.handleSubmit")
-        }
-    
+    const data = {
+      identifier,
+      password,
+    };
+    if (this.isFormEmpty(this.state)) {
+      console.log("Signin.handleSubmit");
+    }
+
     try {
-        this.setState({loading: true});
-        const response = await axios({
-            method: 'POST',
-            url,
-            data
-        });
-          this.setState({loading: false});
-          setToken(response.data.jwt);
-          setUser(response.data.user);
-          this.redirectUser('/dashboard');
+      this.setState({ loading: true });
+      const response = await axios({
+        method: "POST",
+        url,
+        data,
+      });
+      this.setState({ loading: false });
+      setToken(response.data.jwt);
+      setUser(response.data.user);
+      this.redirectUser("/dashboard");
     } catch (err) {
-        this.setState({loading: false});
-
+      this.setState({ loading: false });
     }
-};
+  };
 
-    redirectUser = path => this.props.history.push(path);
+  redirectUser = (path) => this.props.history.push(path);
 
-    isFormEmpty ({identifier,password}) {
-        return !identifier || !password;
-    }
+  isFormEmpty({ identifier, password }) {
+    return !identifier || !password;
+  }
 
-    render() {
-        const {loading } = this.state;
-        return (
-        <div className="uk-child-width-expand@s uk-text-center">
+  render() {
+    const { loading } = this.state;
+    return (
+      <div className="uk-child-width-expand@s uk-text-center">
         <legend className="uk-legend">Login</legend>
         <br></br>
         <form className="uk-grid-small" onSubmit={this.handleSubmit}>
@@ -87,11 +83,17 @@ class Signin extends React.Component {
               />
             </div>
           </fieldset>
-          <button class="uk-button uk-button-primary" disabled={loading} type="submit">Apply</button>
+          <button
+            className="uk-button uk-button-primary"
+            disabled={loading}
+            type="submit"
+          >
+            Apply
+          </button>
         </form>
-        </div>
-        );
-    } 
+      </div>
+    );
+  }
 }
 
-export default Signin
+export default Signin;

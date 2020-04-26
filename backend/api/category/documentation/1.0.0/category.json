@@ -535,8 +535,8 @@
                 "id",
                 "title",
                 "content",
-                "image",
-                "status"
+                "status",
+                "author_id"
               ],
               "properties": {
                 "id": {
@@ -563,14 +563,20 @@
                 "language": {
                   "type": "string"
                 },
-                "user": {
-                  "type": "string"
-                },
-                "tag": {
-                  "type": "string"
-                },
                 "status": {
                   "type": "string"
+                },
+                "article_url_in_other_language": {
+                  "type": "string"
+                },
+                "author_id": {
+                  "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
+                },
+                "last_update": {
+                  "type": "datetime"
                 }
               }
             }
@@ -629,6 +635,53 @@
                 }
               }
             }
+          },
+          "test": {
+            "required": [
+              "id",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "questions": {
+                "type": "dynamiczone"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "meta": {
+                "type": "object"
+              },
+              "language": {
+                "type": "string"
+              },
+              "is_archived": {
+                "type": "boolean"
+              },
+              "is_deleted": {
+                "type": "boolean"
+              },
+              "test_url_in_other_language": {
+                "type": "string"
+              },
+              "is_featured": {
+                "type": "boolean"
+              }
+            }
           }
         }
       },
@@ -651,6 +704,9 @@
             "type": "object"
           },
           "Description": {
+            "type": "string"
+          },
+          "test": {
             "type": "string"
           }
         }

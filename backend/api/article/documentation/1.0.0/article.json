@@ -519,8 +519,8 @@
           "id",
           "title",
           "content",
-          "image",
-          "status"
+          "status",
+          "author_id"
         ],
         "properties": {
           "id": {
@@ -612,6 +612,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "test": {
+                "type": "string"
               }
             }
           },
@@ -626,110 +629,6 @@
               "Arabic"
             ]
           },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "can_create_articles": {
-                "type": "boolean"
-              },
-              "can_create_cards": {
-                "type": "boolean"
-              },
-              "can_create_tests": {
-                "type": "boolean"
-              },
-              "can_review_articles": {
-                "type": "boolean"
-              },
-              "can_review_cards": {
-                "type": "boolean"
-              },
-              "can_review_tests": {
-                "type": "boolean"
-              },
-              "applying_about_me": {
-                "type": "string"
-              },
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              },
-              "stats": {
-                "type": "object"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cards": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "tag": {
-            "required": [
-              "id",
-              "Subject"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "Subject": {
-                "type": "string"
-              },
-              "Description": {
-                "type": "string"
-              },
-              "card": {
-                "type": "string"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "status": {
             "type": "string",
             "default": "Pending",
@@ -738,6 +637,19 @@
               "Rejected",
               "Approved"
             ]
+          },
+          "article_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
+            "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
+          },
+          "last_update": {
+            "type": "datetime"
           }
         }
       },
@@ -745,7 +657,8 @@
         "required": [
           "title",
           "content",
-          "status"
+          "status",
+          "author_id"
         ],
         "properties": {
           "title": {
@@ -771,12 +684,6 @@
               "Arabic"
             ]
           },
-          "user": {
-            "type": "string"
-          },
-          "tag": {
-            "type": "string"
-          },
           "status": {
             "type": "string",
             "default": "Pending",
@@ -785,6 +692,19 @@
               "Rejected",
               "Approved"
             ]
+          },
+          "article_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
+            "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
+          },
+          "last_update": {
+            "type": "datetime"
           }
         }
       }

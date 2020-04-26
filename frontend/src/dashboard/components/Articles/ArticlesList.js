@@ -7,14 +7,14 @@ import Dashboard from "../MainDash";
 const Articles = () => {
   return (
     <div>
-    <Dashboard/>
-    <div class="uk-container uk-container-medium">
-          <Query query={ARTICLES_QUERY}>
-            {({ data: { articles } }) => {
-              return <ArticlesTable articles={articles} />;
-            }}
-          </Query>
-    </div>
+      <Dashboard />
+      <div className="uk-container uk-container-medium">
+        <Query query={ARTICLES_QUERY}>
+          {({ data: { articles } }) => {
+            return <ArticlesTable articles={articles} />;
+          }}
+        </Query>
+      </div>
     </div>
   );
 };

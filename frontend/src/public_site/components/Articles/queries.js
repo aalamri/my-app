@@ -15,6 +15,7 @@ export const ARTICLE_QUERY = gql`
       }
       published_at
       meta
+      is_deleted
     }
   }
 `;
@@ -32,6 +33,7 @@ export const ARTICLES_QUERY = gql`
         url
       }
       meta
+      is_deleted
     }
   }
 `;

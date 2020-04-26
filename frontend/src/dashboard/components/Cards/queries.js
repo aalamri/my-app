@@ -2,13 +2,13 @@ import gql from "graphql-tag";
 
 export const CARDS_QUERY = gql`
   query Cards {
-    cards (where: {status: "Pending"}) {
+    cards {
       id
       createdAt
       updatedAt
       title
-      Language
-      Content
+      language
+      content
       status
     }
   }
@@ -19,8 +19,8 @@ export const CARD_QUERY = gql`
     card(id: $id) {
       id
       title
-      Content
-      Language
+      content
+      language
       status
       image {
         url
@@ -36,20 +36,34 @@ export const CARD_QUERY = gql`
 `;
 
 export const UPDATE_CARD = gql`
-mutation UpdateCard ($id: ID!, $data: editCardInput!){
-  updateCard(input:{
-    where: {
-      id: $id
+  mutation UpdateCard($id: ID!, $data: editCardInput!) {
+    updateCard(input: { where: { id: $id }, data: $data }) {
+      card {
+        id
+        title
+      }
     }
-    data: $data 
   }
+`;
 
-  )
-  {
-    card {
-      id
-      title
+export const CREATE_CARD = gql`
+  mutation createCard($data: CardInput!) {
+    createCard(input: { data: $data }) {
+      card {
+        id
+        title
+        content
+        published_at
+      }
     }
   }
-}
+`;
+
+export const GET_TAGS = gql`
+  query {
+    tags {
+      id
+      Subject
+    }
+  }
 `;

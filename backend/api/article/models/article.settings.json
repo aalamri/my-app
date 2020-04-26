@@ -22,7 +22,7 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
+      "required": false
     },
     "published_at": {
       "type": "date",
@@ -44,15 +44,6 @@
       "required": false,
       "default": "English"
     },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "articles"
-    },
-    "tag": {
-      "model": "tag",
-      "via": "articles"
-    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -62,6 +53,20 @@
       ],
       "default": "Pending",
       "required": true
+    },
+    "article_url_in_other_language": {
+      "type": "string"
+    },
+    "author_id": {
+      "type": "string",
+      "required": true
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "last_update": {
+      "type": "datetime"
     }
   }
 }

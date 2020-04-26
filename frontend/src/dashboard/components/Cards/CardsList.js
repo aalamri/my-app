@@ -7,14 +7,14 @@ import Dashboard from "../MainDash";
 const Cards = () => {
   return (
     <div>
-    <Dashboard/>
-    <div class="uk-container uk-container-medium">
-          <Query query={CARDS_QUERY}>
-            {({ data: { cards } }) => {
-              return <CardTable cards={cards} />;
-            }}
-          </Query>
-    </div>
+      <Dashboard />
+      <div className="uk-container uk-container-medium">
+        <Query query={CARDS_QUERY}>
+          {({ data: { cards } }) => {
+            return <CardTable cards={cards} />;
+          }}
+        </Query>
+      </div>
     </div>
   );
 };

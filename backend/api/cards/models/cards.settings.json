@@ -14,7 +14,7 @@
       "type": "string",
       "required": true
     },
-    "Content": {
+    "content": {
       "type": "richtext",
       "required": true
     },
@@ -34,7 +34,7 @@
     "meta": {
       "type": "json"
     },
-    "Language": {
+    "language": {
       "type": "enumeration",
       "enum": [
         "English",
@@ -61,6 +61,13 @@
         "Approved"
       ],
       "default": "Pending",
+      "required": true
+    },
+    "card_url_in_other_language": {
+      "type": "string"
+    },
+    "author_id": {
+      "type": "string",
       "required": true
     }
   }

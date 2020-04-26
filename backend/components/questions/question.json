@@ -1,0 +1,59 @@
+{
+  "connection": "default",
+  "collectionName": "components_questions_questions",
+  "info": {
+    "name": "Question Multiple Answers",
+    "icon": "check-square"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "choice_1": {
+      "type": "string",
+      "required": true
+    },
+    "choice_1_is_correct": {
+      "type": "boolean"
+    },
+    "choice_2": {
+      "type": "string",
+      "required": true
+    },
+    "choice_2_is_correct": {
+      "type": "boolean"
+    },
+    "choice_3": {
+      "type": "string"
+    },
+    "choice_3_is_correct": {
+      "type": "boolean"
+    },
+    "choice_4": {
+      "type": "string"
+    },
+    "choice_4_is_correct": {
+      "type": "boolean"
+    },
+    "choice_5": {
+      "type": "string"
+    },
+    "choice_5_is_correct": {
+      "type": "boolean"
+    },
+    "choice_6": {
+      "type": "string"
+    },
+    "choice_6_is_correct": {
+      "type": "boolean"
+    },
+    "meta": {
+      "type": "json"
+    }
+  }
+}

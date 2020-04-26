@@ -518,10 +518,11 @@
         "required": [
           "id",
           "title",
-          "Content",
+          "content",
           "image",
-          "Language",
-          "status"
+          "language",
+          "status",
+          "author_id"
         ],
         "properties": {
           "id": {
@@ -530,7 +531,7 @@
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "image": {
@@ -589,7 +590,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -616,12 +617,6 @@
                 },
                 "card": {
                   "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
@@ -690,12 +685,6 @@
               "stats": {
                 "type": "object"
               },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "cards": {
                 "type": "array",
                 "items": {
@@ -712,21 +701,28 @@
               "Rejected",
               "Approved"
             ]
+          },
+          "card_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
+            "type": "string"
           }
         }
       },
       "NewCards": {
         "required": [
           "title",
-          "Content",
-          "Language",
-          "status"
+          "content",
+          "language",
+          "status",
+          "author_id"
         ],
         "properties": {
           "title": {
             "type": "string"
           },
-          "Content": {
+          "content": {
             "type": "string"
           },
           "published_at": {
@@ -739,7 +735,7 @@
           "meta": {
             "type": "object"
           },
-          "Language": {
+          "language": {
             "type": "string",
             "default": "English",
             "enum": [
@@ -764,6 +760,12 @@
               "Rejected",
               "Approved"
             ]
+          },
+          "card_url_in_other_language": {
+            "type": "string"
+          },
+          "author_id": {
+            "type": "string"
           }
         }
       }
