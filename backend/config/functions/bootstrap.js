@@ -32,6 +32,11 @@ const setDefaultPermissions = async () => {
 };
 
 const isFirstRun = async () => {
+  console.log('####################')
+  console.log(strapi.config);
+  console.log('####################')
+  console.log(strapi.config.environment);
+  console.log('####################')
   const pluginStore = strapi.store({
     environment: strapi.config.environment,
     type: "type",
