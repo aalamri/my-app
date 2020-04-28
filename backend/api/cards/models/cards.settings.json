@@ -44,8 +44,8 @@
       "required": true
     },
     "tags": {
-      "collection": "tag",
-      "via": "card"
+      "via": "card",
+      "collection": "tag"
     },
     "user": {
       "columnName": "email",
@@ -69,6 +69,10 @@
     "author_id": {
       "type": "string",
       "required": true
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

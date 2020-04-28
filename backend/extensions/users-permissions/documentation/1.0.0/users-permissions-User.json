@@ -1335,6 +1335,9 @@
                 },
                 "author_id": {
                   "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
                 }
               }
             }

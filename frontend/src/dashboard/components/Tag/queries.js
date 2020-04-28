@@ -4,7 +4,7 @@ export const TAG_CARDS_QUERY = gql`
   query Tag($id: ID!) {
     tag(id: $id) {
       id
-      Subject
+      name
       card {
         id
         title
@@ -14,7 +14,7 @@ export const TAG_CARDS_QUERY = gql`
         }
         tags {
           id
-          Subject
+          name
         }
       }
     }
@@ -25,7 +25,7 @@ export const TAGS_QUERY = gql`
   query Tags {
     tags {
       id
-      Subject
+      name
     }
   }
 `;

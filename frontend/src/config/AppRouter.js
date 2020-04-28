@@ -14,6 +14,7 @@ import Category from "../public_site/components/Category";
 import Profile from "../public_site/components/Profile";
 import Signup from "../public_site/components/Signup";
 import Signin from "../public_site/components/Signin";
+import Search from "../public_site/components/Search";
 // Dashboard
 import Dashboard from "../dashboard/components/MainDash";
 import Reviewes from "../dashboard/components/Reviews";
@@ -26,6 +27,7 @@ import EditTest from "../dashboard/components/Tests/EditTest";
 import CreateArticle from "../dashboard/components/Articles/CreateArticle";
 import CreateCard from "../dashboard/components/Cards/CreateCard";
 import CreateTest from "../dashboard/components/Tests/CreateTest";
+import ReviewCard from "../dashboard/components/Cards/ReviewCard";
 
 class AppRouter extends React.Component {
   state = {
@@ -47,6 +49,7 @@ class AppRouter extends React.Component {
           <Route path="/dashboard" component={Dashboard} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/signin" component={Signin} exact />
+          <Route path="/search" component={Search} exact />
 
           {/* Dashboard all users */}
           <Route path="/dashboard/profile" component={Profile} exact />
@@ -72,6 +75,7 @@ class AppRouter extends React.Component {
 
           {/* Dashboaed routes: Reivewer */}
           <Route path="/dashboard/reviews" component={Reviewes} exact />
+          <Route path="/dashboard/reviews/cards/review/:id" component={ReviewCard}></Route>
           <Route
             path="/dashboard/review/article/:id"
             // component={REVIEW ARTICLE COMPONENT}

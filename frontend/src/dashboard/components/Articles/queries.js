@@ -31,7 +31,7 @@ export const ARTICLE_QUERY = gql`
       }
       tag {
         id
-        Subject
+        name
       }
       published_at
       meta

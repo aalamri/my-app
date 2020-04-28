@@ -39,6 +39,14 @@ const CardsTable = ({ cards }) => {
                       Edit
                     </button>
                   </Link>
+                  <Link
+                    to={`/dashboard/reviews/cards/review/${card.id}`}
+                    className="uk-link-reset"
+                  >
+                    <button className="uk-button uk-button-default">
+                      Review
+                    </button>
+                  </Link>
                 </td>
               </tr>
             );

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/21/2020 6:24:34 PM"
+    "x-generation-date": "04/28/2020 12:43:46 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5041,13 +5041,13 @@
             "items": {
               "required": [
                 "id",
-                "Subject"
+                "name"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Subject": {
+                "name": {
                   "type": "string"
                 },
                 "Description": {
@@ -5145,6 +5145,10 @@
           },
           "author_id": {
             "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -5204,6 +5208,10 @@
           },
           "author_id": {
             "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -5407,13 +5415,13 @@
       "Tag": {
         "required": [
           "id",
-          "Subject"
+          "name"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Subject": {
+          "name": {
             "type": "string"
           },
           "Description": {
@@ -5471,6 +5479,9 @@
               },
               "author_id": {
                 "type": "string"
+              },
+              "is_deleted": {
+                "type": "boolean"
               }
             }
           }
@@ -5478,10 +5489,10 @@
       },
       "NewTag": {
         "required": [
-          "Subject"
+          "name"
         ],
         "properties": {
-          "Subject": {
+          "name": {
             "type": "string"
           },
           "Description": {
@@ -6207,6 +6218,9 @@
                 },
                 "author_id": {
                   "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
                 }
               }
             }

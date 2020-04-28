@@ -603,13 +603,13 @@
             "items": {
               "required": [
                 "id",
-                "Subject"
+                "name"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Subject": {
+                "name": {
                   "type": "string"
                 },
                 "Description": {
@@ -707,6 +707,10 @@
           },
           "author_id": {
             "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -766,6 +770,10 @@
           },
           "author_id": {
             "type": "string"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "default": false
           }
         }
       }
