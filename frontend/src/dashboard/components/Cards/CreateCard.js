@@ -131,8 +131,8 @@ const CreateCard = () => {
       {intialTags.length > 0 &&
         intialTags.map((cat) => {
           return (
-            <option name="option" key={cat.id} value={cat.Subject}>
-              {cat.Subject}
+            <option name="option" key={cat.id} value={cat.name}>
+              {cat.name}
             </option>
           );
         })}
@@ -148,6 +148,6 @@ const getDate = (date) =>
   .toString()
   .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`; // the desired format by Strapi
 
-const getCatID = (cats, cat) => cats?.find(({ Subject }) => Subject === cat).id;
+const getCatID = (cats, cat) => cats?.find(({ name }) => name === cat).id;
 
 export default CreateCard;

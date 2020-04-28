@@ -517,13 +517,13 @@
       "Tag": {
         "required": [
           "id",
-          "Subject"
+          "name"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Subject": {
+          "name": {
             "type": "string"
           },
           "Description": {
@@ -581,6 +581,9 @@
               },
               "author_id": {
                 "type": "string"
+              },
+              "is_deleted": {
+                "type": "boolean"
               }
             }
           }
@@ -588,10 +591,10 @@
       },
       "NewTag": {
         "required": [
-          "Subject"
+          "name"
         ],
         "properties": {
-          "Subject": {
+          "name": {
             "type": "string"
           },
           "Description": {

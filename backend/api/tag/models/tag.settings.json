@@ -10,7 +10,7 @@
     "timestamps": true
   },
   "attributes": {
-    "Subject": {
+    "name": {
       "type": "string",
       "required": true
     },
@@ -19,8 +19,8 @@
       "required": false
     },
     "card": {
-      "via": "tags",
-      "model": "cards"
+      "model": "cards",
+      "via": "tags"
     }
   }
 }

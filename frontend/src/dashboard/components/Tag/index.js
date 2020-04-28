@@ -14,7 +14,7 @@ const Tag = () => {
           <div>
             <div className="uk-section">
               <div className="uk-container uk-container-large">
-                <h1>{tag.Subject}</h1>
+                <h1>{tag.name}</h1>
                 <CardsList cards={tag.cards} />
               </div>
             </div>

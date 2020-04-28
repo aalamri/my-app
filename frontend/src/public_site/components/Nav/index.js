@@ -122,6 +122,9 @@ const UnAuthNav = () => {
                     <li>
                       <Link to="/signup">Signup</Link>
                     </li>
+                    <li>
+                      <Link to="/search">Search</Link>
+                    </li>
                   </ul>
                 </div>
               </nav>

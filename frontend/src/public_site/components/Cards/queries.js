@@ -11,7 +11,7 @@ export const CARD_QUERY = gql`
       }
       tags {
         id
-        Subject
+        name
       }
       published_at
       meta
@@ -26,7 +26,7 @@ export const CARDS_QUERY = gql`
       title
       tags {
         id
-        Subject
+        name
       }
       image {
         url
