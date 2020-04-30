@@ -9,7 +9,7 @@ export const TEST_QUERY = gql`
       id
       title
       description
-      question {
+      questions {
         __typename
         ... on ComponentQuestionsGroupNewQuestion {
           title
@@ -23,6 +23,7 @@ export const TEST_QUERY = gql`
         }
       }
       createdAt
+      test_url_in_other_language
     }
   }
 `;
@@ -34,6 +35,48 @@ export const TESTS_QUERY = gql`
       title
       description
       createdAt
+      status
+      language
+      test_url_in_other_language
+    }
+  }
+`;
+
+export const GET_TEST = gql`
+  query GetTest($id: ID!) {
+    test(id: $id) {
+      id
+      language
+      test_url_in_other_language
+      title
+      description
+      category {
+        id
+        name
+      }
+      status
+      meta
+      is_deleted
+    }
+  }
+`;
+
+export const GET_CATEGORIES = gql`
+  query {
+    categories {
+      id
+      name
+    }
+  }
+`;
+
+export const UPDATE_TEST = gql`
+  mutation UpdateTest($id: ID!, $data: editTestInput!) {
+    updateTest(input: { where: { id: $id }, data: $data }) {
+      test {
+        id
+        title
+      }
     }
   }
 `;

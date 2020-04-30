@@ -19,8 +19,12 @@
       "required": false
     },
     "card": {
-      "model": "cards",
-      "via": "tags"
+      "via": "tags",
+      "model": "cards"
+    },
+    "article": {
+      "via": "tags",
+      "model": "article"
     }
   }
 }

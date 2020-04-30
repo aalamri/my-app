@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/28/2020 12:43:46 PM"
+    "x-generation-date": "04/29/2020 3:46:12 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4877,6 +4877,7 @@
             "type": "string",
             "default": "Pending",
             "enum": [
+              "Draft",
               "Pending",
               "Rejected",
               "Approved"
@@ -4894,6 +4895,35 @@
           },
           "last_update": {
             "type": "datetime"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "card": {
+                  "type": "string"
+                },
+                "article": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -4932,6 +4962,7 @@
             "type": "string",
             "default": "Pending",
             "enum": [
+              "Draft",
               "Pending",
               "Rejected",
               "Approved"
@@ -4949,6 +4980,15 @@
           },
           "last_update": {
             "type": "datetime"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -4957,7 +4997,6 @@
           "id",
           "title",
           "content",
-          "image",
           "language",
           "status",
           "author_id"
@@ -5055,6 +5094,9 @@
                 },
                 "card": {
                   "type": "string"
+                },
+                "article": {
+                  "type": "string"
                 }
               }
             }
@@ -5149,6 +5191,9 @@
           "is_deleted": {
             "type": "boolean",
             "default": false
+          },
+          "comment": {
+            "type": "string"
           }
         }
       },
@@ -5212,6 +5257,9 @@
           "is_deleted": {
             "type": "boolean",
             "default": false
+          },
+          "comment": {
+            "type": "string"
           }
         }
       },
@@ -5278,6 +5326,15 @@
                 },
                 "last_update": {
                   "type": "datetime"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -5358,11 +5415,8 @@
               "questions": {
                 "type": "dynamiczone"
               },
-              "categories": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "category": {
+                "type": "string"
               },
               "meta": {
                 "type": "object"
@@ -5381,6 +5435,12 @@
               },
               "is_featured": {
                 "type": "boolean"
+              },
+              "status": {
+                "type": "string"
+              },
+              "comment": {
+                "type": "string"
               }
             }
           }
@@ -5432,7 +5492,6 @@
               "id",
               "title",
               "content",
-              "image",
               "language",
               "status",
               "author_id"
@@ -5482,6 +5541,68 @@
               },
               "is_deleted": {
                 "type": "boolean"
+              },
+              "comment": {
+                "type": "string"
+              }
+            }
+          },
+          "article": {
+            "required": [
+              "id",
+              "title",
+              "content",
+              "status",
+              "author_id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "meta": {
+                "type": "object"
+              },
+              "language": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "article_url_in_other_language": {
+                "type": "string"
+              },
+              "author_id": {
+                "type": "string"
+              },
+              "is_deleted": {
+                "type": "boolean"
+              },
+              "last_update": {
+                "type": "datetime"
+              },
+              "comment": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -5499,6 +5620,9 @@
             "type": "string"
           },
           "card": {
+            "type": "string"
+          },
+          "article": {
             "type": "string"
           }
         }
@@ -5624,6 +5748,52 @@
                     },
                     "meta": {
                       "type": "object"
+                    },
+                    "question_image": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -5683,43 +5853,40 @@
               ]
             }
           },
-          "categories": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "Description",
-                "icon"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "icon": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "test": {
+          "category": {
+            "required": [
+              "id",
+              "name",
+              "Description",
+              "icon"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "meta": {
+                "type": "object"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "test": {
+                "type": "string"
               }
             }
           },
@@ -5744,6 +5911,18 @@
           },
           "is_featured": {
             "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "comment": {
+            "type": "string"
           }
         }
       },
@@ -5818,6 +5997,52 @@
                     },
                     "meta": {
                       "type": "object"
+                    },
+                    "question_image": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -5877,11 +6102,8 @@
               ]
             }
           },
-          "categories": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "category": {
+            "type": "string"
           },
           "meta": {
             "type": "object"
@@ -5904,6 +6126,18 @@
           },
           "is_featured": {
             "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "comment": {
+            "type": "string"
           }
         }
       },
@@ -6171,7 +6405,6 @@
                 "id",
                 "title",
                 "content",
-                "image",
                 "language",
                 "status",
                 "author_id"
@@ -6221,6 +6454,9 @@
                 },
                 "is_deleted": {
                   "type": "boolean"
+                },
+                "comment": {
+                  "type": "string"
                 }
               }
             }

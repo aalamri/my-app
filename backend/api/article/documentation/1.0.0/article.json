@@ -633,6 +633,7 @@
             "type": "string",
             "default": "Pending",
             "enum": [
+              "Draft",
               "Pending",
               "Rejected",
               "Approved"
@@ -650,6 +651,35 @@
           },
           "last_update": {
             "type": "datetime"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "card": {
+                  "type": "string"
+                },
+                "article": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -688,6 +718,7 @@
             "type": "string",
             "default": "Pending",
             "enum": [
+              "Draft",
               "Pending",
               "Rejected",
               "Approved"
@@ -705,6 +736,15 @@
           },
           "last_update": {
             "type": "datetime"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

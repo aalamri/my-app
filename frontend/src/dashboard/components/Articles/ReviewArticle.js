@@ -3,18 +3,21 @@ import { useParams } from "react-router";
 import {
   GET_ARTICLE,
   UPDATE_ARTICLE,
-  DELETE_ARTICLE,
   GET_CATEGORIES,
   ARTICLES_QUERY,
 } from "./queries";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Editor from "../Editor";
 
-const author_id = "123"; // TODO get user's id
+import { getToken } from "../../../utils/index";
 
-const EditArticle = () => {
+const author_id = "123"; // TODO get user's id
+const token = getToken();
+
+const ReviewArticle = () => {
   let { id } = useParams();
 
+  const [articleStatus,setArticleStatus] = useState("Pending")
   const { data, loading, error } = useQuery(GET_ARTICLE, {
     variables: { id },
   });
@@ -42,12 +45,11 @@ const EditArticle = () => {
       }
     },
   });
-  const [deleteArticle] = useMutation(DELETE_ARTICLE);
   const [language, setLanguage] = useState("");
   const [urlOtherLanguage, setUrlOtherLanguage] = useState("");
   const [title, setTitle] = useState("");
-  const [comment, setComment] = useState("");
   const [content, setContent] = useState("");
+  const [comment, setComment] = useState("");
   const [currentCategory, setCurrentCategory] = useState({
     id: null,
     name: null,
@@ -107,6 +109,7 @@ const EditArticle = () => {
         article_url_in_other_language,
         title,
         content,
+        comment,
         category: currentCategory.id,
         status: "Pending",
         author_id,
@@ -132,9 +135,30 @@ const EditArticle = () => {
     }
   }
 
-  function handleDeleteArticle(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    deleteArticle({ variables: { id } });
+    const payload = {
+        status: articleStatus
+    }
+    updateArticle (
+        {
+            context: {
+                    headers: {
+                        Authorization: `bearer ${token}`,
+                    },
+            },
+            variables: {
+                    data: payload,
+                    id: id
+                },
+
+        } 
+    )
+    alert("submitted");
+}
+
+  function handleComment(status) {
+    setArticleStatus (status)
   }
 
   function handleChangeCategory(e) {
@@ -213,15 +237,22 @@ const EditArticle = () => {
           })}
       </select>
       <br />
-      <label>Comments:</label>
       <div className="uk-margin">
+            <label> Approved
+                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={articleStatus === "Approved"}> 
+                </input>
+            </label>
+            <label> Reject
+                <input class="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={articleStatus === "Rejected"}> 
+                </input>
+            </label>
+            {articleStatus === "Rejected" && 
+            <div className="uk-margin">
             <textarea class="uk-textarea" rows="4" value={comment}></textarea>    
             </div>
-
-      <button type="submit">Update</button>
-      <button type="button" onClick={handleDeleteArticle}>
-        Delete Article
-      </button>
+            }
+            </div>
+      <button class="uk-button uk-button-primary" onClick={handleSubmit}>Submit</button>
     </form>
   );
 };
@@ -233,4 +264,4 @@ const getDate = (date) =>
 
 const getCatID = (cats, cat) => cats?.find(({ name }) => name === cat).id;
 
-export default EditArticle;
+export default ReviewArticle;

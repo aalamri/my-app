@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import {
-  GET_CARD,
-  UPDATE_CARD,
-  GET_TAGS,
-  CARDS_QUERY,
+  GET_TEST,
+  UPDATE_TEST,
+  GET_CATEGORIES,
+  TESTS_QUERY,
 } from "./queries";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Editor from "../Editor";
@@ -13,33 +13,33 @@ import { getToken } from "../../../utils/index";
 const author_id = "123"; // TODO get user's id
 const token = getToken();
 
-const ReviewCard = () => {
+const ReviewTest = () => {
     let { id } = useParams();
 
-  const [cardStatus,setCardStatus] = useState("Pending")
-  const { data, loading, error } = useQuery(GET_CARD, {
+  const [testStatus,setTestStatus] = useState("Pending")
+  const { data, loading, error } = useQuery(GET_TEST, {
     variables: { id },
   });
-  const { data: tags } = useQuery(GET_TAGS);
-  const [updateCard] = useMutation(UPDATE_CARD, {
+  const { data: categories } = useQuery(GET_CATEGORIES);
+  const [updateTest] = useMutation(UPDATE_TEST, {
     variables: { id },
-    update(cache, { data: { updateCard } }) {
+    update(cache, { data: { updateTest } }) {
       try {
-        const { cards } = cache.readQuery({ query: CARDS_QUERY });
+        const { tests } = cache.readQuery({ query: TESTS_QUERY });
         cache.writeQuery({
-          query: CARDS_QUERY,
+          query: TESTS_QUERY,
           data: {
-            cards: cards.map((a) => (a.id === id ? updateCard : a)),
+            tests: tests.map((a) => (a.id === id ? updateTest : a)),
           },
         });
       } catch (error) {
-        if (error.message.startsWith("Can't find field cards on object")) {
+        if (error.message.startsWith("Can't find field tests on object")) {
           cache.writeQuery({
-            query: CARDS_QUERY,
-            data: { cards: [updateCard] },
+            query: TESTS_QUERY,
+            data: { tests: [updateTest] },
           });
         } else {
-          console.log("updateCard error:", error);
+          console.log("updateTest error:", error);
         }
       }
     },
@@ -48,43 +48,43 @@ const ReviewCard = () => {
   const [urlOtherLanguage, setUrlOtherLanguage] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [currentTag, setCurrentTag] = useState({
+  const [currentCategory, setCurrentCategory] = useState({
     id: null,
     name: null,
   });
 
   useEffect(() => {
     if (data) {
-      console.log("useEffect", data.card.language);
-      setLanguage(data.card.language);
-      setUrlOtherLanguage(data.card.card_url_in_other_language);
-      setTitle(data.card.title);
-      setContent(data.card.content);
-      populateCurrentTag();
+      console.log("useEffect", data.test.language);
+      setLanguage(data.test.language);
+      setUrlOtherLanguage(data.test.test_url_in_other_language);
+      setTitle(data.test.title);
+      setContent(data.test.description);
+      populateCurrentCategory();
     }
   }, [data]);
 
   useEffect(() => {
-    if (tags) {
-        populateCurrentTag();
+    if (categories) {
+      populateCurrentCategory();
     }
-  }, [tags]);
+  }, [categories]);
 
-  function populateCurrentTag() {
-    if (tags?.tags.length > 0 && data?.card.tag) {
-      const cat = tags.tags.find(
-        ({ id }) => id === data.card.tag.id
+  function populateCurrentCategory() {
+    if (categories?.categories.length > 0 && data?.test.category) {
+      const cat = categories.categories.find(
+        ({ id }) => id === data.test.category.id
       );
-      setCurrentTag(cat);
+      setCurrentCategory(cat);
     }
   }
 
   if (id == null) {
-    return <p>Error: Invalid Card id!</p>;
+    return <p>Error: Invalid Test id!</p>;
   }
 
-  if (data?.card.is_deleted) {
-    return <p>Error: This card is deleted!</p>;
+  if (data?.test.is_deleted) {
+    return <p>Error: This test is deleted!</p>;
   }
 
   function handleChangeEditorValue(value) {
@@ -95,9 +95,9 @@ const ReviewCard = () => {
   function handleSubmit(e) {
     e.preventDefault();
     const payload = {
-        status: cardStatus
+        status: testStatus
     }
-    updateCard (
+    updateTest (
         {
             context: {
                     headers: {
@@ -115,13 +115,13 @@ const ReviewCard = () => {
 }
 
   function handleComment(status) {
-    setCardStatus (status)
+    setTestStatus (status)
   }
 
-  function handleChangeTag(e) {
+  function handleChangeCategory(e) {
     const name = e.target.value;
-    const id = getCatID(tags.tags, name);
-    setCurrentTag({ id, name });
+    const id = getCatID(categories.categories, name);
+    setCurrentCategory({ id, name });
   }
 
   if (author_id == null) {
@@ -154,10 +154,10 @@ const ReviewCard = () => {
       English
       <br />
       <label>
-        Card URL in {language === "Arabic" ? "English" : "Arabic"} language
+        Test URL in {language === "Arabic" ? "English" : "Arabic"} language
       </label>
       <input
-        name="card_url_in_other_language"
+        name="test_url_in_other_language"
         type="text"
         placeholder="URL"
         value={urlOtherLanguage}
@@ -167,43 +167,43 @@ const ReviewCard = () => {
       <label htmlFor="img">Cover image:</label>
       <input type="file" id="img" name="img" accept="image/*" />
       <br />
-      <label>Card title</label>
+      <label>Test title</label>
       <input
         name="title"
         type="text"
-        placeholder="Card title"
+        placeholder="Test title"
         value={title}
         onChange={({ target }) => setTitle(target.value)}
       />
       <br />
-      <label>Card content</label>
+      <label>Test content</label>
       <Editor
         handleChangeEditorValue={handleChangeEditorValue}
         value={content}
       />
       <br />
-      <label>Select Tag:</label>
-      <select onChange={handleChangeTag} value={currentTag.name}>
-        {tags?.tags.length > 0 &&
-          tags.tags.map(({ id, name }) => {
+      {/* <label>Select Category:</label> */}
+      {/* <select onChange={handleChangeCategory} value={currentCategory.name}>
+        {categories?.categories.length > 0 &&
+          categories.categories.map(({ id, name }) => {
             return (
               <option key={id} value={name}>
                 {name}
               </option>
             );
           })}
-      </select>
+      </select> */}
       <br />
       <div className="uk-margin">
             <label> Approved
-                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={cardStatus === "Approved"}> 
+                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={testStatus === "Approved"}> 
                 </input>
             </label>
             <label> Reject
-                <input class="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={cardStatus === "Rejected"}> 
+                <input class="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={testStatus === "Rejected"}> 
                 </input>
             </label>
-            {cardStatus === "Rejected" && 
+            {testStatus === "Rejected" && 
             <div className="uk-margin">
             <textarea class="uk-textarea" rows="4" placeholder="Comments"></textarea>    
             </div>
@@ -221,4 +221,4 @@ const getDate = (date) =>
 
 const getCatID = (cats, cat) => cats?.find(({ name }) => name === cat).id;
 
-export default ReviewCard;
+export default ReviewTest;

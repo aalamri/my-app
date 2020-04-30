@@ -635,6 +635,52 @@
                     },
                     "meta": {
                       "type": "object"
+                    },
+                    "question_image": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -694,43 +740,40 @@
               ]
             }
           },
-          "categories": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "Description",
-                "icon"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "meta": {
-                  "type": "object"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "icon": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "test": {
+          "category": {
+            "required": [
+              "id",
+              "name",
+              "Description",
+              "icon"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "meta": {
+                "type": "object"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "test": {
+                "type": "string"
               }
             }
           },
@@ -755,6 +798,18 @@
           },
           "is_featured": {
             "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "comment": {
+            "type": "string"
           }
         }
       },
@@ -829,6 +884,52 @@
                     },
                     "meta": {
                       "type": "object"
+                    },
+                    "question_image": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -888,11 +989,8 @@
               ]
             }
           },
-          "categories": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "category": {
+            "type": "string"
           },
           "meta": {
             "type": "object"
@@ -915,6 +1013,18 @@
           },
           "is_featured": {
             "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "default": "Pending",
+            "enum": [
+              "Pending",
+              "Rejected",
+              "Approved"
+            ]
+          },
+          "comment": {
+            "type": "string"
           }
         }
       }

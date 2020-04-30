@@ -1,5 +1,5 @@
 import React from "react";
-import TestsRow from "./TestsRow";
+import TestsTable from "./TestsTable";
 import Query from "../Query";
 import { TESTS_QUERY } from "./queries";
 
@@ -11,7 +11,7 @@ const Tests = () => {
           <h1>Tests</h1>
           <Query query={TESTS_QUERY}>
             {({ data: { tests } }) => {
-              return <TestsRow tests={tests} />;
+              return <TestsTable tests={tests} />;
             }}
           </Query>
         </div>
