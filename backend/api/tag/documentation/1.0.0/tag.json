@@ -534,7 +534,6 @@
               "id",
               "title",
               "content",
-              "image",
               "language",
               "status",
               "author_id"
@@ -584,6 +583,68 @@
               },
               "is_deleted": {
                 "type": "boolean"
+              },
+              "comment": {
+                "type": "string"
+              }
+            }
+          },
+          "article": {
+            "required": [
+              "id",
+              "title",
+              "content",
+              "status",
+              "author_id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "meta": {
+                "type": "object"
+              },
+              "language": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "article_url_in_other_language": {
+                "type": "string"
+              },
+              "author_id": {
+                "type": "string"
+              },
+              "is_deleted": {
+                "type": "boolean"
+              },
+              "last_update": {
+                "type": "datetime"
+              },
+              "comment": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -601,6 +662,9 @@
             "type": "string"
           },
           "card": {
+            "type": "string"
+          },
+          "article": {
             "type": "string"
           }
         }

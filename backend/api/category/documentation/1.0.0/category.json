@@ -577,6 +577,15 @@
                 },
                 "last_update": {
                   "type": "datetime"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -657,11 +666,8 @@
               "questions": {
                 "type": "dynamiczone"
               },
-              "categories": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "category": {
+                "type": "string"
               },
               "meta": {
                 "type": "object"
@@ -680,6 +686,12 @@
               },
               "is_featured": {
                 "type": "boolean"
+              },
+              "status": {
+                "type": "string"
+              },
+              "comment": {
+                "type": "string"
               }
             }
           }

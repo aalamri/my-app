@@ -32,7 +32,7 @@
       "required": true
     },
     "test": {
-      "via": "categories",
+      "via": "category",
       "model": "tests"
     }
   }

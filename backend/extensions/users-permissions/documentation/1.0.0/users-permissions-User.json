@@ -1288,7 +1288,6 @@
                 "id",
                 "title",
                 "content",
-                "image",
                 "language",
                 "status",
                 "author_id"
@@ -1338,6 +1337,9 @@
                 },
                 "is_deleted": {
                   "type": "boolean"
+                },
+                "comment": {
+                  "type": "string"
                 }
               }
             }

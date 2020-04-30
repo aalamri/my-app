@@ -35,6 +35,7 @@ export const ARTICLE_QUERY = gql`
       }
       published_at
       meta
+      comment
     }
   }
 `;
@@ -55,6 +56,7 @@ export const GET_ARTICLE = gql`
       status
       meta
       is_deleted
+      comment
     }
   }
 `;
@@ -87,6 +89,7 @@ export const UPDATE_ARTICLE = gql`
         published_at
         status
         author_id
+        comment
       }
     }
   }

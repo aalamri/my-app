@@ -30,8 +30,8 @@
         "questions.question-single-answer"
       ]
     },
-    "categories": {
-      "collection": "category",
+    "category": {
+      "model": "category",
       "via": "test"
     },
     "meta": {
@@ -55,6 +55,18 @@
     },
     "is_featured": {
       "type": "boolean"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Rejected",
+        "Approved"
+      ],
+      "default": "Pending"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }

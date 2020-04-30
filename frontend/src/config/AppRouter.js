@@ -28,6 +28,8 @@ import CreateArticle from "../dashboard/components/Articles/CreateArticle";
 import CreateCard from "../dashboard/components/Cards/CreateCard";
 import CreateTest from "../dashboard/components/Tests/CreateTest";
 import ReviewCard from "../dashboard/components/Cards/ReviewCard";
+import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
+import ReviewTest from "../dashboard/components/Tests/ReviewTest";
 
 class AppRouter extends React.Component {
   state = {
@@ -75,6 +77,8 @@ class AppRouter extends React.Component {
 
           {/* Dashboaed routes: Reivewer */}
           <Route path="/dashboard/reviews" component={Reviewes} exact />
+          <Route path="/dashboard/reviews/articles/review/:id" component={ReviewArticle} exact />
+          <Route path="/dashboard/reviews/tests/review/:id" component={ReviewTest} exact />
           <Route path="/dashboard/reviews/cards/review/:id" component={ReviewCard}></Route>
           <Route
             path="/dashboard/review/article/:id"

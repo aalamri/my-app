@@ -47,6 +47,7 @@
     "status": {
       "type": "enumeration",
       "enum": [
+        "Draft",
         "Pending",
         "Rejected",
         "Approved"
@@ -67,6 +68,13 @@
     },
     "last_update": {
       "type": "datetime"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "article"
     }
   }
 }

@@ -22,7 +22,7 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
+      "required": false
     },
     "published_at": {
       "type": "date"
@@ -44,8 +44,8 @@
       "required": true
     },
     "tags": {
-      "via": "card",
-      "collection": "tag"
+      "collection": "tag",
+      "via": "card"
     },
     "user": {
       "columnName": "email",
@@ -73,6 +73,9 @@
     "is_deleted": {
       "type": "boolean",
       "default": false
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }
