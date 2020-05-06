@@ -4,10 +4,10 @@
     "default": {
       "connector": "mongoose",
       "settings": {
-        "uri": "mongodb+srv://dev-910ths:hGh6UQUEhLRklBkF@cluster0-z4usz.mongodb.net/test?retryWrites=true&w=majority"
+        "uri": "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false"
       },
       "options": {
-        "ssl": true
+        "ssl": false
       }
     }
   }

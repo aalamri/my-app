@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/29/2020 3:46:12 PM"
+    "x-generation-date": "05/04/2020 2:55:21 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4793,10 +4793,22 @@
               "name": {
                 "type": "string"
               },
-              "hash": {
+              "alternativeText": {
                 "type": "string"
               },
-              "sha256": {
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
                 "type": "string"
               },
               "ext": {
@@ -4809,6 +4821,9 @@
                 "type": "number"
               },
               "url": {
+                "type": "string"
+              },
+              "previewUrl": {
                 "type": "string"
               },
               "provider": {
@@ -5028,10 +5043,22 @@
               "name": {
                 "type": "string"
               },
-              "hash": {
+              "alternativeText": {
                 "type": "string"
               },
-              "sha256": {
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
                 "type": "string"
               },
               "ext": {
@@ -5044,6 +5071,9 @@
                 "type": "number"
               },
               "url": {
+                "type": "string"
+              },
+              "previewUrl": {
                 "type": "string"
               },
               "provider": {
@@ -5364,10 +5394,22 @@
                 "name": {
                   "type": "string"
                 },
-                "hash": {
+                "alternativeText": {
                   "type": "string"
                 },
-                "sha256": {
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
                   "type": "string"
                 },
                 "ext": {
@@ -5380,6 +5422,9 @@
                   "type": "number"
                 },
                 "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
                   "type": "string"
                 },
                 "provider": {
@@ -5659,10 +5704,22 @@
               "name": {
                 "type": "string"
               },
-              "hash": {
+              "alternativeText": {
                 "type": "string"
               },
-              "sha256": {
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
                 "type": "string"
               },
               "ext": {
@@ -5675,6 +5732,9 @@
                 "type": "number"
               },
               "url": {
+                "type": "string"
+              },
+              "previewUrl": {
                 "type": "string"
               },
               "provider": {
@@ -5766,10 +5826,22 @@
                         "name": {
                           "type": "string"
                         },
-                        "hash": {
+                        "alternativeText": {
                           "type": "string"
                         },
-                        "sha256": {
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
                           "type": "string"
                         },
                         "ext": {
@@ -5782,6 +5854,9 @@
                           "type": "number"
                         },
                         "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
                           "type": "string"
                         },
                         "provider": {
@@ -6015,10 +6090,22 @@
                         "name": {
                           "type": "string"
                         },
-                        "hash": {
+                        "alternativeText": {
                           "type": "string"
                         },
-                        "sha256": {
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
                           "type": "string"
                         },
                         "ext": {
@@ -6031,6 +6118,9 @@
                           "type": "number"
                         },
                         "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
                           "type": "string"
                         },
                         "provider": {

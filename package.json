@@ -25,14 +25,14 @@
   "devDependencies": {},
   "license": "MIT",
   "dependencies": {
-    "gestalt": "^1.44.0",
+    "gestalt": "^1.46.1",
     "global": "^4.4.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "ngrok": "^3.2.7",
     "npm-run-all": "^4.1.5",
     "react-quill": "^1.3.5",
-    "react-spinners": "^0.8.1",
+    "react-spinners": "^0.8.3",
     "strapi-sdk-javascript": "^0.3.3"
   }
 }
