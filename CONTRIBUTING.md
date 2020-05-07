@@ -2,7 +2,7 @@
 
 ### Getting Started
 
-** These instructions will help you build, release and run the application. **
+**These instructions will help you build, release and run the application.**
 
 ### Requirements
 ```bash
