@@ -35,4 +35,28 @@
   npm run setup:npm
 ```
 
+### Start the backend server
 
+```bash
+cd backend
+
+# Using yarn
+yarn build
+yarn start
+
+# Using npm
+npm run build
+npm run start
+```
+
+### Start the frontend server
+
+```bash
+cd frontend
+
+# Using yarn
+yarn start
+
+# Using npm
+npm run start
+```
