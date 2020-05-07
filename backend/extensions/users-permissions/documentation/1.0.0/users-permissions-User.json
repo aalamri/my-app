@@ -1281,16 +1281,14 @@
           "stats": {
             "type": "object"
           },
-          "cards": {
+          "articles": {
             "type": "array",
             "items": {
               "required": [
                 "id",
                 "title",
                 "content",
-                "language",
-                "status",
-                "author_id"
+                "status"
               ],
               "properties": {
                 "id": {
@@ -1308,7 +1306,69 @@
                 "published_at": {
                   "type": "string"
                 },
-                "is_featured": {
+                "category": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "article_url_in_other_language": {
+                  "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
+                },
+                "last_update": {
+                  "type": "datetime"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                },
+                "is_pinned": {
+                  "type": "boolean"
+                },
+                "tags": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "content",
+                "language",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "is_pinned": {
                   "type": "boolean"
                 },
                 "meta": {
@@ -1323,16 +1383,13 @@
                     "type": "string"
                   }
                 },
-                "user": {
+                "author": {
                   "type": "string"
                 },
                 "status": {
                   "type": "string"
                 },
                 "card_url_in_other_language": {
-                  "type": "string"
-                },
-                "author_id": {
                   "type": "string"
                 },
                 "is_deleted": {
@@ -1416,6 +1473,12 @@
           },
           "stats": {
             "type": "object"
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "cards": {
             "type": "array",

@@ -15,6 +15,7 @@ import Profile from "../public_site/components/Profile";
 import Signup from "../public_site/components/Signup";
 import Signin from "../public_site/components/Signin";
 import Search from "../public_site/components/Search";
+import Footer from "../public_site/components/Footer";
 // Dashboard
 import Dashboard from "../dashboard/components/MainDash";
 import Reviewes from "../dashboard/components/Reviews";
@@ -98,6 +99,7 @@ class AppRouter extends React.Component {
 
           {/* TODO: handle 404 */}
         </Switch>
+        <Footer />
       </div>
     );
   }

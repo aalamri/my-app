@@ -13,6 +13,10 @@ export const ARTICLE_QUERY = gql`
         id
         name
       }
+      image {
+        url
+      }
+      is_pinned
       published_at
       meta
       is_deleted

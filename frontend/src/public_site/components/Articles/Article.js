@@ -13,8 +13,15 @@ const Article = () => {
         if (article.is_deleted) {
           return <p>DELETED article</p>;
         }
+        const imageUrl =
+          process.env.NODE_ENV !== "development"
+            ? article.image.url
+            : process.env.REACT_APP_BACKEND_URL + article.image.url;
+        console.log("imageUrl", imageUrl);
+
         return (
           <div>
+            <img src={imageUrl} alt="" />
             <div
               id=""
               className=""

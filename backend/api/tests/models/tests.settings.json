@@ -53,8 +53,9 @@
     "test_url_in_other_language": {
       "type": "string"
     },
-    "is_featured": {
-      "type": "boolean"
+    "is_pinned": {
+      "type": "boolean",
+      "default": false
     },
     "status": {
       "type": "enumeration",

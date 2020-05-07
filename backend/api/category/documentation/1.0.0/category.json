@@ -535,8 +535,7 @@
                 "id",
                 "title",
                 "content",
-                "status",
-                "author_id"
+                "status"
               ],
               "properties": {
                 "id": {
@@ -569,9 +568,6 @@
                 "article_url_in_other_language": {
                   "type": "string"
                 },
-                "author_id": {
-                  "type": "string"
-                },
                 "is_deleted": {
                   "type": "boolean"
                 },
@@ -581,11 +577,14 @@
                 "comment": {
                   "type": "string"
                 },
+                "author": {
+                  "type": "string"
+                },
+                "is_pinned": {
+                  "type": "boolean"
+                },
                 "tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "type": "string"
                 }
               }
             }
@@ -684,7 +683,7 @@
               "test_url_in_other_language": {
                 "type": "string"
               },
-              "is_featured": {
+              "is_pinned": {
                 "type": "boolean"
               },
               "status": {

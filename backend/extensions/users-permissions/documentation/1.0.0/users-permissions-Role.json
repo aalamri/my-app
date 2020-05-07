@@ -639,6 +639,12 @@
                 "stats": {
                   "type": "object"
                 },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "cards": {
                   "type": "array",
                   "items": {

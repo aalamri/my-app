@@ -58,10 +58,6 @@
     "article_url_in_other_language": {
       "type": "string"
     },
-    "author_id": {
-      "type": "string",
-      "required": true
-    },
     "is_deleted": {
       "type": "boolean",
       "default": false
@@ -72,9 +68,17 @@
     "comment": {
       "type": "text"
     },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "articles"
+    },
+    "is_pinned": {
+      "type": "boolean",
+      "default": false
+    },
     "tags": {
-      "collection": "tag",
-      "via": "article"
+      "type": "string"
     }
   }
 }

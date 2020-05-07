@@ -4,10 +4,17 @@
     "default": {
       "connector": "mongoose",
       "settings": {
-        "uri": "mongodb+srv://dev-910ths:hGh6UQUEhLRklBkF@cluster0-z4usz.mongodb.net/test?retryWrites=true&w=majority"
+        "uri": "mongodb://localhost:27017",
+        "database": "Modrek",
+        "host": "127.0.0.1",
+        "srv": false,
+        "port": 27017,
+        "username": "",
+        "password": ""
       },
       "options": {
-        "ssl": true
+        "authenticationDatabase": "",
+        "ssl": false
       }
     }
   }

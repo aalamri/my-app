@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+
 import { CATEGORIES_QUERY } from "../Category/queries";
 import "react-quill/dist/quill.snow.css";
 
+import { getToken } from "../../../utils/index";
 import { CREATE_ARTICLE, ARTICLES_QUERY } from "./queries";
+// import { GET_USER_ID } from "../../../utils/queries";
 import Editor from "../Editor";
+
+// const token = getToken();
 
 const CreateArticle = () => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
@@ -61,7 +66,8 @@ const CreateArticle = () => {
         category: getCatID(intialCategories, formData.get("category")),
         published_at: getDate(new Date()),
         status: "Pending",
-        author_id: "123",
+        // author: "5e93e0d2c266b30fa0d7fad9", // sultan
+        author: "5eb1f731147f722414b44c30", // sarah
         meta: {
           visits: 0,
           likes: 0,

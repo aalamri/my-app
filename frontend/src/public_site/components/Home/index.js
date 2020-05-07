@@ -1,11 +1,14 @@
 import React from "react";
+import CardsSlider from "./CardsSlider";
+import FeaturedTests from "./FeaturedTests";
+import FeaturedArticles from "./FeaturedArticles";
 
 const Home = () => {
   return (
     <div>
-      <div className="uk-child-width-1-2" data-uk-grid dir="auto">
-        <div>Home page</div>
-      </div>
+      <CardsSlider />
+      <FeaturedTests />
+      <FeaturedArticles />
     </div>
   );
 };

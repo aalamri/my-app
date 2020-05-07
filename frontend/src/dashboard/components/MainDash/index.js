@@ -10,7 +10,7 @@ const Dashboard = () => {
         <ul className="uk-nav uk-nav-default">
           <li className="uk-nav-header">Menu</li>
           <li>
-            <a href="/articles">
+            <a href="/dashboard/articles">
               <span
                 className="uk-margin-small-right"
                 uk-icon="icon: file-text"
@@ -19,7 +19,7 @@ const Dashboard = () => {
             </a>
           </li>
           <li>
-            <a href="/cards">
+            <a href="/dashboard/cards">
               <span
                 className="uk-margin-small-right"
                 uk-icon="icon: album"
@@ -28,7 +28,7 @@ const Dashboard = () => {
             </a>
           </li>
           <li>
-            <a href="/tests">
+            <a href="/dashboard/tests">
               <span
                 className="uk-margin-small-right"
                 uk-icon="icon: file-edit"

@@ -14,6 +14,11 @@ export const ARTICLES_QUERY = gql`
       content
       status
       is_deleted
+      author {
+          id
+          first_name
+          last_name
+        }
     }
   }
 `;
@@ -88,7 +93,9 @@ export const UPDATE_ARTICLE = gql`
         }
         published_at
         status
-        author_id
+        author {
+          id
+        }
         comment
       }
     }

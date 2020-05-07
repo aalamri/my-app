@@ -520,8 +520,7 @@
           "title",
           "content",
           "language",
-          "status",
-          "author_id"
+          "status"
         ],
         "properties": {
           "id": {
@@ -582,7 +581,7 @@
           "published_at": {
             "type": "string"
           },
-          "is_featured": {
+          "is_pinned": {
             "type": "boolean",
             "default": false
           },
@@ -616,14 +615,11 @@
                 },
                 "card": {
                   "type": "string"
-                },
-                "article": {
-                  "type": "string"
                 }
               }
             }
           },
-          "user": {
+          "author": {
             "required": [
               "id",
               "username",
@@ -687,6 +683,12 @@
               "stats": {
                 "type": "object"
               },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "cards": {
                 "type": "array",
                 "items": {
@@ -707,9 +709,6 @@
           "card_url_in_other_language": {
             "type": "string"
           },
-          "author_id": {
-            "type": "string"
-          },
           "is_deleted": {
             "type": "boolean",
             "default": false
@@ -724,8 +723,7 @@
           "title",
           "content",
           "language",
-          "status",
-          "author_id"
+          "status"
         ],
         "properties": {
           "title": {
@@ -737,7 +735,7 @@
           "published_at": {
             "type": "string"
           },
-          "is_featured": {
+          "is_pinned": {
             "type": "boolean",
             "default": false
           },
@@ -758,7 +756,7 @@
               "type": "string"
             }
           },
-          "user": {
+          "author": {
             "type": "string"
           },
           "status": {
@@ -771,9 +769,6 @@
             ]
           },
           "card_url_in_other_language": {
-            "type": "string"
-          },
-          "author_id": {
             "type": "string"
           },
           "is_deleted": {
