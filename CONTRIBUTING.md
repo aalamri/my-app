@@ -7,12 +7,17 @@
 ### Requirements
 ```bash
   node -v
-  ## You should see "v10.x.x"
+  ## You should see "v12.x.x"
 ```
 
 ```bash
   yarn -v
-  ## You should see "v10.x.x"
+  ## You should see "v1.x.x"
+```
+
+```bash
+  npm -v
+  ## You should see "v6.x.x"
 ```
 
 ### How to install
