@@ -1,8 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { setToken } from "../../../utils/index";
+import Strapi from "strapi-sdk-javascript/build/main";
 
+const emailUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:1337";
 const url = process.env.REACT_APP_BACKEND_URL + "/auth/local/register";
+const strapi = new Strapi(emailUrl);
 
 class Signup extends React.Component {
   state = {
@@ -37,6 +40,14 @@ class Signup extends React.Component {
         method: "POST",
         url,
         data,
+      });
+      await strapi.request('POST', '/email', {
+        data: {
+          to: email,
+          subject: `Request New User - Modrek ${new Date(Date.now())}`,
+          text: "Your reuqest has been processed",
+          html: "<bold>Expect your request to approve 1-2 days</bold>"
+        }
       });
       this.setState({ loading: false });
       setToken(response.data.jwt);
