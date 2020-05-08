@@ -90,8 +90,12 @@
     "stats": {
       "type": "json"
     },
+    "articles": {
+      "via": "author",
+      "collection": "article"
+    },
     "cards": {
-      "via": "user",
+      "via": "author",
       "collection": "cards"
     }
   }

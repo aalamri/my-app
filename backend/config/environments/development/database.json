@@ -4,9 +4,16 @@
     "default": {
       "connector": "mongoose",
       "settings": {
-        "uri": "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false"
+        "uri": "mongodb://localhost:27017",
+        "database": "Modrek",
+        "host": "127.0.0.1",
+        "srv": false,
+        "port": 27017,
+        "username": "",
+        "password": ""
       },
       "options": {
+        "authenticationDatabase": "",
         "ssl": false
       }
     }

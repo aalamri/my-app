@@ -65,6 +65,8 @@ class Signin extends React.Component {
       });
       this.setState({ loading: false });
       setToken(response.data.jwt);
+      console.log("response.data.jwt", response.data.jwt);
+
       setUser(response.data.user);
       this.redirectUser("/dashboard");
     } catch (err) {

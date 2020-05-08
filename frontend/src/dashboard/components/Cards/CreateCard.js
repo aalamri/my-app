@@ -34,7 +34,7 @@ const CreateCard = () => {
   const [editorValue, setEditorValue] = useState("");
   const [language, setLanguage] = useState("Arabic");
 
-  const intialTags= data ? data.tags : [];
+  const intialTags = data ? data.tags : [];
 
   if (loading) {
     return <span>loading</span>;
@@ -58,7 +58,7 @@ const CreateCard = () => {
         card_url_in_other_language,
         title,
         content,
-        tags: getCatID(intialTags, formData.get("tag")),
+        // tags: getCatID(intialTags, formData.get("tag")),
         published_at: getDate(new Date()),
         status: "Pending",
         author_id: "123",
@@ -89,64 +89,64 @@ const CreateCard = () => {
 
   return (
     <form onSubmit={handleCreateCard}>
-    <label htmlFor="language">Language</label>
-    <input
-      type="radio"
-      name="language"
-      onClick={() => setLanguage("Arabic")}
-      defaultChecked={language === "Arabic"}
-    />
+      <label htmlFor="language">Language</label>
+      <input
+        type="radio"
+        name="language"
+        onClick={() => setLanguage("Arabic")}
+        defaultChecked={language === "Arabic"}
+      />
     Arabic
-    <input
-      type="radio"
-      name="language"
-      onClick={() => setLanguage("English")}
-      defaultChecked={language === "English"}
-    />
+      <input
+        type="radio"
+        name="language"
+        onClick={() => setLanguage("English")}
+        defaultChecked={language === "English"}
+      />
     English
-    <br />
-    <label>
-      Article URL in {language === "Arabic" ? "English" : "Arabic"} language
+      <br />
+      <label>
+        Article URL in {language === "Arabic" ? "English" : "Arabic"} language
     </label>
-    <input
-      name="card_url_in_other_language"
-      type="text"
-      placeholder="URL"
-    />
-    <br />
-    <label htmlFor="img">Cover image:</label>
-    <input type="file" id="img" name="img" accept="image/*" />
-    <br />
-    <label>Card title</label>
-    <input name="title" type="text" placeholder="Article title" />
-    <br />
-    <label>Card content</label>
-    <Editor
-      handleChangeEditorValue={handleChangeEditorValue}
-      value={editorValue}
-    />
-    <br />
-    <label>Select Tag:</label>
-    <select name="tag" id="cars">
-      {intialTags.length > 0 &&
-        intialTags.map((cat) => {
-          return (
-            <option name="option" key={cat.id} value={cat.name}>
-              {cat.name}
-            </option>
-          );
-        })}
-    </select>
-    <br />
-    <button type="submit">Create</button>
-  </form>
-);
+      <input
+        name="card_url_in_other_language"
+        type="text"
+        placeholder="URL"
+      />
+      <br />
+      <label htmlFor="img">Cover image:</label>
+      <input type="file" id="img" name="img" accept="image/*" />
+      <br />
+      <label>Card title</label>
+      <input name="title" type="text" placeholder="Article title" />
+      <br />
+      <label>Card content</label>
+      <Editor
+        handleChangeEditorValue={handleChangeEditorValue}
+        value={editorValue}
+      />
+      <br />
+      <label>Select Tag:</label>
+      <select name="tag" id="cars">
+        {intialTags.length > 0 &&
+          intialTags.map((cat) => {
+            return (
+              <option name="option" key={cat.id} value={cat.name}>
+                {cat.name}
+              </option>
+            );
+          })}
+      </select>
+      <br />
+      <button type="submit">Create</button>
+    </form>
+  );
 };
 
 const getDate = (date) =>
-`${date.getUTCFullYear()}-${(date.getMonth() + 1)
-  .toString()
-  .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`; // the desired format by Strapi
+  `${date.getUTCFullYear()}-${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`; // the desired format by Strapi
 
 const getCatID = (cats, cat) => cats?.find(({ name }) => name === cat).id;
 

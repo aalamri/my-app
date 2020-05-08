@@ -519,8 +519,7 @@
           "id",
           "title",
           "content",
-          "status",
-          "author_id"
+          "status"
         ],
         "properties": {
           "id": {
@@ -657,9 +656,6 @@
           "article_url_in_other_language": {
             "type": "string"
           },
-          "author_id": {
-            "type": "string"
-          },
           "is_deleted": {
             "type": "boolean",
             "default": false
@@ -670,31 +666,90 @@
           "comment": {
             "type": "string"
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name"
-              ],
-              "properties": {
-                "id": {
+          "author": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "can_create_articles": {
+                "type": "boolean"
+              },
+              "can_create_cards": {
+                "type": "boolean"
+              },
+              "can_create_tests": {
+                "type": "boolean"
+              },
+              "can_review_articles": {
+                "type": "boolean"
+              },
+              "can_review_cards": {
+                "type": "boolean"
+              },
+              "can_review_tests": {
+                "type": "boolean"
+              },
+              "applying_about_me": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "stats": {
+                "type": "object"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
                   "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "card": {
-                  "type": "string"
-                },
-                "article": {
+                }
+              },
+              "cards": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
               }
             }
+          },
+          "is_pinned": {
+            "type": "boolean",
+            "default": false
+          },
+          "tags": {
+            "type": "string"
           }
         }
       },
@@ -702,8 +757,7 @@
         "required": [
           "title",
           "content",
-          "status",
-          "author_id"
+          "status"
         ],
         "properties": {
           "title": {
@@ -742,9 +796,6 @@
           "article_url_in_other_language": {
             "type": "string"
           },
-          "author_id": {
-            "type": "string"
-          },
           "is_deleted": {
             "type": "boolean",
             "default": false
@@ -755,11 +806,15 @@
           "comment": {
             "type": "string"
           },
+          "author": {
+            "type": "string"
+          },
+          "is_pinned": {
+            "type": "boolean",
+            "default": false
+          },
           "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "type": "string"
           }
         }
       }
