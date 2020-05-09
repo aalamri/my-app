@@ -24,6 +24,7 @@ export const CARDS_QUERY = gql`
     cards {
       id
       title
+      content
       tags {
         id
         name
@@ -31,6 +32,7 @@ export const CARDS_QUERY = gql`
       image {
         url
       }
+      published_at
       meta
     }
   }
