@@ -13,6 +13,7 @@ const Editor = (props) => {
         { list: "bullet" },
         { list: "ordered" },
       ],
+      [{ 'direction': 'rtl' }],
       ["link", "blockquote"],
     ],
   };

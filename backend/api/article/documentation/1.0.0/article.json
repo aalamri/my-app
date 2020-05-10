@@ -750,6 +750,10 @@
           },
           "tags": {
             "type": "string"
+          },
+          "multi_lang_id": {
+            "type": "string",
+            "default": "null"
           }
         }
       },
@@ -815,6 +819,10 @@
           },
           "tags": {
             "type": "string"
+          },
+          "multi_lang_id": {
+            "type": "string",
+            "default": "null"
           }
         }
       }

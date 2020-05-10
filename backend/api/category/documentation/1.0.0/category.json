@@ -585,6 +585,9 @@
                 },
                 "tags": {
                   "type": "string"
+                },
+                "multi_lang_id": {
+                  "type": "string"
                 }
               }
             }
