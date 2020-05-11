@@ -52,7 +52,7 @@ const Navbar = () => {
                     </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link page-scroll" href="/knowledge">
+                <a className="nav-link page-scroll" href="/cards">
                   Knowledge
                     </a>
               </li>
@@ -68,7 +68,7 @@ const Navbar = () => {
               </li>
 
               <li className="nav-item ml-5">
-                <a href="#contact" class="join-us-btn p-1 pl-3 pr-3 rounded-pill text-center">Join us as a content creator</a>
+                <a href="/signup" class="join-us-btn p-1 pl-3 pr-3 rounded-pill text-center">Join us as a content creator</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#contact">العربية</a>

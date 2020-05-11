@@ -46,7 +46,7 @@ class AppRouter extends React.Component {
           <Route path="/" component={Home} exact />
           <Route path="/articles" component={Articles} exact />
           <Route path="/article/:id" component={Article} exact />
-          <Route path="/knowledge" component={Cards} exact />
+          <Route path="/cards" component={Cards} exact />
           <Route path="/card/:id" component={Card} exact />
           <Route path="/category/:id" component={Category} exact />
           <Route path="/dashboard" component={Dashboard} exact />

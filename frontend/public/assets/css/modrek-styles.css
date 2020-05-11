@@ -55,6 +55,13 @@ body {
   color: white;
 }
 
+.signup {
+  margin-right: -80px;
+}
+
+.signupBtn {
+  background-image: linear-gradient(to right, #713e6d, #593a6c);
+}
 .card.test-card:hover h5 {
   color: #71b5ac;
 }
