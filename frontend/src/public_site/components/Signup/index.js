@@ -14,6 +14,7 @@ class Signup extends React.Component {
     password: "",
     loading: false,
   };
+  
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -66,50 +67,103 @@ class Signup extends React.Component {
   render() {
     const { loading } = this.state;
     return (
-      <div className="uk-child-width-expand@s uk-text-center">
-        <legend className="uk-legend">Join us Content</legend>
-        <br></br>
-        <form className="uk-grid-small" onSubmit={this.handleSubmit}>
-          <fieldset className="uk-fieldset">
-            <div className="uk-margin">
-              <input
-                className="uk-input uk-form-width-medium"
-                id="username"
-                name="username"
-                placeholder="Name"
-                onChange={this.handleChange}
-              />
+      <section className="contact-us-section ptb-100">
+        <div className="container signup">
+          <div className="row">
+            <div className="col-md-9 col-lg-9">
+              <div className="section-heading mb-4">
+                <h2>Join us a Content Creator</h2>
+              </div>
             </div>
-            <div className="uk-margin">
-              <input
-                className="uk-input uk-form-width-medium"
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Email"
-                onChange={this.handleChange}
-              />
+          </div>
+          <div className="row justify-content-between align-items-center">
+            <div className="col-md-6">
+              <form className="contact-us-form" onSubmit={this.handleSubmit}>
+                <div className="row">
+                  <div className="col-sm-6 col-12">
+                    <div className="form-group">
+                      <input
+                        id="username"
+                        name="username"
+                        placeholder="First Name"
+                        onChange={this.handleChange}
+                        type="text"
+                        className="form-control"
+                        required="required"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-12">
+                    <div className="form-group">
+                      <input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        placeholder="Last Name"
+                        onChange={this.handleChange}
+                        size="40"
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                    <div className="form-group">
+                      <input
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        onChange={this.handleChange}
+                        type="email"
+                        cols="25"
+                        className="form-control"
+                        required="required"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                    <div className="form-group">
+                      <textarea
+                        onChange={this.handleChange}
+                        name="message"
+                        id="message"
+                        className="form-control"
+                        rows="7"
+                        cols="25"
+                        placeholder="Message"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="uk-margin">
+                  <input
+                    className="uk-input uk-form-width-medium"
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    onChange={this.handleChange}
+                  />
+                </div> */}
+                <div className="row">
+                    <div className="col-sm-12 mt-3">
+                      <button
+                        type="submit"
+                        className="btn solid-btn signupBtn"
+                        disabled={loading}
+                      >
+                       Apply
+                      </button>
+                    </div>
+                  </div>
+              </form>
             </div>
-            <div className="uk-margin">
-              <input
-                className="uk-input uk-form-width-medium"
-                id="password"
-                type="password"
-                name="password"
-                placeholder="password"
-                onChange={this.handleChange}
-              />
-            </div>
-          </fieldset>
-          <button
-            className="uk-button uk-button-primary"
-            disabled={loading}
-            type="submit"
-          >
-            Apply
-          </button>
-        </form>
-      </div>
+          </div>
+        </div>
+      </section>
     );
   }
 }
