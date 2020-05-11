@@ -4,6 +4,7 @@
 
 **These instructions will help you build, release and run the application.**
 
+
 ### Requirements
 ```bash
   node -v
@@ -19,6 +20,9 @@
   npm -v
   ## You should see "v6.x.x"
 ```
+
+**Modrek Backend App require a connection to MongoDB database, currently we use  MongoDB version: `3.6.12`**
+
 
 ### How to install
 
@@ -59,4 +63,17 @@ yarn start
 
 # Using npm
 npm run start
+```
+
+### Backend app Env Variables
+
+```
+DATABASE_URI=mongodb://<dbuser>:<dbpassword>@<dbhost>/<dbname>
+NODE_ENV=production|development
+```
+
+### FrontEnd app Env Variables
+
+```
+REACT_APP_BACKEND_URL= <backend_url> 
 ```
