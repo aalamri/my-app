@@ -24,10 +24,6 @@
       "plugin": "upload",
       "required": false
     },
-    "published_at": {
-      "type": "date",
-      "required": false
-    },
     "category": {
       "model": "category",
       "via": "articles"
@@ -55,15 +51,12 @@
       "default": "Pending",
       "required": true
     },
-    "article_url_in_other_language": {
+    "article_id_of_other_language": {
       "type": "string"
     },
     "is_deleted": {
       "type": "boolean",
       "default": false
-    },
-    "last_update": {
-      "type": "datetime"
     },
     "comment": {
       "type": "text"
@@ -81,8 +74,8 @@
       "type": "string"
     },
     "multi_lang_id": {
-      "type": "string",
-      "default": "null"
+      "type": "string"
+
     }
   }
 }

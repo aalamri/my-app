@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import "react-quill/dist/quill.snow.css";
 import Editor from "../Editor";
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { CREATE_ARTICLE } from "./queries";
+import { CREATE_ARTICLE, UPDATE_ARTICLE } from "./queries";
 import { getToken } from "../../../utils/index";
 // import { GET_USER_ID } from "../../../utils/queries";
 
@@ -28,6 +28,7 @@ const CreateArticle = () => {
   const [validation, setValidation] = useState(initValidation);
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
   const [createArticle] = useMutation(CREATE_ARTICLE);
+  const [updateArticle] = useMutation(UPDATE_ARTICLE);
 
   const intialCategories = data ? data.categories : [];
 
@@ -56,58 +57,71 @@ const CreateArticle = () => {
     }
   }
 
-  function handleCreateArticle(e) {
+  async function handleCreateArticle(e) {
     e.preventDefault();
-    const currentArticle = language === AR ? contentAR : contentEN
-    const otherArticle = language === EN ? contentAR : contentEN
+    const currentArticle = language === AR ? contentAR : contentEN;
+    const otherArticle = language === EN ? contentAR : contentEN;
 
-    // validate erq fields in current lang
-    const errors = validate(currentArticle, language)
+    // validate required fields in current lang
+    const errors = validate(currentArticle, language);
     if (errors.length > 0) {
-      setValidation({ hasError: true, errors })
+      setValidation({ hasError: true, errors });
       return;
     }
 
-    // check if content in other lang is not empty to bind both articles with uuid
-    const isOtherLangEmpty = isEmpty(otherArticle)
-
-    const formData = new FormData(e.target);
-    // payload of current article
-    const payload1 = {
-      language,
-      title: currentArticle.title,
-      content: currentArticle.content,
-      category: getCatID(intialCategories, formData.get("category")),
-      published_at: getDate(new Date()),
-      status: "Pending",
-      multi_lang_id: isOtherLangEmpty ? undefined : uuid(),
-      // author: "5e93e0d2c266b30fa0d7fad9", // sultan
-      author: "5eb1f731147f722414b44c30", // sarah
-      meta: {
-        visits: 0,
-        likes: 0,
-      },
-    };
-
-    createArticle({
-      variables: { data: payload1 } /*TODO add headers token here*/,
-    });
-
-    // create another article if other article is not empty
-    if (isOtherLangEmpty === false) {
-      const payload2 = {
-        ...payload1,
-        language: language === AR ? EN : EN,
-        title: otherArticle.title || "null",
-        content: otherArticle.content || "null",
+    // try to create article(s)
+    try {
+      // check if content in other lang is not empty to bind both articles if so
+      const formData = new FormData(e.target);
+      // payload of current article
+      const payload1 = {
+        language,
+        title: currentArticle.title,
+        content: currentArticle.content,
+        category: getCatID(intialCategories, formData.get("category")),
+        published_at: getDate(new Date()),
+        status: "Pending",
+        // author: "5e93e0d2c266b30fa0d7fad9", // sultan
+        author: "5eb1f731147f722414b44c30", // sarah
+        meta: {
+          visits: 0,
+          likes: 0,
+        },
       };
-
-      if (payload2.multi_lang_id == null) {
-        throw Error("multi_lang_id is undefined for mulitple language article!")
-      }
-      createArticle({
-        variables: { data: payload2 } /*TODO add headers token here*/,
+      const article1 = await createArticle({
+        variables: { data: payload1 } /*TODO add headers token here*/,
       });
+      const currentArticleID = article1.data.createArticle.article.id;
+
+      // create another article if other article is not empty
+      const isOtherLangEmpty = isEmpty(otherArticle);
+      if (isOtherLangEmpty === false) {
+        const payload2 = {
+          ...payload1,
+          language: language === AR ? EN : EN,
+          title: otherArticle.title || "null",
+          content: otherArticle.content || "null",
+          article_id_of_other_language: currentArticleID
+        };
+        const article2 = await createArticle({
+          variables: { data: payload2 } /*TODO add headers token here*/,
+        });
+        const otherArticleID = article2.data.createArticle.article.id
+
+        // update article1 with article2's id
+        await updateArticle({
+          variables: {
+            id: currentArticleID,
+            data: {
+              article_id_of_other_language: otherArticleID
+            }
+          }
+        });
+      }
+
+    } catch (error) {
+      console.log("Error handleCreateArticle:", error);
+
     }
   }
 
@@ -190,7 +204,8 @@ const ARArticle = ({ handleChangeEditor, handleChangeTitle, content, title }) =>
       land={AR}
     />
   </>
-)
+);
+
 
 const ENArticle = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
   <>
@@ -205,29 +220,30 @@ const ENArticle = ({ handleChangeEditor, handleChangeTitle, content, title }) =>
       land={EN}
     />
   </>
-)
+);
 
 function validate(article, lang) {
   const { title, content } = article;
-  const errors = []
+  const errors = [];
   if (title.trim() == "") {
-    errors.push(lang === EN ? "Title must not be empty" : "عنوان الموضوع فارغ")
+    errors.push(lang === EN ? "Title must not be empty" : "عنوان الموضوع فارغ");
   }
   if (title.trim() !== "" && title.length < 4) {
-    errors.push(lang === EN ? "Title is too short" : "عنوان الموضوع قصير جداً")
+    errors.push(lang === EN ? "Title is too short" : "عنوان الموضوع قصير جداً");
   }
   if (StrippedString(content).trim() == "") {
-    errors.push(lang === EN ? "Content must not be empty" : "محتوى الموضوع فارغ")
+    errors.push(lang === EN ? "Content must not be empty" : "محتوى الموضوع فارغ");
   }
-  return errors
+  return errors;
+
 }
 
 function isEmpty(article) {
   const { title, content } = article;
   if (title.trim() == "" && StrippedString(content).trim() == "") {
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 
 const getDate = (date) =>

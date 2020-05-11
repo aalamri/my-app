@@ -1303,9 +1303,6 @@
                 "image": {
                   "type": "string"
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "category": {
                   "type": "string"
                 },
@@ -1318,14 +1315,11 @@
                 "status": {
                   "type": "string"
                 },
-                "article_url_in_other_language": {
+                "article_id_of_other_language": {
                   "type": "string"
                 },
                 "is_deleted": {
                   "type": "boolean"
-                },
-                "last_update": {
-                  "type": "datetime"
                 },
                 "comment": {
                   "type": "string"

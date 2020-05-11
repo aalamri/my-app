@@ -5,7 +5,7 @@ import { ARTICLES_QUERY } from "./queries";
 
 const Articles = () => {
   return (
-    <div>
+    <div className="container">
       <div className="uk-section">
         <div className="uk-container uk-container-large">
           <h1>Articles</h1>

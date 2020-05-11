@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/10/2020 5:52:26 AM"
+    "x-generation-date": "05/11/2020 8:42:36 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4836,9 +4836,6 @@
               }
             }
           },
-          "published_at": {
-            "type": "string"
-          },
           "category": {
             "required": [
               "id",
@@ -4897,15 +4894,12 @@
               "Approved"
             ]
           },
-          "article_url_in_other_language": {
+          "article_id_of_other_language": {
             "type": "string"
           },
           "is_deleted": {
             "type": "boolean",
             "default": false
-          },
-          "last_update": {
-            "type": "datetime"
           },
           "comment": {
             "type": "string"
@@ -4996,8 +4990,7 @@
             "type": "string"
           },
           "multi_lang_id": {
-            "type": "string",
-            "default": "null"
+            "type": "string"
           }
         }
       },
@@ -5012,9 +5005,6 @@
             "type": "string"
           },
           "content": {
-            "type": "string"
-          },
-          "published_at": {
             "type": "string"
           },
           "category": {
@@ -5041,15 +5031,12 @@
               "Approved"
             ]
           },
-          "article_url_in_other_language": {
+          "article_id_of_other_language": {
             "type": "string"
           },
           "is_deleted": {
             "type": "boolean",
             "default": false
-          },
-          "last_update": {
-            "type": "datetime"
           },
           "comment": {
             "type": "string"
@@ -5065,8 +5052,7 @@
             "type": "string"
           },
           "multi_lang_id": {
-            "type": "string",
-            "default": "null"
+            "type": "string"
           }
         }
       },
@@ -5387,9 +5373,6 @@
                 "image": {
                   "type": "string"
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "category": {
                   "type": "string"
                 },
@@ -5402,14 +5385,11 @@
                 "status": {
                   "type": "string"
                 },
-                "article_url_in_other_language": {
+                "article_id_of_other_language": {
                   "type": "string"
                 },
                 "is_deleted": {
                   "type": "boolean"
-                },
-                "last_update": {
-                  "type": "datetime"
                 },
                 "comment": {
                   "type": "string"
@@ -6512,9 +6492,6 @@
                 "image": {
                   "type": "string"
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "category": {
                   "type": "string"
                 },
@@ -6527,14 +6504,11 @@
                 "status": {
                   "type": "string"
                 },
-                "article_url_in_other_language": {
+                "article_id_of_other_language": {
                   "type": "string"
                 },
                 "is_deleted": {
                   "type": "boolean"
-                },
-                "last_update": {
-                  "type": "datetime"
                 },
                 "comment": {
                   "type": "string"

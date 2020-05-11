@@ -592,9 +592,6 @@
               }
             }
           },
-          "published_at": {
-            "type": "string"
-          },
           "category": {
             "required": [
               "id",
@@ -653,15 +650,12 @@
               "Approved"
             ]
           },
-          "article_url_in_other_language": {
+          "article_id_of_other_language": {
             "type": "string"
           },
           "is_deleted": {
             "type": "boolean",
             "default": false
-          },
-          "last_update": {
-            "type": "datetime"
           },
           "comment": {
             "type": "string"
@@ -752,8 +746,7 @@
             "type": "string"
           },
           "multi_lang_id": {
-            "type": "string",
-            "default": "null"
+            "type": "string"
           }
         }
       },
@@ -768,9 +761,6 @@
             "type": "string"
           },
           "content": {
-            "type": "string"
-          },
-          "published_at": {
             "type": "string"
           },
           "category": {
@@ -797,15 +787,12 @@
               "Approved"
             ]
           },
-          "article_url_in_other_language": {
+          "article_id_of_other_language": {
             "type": "string"
           },
           "is_deleted": {
             "type": "boolean",
             "default": false
-          },
-          "last_update": {
-            "type": "datetime"
           },
           "comment": {
             "type": "string"
@@ -821,8 +808,7 @@
             "type": "string"
           },
           "multi_lang_id": {
-            "type": "string",
-            "default": "null"
+            "type": "string"
           }
         }
       }

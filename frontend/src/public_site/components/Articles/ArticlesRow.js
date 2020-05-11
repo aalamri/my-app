@@ -7,8 +7,11 @@ const ArticlesRow = ({ articles }) => {
       {articles.map((article) => {
         return (
           <Link
+            to={{
+              pathname: `/article/${article.id}`,
+              state: { article }
+            }}
             key={`article__${article.id}`}
-            to={`/article/${article.id}`}
             className="uk-link-reset"
           >
             <div className="row">

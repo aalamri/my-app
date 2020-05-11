@@ -38,7 +38,7 @@ export const ARTICLE_QUERY = gql`
         id
         name
       }
-      published_at
+      createdAt
       meta
       comment
     }
@@ -50,14 +50,14 @@ export const GET_ARTICLE = gql`
     article(id: $id) {
       id
       language
-      article_url_in_other_language
+      article_id_of_other_language
       title
       content
       category {
         id
         name
       }
-      published_at
+      createdAt
       status
       meta
       is_deleted
@@ -83,20 +83,20 @@ export const UPDATE_ARTICLE = gql`
     updateArticle(input: { where: { id: $id }, data: $data }) {
       article {
         id
-        language
-        article_url_in_other_language
-        title
-        content
-        category {
-          id
-          name
-        }
-        published_at
-        status
-        author {
-          id
-        }
-        comment
+        # language
+        # article_id_of_other_language
+        # title
+        # content
+        # category {
+        #   id
+        #   name
+        # }
+        # published_at
+        # status
+        # author {
+        #   id
+        # }
+        # comment
       }
     }
   }
@@ -107,8 +107,6 @@ export const CREATE_ARTICLE = gql`
     createArticle(input: { data: $data }) {
       article {
         id
-        title
-        published_at
       }
     }
   }

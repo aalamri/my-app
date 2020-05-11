@@ -6,6 +6,7 @@ export const ARTICLE_QUERY = gql`
       id
       title
       content
+      language
       image {
         url
       }
@@ -16,10 +17,17 @@ export const ARTICLE_QUERY = gql`
       image {
         url
       }
+      author {
+        id
+        first_name
+        last_name
+      }
       is_pinned
-      published_at
+      createdAt
+      updatedAt
       meta
       is_deleted
+      article_id_of_other_language
     }
   }
 `;
@@ -38,6 +46,23 @@ export const ARTICLES_QUERY = gql`
       }
       meta
       is_deleted
+      article_id_of_other_language
+      createdAt
+      updatedAt
+
+    }
+  }
+`;
+
+export const GET_OTHER_LANG_URL = gql`
+  query GetOtherLangURL($id: String!) {
+    articlesConnection(where: {
+      multi_lang_id: $id
+    }) {
+      values {
+        id
+        title
+      }
     }
   }
 `;
@@ -47,8 +72,6 @@ export const CREATE_ARTICLE = gql`
     createArticle(input: { data: $data }) {
       article {
         id
-        title
-        published_at
       }
     }
   }
