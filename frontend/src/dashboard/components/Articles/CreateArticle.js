@@ -121,7 +121,6 @@ const CreateArticle = () => {
 
     } catch (error) {
       console.log("Error handleCreateArticle:", error);
-
     }
   }
 
@@ -206,7 +205,6 @@ const ARArticle = ({ handleChangeEditor, handleChangeTitle, content, title }) =>
   </>
 );
 
-
 const ENArticle = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
   <>
     <label htmlFor="img">Cover image:</label>
@@ -235,7 +233,6 @@ function validate(article, lang) {
     errors.push(lang === EN ? "Content must not be empty" : "محتوى الموضوع فارغ");
   }
   return errors;
-
 }
 
 function isEmpty(article) {

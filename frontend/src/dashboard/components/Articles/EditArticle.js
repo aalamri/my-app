@@ -57,7 +57,7 @@ const EditArticle = () => {
     if (data) {
       console.log("useEffect", data.article.language);
       setLanguage(data.article.language);
-      setUrlOtherLanguage(data.article.article_url_in_other_language);
+      setUrlOtherLanguage(data.article.article_id_of_other_language);
       setTitle(data.article.title);
       setContent(data.article.content);
       setComment(data.article.comment);
@@ -97,14 +97,14 @@ const EditArticle = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const title = formData.get("title");
-    const article_url_in_other_language = formData.get(
-      "article_url_in_other_language"
+    const article_id_of_other_language = formData.get(
+      "article_id_of_other_language"
     );
 
     if (title && content && author_id) {
       const payload = {
         language,
-        article_url_in_other_language,
+        article_id_of_other_language,
         title,
         content,
         category: currentCategory.id,
@@ -176,7 +176,7 @@ const EditArticle = () => {
         Article URL in {language === "Arabic" ? "English" : "Arabic"} language
       </label>
       <input
-        name="article_url_in_other_language"
+        name="article_id_of_other_language"
         type="text"
         placeholder="URL"
         value={urlOtherLanguage}
@@ -215,8 +215,8 @@ const EditArticle = () => {
       <br />
       <label>Comments:</label>
       <div className="uk-margin">
-            <textarea class="uk-textarea" rows="4" value={comment}></textarea>    
-            </div>
+        <textarea class="uk-textarea" rows="4" value={comment}></textarea>
+      </div>
 
       <button type="submit">Update</button>
       <button type="button" onClick={handleDeleteArticle}>

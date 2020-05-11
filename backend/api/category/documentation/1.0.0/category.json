@@ -50,9 +50,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "_limit",
@@ -238,9 +236,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -305,9 +301,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": []
       }
     },
@@ -358,9 +352,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "id",
@@ -420,9 +412,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -494,9 +484,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "id",
@@ -515,12 +503,7 @@
   "components": {
     "schemas": {
       "Category": {
-        "required": [
-          "id",
-          "name",
-          "Description",
-          "icon"
-        ],
+        "required": ["id", "name", "Description", "icon"],
         "properties": {
           "id": {
             "type": "string"
@@ -531,12 +514,7 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "status"
-              ],
+              "required": ["id", "title", "content", "status"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -657,10 +635,7 @@
             }
           },
           "test": {
-            "required": [
-              "id",
-              "title"
-            ],
+            "required": ["id", "title"],
             "properties": {
               "id": {
                 "type": "string"
@@ -709,10 +684,7 @@
         }
       },
       "NewCategory": {
-        "required": [
-          "name",
-          "Description"
-        ],
+        "required": ["name", "Description"],
         "properties": {
           "name": {
             "type": "string"
