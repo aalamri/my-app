@@ -25,6 +25,7 @@
   "devDependencies": {},
   "license": "MIT",
   "dependencies": {
+    "gestalt": "^1.46.1",
     "global": "^4.4.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
