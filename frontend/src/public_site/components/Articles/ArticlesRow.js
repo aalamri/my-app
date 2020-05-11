@@ -70,6 +70,8 @@ const ArticlesRow = ({ articles }) => {
                           </div>
                       </div>
                   </div>
+                  </div>
+                  </div>
 //       {articles.map((article) => {
 //         return (
 //           <Link
@@ -159,9 +161,9 @@ const ArticlesRow = ({ articles }) => {
               //       </div>
               //     </div>
               // </div>
-//             );
-//           })}
-//        </div>
+            );
+          })}
+       </div>
         </div>
       </section>
 

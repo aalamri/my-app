@@ -38,7 +38,6 @@ export const ARTICLES_QUERY = gql`
       id
       title
       content
-      published_at
       category {
         id
         name
