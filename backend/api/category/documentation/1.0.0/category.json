@@ -50,9 +50,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "_limit",
@@ -238,9 +236,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -305,9 +301,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": []
       }
     },
@@ -358,9 +352,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "id",
@@ -420,9 +412,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -494,9 +484,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "parameters": [
           {
             "name": "id",
@@ -515,12 +503,7 @@
   "components": {
     "schemas": {
       "Category": {
-        "required": [
-          "id",
-          "name",
-          "Description",
-          "icon"
-        ],
+        "required": ["id", "name", "Description", "icon"],
         "properties": {
           "id": {
             "type": "string"
@@ -531,12 +514,7 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "title",
-                "content",
-                "status"
-              ],
+              "required": ["id", "title", "content", "status"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -548,9 +526,6 @@
                   "type": "string"
                 },
                 "image": {
-                  "type": "string"
-                },
-                "published_at": {
                   "type": "string"
                 },
                 "category": {
@@ -565,14 +540,11 @@
                 "status": {
                   "type": "string"
                 },
-                "article_url_in_other_language": {
+                "article_id_of_other_language": {
                   "type": "string"
                 },
                 "is_deleted": {
                   "type": "boolean"
-                },
-                "last_update": {
-                  "type": "datetime"
                 },
                 "comment": {
                   "type": "string"
@@ -584,6 +556,9 @@
                   "type": "boolean"
                 },
                 "tags": {
+                  "type": "string"
+                },
+                "multi_lang_id": {
                   "type": "string"
                 }
               }
@@ -660,10 +635,7 @@
             }
           },
           "test": {
-            "required": [
-              "id",
-              "title"
-            ],
+            "required": ["id", "title"],
             "properties": {
               "id": {
                 "type": "string"
@@ -712,10 +684,7 @@
         }
       },
       "NewCategory": {
-        "required": [
-          "name",
-          "Description"
-        ],
+        "required": ["name", "Description"],
         "properties": {
           "name": {
             "type": "string"

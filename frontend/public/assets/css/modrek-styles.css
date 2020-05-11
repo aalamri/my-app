@@ -315,3 +315,37 @@ body {
   stroke-linejoin: round;
   stroke-miterlimit: 10;
 }
+
+.single-test {
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.12);
+}
+.card.single-test {
+  border: 1px solid #eff2f7;
+  border-radius: 1rem;
+}
+.card.single-test:hover {
+  background: #713e6d;
+  color: #ffffff;
+}
+.card.single-test:hover span,
+.card.single-test:hover h5,
+.card.single-test:hover p.text-muted {
+  color: #ffffff !important;
+}
+.single-test .card-body {
+  padding: 1.5rem;
+}
+
+.single-test-hover {
+  transition: all 0.2s ease-out;
+  will-change: transform;
+}
+.single-test-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125) !important;
+}
+
+.no-radius {
+  border-radius: 0;
+}

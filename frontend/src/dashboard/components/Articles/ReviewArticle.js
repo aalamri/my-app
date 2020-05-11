@@ -17,7 +17,7 @@ const token = getToken();
 const ReviewArticle = () => {
   let { id } = useParams();
 
-  const [articleStatus,setArticleStatus] = useState("Pending")
+  const [articleStatus, setArticleStatus] = useState("Pending")
   const { data, loading, error } = useQuery(GET_ARTICLE, {
     variables: { id },
   });
@@ -59,7 +59,7 @@ const ReviewArticle = () => {
     if (data) {
       console.log("useEffect", data.article.language);
       setLanguage(data.article.language);
-      setUrlOtherLanguage(data.article.article_url_in_other_language);
+      setUrlOtherLanguage(data.article.article_id_of_other_language);
       setTitle(data.article.title);
       setContent(data.article.content);
       setComment(data.article.comment);
@@ -99,14 +99,14 @@ const ReviewArticle = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const title = formData.get("title");
-    const article_url_in_other_language = formData.get(
-      "article_url_in_other_language"
+    const article_id_of_other_language = formData.get(
+      "article_id_of_other_language"
     );
 
     if (title && content && author_id) {
       const payload = {
         language,
-        article_url_in_other_language,
+        article_id_of_other_language,
         title,
         content,
         comment,
@@ -138,27 +138,27 @@ const ReviewArticle = () => {
   function handleSubmit(e) {
     e.preventDefault();
     const payload = {
-        status: articleStatus
+      status: articleStatus
     }
-    updateArticle (
-        {
-            context: {
-                    headers: {
-                        Authorization: `bearer ${token}`,
-                    },
-            },
-            variables: {
-                    data: payload,
-                    id: id
-                },
+    updateArticle(
+      {
+        context: {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        },
+        variables: {
+          data: payload,
+          id: id
+        },
 
-        } 
+      }
     )
     alert("submitted");
-}
+  }
 
   function handleComment(status) {
-    setArticleStatus (status)
+    setArticleStatus(status)
   }
 
   function handleChangeCategory(e) {
@@ -200,7 +200,7 @@ const ReviewArticle = () => {
         Article URL in {language === "Arabic" ? "English" : "Arabic"} language
       </label>
       <input
-        name="article_url_in_other_language"
+        name="article_id_of_other_language"
         type="text"
         placeholder="URL"
         value={urlOtherLanguage}
@@ -238,20 +238,20 @@ const ReviewArticle = () => {
       </select>
       <br />
       <div className="uk-margin">
-            <label> Approved
-                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={articleStatus === "Approved"}> 
-                </input>
-            </label>
-            <label> Reject
-                <input class="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={articleStatus === "Rejected"}> 
-                </input>
-            </label>
-            {articleStatus === "Rejected" && 
-            <div className="uk-margin">
-            <textarea class="uk-textarea" rows="4" value={comment}></textarea>    
-            </div>
-            }
-            </div>
+        <label> Approved
+                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={articleStatus === "Approved"}>
+          </input>
+        </label>
+        <label> Reject
+                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Rejected")} checked={articleStatus === "Rejected"}>
+          </input>
+        </label>
+        {articleStatus === "Rejected" &&
+          <div className="uk-margin">
+            <textarea class="uk-textarea" rows="4" value={comment}></textarea>
+          </div>
+        }
+      </div>
       <button class="uk-button uk-button-primary" onClick={handleSubmit}>Submit</button>
     </form>
   );

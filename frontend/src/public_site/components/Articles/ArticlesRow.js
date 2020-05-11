@@ -70,8 +70,38 @@ const ArticlesRow = ({ articles }) => {
                           </div>
                       </div>
                   </div>
-              </div>
-          </div>
+//       {articles.map((article) => {
+//         return (
+//           <Link
+//             to={{
+//               pathname: `/article/${article.id}`,
+//               state: { article }
+//             }}
+//             key={`article__${article.id}`}
+//             className="uk-link-reset"
+//           >
+//             <div className="row">
+//               {/* <div className="uk-card-media-top">
+//                       <img
+//                         src={
+//                           process.env.REACT_APP_BACKEND_URL + article.image.url
+//                         }
+//                         alt={article.image.url}
+//                         height="100"
+//                       />
+//                     </div> */}
+//               <div className="">
+//                 <p id="category" className="">
+//                   {article.category?.name}
+//                 </p>
+//                 <p id="title" className="">
+//                   {article.title}
+//                 </p>
+//                 <p id="title" className="">
+//                   Likes {article.meta?.likes ?? 0}
+//                 </p>
+//               </div>
+//           </div>
 
               // <div>
               //     <div className="ml-lg-2 mr-lg-5 ml-md-4 lr-md-4 mt-5 card-item-slide col-lg-6">
@@ -129,9 +159,9 @@ const ArticlesRow = ({ articles }) => {
               //       </div>
               //     </div>
               // </div>
-            );
-          })}
-        </div>
+//             );
+//           })}
+//        </div>
         </div>
       </section>
 
