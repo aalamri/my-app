@@ -76,7 +76,7 @@ const CardsRow = ({ cards }) => {
                 {intialCategories.length > 0 &&
                 intialCategories.map((cat) => {
                   return (
-                    <Link onClick={() => handleCategory(cat.id)} class="pn-ProductNav_Link" aria-selected="true">{cat?.name}</Link>
+                    <Link class="pn-ProductNav_Link" aria-selected="true">{cat?.name}</Link>
 
                   );
                 })}
