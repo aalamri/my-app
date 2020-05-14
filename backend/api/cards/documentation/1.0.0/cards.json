@@ -611,29 +611,6 @@
               "Arabic"
             ]
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "card": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "author": {
             "required": [
               "id",
@@ -730,6 +707,52 @@
           },
           "comment": {
             "type": "string"
+          },
+          "category": {
+            "required": [
+              "id",
+              "name",
+              "Description",
+              "icon"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "meta": {
+                "type": "object"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "test": {
+                "type": "string"
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tags": {
+            "type": "string"
           }
         }
       },
@@ -765,12 +788,6 @@
               "Arabic"
             ]
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "author": {
             "type": "string"
           },
@@ -791,6 +808,12 @@
             "default": false
           },
           "comment": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "tags": {
             "type": "string"
           }
         }

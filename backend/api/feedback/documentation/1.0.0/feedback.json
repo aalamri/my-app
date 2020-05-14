@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/articles": {
+    "/feedbacks": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Article"
+                    "$ref": "#/components/schemas/Feedback"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Feedback"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Feedback"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Feedback"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewFeedback"
               }
             }
           }
         }
       }
     },
-    "/articles/count": {
+    "/feedbacks/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Feedback"
         ],
         "parameters": []
       }
     },
-    "/articles/{id}": {
+    "/feedbacks/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Feedback"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Feedback"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Feedback"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Feedback"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewFeedback"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Feedback"
         ],
         "parameters": [
           {
@@ -514,306 +514,40 @@
   },
   "components": {
     "schemas": {
-      "Article": {
+      "Feedback": {
         "required": [
-          "id",
-          "title",
-          "content",
-          "status"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "image": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              }
-            }
-          },
-          "category": {
-            "required": [
-              "id",
-              "name",
-              "Description",
-              "icon"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "meta": {
-                "type": "object"
-              },
-              "Description": {
-                "type": "string"
-              },
-              "icon": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "test": {
-                "type": "string"
-              },
-              "cards": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "meta": {
-            "type": "object"
-          },
-          "language": {
+          "Type": {
             "type": "string",
-            "default": "English",
             "enum": [
-              "English",
-              "Arabic"
+              "Suggestions"
             ]
           },
-          "status": {
-            "type": "string",
-            "default": "Pending",
-            "enum": [
-              "Draft",
-              "Pending",
-              "Rejected",
-              "Approved"
-            ]
-          },
-          "article_id_of_other_language": {
+          "email": {
             "type": "string"
           },
-          "is_deleted": {
-            "type": "boolean",
-            "default": false
-          },
-          "comment": {
-            "type": "string"
-          },
-          "author": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "can_create_articles": {
-                "type": "boolean"
-              },
-              "can_create_cards": {
-                "type": "boolean"
-              },
-              "can_create_tests": {
-                "type": "boolean"
-              },
-              "can_review_articles": {
-                "type": "boolean"
-              },
-              "can_review_cards": {
-                "type": "boolean"
-              },
-              "can_review_tests": {
-                "type": "boolean"
-              },
-              "applying_about_me": {
-                "type": "string"
-              },
-              "first_name": {
-                "type": "string"
-              },
-              "last_name": {
-                "type": "string"
-              },
-              "stats": {
-                "type": "object"
-              },
-              "articles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "cards": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "is_pinned": {
-            "type": "boolean",
-            "default": false
-          },
-          "tags": {
-            "type": "string"
-          },
-          "multi_lang_id": {
+          "message": {
             "type": "string"
           }
         }
       },
-      "NewArticle": {
-        "required": [
-          "title",
-          "content",
-          "status"
-        ],
+      "NewFeedback": {
         "properties": {
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "meta": {
-            "type": "object"
-          },
-          "language": {
+          "Type": {
             "type": "string",
-            "default": "English",
             "enum": [
-              "English",
-              "Arabic"
+              "Suggestions"
             ]
           },
-          "status": {
-            "type": "string",
-            "default": "Pending",
-            "enum": [
-              "Draft",
-              "Pending",
-              "Rejected",
-              "Approved"
-            ]
-          },
-          "article_id_of_other_language": {
+          "email": {
             "type": "string"
           },
-          "is_deleted": {
-            "type": "boolean",
-            "default": false
-          },
-          "comment": {
-            "type": "string"
-          },
-          "author": {
-            "type": "string"
-          },
-          "is_pinned": {
-            "type": "boolean",
-            "default": false
-          },
-          "tags": {
-            "type": "string"
-          },
-          "multi_lang_id": {
+          "message": {
             "type": "string"
           }
         }
@@ -822,7 +556,7 @@
   },
   "tags": [
     {
-      "name": "Article"
+      "name": "Feedback"
     }
   ]
 }

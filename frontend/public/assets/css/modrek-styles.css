@@ -298,6 +298,7 @@ body {
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
+
 .feat-test-description {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -43,10 +43,6 @@
       "default": "English",
       "required": true
     },
-    "tags": {
-      "collection": "tag",
-      "via": "card"
-    },
     "author": {
       "columnName": "email",
       "plugin": "users-permissions",
@@ -72,6 +68,13 @@
     },
     "comment": {
       "type": "text"
+    },
+    "category": {
+      "model": "category",
+      "via": "cards"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }

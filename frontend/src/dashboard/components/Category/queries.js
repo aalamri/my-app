@@ -21,6 +21,28 @@ export const CATEGORY_ARTICLES_QUERY = gql`
   }
 `;
 
+export const CATEGORY_CARDS_QUERY = gql`
+  query Category($id: ID!) {
+    category(id: $id) {
+      id
+      name
+      cards {
+        id
+        title
+        content
+        image {
+          url
+        }
+        category {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
+
 export const CATEGORIES_QUERY = gql`
   query Categories {
     categories {

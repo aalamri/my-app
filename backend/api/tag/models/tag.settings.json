@@ -17,10 +17,6 @@
     "Description": {
       "type": "richtext",
       "required": false
-    },
-    "card": {
-      "via": "tags",
-      "model": "cards"
     }
   }
 }

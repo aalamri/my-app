@@ -528,62 +528,6 @@
           },
           "Description": {
             "type": "string"
-          },
-          "card": {
-            "required": [
-              "id",
-              "title",
-              "content",
-              "language",
-              "status"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "image": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "is_pinned": {
-                "type": "boolean"
-              },
-              "meta": {
-                "type": "object"
-              },
-              "language": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "author": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "card_url_in_other_language": {
-                "type": "string"
-              },
-              "is_deleted": {
-                "type": "boolean"
-              },
-              "comment": {
-                "type": "string"
-              }
-            }
           }
         }
       },
@@ -596,9 +540,6 @@
             "type": "string"
           },
           "Description": {
-            "type": "string"
-          },
-          "card": {
             "type": "string"
           }
         }

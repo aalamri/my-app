@@ -16,6 +16,7 @@ import Signup from "../public_site/components/Signup";
 import Signin from "../public_site/components/Signin";
 import Search from "../public_site/components/Search";
 import Footer from "../public_site/components/Footer";
+import CreateFeedback from "../public_site/components/Feedback/CreateFeedback";
 // Dashboard
 import Dashboard from "../dashboard/components/MainDash";
 import Reviewes from "../dashboard/components/Reviews";
@@ -51,6 +52,7 @@ class AppRouter extends React.Component {
           <Route path="/card/:id" component={Card} exact />
           <Route path="/category/:id" component={Category} exact />
           <Route path="/dashboard" component={Dashboard} exact />
+          <Route path="/feedback" component={CreateFeedback} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/signin" component={Signin} exact />
           <Route path="/search" component={Search} exact />
