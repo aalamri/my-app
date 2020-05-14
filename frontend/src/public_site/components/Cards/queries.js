@@ -25,15 +25,51 @@ export const CARDS_QUERY = gql`
       id
       title
       content
-      tags {
-        id
-        name
+      category {
+      id
+      name
       }
       image {
         url
       }
       published_at
       meta
+    }
+  }
+`;
+
+export const CATEGORY_CARDS_BY_ID_QUERY = gql`
+  query categories ($id: ID) {
+    categoriesConnection(where: { id: $id }) 
+    {
+      values {
+      id 
+      name
+      cards {
+        id
+        title
+        content
+        meta
+      }
+    }
+    }
+  }
+`;
+
+export const CATEGORY_CARDS_QUERY = gql`
+  query categoriesConnection {
+    categoriesConnection 
+    {
+      values {
+      id 
+      name
+      cards {
+        id
+        title
+        content
+        meta
+      }
+    }
     }
   }
 `;

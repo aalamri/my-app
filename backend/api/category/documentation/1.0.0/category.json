@@ -50,7 +50,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -236,7 +238,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -301,7 +305,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": []
       }
     },
@@ -352,7 +358,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -412,7 +420,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -484,7 +494,9 @@
           }
         },
         "summary": "",
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -503,7 +515,12 @@
   "components": {
     "schemas": {
       "Category": {
-        "required": ["id", "name", "Description", "icon"],
+        "required": [
+          "id",
+          "name",
+          "Description",
+          "icon"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -514,7 +531,12 @@
           "articles": {
             "type": "array",
             "items": {
-              "required": ["id", "title", "content", "status"],
+              "required": [
+                "id",
+                "title",
+                "content",
+                "status"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -635,7 +657,10 @@
             }
           },
           "test": {
-            "required": ["id", "title"],
+            "required": [
+              "id",
+              "title"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -680,11 +705,73 @@
                 "type": "string"
               }
             }
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "content",
+                "language",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "is_pinned": {
+                  "type": "boolean"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "card_url_in_other_language": {
+                  "type": "string"
+                },
+                "is_deleted": {
+                  "type": "boolean"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
       "NewCategory": {
-        "required": ["name", "Description"],
+        "required": [
+          "name",
+          "Description"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -703,6 +790,12 @@
           },
           "test": {
             "type": "string"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

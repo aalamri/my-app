@@ -57,7 +57,7 @@ const Navbar = () => {
                     </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link page-scroll" href="#">
+                <a className="nav-link page-scroll" href="/feedback">
                   Contact us
                     </a>
               </li>

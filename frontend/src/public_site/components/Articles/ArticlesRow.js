@@ -1,4 +1,8 @@
+
+
+
 import React from "react";
+import { Link } from "react-router-dom";
 
 const avatar = "img/avatar-circle.svg";
 const twitter = "img/twitter-circle.svg";
@@ -14,6 +18,7 @@ const thumbsupTale = "img/thumbsup-tale.svg";
 const tale = true;
 
 const ArticlesRow = ({ articles }) => {
+  
   return (
     <div>
       <section className="hero-section pt-100">
@@ -43,14 +48,41 @@ const ArticlesRow = ({ articles }) => {
             </span>
           </div>
           <div className="row">
+
+          <div class="pn-ProductNav_Wrapper">
+            <nav id="pnProductNav" class="pn-ProductNav">
+              <div id="pnProductNavContents" class="pn-ProductNav_Contents">
+                {articles.map((article) => {
+                  return (
+                    <a href="" class="pn-ProductNav_Link" aria-selected="true">{article.category?.name}</a>
+                  );
+                })}
+                <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
+              </div>
+            </nav>
+          </div>
+        </div>
+          <div className="row">
           {articles.map((article) => {
+                const imageUrl =
+                process.env.NODE_ENV !== "development"
+                    ? article.image.url
+                    : process.env.REACT_APP_BACKEND_URL + article.image?.url ?? 'placeholder';
             return (
               <div class="col-lg-6 pt-5">
-              <div class="single-article rounded card border-0 shadow-sm">
-                  <img src={article.image.url} class="card-img-top position-relative" alt="blog" />
-                  <div class="card-body">
-                      <h5 class="testlist-name">{article.title}</h5>
-                      <p class="article-body">{article.content}</p>
+              <Link 
+              key={article.id} to={`/article/${article.id}`
+            }>
+            <div class="single-article rounded card border-0 shadow-sm">
+              <img
+                    src={imageUrl}
+                    className="card-img-top position-relative"
+                    height="260"
+                    alt=""
+                />    
+                <div class="card-body">
+                      <h5 class="testlist-name tale">{article.title}</h5>
+                      <p class="article-body tale">{article.content}</p>
                       <hr className="yellow-hr" />
                       <div className="media author-info myflex">
                           <div className="d-inline-flex">
@@ -65,12 +97,16 @@ const ArticlesRow = ({ articles }) => {
                               </div>
                           </div>
                           <div className="p-2 d-inline-flex ">
+                          <p id="category" className="">
+                          {article.category?.name}
+                        </p>
                               <img class="social-icon ml-4" src={tale ? thumbsupTale : thumbsup} alt="thumbsup" />
                               <span class="pl-1 likes-number">{article.meta?.likes ?? 0}</span>
                           </div>
                       </div>
                   </div>
                   </div>
+                  </Link>
                   </div>
 //       {articles.map((article) => {
 //         return (
