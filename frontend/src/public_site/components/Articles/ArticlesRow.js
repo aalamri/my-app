@@ -3,10 +3,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ARTICLES_SORT_ALPHA_ASC, ARTICLES_SORT_ALPHA_DESC, ARTICLES_SORT_CREATED_ASC, ARTICLES_SORT_CREATED_DESC, ARTICLES_QUERY } from "./queries";
+import { ARTICLES_SORT_ALPHA_ASC, ARTICLES_SORT_ALPHA_DESC, ARTICLES_SORT_CREATED_ASC, ARTICLES_SORT_CREATED_DESC, ARTICLES_QUERY, CATEGORY_ARTICLES_BY_ID_QUERY, CATEGORY_ARTICLES_QUERY } from "./queries";
 import Query from "../Query";
 import { useQuery } from "@apollo/react-hooks";
-import { CATEGORIES_QUERY } from "../Category/queries";
+import { CATEGORIES_QUERY,  } from "../Category/queries";
 
 const avatar = "img/avatar-circle.svg";
 const twitter = "img/twitter-circle.svg";
@@ -32,15 +32,14 @@ const ArticlesRow = () => {
   const [articles, getArticles] = useState([]);
 
   useEffect(() => {
-    getArticles(initialArticles);  
+    getArticles(initialArticles);
   }, [initialArticles]);
   return (
     <div>
       <section className="hero-section pt-100">
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div className="row">
-              {/* <span class="col-lg-1 pr-0 vertical-cenrer" href="#">
+          <div className="row" style={{ alignItems: 'center', justifyContent: 'center' }}>
+            {/* <span class="col-lg-1 pr-0 vertical-cenrer" href="#">
               <a href="/articles">
 
                 <img class="img-responsive" src="img/article-gray-btn.svg" />
@@ -52,19 +51,17 @@ const ArticlesRow = () => {
               <img class="img-responsive" src="img/cards-color-btn.svg" />
               </a>
             </span> */}
-              <div style={{ border: '1px solid #4a90e2', borderRadius: 40, height: 50, width: 250, display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <div href="#" style={{ width: 124, background: '#4a90e2', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, color: '#ffffff', height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
-                  <a href="/articles" style={{ color: '#FFFFFF' }}>
-                    Articles
-                </a>
-                </div>
-                <div href="#" style={{ width: 124 }}>
-                  <a href="/cards" style={{ width: 124, height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
-                    Cards
-                  </a>
-                </div>
+            <div style={{ border: '1px solid #4a90e2', borderRadius: 40, height: 50, width: 250, display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+              <div href="#" style={{ width: 124, background: '#4a90e2', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, color: '#ffffff', height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
+                <a href="/articles" style={{ color: '#FFFFFF' }}>
+                  Articles
+              </a>
               </div>
-
+              <div href="#" style={{ width: 124 }}>
+                <a href="/cards" style={{ width: 124, height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
+                  Cards
+                </a>
+              </div>
             </div>
             <div style={{ position: 'absolute', right: 0 }}>
               <img src="img/sort-icon.svg" class="dropdown btn sort-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ height: 40 }} />
@@ -74,37 +71,59 @@ const ArticlesRow = () => {
                 <a class="dropdown-item" href="#2">Least Likes</a>
                 <Query query={ARTICLES_SORT_ALPHA_ASC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getArticles(data.articles); }}>Alphabetic(A-Z)</div>                    
+                    return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Alphabetic(A-Z)</div>
                   }}
                 </Query>
                 <Query query={ARTICLES_SORT_ALPHA_DESC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getArticles(data.articles); }}>Alphabetic(Z-A)</div>                    
+                    return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Alphabetic(Z-A)</div>
                   }}
                 </Query>
                 <Query query={ARTICLES_SORT_CREATED_ASC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getArticles(data.articles); }}>Newest Published</div>                    
+                    return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Newest Published</div>
                   }}
                 </Query>
                 <Query query={ARTICLES_SORT_CREATED_DESC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getArticles(data.articles); }}>Oldest Published</div>                    
+                    return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Oldest Published</div>
                   }}
                 </Query>
               </div>
             </div>
           </div>
           <div className="row">
-
             <div class="pn-ProductNav_Wrapper">
-              <nav id="pnProductNav" class="pn-ProductNav">
+              {/* <nav id="pnProductNav" class="pn-ProductNav">
                 <div id="pnProductNavContents" class="pn-ProductNav_Contents">
                   {articles.map((article) => {
                     return (
                       <a href="" class="pn-ProductNav_Link" aria-selected="true">{article.category?.name}</a>
                     );
                   })}
+                  <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
+                </div>
+              </nav> */}
+              <nav id="pnProductNav" class="pn-ProductNav">
+                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop:20 }}>
+                  <Query query={CATEGORIES_QUERY} id={selectedCategory}>
+                    {({ data }) => {
+                      // console.log(data);
+                      return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: 'black', marginRight: 20 }} onClick={() => { }}>All Categories</div>
+                    }}
+                  </Query>
+                  {intialCategories.length > 0 &&
+                    intialCategories.map((cat, index) => {
+                      return (
+                        <Query query={selectedCategory === null ? CATEGORY_ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
+                          {({ data }) => {
+                            console.log(data);
+                            return <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: 'black', marginRight: 20 }}>{cat?.name}</div>
+                          }}
+                        </Query>
+
+                      );
+                    })}
                   <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
                 </div>
               </nav>

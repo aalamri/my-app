@@ -78,6 +78,45 @@ export const CREATE_ARTICLE = gql`
   }
 `;
 
+export const CATEGORY_ARTICLES_QUERY = gql`
+  query categoriesConnection {
+    categoriesConnection 
+    {
+      values {
+      id 
+      name
+      articles {
+        id
+        title
+        content
+        meta
+      }
+    }
+    }
+  }
+`;
+
+export const CATEGORY_ARTICLES_BY_ID_QUERY = gql`
+  query Category($id: ID!) {
+    category(id: $id) {
+      id
+      name
+      articles {
+        id
+        title
+        content
+        image {
+          url
+        }
+        category {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
 export const ARTICLES_SORT_ALPHA_ASC = gql`
 query {
   articles(sort:"title:asc") {

@@ -50,12 +50,12 @@ const CardsRow = () => {
                 <a href="/articles">
                   Articles
                 </a>
-            </div>
-            <div href="#"  style={{width:124, height:'100%', alignItems:'center', display:'flex', justifyContent:'center', background:'#4a90e2',borderTopRightRadius:20, borderBottomRightRadius:20, }}>
-              <a href="/cards" style={{color:'#FFFFFF'}}>
-                Cards
-              </a>
-            </div>
+              </div>
+              <div href="#"  style={{width:124, height:'100%', alignItems:'center', display:'flex', justifyContent:'center', background:'#4a90e2',borderTopRightRadius:20, borderBottomRightRadius:20, }}>
+                <a href="/cards" style={{color:'#FFFFFF'}}>
+                  Cards
+                </a>
+              </div>
             </div>
             <div style={{position:'absolute', right:0}}>
               <img src="img/sort-icon.svg" class="dropdown btn sort-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{height:40}}/>
@@ -90,21 +90,20 @@ const CardsRow = () => {
           <div className="row">
             <div class="pn-ProductNav_Wrapper">
               <nav id="pnProductNav" class="pn-ProductNav">
-                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{display:'flex'}}>
-                  <Query query={CATEGORIES_QUERY} id={selectedCategory}>
+                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{display:'flex', paddingTop:20}}>
+                  <Query query={CARDS_QUERY} id={selectedCategory}>
                     {({ data }) => {
                       // console.log(data);
-                      return <div class="pn-ProductNav_Link" style={{fontSize:20, color: 'black', marginRight:20}} onClick={()=>{}}>All Categories</div>
+                      return <div class="pn-ProductNav_Link" style={{fontSize:20, color: 'black', marginRight:20}} onClick={()=>{console.log(data)}}>All Categories</div>
                     }}
                   </Query>
                  {intialCategories.length > 0 &&
                   intialCategories.map((cat, index) => {
                     return (
                       <Query query={selectedCategory === null ? CATEGORY_CARDS_QUERY : CATEGORY_CARDS_BY_ID_QUERY} id={selectedCategory} key={index}>
-                      {({ data }) => {
-                      // console.log(data);
-                      return <div class="pn-ProductNav_Link" aria-selected="true" style={{fontSize:20, color: 'black', marginRight:20}}>{cat?.name}</div>
-                    }}
+                        {({ data }) => {
+                          return <div class="pn-ProductNav_Link" aria-selected="true" style={{fontSize:20, color: 'black', marginRight:20}} onClick={()=>{handleCategory(cat.id); console.log(data, selectedCategory)}}>{cat?.name}</div>
+                        }}
                       </Query>
 
                     );
