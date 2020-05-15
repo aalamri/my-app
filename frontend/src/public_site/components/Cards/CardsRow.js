@@ -65,22 +65,22 @@ const CardsRow = () => {
 
                 <Query query={CARDS_SORT_ALPHA_ASC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Alphabetic(A-Z)</div>                    
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Alphabetic(A-Z)</div>                    
                   }}
                 </Query>
                 <Query query={CARDS_SORT_ALPHA_DESC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Alphabetic(Z-A)</div>                    
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Alphabetic(Z-A)</div>                    
                   }}
                 </Query>
                 <Query query={CARDS_SORT_CREATED_ASC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Newest Published</div>                    
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Newest Published</div>                    
                   }}
                 </Query>
                 <Query query={CARDS_SORT_CREATED_DESC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Oldest Published</div>                    
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Oldest Published</div>                    
                   }}
                 </Query>
                 
@@ -192,7 +192,6 @@ const CardsRow = () => {
                           <span class="pl-1 likes-number" >{card.meta?.likes ?? 0}
                           </span>
                           </Link>
-                          // <button class="pl-1 likes-number" onClick={handleClick(card.id)}></button>
 
                         </div>
                       </div>
