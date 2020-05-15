@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Query from "../Query";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { CATEGORY_CARDS_QUERY, CATEGORY_CARDS_BY_ID_QUERY } from "./queries";
+import { CATEGORY_CARDS_QUERY, CATEGORY_CARDS_BY_ID_QUERY, CARDS_QUERY, CARDS_SORT_ALPHA_ASC, CARDS_SORT_CREATED_ASC, CARDS_SORT_ALPHA_DESC, CARDS_SORT_CREATED_DESC } from "./queries";
 
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
@@ -20,66 +20,95 @@ const facebookTale = "img/facebook-circle-tale.svg";
 const thumbsupTale = "img/thumbsup-tale.svg";
 const tale = true;
 
-const CardsRow = ({ cards }) => {
+const CardsRow = () => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
   const intialCategories = data ? data.categories : [];
+  const cards_data = useQuery(CARDS_QUERY).data;
+  const initialCards = cards_data ? cards_data.cards : [];
   const [selectedCategory, setSelectCategory] = useState(null);
   const [likes, setLikes] = useState(0);
+  const [cards, getCards] = useState([]);
+
+  useEffect(() => {
+    getCards(initialCards);  
+  }, [initialCards]);
 
   function handleCategory(id) {
-    setSelectCategory(id);
-    
+    setSelectCategory(id);    
   }
 
-  // const handleClick = value => () => 
-  // alert(value)
+  const handleClick = value => () => 
+  alert(value)
 
   return (
     <div>
       <section className="hero-section pt-100">
-        <div className="container">
-          <div className="row">
-            <span class="col-lg-1 pr-0 vertical-cenrer" href="#">
-              <a href="/articles">
-
-                <img class="img-responsive" src="img/article-gray-btn.svg" />
+        <div className="container" style={{position:'relative'}}>
+          <div className="row" style={{alignItems:'center', justifyContent:'center'}}>
+            <div style={{border: '1px solid #4a90e2',    borderRadius: 40,    height: 50,    width: 250, display:'flex', alignItems:'center', textAlign:'center'}}>   
+              <div href="#" style={{width:124, color:'#ffffff', height:'100%', alignItems:'center', display:'flex', justifyContent:'center'}}>
+                <a href="/articles">
+                  Articles
+                </a>
+            </div>
+            <div href="#"  style={{width:124, height:'100%', alignItems:'center', display:'flex', justifyContent:'center', background:'#4a90e2',borderTopRightRadius:20, borderBottomRightRadius:20, }}>
+              <a href="/cards" style={{color:'#FFFFFF'}}>
+                Cards
               </a>
-            </span>
-            <span class="col-lg-1 pl-0 vertical-cenrer" href="#">
-              <a href="/cards">
-                <img class="img-responsive" src="img/cards-color-btn.svg" />
-              </a>
-            </span>
-            <span class="col-lg-1">
-              <img src="img/sort-icon.svg" class="dropdown btn sort-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+            </div>
+            </div>
+            <div style={{position:'absolute', right:0}}>
+              <img src="img/sort-icon.svg" class="dropdown btn sort-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{height:40}}/>
+              <div class="dropdown-menu dropdown-primary dropdown-menu-right" id="dropDiv">
+                <a class="dropdown-item" >Most Likes</a>
+                <a class="dropdown-item" >Least Likes</a>
 
-              <div class="dropdown-menu dropdown-primary" id="dropDiv">
-                <a class="dropdown-item" href="#1">sort 1</a>
-                <a class="dropdown-item" href="#2">sort 2</a>
-                <a class="dropdown-item" href="#3">sort 3</a>
-                <a class="dropdown-item" href="#4">sort 4</a>
+                <Query query={CARDS_SORT_ALPHA_ASC}>
+                  {({ data, loading, error }) => {
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Alphabetic(A-Z)</div>                    
+                  }}
+                </Query>
+                <Query query={CARDS_SORT_ALPHA_DESC}>
+                  {({ data, loading, error }) => {
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Alphabetic(Z-A)</div>                    
+                  }}
+                </Query>
+                <Query query={CARDS_SORT_CREATED_ASC}>
+                  {({ data, loading, error }) => {
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Newest Published</div>                    
+                  }}
+                </Query>
+                <Query query={CARDS_SORT_CREATED_DESC}>
+                  {({ data, loading, error }) => {
+                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); console.log(data.cards)}}>Oldest Published</div>                    
+                  }}
+                </Query>
+                
               </div>
-            </span>
+            </div>
           </div>
           <div className="row">
-
             <div class="pn-ProductNav_Wrapper">
               <nav id="pnProductNav" class="pn-ProductNav">
-                <div id="pnProductNavContents" class="pn-ProductNav_Contents">
-                <Query query={selectedCategory === null ?CATEGORY_CARDS_QUERY : CATEGORY_CARDS_BY_ID_QUERY} id={selectedCategory}>
-                {({ data }) => {
+                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{display:'flex'}}>
+                  <Query query={CATEGORIES_QUERY} id={selectedCategory}>
+                    {({ data }) => {
+                      // console.log(data);
+                      return <div class="pn-ProductNav_Link" style={{fontSize:20, color: 'black', marginRight:20}} onClick={()=>{}}>All Categories</div>
+                    }}
+                  </Query>
+                 {intialCategories.length > 0 &&
+                  intialCategories.map((cat, index) => {
+                    return (
+                      <Query query={selectedCategory === null ? CATEGORY_CARDS_QUERY : CATEGORY_CARDS_BY_ID_QUERY} id={selectedCategory} key={index}>
+                      {({ data }) => {
+                      // console.log(data);
+                      return <div class="pn-ProductNav_Link" aria-selected="true" style={{fontSize:20, color: 'black', marginRight:20}}>{cat?.name}</div>
+                    }}
+                      </Query>
 
-                  console.log("data", data);
-                return 3
-                }}
-              </Query>
-                {intialCategories.length > 0 &&
-                intialCategories.map((cat) => {
-                  return (
-                    <Link class="pn-ProductNav_Link" aria-selected="true">{cat?.name}</Link>
-
-                  );
-                })}
+                    );
+                  })}
                   <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
                 </div>
               </nav>
@@ -97,7 +126,6 @@ const CardsRow = ({ cards }) => {
                     <div className="rounded-card white-bg shadow-md p-4 mb-4 min-width-400">
                       <div className="client-say d-flex flex-column tale">
                       <Link key={card.id} to={`/card/${card.id}`}>
-
                         <h3 className="tale text-center card-name">
                           {card.title}
                         </h3>

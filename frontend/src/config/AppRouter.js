@@ -32,6 +32,8 @@ import CreateTest from "../dashboard/components/Tests/CreateTest";
 import ReviewCard from "../dashboard/components/Cards/ReviewCard";
 import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
 import ReviewTest from "../dashboard/components/Tests/ReviewTest";
+import CardsRow from "../public_site/components/Cards/CardsRow";
+import ArticlesRow from "../public_site/components/Articles/ArticlesRow";
 
 class AppRouter extends React.Component {
   state = {
@@ -45,9 +47,9 @@ class AppRouter extends React.Component {
         <Nav />
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/articles" component={Articles} exact />
+          <Route path="/articles" component={ArticlesRow} exact />
           <Route path="/article/:id" component={Article} exact />
-          <Route path="/cards" component={Cards} exact />
+          <Route path="/cards" component={CardsRow} exact />
           <Route path="/tests" component={Tests} exact />
           <Route path="/card/:id" component={Card} exact />
           <Route path="/category/:id" component={Category} exact />

@@ -77,3 +77,88 @@ export const CREATE_ARTICLE = gql`
     }
   }
 `;
+
+export const ARTICLES_SORT_ALPHA_ASC = gql`
+query {
+  articles(sort:"title:asc") {
+    id
+      title
+      content
+      category {
+        id
+        name
+      }
+      image {
+        url
+      }
+      meta
+      is_deleted
+      article_id_of_other_language
+      createdAt
+      updatedAt
+  }
+}`;
+
+export const ARTICLES_SORT_ALPHA_DESC = gql`
+query {
+  articles(sort:"title:desc") {
+    id
+      title
+      content
+      category {
+        id
+        name
+      }
+      image {
+        url
+      }
+      meta
+      is_deleted
+      article_id_of_other_language
+      createdAt
+      updatedAt
+  }
+}`;
+
+export const ARTICLES_SORT_CREATED_ASC = gql`
+query {
+  articles(sort:"createdAt:asc") {
+    id
+      title
+      content
+      category {
+        id
+        name
+      }
+      image {
+        url
+      }
+      meta
+      is_deleted
+      article_id_of_other_language
+      createdAt
+      updatedAt
+  }
+}`;
+
+export const ARTICLES_SORT_CREATED_DESC = gql`
+query {
+  articles(sort:"createdAt:desc") {
+    id
+      title
+      content
+      category {
+        id
+        name
+      }
+      image {
+        url
+      }
+      meta
+      is_deleted
+      article_id_of_other_language
+      createdAt
+      updatedAt
+  }
+}`;
+
