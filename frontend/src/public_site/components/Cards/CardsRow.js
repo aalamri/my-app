@@ -31,8 +31,7 @@ const CardsRow = ({ cards }) => {
     
   }
 
-  // const handleClick = value => () => 
-  // alert(value)
+
 
   return (
     <div>
@@ -165,7 +164,6 @@ const CardsRow = ({ cards }) => {
                           <span class="pl-1 likes-number" >{card.meta?.likes ?? 0}
                           </span>
                           </Link>
-                          // <button class="pl-1 likes-number" onClick={handleClick(card.id)}></button>
 
                         </div>
                       </div>
