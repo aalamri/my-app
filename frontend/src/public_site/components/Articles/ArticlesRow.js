@@ -51,14 +51,14 @@ const ArticlesRow = () => {
               <img class="img-responsive" src="img/cards-color-btn.svg" />
               </a>
             </span> */}
-            <div style={{ border: '1px solid #4a90e2', borderRadius: 40, height: 50, width: 250, display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-              <div href="#" style={{ width: 124, background: '#4a90e2', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, color: '#ffffff', height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
-                <a href="/articles" style={{ color: '#FFFFFF' }}>
+            <div style={{ border: '1px solid #e7bd5b', borderRadius: 40, height: 50, width: 250, display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+              <div href="#" style={{ width: 124, background: '#e7bd5b', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, color: '#ffffff', height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
+                <a href="/articles" style={{ color: '#ffffff' }}>
                   Articles
               </a>
               </div>
               <div href="#" style={{ width: 124 }}>
-                <a href="/cards" style={{ width: 124, height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
+                <a href="/cards" style={{ width: 124, height: '100%', color:"#707070", alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
                   Cards
                 </a>
               </div>
@@ -109,7 +109,7 @@ const ArticlesRow = () => {
                   <Query query={CATEGORIES_QUERY} id={selectedCategory}>
                     {({ data }) => {
                       // console.log(data);
-                      return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: 'black', marginRight: 20 }} onClick={() => { }}>All Categories</div>
+                      return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: '#707070', marginRight: 20 }} onClick={() => { }}>All Categories</div>
                     }}
                   </Query>
                   {intialCategories.length > 0 &&
@@ -118,7 +118,7 @@ const ArticlesRow = () => {
                         <Query query={selectedCategory === null ? CATEGORY_ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
                           {({ data }) => {
                             console.log(data);
-                            return <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: 'black', marginRight: 20 }}>{cat?.name}</div>
+                            return <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: '#707070', marginRight: 20 }}>{cat?.name}</div>
                           }}
                         </Query>
 

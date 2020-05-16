@@ -2423,8 +2423,10 @@ blockquote:before {
   background: #202877;
 }
 .list-creative .email::before {
-  background: #007bff;
+  background: #707070;
 }
+
+
 .list-terms-medium a,
 .list-terms-medium p,
 .list-terms-medium a:active,
@@ -2589,7 +2591,7 @@ blockquote:before {
 }
 
 .progress-line {
-  background-color: #007bff;
+  background-color: #707070;
   -webkit-animation: progressBar 3s ease-in-out;
   -webkit-animation-fill-mode: both;
   -moz-animation: progressBar 3s ease-in-out;

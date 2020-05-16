@@ -45,13 +45,13 @@ const CardsRow = () => {
       <section className="hero-section pt-100">
         <div className="container" style={{position:'relative'}}>
           <div className="row" style={{alignItems:'center', justifyContent:'center'}}>
-            <div style={{border: '1px solid #4a90e2',    borderRadius: 40,    height: 50,    width: 250, display:'flex', alignItems:'center', textAlign:'center'}}>   
+            <div style={{border: '1px solid #e7bd5b',    borderRadius: 40,    height: 50,    width: 250, display:'flex', alignItems:'center', textAlign:'center'}}>   
               <div href="#" style={{width:124, color:'#ffffff', height:'100%', alignItems:'center', display:'flex', justifyContent:'center'}}>
-                <a href="/articles">
+                <a href="/articles" style={{color:"#707070"}}>
                   Articles
                 </a>
               </div>
-              <div href="#"  style={{width:124, height:'100%', alignItems:'center', display:'flex', justifyContent:'center', background:'#4a90e2',borderTopRightRadius:20, borderBottomRightRadius:20, }}>
+              <div href="#"  style={{width:124, height:'100%', alignItems:'center', display:'flex', justifyContent:'center', background:'#e7bd5b',borderTopRightRadius:20, borderBottomRightRadius:20, }}>
                 <a href="/cards" style={{color:'#FFFFFF'}}>
                   Cards
                 </a>
@@ -94,7 +94,7 @@ const CardsRow = () => {
                   <Query query={CARDS_QUERY} id={selectedCategory}>
                     {({ data }) => {
                       // console.log(data);
-                      return <div class="pn-ProductNav_Link" style={{fontSize:20, color: 'black', marginRight:20}} onClick={()=>{console.log(data)}}>All Categories</div>
+                      return <div class="pn-ProductNav_Link" style={{fontSize:20, color: '#707070', marginRight:20}} onClick={()=>{console.log(data)}}>All Categories</div>
                     }}
                   </Query>
                  {intialCategories.length > 0 &&
@@ -102,7 +102,7 @@ const CardsRow = () => {
                     return (
                       <Query query={selectedCategory === null ? CATEGORY_CARDS_QUERY : CATEGORY_CARDS_BY_ID_QUERY} id={selectedCategory} key={index}>
                         {({ data }) => {
-                          return <div class="pn-ProductNav_Link" aria-selected="true" style={{fontSize:20, color: 'black', marginRight:20}} onClick={()=>{handleCategory(cat.id); console.log(data, selectedCategory)}}>{cat?.name}</div>
+                          return <div class="pn-ProductNav_Link" aria-selected="true" style={{fontSize:20, color: '#707070', marginRight:20}} onClick={()=>{handleCategory(cat.id); console.log(data, selectedCategory)}}>{cat?.name}</div>
                         }}
                       </Query>
 
