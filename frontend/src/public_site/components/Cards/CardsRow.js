@@ -40,6 +40,13 @@ const CardsRow = () => {
   const handleClick = value => () => 
   alert(value)
 
+  const selectCategory = (id) => {
+    fetch('http://localhost:1337/cards?category=' + id).then(res => res.json().then(response => { getCards(response) }))
+  }
+
+  const selectAll = () => {
+    fetch('http://localhost:1337/cards').then(res => res.json().then(response => { getCards(response) }));
+  }
   return (
     <div>
       <section className="hero-section pt-100">
@@ -90,24 +97,38 @@ const CardsRow = () => {
           <div className="row">
             <div class="pn-ProductNav_Wrapper">
               <nav id="pnProductNav" class="pn-ProductNav">
-                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{display:'flex', paddingTop:20}}>
-                  <Query query={CARDS_QUERY} id={selectedCategory}>
-                    {({ data }) => {
-                      // console.log(data);
-                      return <div class="pn-ProductNav_Link" style={{fontSize:20, color: '#707070', marginRight:20}} onClick={()=>{console.log(data)}}>All Categories</div>
-                    }}
-                  </Query>
-                 {intialCategories.length > 0 &&
-                  intialCategories.map((cat, index) => {
-                    return (
-                      <Query query={selectedCategory === null ? CATEGORY_CARDS_QUERY : CATEGORY_CARDS_BY_ID_QUERY} id={selectedCategory} key={index}>
-                        {({ data }) => {
-                          return <div class="pn-ProductNav_Link" aria-selected="true" style={{fontSize:20, color: '#707070', marginRight:20}} onClick={()=>{handleCategory(cat.id); console.log(data, selectedCategory)}}>{cat?.name}</div>
-                        }}
-                      </Query>
+              <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop: 20 }}>
+              {/* <Query query={ARTICLES_QUERY} id={selectedCategory}>
+                {({ data }) => {
+                  // console.log(data);
+                  return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: '#707070', marginRight: 20 }} onClick={() => { }}>All Categories</div>
+                }}
+              </Query>
+              {intialCategories.length > 0 &&
+                intialCategories.map((cat, index) => {
+                  return (
+                    <Query query={selectedCategory === null ? CATEGORY_ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
+                      {({ data }) => {
+                        console.log(data);
+                        return <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: '#707070', marginRight: 20 }}>{cat?.name}</div>
+                      }}
+                    </Query>
+                  console.log('here', data); */}
+              <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#4a90e2" : 'black', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
+              {/* }}
+              </Query> */}
+              {intialCategories.length > 0 &&
+                intialCategories.map((cat, index) => {
+                  return (
+                    // <Query query={selectedCategory === null ? ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
+                    //   {({ data }) => {
+                    //     console.log('here', data);
+                    <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#4a90e2" : 'black', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
+                    // }}
+                    // </Query>
 
-                    );
-                  })}
+                  );
+                })}
                   <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
                 </div>
               </nav>
