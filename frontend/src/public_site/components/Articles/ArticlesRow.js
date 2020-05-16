@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { ARTICLES_SORT_ALPHA_ASC, ARTICLES_SORT_ALPHA_DESC, ARTICLES_SORT_CREATED_ASC, ARTICLES_SORT_CREATED_DESC, ARTICLES_QUERY, CATEGORY_ARTICLES_BY_ID_QUERY, CATEGORY_ARTICLES_QUERY } from "./queries";
 import Query from "../Query";
 import { useQuery } from "@apollo/react-hooks";
-import { CATEGORIES_QUERY,  } from "../Category/queries";
+import { CATEGORIES_QUERY, } from "../Category/queries";
 
 const avatar = "img/avatar-circle.svg";
 const twitter = "img/twitter-circle.svg";
@@ -32,8 +32,18 @@ const ArticlesRow = () => {
   const [articles, getArticles] = useState([]);
 
   useEffect(() => {
+    console.log('here')
     getArticles(initialArticles);
   }, [initialArticles]);
+
+  const selectCategory = (id) => {
+    fetch('http://localhost:1337/articles?category=' + id).then(res => res.json().then(response => { getArticles(response) }))
+  }
+
+  const selectAll = () => {
+    fetch('http://localhost:1337/articles').then(res => res.json().then(response => { getArticles(response) }));
+  }
+
   return (
     <div>
       <section className="hero-section pt-100">
@@ -105,22 +115,22 @@ const ArticlesRow = () => {
                 </div>
               </nav> */}
               <nav id="pnProductNav" class="pn-ProductNav">
-                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop:20 }}>
-                  <Query query={CATEGORIES_QUERY} id={selectedCategory}>
+                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop: 20 }}>
+                  {/* <Query query={ARTICLES_QUERY} id={selectedCategory}>
                     {({ data }) => {
-                      // console.log(data);
-                      return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: 'black', marginRight: 20 }} onClick={() => { }}>All Categories</div>
-                    }}
-                  </Query>
+                      console.log('here', data); */}
+                  <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#4a90e2" : 'black', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
+                  {/* }}
+                  </Query> */}
                   {intialCategories.length > 0 &&
                     intialCategories.map((cat, index) => {
                       return (
-                        <Query query={selectedCategory === null ? CATEGORY_ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
-                          {({ data }) => {
-                            console.log(data);
-                            return <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: 'black', marginRight: 20 }}>{cat?.name}</div>
-                          }}
-                        </Query>
+                        // <Query query={selectedCategory === null ? ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
+                        //   {({ data }) => {
+                        //     console.log('here', data);
+                        <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#4a90e2" : 'black', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
+                        // }}
+                        // </Query>
 
                       );
                     })}
