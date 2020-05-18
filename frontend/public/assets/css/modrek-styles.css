@@ -168,6 +168,13 @@ body {
 .social-icon {
   width: 30px !important;
   margin: 0 2px;
+  opacity: 0.61;
+}
+.social-icon:hover {
+  opacity: 1;
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .likes-number {
@@ -257,6 +264,11 @@ body {
   font-family: "Roboto";
   font-weight: 200;
   font-size: 3rem;
+}
+.page-title {
+  font-size: 45px;
+  /* color: #7c426c; */ 
+  font-family: "roboto";
 }
 .yellow {
   color: #eac052;
@@ -349,4 +361,66 @@ body {
 
 .no-radius {
   border-radius: 0;
+}
+
+.avatar-article{
+  width: 100px
+}
+
+.article-title {
+  font-family: "roboto";
+  color: #853d6f;
+  font-size: 18pt;
+}
+
+.article-info {
+  list-style: none;
+  font-size: 0.8125rem;
+  padding: 0;
+  margin: 0;
+}
+.article-info a,
+.article-info li {
+  color: #A0A0A0;
+  opacity: 0.8;
+}
+.article-info a:hover {
+  color: #56B7AD;
+  opacity: 1;
+}
+.article-info > li {
+  position: relative;
+  display: inline-block;
+  padding: 0 14px 0 0;
+  margin: 0 14px 0 0;
+}
+
+.article-info > li:not(:last-child):after {
+  position: absolute;
+  content: "/";
+  right: -5px;
+  top: 0;
+}
+
+.testlist-name {
+  font-size: 16pt;
+  color: #71b5ac;
+  font-family: "roboto";
+}
+.gradient-purple-btn {
+  background: linear-gradient(to right, #713e6d, #593a6c);
+  color: white;
+}
+.gradient-purple-btn:hover {
+  background: white;
+  color: #713e6d;
+  border: 1px solid #713e6d;
+}
+
+.max-width-880 {
+  max-width: 880px;
+}
+
+.breadcrumb {
+  background-color: white;
 }

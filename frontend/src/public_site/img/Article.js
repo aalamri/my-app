@@ -7,19 +7,20 @@ import Query from "../../components/Query";
 import { ARTICLE_QUERY } from "./queries";
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
-import avatarTale from "../../img/avatar-circle-tale.svg";
-import avatar from "../../img/avatar-circle.svg";
-import twitter from "../../img/twitter-circle.svg";
-import whatsapp from "../../img/whatsapp-circle.svg";
-import facebook from "../../img/facebook-circle.svg";
-import linkedin from "../../img/linkedin-circle.svg";
-import thumbsup from "../../img/thumbsup.svg";
+import avatarTale from "./img/avatar-circle-tale.svg";
 
-import twitterTale from "../../img/twitter-circle-tale.svg";
-import linkedinTale from "../../img/linkedin-circle-tale.svg";
-import whatsappTale from "../../img/whatsapp-circle-tale.svg";
-import facebookTale from "../../img/facebook-circle-tale.svg";
-import thumbsupTale from "../../img/thumbsup-tale.svg";
+import avatar from "./img/avatar-circle.svg";
+const twitter = "img/twitter-circle.svg";
+const whatsapp = "img/whatsapp-circle.svg";
+const facebook = "img/facebook-circle.svg";
+const linkedin = "img/linkedin-circle.svg";
+const thumbsup = "img/thumbsup.svg";
+
+const twitterTale = "img/twitter-circle-tale.svg";
+const linkedinTale = "img/linkedin-circle-tale.svg";
+const whatsappTale = "img/whatsapp-circle-tale.svg";
+const facebookTale = "img/facebook-circle-tale.svg";
+const thumbsupTale = "img/thumbsup-tale.svg";
 const tale = true;
 
 const AR = "Arabic";
@@ -53,7 +54,6 @@ const Article = () => {
           createdAt,
           updatedAt,
           is_deleted,
-          image: { url },
           meta: { likes, visits },
           category: { name: category = "" },
           // author: {
@@ -90,28 +90,27 @@ const Article = () => {
                         <img class="social-icon d-none d-md-block " src={tale ? linkedinTale : twitter} alt="twitter" />
                         <img class="social-icon d-none d-md-block " src={tale ? facebookTale : facebook} alt="facebook" />
                         <img class="social-icon ml-4" src={tale ? thumbsupTale : thumbsup} alt="thumbsup" />
-                        <span class="pl-1 likes-number">{likes}</span>
+                        <span class="pl-1 likes-number">121</span>
                       </div>
                     </aside>
                   </div>
                 </div>
                 <div className="col-md-6">
-                                <article class="post">
-                                    <div class="post-preview"><a href="#"><img src={url} alt="blog" /></a></div>
-                                    <div class="post-wrapper">
-                                        <div class="post-header">
-                                            <p class="article-title pb-0">{title}</p>
-                                            <ul class="article-info">
-                                                <li>Published at {createdAt.split(".")[0]}</li>
-                                                <li><a href="#">Available only in english</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="post-content">
-                                        <ReactMarkdown source={content} escapeHtml={false} />
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
+                  <h2>{title}</h2>
+                  <small>Published at {createdAt.split(".")[0]} by Mohammed Ahmed</small><br />
+                  {createdAt?.split(".")[0] !== updatedAt?.split(".")[0] &&
+                    <small>updated at {updatedAt.split(".")[0]}</small>
+                  }
+                  <ReactMarkdown source={content} escapeHtml={false} />
+                  <div>
+                    <span>Category: {category}</span><br />
+                    <span>likes: {likes}</span><br />
+                    <span>views: {visits}</span><br />
+                    {article_id_of_other_language &&
+                      <span>Article in {language === AR ? EN : AR}: <Link to={`/article/${article_id_of_other_language}`}>Click here</Link></span>
+                    }
+                  </div>
+                </div>
               </div>
             </div>
           </div>
