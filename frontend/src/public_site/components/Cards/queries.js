@@ -9,10 +9,6 @@ export const CARD_QUERY = gql`
       image {
         url
       }
-      tags {
-        id
-        name
-      }
       published_at
       meta
     }
