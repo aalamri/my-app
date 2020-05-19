@@ -525,7 +525,9 @@
           "Type": {
             "type": "string",
             "enum": [
-              "Suggestions"
+              "Suggestions",
+              "Issue",
+              "Feedback"
             ]
           },
           "email": {
@@ -541,7 +543,9 @@
           "Type": {
             "type": "string",
             "enum": [
-              "Suggestions"
+              "Suggestions",
+              "Issue",
+              "Feedback"
             ]
           },
           "email": {

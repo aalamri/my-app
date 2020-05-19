@@ -12,7 +12,9 @@
     "Type": {
       "type": "enumeration",
       "enum": [
-        "Suggestions"
+        "Suggestions",
+        "Issue",
+        "Feedback"
       ]
     },
     "email": {

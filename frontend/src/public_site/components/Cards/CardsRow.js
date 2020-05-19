@@ -114,7 +114,7 @@ const CardsRow = () => {
                       }}
                     </Query>
                   console.log('here', data); */}
-              <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#4a90e2" : 'black', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
+              <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
               {/* }}
               </Query> */}
               {intialCategories.length > 0 &&
@@ -123,7 +123,7 @@ const CardsRow = () => {
                     // <Query query={selectedCategory === null ? ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
                     //   {({ data }) => {
                     //     console.log('here', data);
-                    <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#4a90e2" : 'black', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
+                    <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
                     // }}
                     // </Query>
 
