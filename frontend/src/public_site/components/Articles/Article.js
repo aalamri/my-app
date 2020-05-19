@@ -96,22 +96,22 @@ const Article = () => {
                   </div>
                 </div>
                 <div className="col-md-6">
-                                <article class="post">
-                                    <div class="post-preview"><a href="#"><img src={url} alt="blog" /></a></div>
-                                    <div class="post-wrapper">
-                                        <div class="post-header">
-                                            <p class="article-title pb-0">{title}</p>
-                                            <ul class="article-info">
-                                                <li>Published at {createdAt.split(".")[0]}</li>
-                                                <li><a href="#">Available only in english</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="post-content">
-                                        <ReactMarkdown source={content} escapeHtml={false} />
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
+                  <article class="post">
+                    <div class="post-preview"><a href="#"><img src={url} alt="blog" /></a></div>
+                    <div class="post-wrapper">
+                      <div class="post-header">
+                        <p class="article-title pb-0">{title}</p>
+                        <ul class="article-info">
+                          <li>Published at {createdAt.split(".")[0]}</li>
+                          <li><a href="#">Available only in english</a></li>
+                        </ul>
+                      </div>
+                      <div class="post-content">
+                        <ReactMarkdown source={content} escapeHtml={false} />
+                      </div>
+                    </div>
+                  </article>
+                </div>
               </div>
             </div>
           </div>

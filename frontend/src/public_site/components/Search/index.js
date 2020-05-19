@@ -1,123 +1,96 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Loader from "../Search/Loader";
 import Strapi from "strapi-sdk-javascript/build/main";
 const apiUrl = process.env.API_URL || "http://localhost:1337";
 const strapi = new Strapi(apiUrl);
 
 class Search extends Component {
+
+
   state = {
     cards: [],
     articles: [],
     searchTerm: "",
     loadingBrands: true,
+    category: 'all'
   };
-  handleChange = ({ value }) => {
+
+  componentDidMount() {
+    let { searchTerm, category } = this.props.location.state ? this.props.location.state : { searchTerm: "", category: "all" };
+    this.setState({searchTerm, category}, ()=>this.searchBrands());
+    
+  }
+
+  handleChange = (value) => {
     this.setState({ searchTerm: value }, () => this.searchBrands());
   };
-
-  // filteredBrands = ({ searchTerm, brands }) => {
-  //   return brands.filter(brand => {
-  //     return (
-  //       brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //       brand.description.toLowerCase().includes(searchTerm.toLowerCase())
-  //     );
-  //   });
-  // };
-
   searchBrands = async () => {
-    const response = await strapi.request("POST", "/graphql", {
-      data: {
-        query: `query {
-            cards( where: { title_contains: "Password" }) {
-              id
-              title
-              content
-            }
-            articles (where: { title_contains: "password" }) {
-              id
-              title
-              content
-            }
-          }`,
-      }
-    });
-    // console.log(this.state.searchTerm, response.data.brands);
-    this.setState({
-      cards: response.data.cards,
-      articles: response.data.articles,
-      loadingBrands: false,
-    });
+    console.log(this.state.searchTerm);
+    fetch('http://localhost:1337/articles?title_contains=' + this.state.searchTerm).then(res => res.json().then(response => { this.setState({ articles: response }) }));
+    fetch('http://localhost:1337/cards?title_contains=' + this.state.searchTerm).then(res => res.json().then(response => { this.setState({ cards: response }) }));
   };
+
+  selectCategory(category) {
+    this.setState({ category });
+  }
+
+  onSearch() {
+
+  }
 
   render() {
     const { searchTerm, loadingBrands, cards, articles } = this.state;
 
     return (
       <div className="container">
-        {/* Brands Search Field */}
-        <div>
-          <input
-            id="searchField"
-            className="form-control"
-            onChange={this.handleChange}
-            value={searchTerm}
-            placeholder="Search..."
-          />
+        <div class="form-inline d-flex justify-content-center md-form form-sm active-pink-2 mt-2">
+          <input class="form-control form-control-sm mr-3 w-75 search-input" type="text" aria-label="Search" onChange={(e) => { this.handleChange(e.target.value) }} value={this.state.searchTerm} id="searchField" placeholder="Search..." />
+          <i class="fa fa-search search-icon-modal" aria-hidden="true" onClick={() => { this.searchBrands() }}></i>
+        </div>
+        <div class="row justify-content-center">
+          <div class="post-footer text-right pt-5">
+            <button className={"search-btn search-all mx-2 " + (this.state.category === "all" ? "selected" : "")} onClick={() => { this.selectCategory('all') }}>All</button>
+            <button className={"search-btn search-article mx-2 " + (this.state.category === "articles" ? "selected" : "")} onClick={() => { this.selectCategory('articles') }}>Article</button>
+            <button className={"search-btn search-cards mx-2 " + (this.state.category === "cards" ? "selected" : "")} onClick={() => { this.selectCategory('cards') }}>Cards</button>
+            <button className={"search-btn search-tests mx-2 " + (this.state.category === "tests" ? "selected" : "")} onClick={() => { this.selectCategory('tests') }}>Tests</button>
+          </div>
         </div>
         {/* Brands Section */}
-        <div className="row">
-          {/* Brands Header */}
-          <h2>
-            Card
-          </h2>
-        </div>
+
         {/* Brands */}
-        {cards.map((card) => (
-          <div key={card._id}>
-            <div>
-              <div
-                class="uk-grid-small uk-child-width-expand@s uk-text-center"
-                uk-grid
-              >
-                <div>
-                  <div class="uk-card uk-card-default uk-card-body">
-            {card.title}
-            <p>{card.content}</p>
-                  </div>
+        <div class="row">
+          {(this.state.category === 'all' || this.state.category === 'cards') && cards.map((card) => (
+            <div class="col-lg-4 pt-4" key={card._id}>
+              <div class="card search-tag-cards">
+                <div class="card-header py-4" id="heading-1-1" data-toggle="collapse" role="button"
+                  data-target="#collapse-1-1" aria-expanded="false" aria-controls="collapse-1-1">
+                  <h6 class="mb-0">{card.title}</h6>
+                  <ul class="article-info">
+                    <li>{card.createdAt}</li>
+                    <li>by Shane</li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-        {/* <Spinner show={loadingBrands} accessibilityLabel="Loading Spinner" /> */}
-        {/* Brands Section */}
-        <div className="row">
-          {/* Brands Header */}
-          <h2>
-            Article
-          </h2>
-        </div>
-        {/* Brands */}
-        {articles.map((article) => (
-          <div key={article._id}>
-            <div>
-              <div
-                class="uk-grid-small uk-child-width-expand@s uk-text-center"
-                uk-grid
-              >
-                <div>
-                  <div class="uk-card uk-card-default uk-card-body">
-                    {article.title}
-                <p>{article.content}</p>
-                  </div>
+          ))}
+          {(this.state.category === 'all' || this.state.category === 'articles') && articles.map((article) => (
+            <div class="col-lg-4 pt-4" key={article._id}>
+              <div class="card search-tag-articles">
+                <div class="card-header py-4" id="heading-1-1" data-toggle="collapse" role="button"
+                  data-target="#collapse-1-1" aria-expanded="false" aria-controls="collapse-1-1">
+                  <h6 class="mb-0">{article.title}</h6>
+                  <ul class="article-info">
+                    <li>{article.createdAt}</li>
+                    <li>by Shane</li>
+                  </ul>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
-        {/* <Spinner show={loadingBrands} accessibilityLabel="Loading Spinner" /> */}
+            </div>))}
+        </div>
       </div>
+
+
     );
   }
 }

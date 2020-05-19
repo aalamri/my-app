@@ -1,14 +1,17 @@
-import React from "react";
-import Query from "../Query";
-import { Link, withRouter } from "react-router-dom";
-
-import { CATEGORIES_QUERY } from "../Category/queries";
-import { getToken, clearToken, clearUser } from "../../../utils/index";
-
-
+import React, { useState } from "react";
+import SearchModal from "../Search/SearchModal";
 
 const Navbar = () => {
 
+  const [modalShow, setModalShow] = useState(false);
+
+  const showSearch = () => {
+    setModalShow(true);
+  }
+
+  const closeSearch = () => {
+    setModalShow(false);
+  }
 
   return (
     <header className="header">
@@ -54,7 +57,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/cards">
                   Knowledge
-                    </a>
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/feedback">
@@ -73,9 +76,11 @@ const Navbar = () => {
               <li class="nav-item">
                 <a class="nav-link" href="#contact">العربية</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" onClick={showSearch}>
                 <i class="fa fa-search nav-link search-icon-color"></i>
               </li>
+              <SearchModal show={modalShow} handleClose={closeSearch} />
+
             </ul>
           </div>
         </div>
