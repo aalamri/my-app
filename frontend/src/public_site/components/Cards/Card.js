@@ -16,41 +16,41 @@ const Card = ({match}) => {
     history.goBack();
   };
   return (
-    // <Query query={CARD_QUERY} id={id}>
-    //   {({ data: { card } }) => {
-    //     return (
-    //       <div>
-    //         <div
-    //           id=""
-    //           className=""
-    //           data-src={
-    //             card.image
-    //               ? process.env.REACT_APP_BACKEND_URL + card.image.url
-    //               : ""
-    //           }
-    //           data-srcset={
-    //             card.image
-    //               ? process.env.REACT_APP_BACKEND_URL + card.image.url
-    //               : ""
-    //           }
-    //           data-uk-img
-    //         >
-    //           <h1>{card.title}</h1>
-    //         </div>
+    <Query query={CARD_QUERY} id={id}>
+      {({ data: { card } }) => {
+        return (
+          <div>
+            <div
+              id=""
+              className=""
+              data-src={
+                card.image
+                  ? process.env.REACT_APP_BACKEND_URL + card.image.url
+                  : ""
+              }
+              data-srcset={
+                card.image
+                  ? process.env.REACT_APP_BACKEND_URL + card.image.url
+                  : ""
+              }
+              data-uk-img
+            >
+              <h1>{card.title}</h1>
+            </div>
 
-    //         <div className="">
-    //           <div className="">
-    //             <ReactMarkdown source={card.content} escapeHtml={false} />
-    //             <p>
-    //               <Moment format="MMM Do YYYY">{card.createdAt}</Moment>
-    //             </p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     );
-    //   }}
-    // </Query>
-    <div>HERE</div>
+            <div className="">
+              <div className="">
+                <ReactMarkdown source={card.content} escapeHtml={false} />
+                <p>
+                  <Moment format="MMM Do YYYY">{card.createdAt}</Moment>
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      }}
+    </Query>
+    // <div>HERE</div>
   );
 };
 
