@@ -6,6 +6,9 @@ import 'react-router-modal/css/react-router-modal.css'
 // publisc site
 import Nav from "../public_site/components/Nav";
 import Home from "../public_site/components/Home";
+import CardsRow from "../public_site/components/Cards/CardsRow";
+import ArticlesRow from "../public_site/components/Articles/ArticlesRow";
+import Article from "../public_site/components/Articles/Article";
 import Tests from "../public_site/components/Tests/TestsList";
 import Test from "../public_site/components/Tests/Test";
 import Category from "../public_site/components/Category";
@@ -29,8 +32,7 @@ import CreateTest from "../dashboard/components/Tests/CreateTest";
 import ReviewCard from "../dashboard/components/Cards/ReviewCard";
 import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
 import ReviewTest from "../dashboard/components/Tests/ReviewTest";
-import CardsRow from "../public_site/components/Cards/CardsRow";
-import ArticlesRow from "../public_site/components/Articles/ArticlesRow";
+
 
 
 class AppRouter extends React.Component {
@@ -44,7 +46,8 @@ class AppRouter extends React.Component {
         <Nav />
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/articles" component={ArticlesRow} />
+          <Route path="/articles" component={ArticlesRow} exact/>
+          <Route path="/article/:id" component={Article} exact/>
           <Route path="/cards" component={CardsRow} />
 
           <Route path="/tests" component={Tests} exact />

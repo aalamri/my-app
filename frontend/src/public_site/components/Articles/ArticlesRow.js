@@ -117,7 +117,7 @@ const ArticlesRow = ({ match }) => {
               return (
                 <div class="col-lg-6 pt-5">
                   <Link
-                    key={article.id} to={`${match.url}/${article.id}`}>
+                    key={article.id} to={`article/${article.id}`}>
                     <div class="single-article rounded card border-0 shadow-sm">
                       <img
                         src={imageUrl}
@@ -158,7 +158,7 @@ const ArticlesRow = ({ match }) => {
           </div>
         </div>
       </section>
-      <ModalRoute path={`${match.url}/:id`} component={Article} parentPath="/articles" />
+      {/* <ModalRoute path={`${match.url}/:id`} component={Article} parentPath="/articles" /> */}
     </div>
   );
 };

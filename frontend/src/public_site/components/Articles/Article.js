@@ -28,7 +28,8 @@ const EN = "English";
 console.log(avatarTale, "avatar");
 
 const Article = ({ match }) => {
-  let id = match.params.id
+  let id = match.params.id;
+  console.log(id)
   return (
     <Query query={ARTICLE_QUERY} id={id}>
       {({ data: { article } }) => {
