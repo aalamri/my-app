@@ -27,8 +27,8 @@ const EN = "English";
 
 console.log(avatarTale, "avatar");
 
-const Article = () => {
-  let { id } = useParams();
+const Article = ({ match }) => {
+  let id = match.params.id
   return (
     <Query query={ARTICLE_QUERY} id={id}>
       {({ data: { article } }) => {

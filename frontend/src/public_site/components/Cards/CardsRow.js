@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ModalRoute, } from 'react-router-modal';
+
 import Query from "../Query";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { CATEGORY_CARDS_QUERY, CATEGORY_CARDS_BY_ID_QUERY, CARDS_QUERY, CARDS_SORT_ALPHA_ASC, CARDS_SORT_CREATED_ASC, CARDS_SORT_ALPHA_DESC, CARDS_SORT_CREATED_DESC } from "./queries";
+import { CARDS_SORT_ALPHA_ASC, CARDS_SORT_CREATED_ASC, CARDS_SORT_ALPHA_DESC, CARDS_SORT_CREATED_DESC } from "./queries";
 
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
 import Card from "./Card"
-import { ModalRoute, ModalContainer } from 'react-router-modal';
 const avatar = "img/avatar-circle.svg";
 const twitter = "img/twitter-circle.svg";
 const whatsapp = "img/whatsapp-circle.svg";
@@ -22,28 +23,17 @@ const facebookTale = "img/facebook-circle-tale.svg";
 const thumbsupTale = "img/thumbsup-tale.svg";
 const tale = true;
 
-const UserProfile = ({ match }) => (
-  <div>
-    <p>
-      userId: {match.params.userId}
-    </p>
-  </div>
-);
-
 const CardsRow = ({ match }) => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
   const intialCategories = data ? data.categories : [];
-  const cards_data = useQuery(CARDS_QUERY).data;
-  const initialCards = cards_data ? cards_data.cards : [];
   const [selectedCategory, setSelectCategory] = useState(null);
-  const [likes, setLikes] = useState(0);
   const [cards, getCards] = useState([]);
 
   useEffect(() => {
     initialize();
   }, []);
 
-  const initialize = () =>{
+  const initialize = () => {
     fetch('http://localhost:1337/cards').then(res => res.json().then(response => { getCards(response) }))
   }
 
@@ -54,6 +44,7 @@ const CardsRow = ({ match }) => {
   const selectAll = () => {
     fetch('http://localhost:1337/cards').then(res => res.json().then(response => { getCards(response) }));
   }
+
   return (
     <div>
       <section className="hero-section pt-100">

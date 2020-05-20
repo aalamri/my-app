@@ -6,10 +6,6 @@ import 'react-router-modal/css/react-router-modal.css'
 // publisc site
 import Nav from "../public_site/components/Nav";
 import Home from "../public_site/components/Home";
-import Articles from "../public_site/components/Articles/ArticlesList";
-import Article from "../public_site/components/Articles/Article";
-import Cards from "../public_site/components/Cards/CardsList";
-import Card from "../public_site/components/Cards/Card";
 import Tests from "../public_site/components/Tests/TestsList";
 import Test from "../public_site/components/Tests/Test";
 import Category from "../public_site/components/Category";
@@ -48,8 +44,7 @@ class AppRouter extends React.Component {
         <Nav />
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/articles" component={ArticlesRow} exact />
-          <Route path="/article/:id" component={Article} exact />
+          <Route path="/articles" component={ArticlesRow} />
           <Route path="/cards" component={CardsRow} />
 
           <Route path="/tests" component={Tests} exact />
