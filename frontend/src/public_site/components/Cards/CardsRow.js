@@ -22,7 +22,15 @@ const facebookTale = "img/facebook-circle-tale.svg";
 const thumbsupTale = "img/thumbsup-tale.svg";
 const tale = true;
 
-const CardsRow = ({match}) => {
+const UserProfile = ({ match }) => (
+  <div>
+    <p>
+      userId: {match.params.userId}
+    </p>
+  </div>
+);
+
+const CardsRow = ({ match }) => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
   const intialCategories = data ? data.categories : [];
   const cards_data = useQuery(CARDS_QUERY).data;
@@ -32,17 +40,12 @@ const CardsRow = ({match}) => {
   const [cards, getCards] = useState([]);
 
   useEffect(() => {
-    getCards(initialCards);
-  }, [initialCards]);
+    initialize();
+  }, []);
 
-  const location = useLocation();
-
-  function handleCategory(id) {
-    setSelectCategory(id);
+  const initialize = () =>{
+    fetch('http://localhost:1337/cards').then(res => res.json().then(response => { getCards(response) }))
   }
-
-  const handleClick = value => () =>
-    alert(value)
 
   const selectCategory = (id) => {
     fetch('http://localhost:1337/cards?category=' + id).then(res => res.json().then(response => { getCards(response) }))
@@ -73,7 +76,6 @@ const CardsRow = ({match}) => {
               <div class="dropdown-menu dropdown-primary dropdown-menu-right" id="dropDiv">
                 <a class="dropdown-item" >Most Likes</a>
                 <a class="dropdown-item" >Least Likes</a>
-
                 <Query query={CARDS_SORT_ALPHA_ASC}>
                   {({ data, loading, error }) => {
                     return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Alphabetic(A-Z)</div>
@@ -94,7 +96,6 @@ const CardsRow = ({match}) => {
                     return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Oldest Published</div>
                   }}
                 </Query>
-
               </div>
             </div>
           </div>
@@ -102,35 +103,11 @@ const CardsRow = ({match}) => {
             <div class="pn-ProductNav_Wrapper">
               <nav id="pnProductNav" class="pn-ProductNav">
                 <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop: 20 }}>
-                  {/* <Query query={ARTICLES_QUERY} id={selectedCategory}>
-                {({ data }) => {
-                  // console.log(data);
-                  return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: '#707070', marginRight: 20 }} onClick={() => { }}>All Categories</div>
-                }}
-              </Query>
-              {intialCategories.length > 0 &&
-                intialCategories.map((cat, index) => {
-                  return (
-                    <Query query={selectedCategory === null ? CATEGORY_ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
-                      {({ data }) => {
-                        console.log(data);
-                        return <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: '#707070', marginRight: 20 }}>{cat?.name}</div>
-                      }}
-                    </Query>
-                  console.log('here', data); */}
                   <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
-                  {/* }}
-              </Query> */}
                   {intialCategories.length > 0 &&
                     intialCategories.map((cat, index) => {
                       return (
-                        // <Query query={selectedCategory === null ? ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
-                        //   {({ data }) => {
-                        //     console.log('here', data);
                         <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
-                        // }}
-                        // </Query>
-
                       );
                     })}
                   <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
@@ -201,12 +178,6 @@ const CardsRow = ({match}) => {
                           >
                             <FacebookIcon size={32} round />
                           </FacebookShareButton>
-                          {/* <img
-                            class="social-icon d-none d-md-block "
-                            src={tale ? facebookTale : facebook}
-                            alt="facebook"
-                          /> */}
-
                           <img
                             class="social-icon ml-4"
                             src={tale ? thumbsupTale : thumbsup}
@@ -227,12 +198,10 @@ const CardsRow = ({match}) => {
           </div>
         </div>
       </section>
-      <ModalRoute path={`${match.url}/:id`} component={Card} parentPath="/cards" exact/>
+      <ModalRoute path={`${match.url}/:id`} component={Card} parentPath="/cards" />
     </div>
-    
   );
 };
 
-const getCatID = (cats, cat) => cats?.find(({ name }) => name === cat).id;
 
 export default CardsRow;

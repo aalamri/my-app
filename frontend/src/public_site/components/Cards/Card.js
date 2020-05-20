@@ -50,7 +50,6 @@ const Card = ({match}) => {
         );
       }}
     </Query>
-    // <div>HERE</div>
   );
 };
 
