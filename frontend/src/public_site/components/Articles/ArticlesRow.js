@@ -79,12 +79,12 @@ const ArticlesRow = ({ match }) => {
                     return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Alphabetic(Z-A)</div>
                   }}
                 </Query>
-                <Query query={ARTICLES_SORT_CREATED_ASC}>
+                <Query query={ARTICLES_SORT_CREATED_DESC}>
                   {({ data, loading, error }) => {
                     return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Newest Published</div>
                   }}
                 </Query>
-                <Query query={ARTICLES_SORT_CREATED_DESC}>
+                <Query query={ARTICLES_SORT_CREATED_ASC}>
                   {({ data, loading, error }) => {
                     return <div class="dropdown-item" onClick={() => { getArticles(data.articles); }}>Oldest Published</div>
                   }}

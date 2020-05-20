@@ -77,12 +77,12 @@ const CardsRow = ({ match }) => {
                     return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Alphabetic(Z-A)</div>
                   }}
                 </Query>
-                <Query query={CARDS_SORT_CREATED_ASC}>
+                <Query query={CARDS_SORT_CREATED_DESC}>
                   {({ data, loading, error }) => {
                     return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Newest Published</div>
                   }}
                 </Query>
-                <Query query={CARDS_SORT_CREATED_DESC}>
+                <Query query={CARDS_SORT_CREATED_ASC}>
                   {({ data, loading, error }) => {
                     return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Oldest Published</div>
                   }}
