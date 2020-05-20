@@ -1,5 +1,7 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
+import { ModalContainer, ModalRoute } from 'react-router-modal';
+import 'react-router-modal/css/react-router-modal.css'
 
 // publisc site
 import Nav from "../public_site/components/Nav";
@@ -34,13 +36,13 @@ import ReviewTest from "../dashboard/components/Tests/ReviewTest";
 import CardsRow from "../public_site/components/Cards/CardsRow";
 import ArticlesRow from "../public_site/components/Articles/ArticlesRow";
 
+
 class AppRouter extends React.Component {
   state = {
     user: null,
   };
   render() {
     // const { user } = this.state;
-
     return (
       <div className="App">
         <Nav />
@@ -48,9 +50,9 @@ class AppRouter extends React.Component {
           <Route path="/" component={Home} exact />
           <Route path="/articles" component={ArticlesRow} exact />
           <Route path="/article/:id" component={Article} exact />
-          <Route path="/cards" component={CardsRow} exact />
+          <Route path="/cards" component={CardsRow} />
+
           <Route path="/tests" component={Tests} exact />
-          <Route path="/card/:id" component={Card} exact />
           <Route path="/category/:id" component={Category} exact />
           <Route path="/dashboard" component={Dashboard} exact />
           <Route path="/signup" component={Signup} exact />
@@ -102,7 +104,9 @@ class AppRouter extends React.Component {
 
           {/* TODO: handle 404 */}
         </Switch>
+
         <Footer />
+        <ModalContainer />
       </div>
     );
   }

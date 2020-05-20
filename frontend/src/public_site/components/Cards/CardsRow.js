@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Query from "../Query";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CATEGORIES_QUERY } from "../Category/queries";
@@ -7,6 +7,8 @@ import { CATEGORY_CARDS_QUERY, CATEGORY_CARDS_BY_ID_QUERY, CARDS_QUERY, CARDS_SO
 
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
+import Card from "./Card"
+import { ModalRoute, ModalContainer } from 'react-router-modal';
 const avatar = "img/avatar-circle.svg";
 const twitter = "img/twitter-circle.svg";
 const whatsapp = "img/whatsapp-circle.svg";
@@ -20,7 +22,7 @@ const facebookTale = "img/facebook-circle-tale.svg";
 const thumbsupTale = "img/thumbsup-tale.svg";
 const tale = true;
 
-const CardsRow = () => {
+const CardsRow = ({match}) => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
   const intialCategories = data ? data.categories : [];
   const cards_data = useQuery(CARDS_QUERY).data;
@@ -30,15 +32,17 @@ const CardsRow = () => {
   const [cards, getCards] = useState([]);
 
   useEffect(() => {
-    getCards(initialCards);  
+    getCards(initialCards);
   }, [initialCards]);
 
+  const location = useLocation();
+
   function handleCategory(id) {
-    setSelectCategory(id);    
+    setSelectCategory(id);
   }
 
-  const handleClick = value => () => 
-  alert(value)
+  const handleClick = value => () =>
+    alert(value)
 
   const selectCategory = (id) => {
     fetch('http://localhost:1337/cards?category=' + id).then(res => res.json().then(response => { getCards(response) }))
@@ -50,55 +54,55 @@ const CardsRow = () => {
   return (
     <div>
       <section className="hero-section pt-100">
-        <div className="container" style={{position:'relative'}}>
-          <div className="row" style={{alignItems:'center', justifyContent:'center'}}>
-            <div style={{border: '1px solid #e7bd5b',    borderRadius: 40,    height: 50,    width: 250, display:'flex', alignItems:'center', textAlign:'center'}}>   
-              <div href="#" style={{width:124, color:'#ffffff', height:'100%', alignItems:'center', display:'flex', justifyContent:'center'}}>
-                <a href="/articles" style={{color:"#707070"}}>
+        <div className="container" style={{ position: 'relative' }}>
+          <div className="row" style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ border: '1px solid #e7bd5b', borderRadius: 40, height: 50, width: 250, display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+              <div href="#" style={{ width: 124, color: '#ffffff', height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
+                <a href="/articles" style={{ color: "#707070" }}>
                   Articles
                 </a>
               </div>
-              <div href="#"  style={{width:124, height:'100%', alignItems:'center', display:'flex', justifyContent:'center', background:'#e7bd5b',borderTopRightRadius:20, borderBottomRightRadius:20, }}>
-                <a href="/cards" style={{color:'#FFFFFF'}}>
+              <div href="#" style={{ width: 124, height: '100%', alignItems: 'center', display: 'flex', justifyContent: 'center', background: '#e7bd5b', borderTopRightRadius: 20, borderBottomRightRadius: 20, }}>
+                <a href="/cards" style={{ color: '#FFFFFF' }}>
                   Cards
                 </a>
               </div>
             </div>
-            <div style={{position:'absolute', right:0}}>
-              <img src="img/sort-icon.svg" class="dropdown btn sort-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{height:40}}/>
+            <div style={{ position: 'absolute', right: 0 }}>
+              <img src="img/sort-icon.svg" class="dropdown btn sort-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ height: 40 }} />
               <div class="dropdown-menu dropdown-primary dropdown-menu-right" id="dropDiv">
                 <a class="dropdown-item" >Most Likes</a>
                 <a class="dropdown-item" >Least Likes</a>
 
                 <Query query={CARDS_SORT_ALPHA_ASC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Alphabetic(A-Z)</div>                    
+                    return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Alphabetic(A-Z)</div>
                   }}
                 </Query>
                 <Query query={CARDS_SORT_ALPHA_DESC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Alphabetic(Z-A)</div>                    
+                    return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Alphabetic(Z-A)</div>
                   }}
                 </Query>
                 <Query query={CARDS_SORT_CREATED_ASC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Newest Published</div>                    
+                    return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Newest Published</div>
                   }}
                 </Query>
                 <Query query={CARDS_SORT_CREATED_DESC}>
                   {({ data, loading, error }) => {
-                      return <div class="dropdown-item" onClick={()=>{getCards(data.cards); }}>Oldest Published</div>                    
+                    return <div class="dropdown-item" onClick={() => { getCards(data.cards); }}>Oldest Published</div>
                   }}
                 </Query>
-                
+
               </div>
             </div>
           </div>
           <div className="row">
             <div class="pn-ProductNav_Wrapper">
               <nav id="pnProductNav" class="pn-ProductNav">
-              <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop: 20 }}>
-              {/* <Query query={ARTICLES_QUERY} id={selectedCategory}>
+                <div id="pnProductNavContents" class="pn-ProductNav_Contents" style={{ display: 'flex', paddingTop: 20 }}>
+                  {/* <Query query={ARTICLES_QUERY} id={selectedCategory}>
                 {({ data }) => {
                   // console.log(data);
                   return <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: '#707070', marginRight: 20 }} onClick={() => { }}>All Categories</div>
@@ -114,21 +118,21 @@ const CardsRow = () => {
                       }}
                     </Query>
                   console.log('here', data); */}
-              <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
-              {/* }}
+                  <div class="pn-ProductNav_Link" style={{ fontSize: 20, color: selectedCategory === null ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(null); selectAll(); }}>All Categories</div>
+                  {/* }}
               </Query> */}
-              {intialCategories.length > 0 &&
-                intialCategories.map((cat, index) => {
-                  return (
-                    // <Query query={selectedCategory === null ? ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
-                    //   {({ data }) => {
-                    //     console.log('here', data);
-                    <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
-                    // }}
-                    // </Query>
+                  {intialCategories.length > 0 &&
+                    intialCategories.map((cat, index) => {
+                      return (
+                        // <Query query={selectedCategory === null ? ARTICLES_QUERY : CATEGORY_ARTICLES_BY_ID_QUERY} id={selectedCategory} key={index}>
+                        //   {({ data }) => {
+                        //     console.log('here', data);
+                        <div class="pn-ProductNav_Link" aria-selected="true" style={{ fontSize: 20, color: selectedCategory === cat.id ? "#e7bd5b" : '#707070', marginRight: 20 }} onClick={() => { setSelectCategory(cat.id); /*getArticles(data.category.articles);*/ selectCategory(cat.id) }}>{cat?.name}</div>
+                        // }}
+                        // </Query>
 
-                  );
-                })}
+                      );
+                    })}
                   <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
                 </div>
               </nav>
@@ -141,17 +145,16 @@ const CardsRow = () => {
 
               return (
                 <div class="col-lg-6 pt-5">
-
                   <div class="single-article rounded card border-0 shadow-sm">
                     <div className="rounded-card white-bg shadow-md p-4 mb-4 min-width-400">
                       <div className="client-say d-flex flex-column tale">
-                      <Link key={card.id} to={`/card/${card.id}`}>
-                        <h3 className="tale text-center card-name">
-                          {card.title}
-                        </h3>
-                        <p className="tale text-center">
-                          {card.content}
-                        </p>
+                        <Link key={card.id} to={`${match.url}/${card.id}`}>
+                          <h3 className="tale text-center card-name">
+                            {card.title}
+                          </h3>
+                          <p className="tale text-center">
+                            {card.content}
+                          </p>
                         </Link>
                         <small className="align-self-end">
                           <u>Arabic Version</u>
@@ -203,15 +206,15 @@ const CardsRow = () => {
                             src={tale ? facebookTale : facebook}
                             alt="facebook"
                           /> */}
-                          
+
                           <img
                             class="social-icon ml-4"
                             src={tale ? thumbsupTale : thumbsup}
                             alt="thumbsup"
                           />
                           <Link>
-                          <span class="pl-1 likes-number" >{card.meta?.likes ?? 0}
-                          </span>
+                            <span class="pl-1 likes-number" >{card.meta?.likes ?? 0}
+                            </span>
                           </Link>
 
                         </div>
@@ -224,8 +227,9 @@ const CardsRow = () => {
           </div>
         </div>
       </section>
-
+      <ModalRoute path={`${match.url}/:id`} component={Card} parentPath="/cards" exact/>
     </div>
+    
   );
 };
 
