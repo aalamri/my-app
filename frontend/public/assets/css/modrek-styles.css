@@ -1063,3 +1063,20 @@ body.modal-open nav.navbar {
 .search-title-box {
   color: #5c3a6c;
 }
+
+.search-box-nav {
+   position: absolute;
+    right: 32px;
+    width: 300px;
+    background-image:linear-gradient(to right, #613b6c, #593a6c);
+    padding: 17px;
+}
+
+.search-box-nav-mobile {
+  position: absolute;
+  left: 45px;
+  width: 300px;
+  background-image:linear-gradient(to right, #6e3d6d, #593a6c);
+  padding: 17px;
+  top:-16px;
+}
