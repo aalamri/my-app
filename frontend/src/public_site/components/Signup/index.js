@@ -48,14 +48,14 @@ class Signup extends React.Component {
         url,
         data,
       });
-      await strapi.request('POST', '/email', {
-        data: {
-          to: email,
-          subject: `Request New User - Modrek ${new Date(Date.now())}`,
-          text: "Your reuqest has been processed",
-          html: "<bold>Expect your request to approve 1-2 days</bold>"
-        }
-      });
+      // await strapi.request('POST', '/email', {
+      //   data: {
+      //     to: email,
+      //     subject: `Request New User - Modrek ${new Date(Date.now())}`,
+      //     text: "Your reuqest has been processed",
+      //     html: "<bold>Expect your request to approve 1-2 days</bold>"
+      //   }
+      // });
       this.setState({ loading: false });
       setToken(response.data.jwt);
       // this.redirectUser("/");
