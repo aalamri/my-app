@@ -84,14 +84,19 @@ const Navbar = () => {
               </li>
               {searchShow && <div class="form-inline justify-content-center  d-none d-md-none d-lg-block" style={{ position: 'absolute', right: 32, width: 300, background: '#593a6c', padding: 17 }}>
                 <input class="form-control form-control-sm mr-3 w-75 search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
-                <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category:'all' } }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
+                <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
               </div>}
             </ul>
           </div>
-          <ul className="position-absolute search-nav d-sm-block d-md-block d-lg-none">
+          <ul className="position-absolute d-sm-block d-md-block d-lg-none">
             <li className="nav-item" onClick={toggleSearch}>
-              <i className="fa fa-search nav-link search-icon-color"></i>
+            {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
+                {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
             </li>
+            {searchShow && <div class="form-inline justify-content-center" style={{ position: 'absolute', left: 45, width: 300, background: '#593a6c', padding: 17, top:-16 }}>
+              <input class="form-control form-control-sm mr-3 w-75 search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
+              <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
+            </div>}
           </ul>
         </div>
       </nav>
