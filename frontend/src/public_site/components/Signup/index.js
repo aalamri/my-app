@@ -16,8 +16,9 @@ class Signup extends React.Component {
     password: "12345678",
     loading: false,
     successmessage: false,
+    seconds: 10
   };
-  
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -58,8 +59,12 @@ class Signup extends React.Component {
       // });
       this.setState({ loading: false });
       setToken(response.data.jwt);
+      this.timer = setInterval(() => {
+        if (this.state.seconds === 1) { this.props.history.push("/") }
+        this.setState({ seconds: --this.state.seconds })
+      }, 1000);
       // this.redirectUser("/");
-      this.setState({ successmessage: true});
+      this.setState({ successmessage: true });
     } catch (err) {
       this.setState({ loading: false });
     }
@@ -71,85 +76,90 @@ class Signup extends React.Component {
     return !username || lastName || message || !email || !password;
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   render() {
     const { loading } = this.state;
     return (
-      <section className="contact-us-section ptb-100">
-        <div className="container signup">
-          <div className="row">
-            <div className="col-md-9 col-lg-9">
-              <div className="section-heading mb-4">
-                <h2>Join us a Content Creator</h2>
+      <>
+        {!this.state.successmessage ? <section className="contact-us-section ptb-100">
+          <div className="container signup">
+            <div className="row">
+              <div className="col-md-9 col-lg-9">
+                <div className="section-heading mb-4">
+                  <h2>Join us a Content Creator</h2>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="row justify-content-between align-items-center">
-            <div className="col-md-6">
-              <form className="contact-us-form" onSubmit={this.handleSubmit}>
-                <div className="row">
-                  <div className="col-12">
-                    <div className="form-group">
-                    <label>YOUR E-MAIL</label>
-                      <input
-                        id="email"
-                        name="email"
-                        placeholder="Email"
-                        onChange={this.handleChange}
-                        type="email"
-                        cols="25"
-                        className="form-control"
-                        required="required"
-                      />
+            <div className="row justify-content-between align-items-center">
+              <div className="col-md-6">
+                <form className="contact-us-form" onSubmit={this.handleSubmit}>
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="form-group">
+                        <label>YOUR E-MAIL</label>
+                        <input
+                          id="email"
+                          name="email"
+                          placeholder="Email"
+                          onChange={this.handleChange}
+                          type="email"
+                          cols="25"
+                          className="form-control"
+                          required="required"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
-                <div className="col-sm-6 col-12">
-                  <div className="form-group">
-                  <label>FIRST NAME</label>
-                    <input
-                      id="username"
-                      name="username"
-                      placeholder="First Name"
-                      onChange={this.handleChange}
-                      type="text"
-                      className="form-control"
-                      required="required"
-                    />
-                  </div>
-                </div>
-                <div className="col-sm-6 col-12">
-                  <div className="form-group">
-                  <label>LAST NAME</label>
-                    <input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      placeholder="Last Name"
-                      onChange={this.handleChange}
-                      size="40"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-                <div className="row">
-                  <div className="col-12">
-                    <div className="form-group">
-                    <label>ABOUT YOU</label>
-                      <textarea
-                        onChange={this.handleChange}
-                        name="message"
-                        id="message"
-                        className="form-control"
-                        rows="7"
-                        cols="25"
-                        placeholder="Tell us more about yourself"
-                      ></textarea>
+                  <div className="row">
+                    <div className="col-sm-6 col-12">
+                      <div className="form-group">
+                        <label>FIRST NAME</label>
+                        <input
+                          id="username"
+                          name="username"
+                          placeholder="First Name"
+                          onChange={this.handleChange}
+                          type="text"
+                          className="form-control"
+                          required="required"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-12">
+                      <div className="form-group">
+                        <label>LAST NAME</label>
+                        <input
+                          id="lastName"
+                          name="lastName"
+                          type="text"
+                          placeholder="Last Name"
+                          onChange={this.handleChange}
+                          size="40"
+                          className="form-control"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* <div className="uk-margin">
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="form-group">
+                        <label>ABOUT YOU</label>
+                        <textarea
+                          onChange={this.handleChange}
+                          name="message"
+                          id="message"
+                          className="form-control"
+                          rows="7"
+                          cols="25"
+                          placeholder="Tell us more about yourself"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <div className="uk-margin">
                   <input
                     className="uk-input uk-form-width-medium"
                     id="password"
@@ -159,22 +169,28 @@ class Signup extends React.Component {
                     onChange={this.handleChange}
                   />
                 </div> */}
-                <div className="row">
+                  <div className="row">
                     <div className="col-sm-12 mt-3">
                       <button
                         type="submit"
                         className="btn solid-btn signupBtn"
                         disabled={loading}
                       >
-                       Apply
+                        Apply
                       </button>
                     </div>
                   </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section> :
+          <div className={"container text-center"}>
+            <h1 className="section-title mt-5">Thank you for applying to us</h1>
+            <h3 className="mt-2 mb-5">An admin will contact you on your email to proccess your request</h3>
+            <div className={"mt-5 testlist-name"}>you’ll be directed to home in {this.state.seconds} secounds</div>
+          </div>}
+      </>
     );
   }
 }
