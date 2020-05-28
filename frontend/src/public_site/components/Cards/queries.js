@@ -6,6 +6,8 @@ export const CARD_QUERY = gql`
       id
       title
       content
+      language
+      card_url_in_other_language
       image {
         url
       }

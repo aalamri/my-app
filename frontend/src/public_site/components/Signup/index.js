@@ -10,9 +10,12 @@ const strapi = new Strapi(emailUrl);
 class Signup extends React.Component {
   state = {
     username: "",
+    lastName: "",
+    message: "",
     email: "",
-    password: "",
+    password: "12345678",
     loading: false,
+    successmessage: false,
   };
   
   handleChange = (event) => {
@@ -24,10 +27,13 @@ class Signup extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const { username, email, password } = this.state;
+    const { username, firstName, lastName, message, email, password } = this.state;
 
     const data = {
       username,
+      firstName: username,
+      lastName,
+      message,
       email,
       password,
     };
@@ -52,7 +58,8 @@ class Signup extends React.Component {
       });
       this.setState({ loading: false });
       setToken(response.data.jwt);
-      this.redirectUser("/");
+      // this.redirectUser("/");
+      this.setState({ successmessage: true});
     } catch (err) {
       this.setState({ loading: false });
     }
@@ -60,8 +67,8 @@ class Signup extends React.Component {
 
   redirectUser = (path) => this.props.history.push(path);
 
-  isFormEmpty({ username, email, password }) {
-    return !username || !email || !password;
+  isFormEmpty({ username, lastName, message, email, password }) {
+    return !username || lastName || message || !email || !password;
   }
 
   render() {
@@ -80,36 +87,9 @@ class Signup extends React.Component {
             <div className="col-md-6">
               <form className="contact-us-form" onSubmit={this.handleSubmit}>
                 <div className="row">
-                  <div className="col-sm-6 col-12">
-                    <div className="form-group">
-                      <input
-                        id="username"
-                        name="username"
-                        placeholder="First Name"
-                        onChange={this.handleChange}
-                        type="text"
-                        className="form-control"
-                        required="required"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-sm-6 col-12">
-                    <div className="form-group">
-                      <input
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        placeholder="Last Name"
-                        onChange={this.handleChange}
-                        size="40"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
                   <div className="col-12">
                     <div className="form-group">
+                    <label>YOUR E-MAIL</label>
                       <input
                         id="email"
                         name="email"
@@ -124,8 +104,39 @@ class Signup extends React.Component {
                   </div>
                 </div>
                 <div className="row">
+                <div className="col-sm-6 col-12">
+                  <div className="form-group">
+                  <label>FIRST NAME</label>
+                    <input
+                      id="username"
+                      name="username"
+                      placeholder="First Name"
+                      onChange={this.handleChange}
+                      type="text"
+                      className="form-control"
+                      required="required"
+                    />
+                  </div>
+                </div>
+                <div className="col-sm-6 col-12">
+                  <div className="form-group">
+                  <label>LAST NAME</label>
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      placeholder="Last Name"
+                      onChange={this.handleChange}
+                      size="40"
+                      className="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
+                <div className="row">
                   <div className="col-12">
                     <div className="form-group">
+                    <label>ABOUT YOU</label>
                       <textarea
                         onChange={this.handleChange}
                         name="message"
@@ -133,7 +144,7 @@ class Signup extends React.Component {
                         className="form-control"
                         rows="7"
                         cols="25"
-                        placeholder="Message"
+                        placeholder="Tell us more about yourself"
                       ></textarea>
                     </div>
                   </div>

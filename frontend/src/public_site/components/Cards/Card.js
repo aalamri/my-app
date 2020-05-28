@@ -7,7 +7,7 @@ import { CARD_QUERY } from "./queries";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Card = ({match}) => {
+const Card = ({ match }) => {
   let history = useHistory();
   let id = match.params.id
   console.log('here')
@@ -35,15 +35,22 @@ const Card = ({match}) => {
               }
               data-uk-img
             >
-              <h1>{card.title}</h1>
+              <h3 className="w-100 tale card-name text-center">{card.title}</h3>
             </div>
 
-            <div className="">
-              <div className="">
-                <ReactMarkdown source={card.content} escapeHtml={false} />
-                <p>
-                  <Moment format="MMM Do YYYY">{card.createdAt}</Moment>
-                </p>
+            <div class="modal-body px-5">
+              <div className="client-say d-flex flex-column tale">
+                <ReactMarkdown className="tale text-center" source={card.content} escapeHtml={false} />
+                {card.card_url_in_other_language &&
+                  <Link className="d-flex justify-content-end pt-3" to={`/cards/${card.card_url_in_other_language}`}>
+                    <small className="align-self-end gray">
+                      {card.language === 'Arabic'
+                        ? 'النسخة العربية'
+                        : 'English Version'
+                      }
+                    </small>
+                  </Link>
+                }
               </div>
             </div>
           </div>

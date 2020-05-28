@@ -1,145 +1,272 @@
-import React from "react";
-import Editor from "../Editor";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+// import Slide from 'react-reveal/Slide';
 
-const Question = ({ index, qid, updateQuestion }) => {
-  function handleChangeEditorValue(value) {
-    updateQuestion(qid, { description: value });
-  }
+import { scrollToTop } from '../../../utils';
+import {
+    getTest,
+    startTest,
+    selectSingleChoice,
+    selectMultipleChoice,
+    unselectMultipleChoice
+} from '../../../redux/actions/tests';
 
-  function handleOnChange({ target }) {
-    const { id, value } = target;
-    updateQuestion(qid, { [id]: value });
-    // if (props.error.isExist) {
-    //   props.updateError(ELEMENT_ID, { isExist: false, message: "" });
-    // }
-  }
+import imageUrl from './q1.png'
 
-  function updateType() {}
+const AR = "Arabic";
+const EN = "English";
 
-  return (
-    <div>
-      <h4>Question {index + 1}</h4>
-      <label>title</label>
-      <input id="title" name="title" type="text" onChange={handleOnChange} />
-      <br />
-      <label>content</label>
-      <Editor handleChangeEditorValue={handleChangeEditorValue} qid={qid} />
-      <br />
-      <label htmlFor={`multiple-answers-${qid}`}>Answers type</label>
-      <input
-        type="radio"
-        name={`multiple-answers-${qid}`}
-        onClick={() => updateQuestion(qid, { multiple_choices: true })}
-      />
-      Multiple answers
-      <input
-        type="radio"
-        name={`multiple-answers-${qid}`}
-        onClick={() => updateQuestion(qid, { multiple_choices: false })}
-      />
-      Single Answer
-      <br />
-      <label>Correct answer</label>
-      <input
-        id="correctAnswer"
-        type="text"
-        name="question-title"
-        onChange={handleOnChange}
-      />
-      <br />
-      <label>Wrong answer 1</label>
-      <input
-        id="wrongAnswer1"
-        type="text"
-        name="wrong-answer-1"
-        onChange={handleOnChange}
-      />
-      <br />
-      <label>Wrong answer 2</label>
-      <input
-        id="wrongAnswer2"
-        type="text"
-        name="wrong-answer-2"
-        onChange={handleOnChange}
-      />
-      <br />
-      <label>Wrong answer 3</label>
-      <input
-        id="wrongAnswer3"
-        type="text"
-        name="wrong-answer-3"
-        onChange={handleOnChange}
-      />
-      <br />
-      <label>Wrong answer 4</label>
-      <input
-        id="wrongAnswer4"
-        type="text"
-        name="wrong-answer-4"
-        onChange={handleOnChange}
-      />
-      <br />
-    </div>
-  );
-};
+const Questions = (props) => {
+    let { id, qid } = useParams();
+    const dispatch = useDispatch();
+    const test = useSelector(({ test }) => test);
+    const [language, setLanguage] = useState(EN);
+    const [questions, setQuestions] = useState(test.questions);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(Number(qid));
 
-const Questions = ({ questions, setQuestion, updateQuestion }) => {
-  function addQuestion(e) {
-    e.preventDefault();
-    const newQuestion = {
-      qid: newID(),
-      title: "",
-      description: "",
-      questions: [
-        {
-          __typename: "ComponentQuestionsGroupNewQuestion",
-          //   __component: "questions-group.new-question",
-          title: "",
-          content: "",
-          multiple_choices: false,
-          correct_answer: "",
-          wrong_answer_1: "",
-          wrong_answer_2: "",
-          wrong_answer_3: "",
-          wrong_answer_4: "",
-          meta: { likes: 0, taken: 0, completed: 0 },
-        },
-      ],
-    };
+    useEffect(() => {
+        if (props.location.state?.fromTestPage) {
+            dispatch(startTest(props.location.state.test));
+        } else {
+            dispatch(getTest(id));
+        }
+    }, []);
 
-    setQuestion([...questions, newQuestion]);
-  }
+    useEffect(() => {
+        setQuestions(test.questions);
+    }, [test]);
 
-  function removeQuestion(e, qid) {
-    e.preventDefault();
-    setQuestion(questions.filter((q) => q.qid !== qid));
-  }
-
-  return (
-    <div>
-      <h2>Questions {questions.length}:</h2>
-      {questions.map((question, i) => {
+    if (test.error) {
         return (
-          <div key={question.qid}>
-            <Question
-              index={i}
-              qid={question.qid}
-              updateQuestion={updateQuestion}
-            />
-            <button onClick={(e) => removeQuestion(e, question.qid)}>X</button>
-            <hr />
-          </div>
-        );
-      })}
-      <button onClick={addQuestion}>Add question</button>
-    </div>
-  );
+            <section className="question-section ptb-100" dir={language === AR ? "rtl" : "ltr"}>
+                <div className="container max-width-880">
+                    <h3>Sorry!</h3>
+                    <p>There is an error loading this page. Please refresh the page and make sure the URL is correct.</p>
+                </div>
+            </section>
+        )
+    }
+
+    function goPrevious() {
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+        scrollToTop(50);
+    }
+    function goNext() {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        scrollToTop(50);
+    }
+
+    if (test.questions.length === 0) {
+        return (
+            <section className="question-section ptb-100" dir={language === AR ? "rtl" : "ltr"}>
+                <div className="container max-width-880">
+                    <p>Loading...</p>
+                </div>
+            </section>
+        )
+    }
+
+    if (typeof Number(qid) !== 'number'
+        || Number(qid) > questions.length
+        || Number(qid) < 1
+        || test.status !== 'Approved'
+    ) {
+        return (
+            <section className="question-section ptb-100" dir={language === AR ? "rtl" : "ltr"}>
+                <div className="container max-width-880">
+                    <p>Invalid page request!</p>
+                </div>
+            </section>
+        )
+    }
+
+    const question = questions[currentQuestionIndex - 1];
+    const progressValueNow = (currentQuestionIndex / questions.length) * 100;
+    // console.log("question", question);
+
+    return (
+        <section className="question-section pb-5 my-5" dir={language === AR ? "rtl" : "ltr"}>
+            <div className="container max-width-880 pb-5 ">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to="/tests">Tests</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page"><Link to={`/test/${test.id}`}>{test.title}</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">Question {currentQuestionIndex}</li>
+                    </ol>
+                </nav>
+                <div className="progress mb-4 mt-0 no-radius" style={{ height: "25px" }}>
+                    <div
+                        className="progress-bar tale-progress-bg text-right px-3"
+                        role="progressbar"
+                        style={{ width: `${progressValueNow}%`, fontSize: '1rem' }}
+                        aria-valuenow={`${progressValueNow}`}
+                        aria-valuemin="0"
+                        aria-valuemax="100">
+                        <p>({`${currentQuestionIndex}/${questions.length}`})</p>
+                    </div>
+                </div>
+
+                {/* <Slide> */}
+                <div className="">
+                    <h2>{question.title}</h2>
+                    {/* {currentQuestionIndex % 2 === 0 &&
+                            <img
+                                src={imageUrl}
+                                className="card-img-top position-relative border-q-img"
+                                height="80%"
+                                alt=""
+                            />
+                        } */}
+                    <p className="py-4">{question.content}</p>
+                </div>
+                <div className="mb-5">
+                    <h5>Choices:</h5>
+                    <div className="custom-control custom-checkbox">
+                        {displayChoices(question)}
+                    </div>
+                </div>
+                {/* </Slide> */}
+
+                <div className="text-center">
+                    {currentQuestionIndex === 1
+                        ? <Link to={`/test/${id}`}><button className="btn mx-2 btn-info">Previous</button></Link>
+                        : <Link to={`/test/${id}/question/${currentQuestionIndex - 1}`}><button className="btn mx-2 btn-info" onClick={goPrevious}>Previous</button></Link>
+                    }
+                    {currentQuestionIndex !== questions.length &&
+                        <Link
+                            to={{
+                                pathname: `/test/${id}/result`,
+                                state: { test }
+                            }}>
+                            <button className="btn mx-2 btn-info">End Test</button>
+                        </Link>
+                    }
+                    {currentQuestionIndex < questions.length &&
+                        <Link to={`/test/${id}/question/${currentQuestionIndex + 1}`}>
+                            <button className="btn mx-2 btn-info" onClick={goNext}>Next</button>
+                        </Link>
+                    }
+                    {currentQuestionIndex === questions.length &&
+                        <Link
+                            to={{
+                                pathname: `/test/${id}/result`,
+                                state: { test }
+                            }}>
+                            <button className="btn mx-2 btn-info">Submit and See Result</button>
+                        </Link>
+                    }
+                </div>
+            </div>
+        </section >
+    );
 };
 
-// Generates random string
-export const newID = (length = 10) =>
-  Math.random()
-    .toString(36)
-    .substr(-1 * length);
+function displayChoices(question) {
+    const { choices_type } = question;
+    if (choices_type === "multiple") {
+        return <MultipleChoicesQuestion {...question} />
+    } else if (choices_type === "single") {
+        return <SingleChoiceQuestion {...question} />
+    } else {
+        throw Error(`ERROR displayChoices: Unknown choices type ${choices_type}`)
+    }
+};
+
+const MultipleChoicesQuestion = (question) => {
+    const dispatch = useDispatch();
+    const {
+        id,
+        choice_1,
+        choice_2,
+        choice_3,
+        choice_4,
+        choice_5,
+        choice_6,
+        userSelection = []
+    } = question;
+
+    const choiceComponent = (text, i) => {
+        const isSelected = userSelection && userSelection.includes(text) || false;
+        const handleUpdateChoice = () =>
+            isSelected
+                ? dispatch(unselectMultipleChoice(id, text))
+                : dispatch(selectMultipleChoice(id, text));
+
+        return (
+            <div key={i}
+                className={`d-flex p-2 form-check question-choice ${isSelected ? 'selected-choice' : ''}`}
+                onClick={handleUpdateChoice}
+            >
+                <input
+                    id={`choice_${i}`}
+                    className="form-check-input"
+                    type="checkbox"
+                    name="choices"
+                    className="position-relative form-check-input mx-2"
+                    onChange={handleUpdateChoice}
+                    checked={isSelected}
+                />
+                <label
+                    className="form-check-label"
+                    htmlFor={`choice_${i}`}
+                >
+                    {text}
+                </label>
+            </div>
+        );
+    }
+
+    const allChoices = [
+        choice_1,
+        choice_2,
+        choice_3,
+        choice_4,
+        choice_5,
+        choice_6,
+    ].filter((_, i) => _ != null && _.trim() != '');
+
+    const choicesComponents = allChoices.map((choice, i) => choiceComponent(choice, i));
+    return choicesComponents;
+}
+
+const SingleChoiceQuestion = (question) => {
+    const dispatch = useDispatch();
+    const {
+        id,
+        choices,
+        userSelection
+    } = question;
+
+    const choiceComponent = (text, i) => {
+        const handleUpdateChoice = () => dispatch(selectSingleChoice(id, text));
+        return (
+            <div key={i}
+                className={`d-flex p-2 form-check question-choice ${userSelection === text ? 'selected-choice' : ''}`}
+                onClick={handleUpdateChoice}
+            >
+                <input
+                    className="position-relative form-check-input mx-2"
+                    type="radio"
+                    name="choices"
+                    id={`choice_${i}`}
+                    onChange={handleUpdateChoice}
+                    checked={userSelection === text}
+                />
+                <label
+                    className="form-check-label"
+                    htmlFor={`choice_${i}`}
+                >
+                    {text}
+                </label>
+            </div>
+        );
+    }
+
+    const validChoices = choices.filter((_, i) => _ != null && _.trim() != '');
+    const choicesComponents = validChoices.map((choice, i) => choiceComponent(choice, i))
+    return choicesComponents;
+}
 
 export default Questions;

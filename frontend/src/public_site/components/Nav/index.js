@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import SearchModal from "../Search/SearchModal";
+import Query from "../Query";
+import { Link, withRouter } from "react-router-dom";
+
+import { CATEGORIES_QUERY } from "../Category/queries";
+import { getToken, clearToken, clearUser } from "../../../utils/index";
+
+
 
 const Navbar = () => {
 
   const [modalShow, setModalShow] = useState(false);
-
   const showSearch = () => {
     setModalShow(true);
   }
-
   const closeSearch = () => {
     setModalShow(false);
   }
+
 
   return (
     <header className="header">
@@ -19,12 +25,11 @@ const Navbar = () => {
         <div className="container">
           <a className="navbar-brand" href="/">
             <img
-              src="img/modrek-logo.svg"
+              src={`${window.location.origin}/img/modrek-logo.svg`}
               width="120"
-              height="10"
-              className="logo-svg"
-              alt="logo"
-              className="img-fluid"
+              // height="auto"
+              alt="Modrek Logo"
+              className="logo"
             />
           </a>
           <button
@@ -55,9 +60,9 @@ const Navbar = () => {
                     </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link page-scroll" href="/cards">
+                <a className="nav-link page-scroll" href="/articles">
                   Knowledge
-                </a>
+                    </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/feedback">
@@ -65,24 +70,28 @@ const Navbar = () => {
                     </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link page-scroll" href="#">
+                <a className="nav-link page-scroll" href="/about">
                   About Us
                     </a>
               </li>
 
-              <li className="nav-item ml-5">
-                <a href="/signup" class="join-us-btn p-1 pl-3 pr-3 rounded-pill text-center">Join us as a content creator</a>
+              <li className="nav-item">
+                <a href="/signup" className="join-us-btn p-1 pl-3 pr-3 rounded-pill text-center">Join us as a content creator</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">العربية</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#contact">العربية</a>
               </li>
-              <li class="nav-item" onClick={showSearch}>
-                <i class="fa fa-search nav-link search-icon-color"></i>
+              <li className="nav-item d-none d-md-none d-lg-block" onClick={showSearch}>
+                <i className="fa fa-search nav-link search-icon-color"></i>
               </li>
               <SearchModal show={modalShow} handleClose={closeSearch} />
-
             </ul>
           </div>
+          <ul className="position-absolute search-nav d-sm-block d-md-block d-lg-none">
+            <li className="nav-item" onClick={showSearch}>
+              <i className="fa fa-search nav-link search-icon-color"></i>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>

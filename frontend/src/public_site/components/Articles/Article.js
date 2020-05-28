@@ -7,19 +7,19 @@ import Query from "../../components/Query";
 import { ARTICLE_QUERY } from "./queries";
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
-import avatarTale from "../../img/avatar-circle-tale.svg";
-import avatar from "../../img/avatar-circle.svg";
-import twitter from "../../img/twitter-circle.svg";
-import whatsapp from "../../img/whatsapp-circle.svg";
-import facebook from "../../img/facebook-circle.svg";
-import linkedin from "../../img/linkedin-circle.svg";
-import thumbsup from "../../img/thumbsup.svg";
+import avatarTale from "../../img//avatar-circle-tale.svg";
+import avatar from "../../img//avatar-circle.svg";
+import twitter from "../../img//twitter-circle.svg";
+import whatsapp from "../../img//whatsapp-circle.svg";
+import facebook from "../../img//facebook-circle.svg";
+import linkedin from "../../img//linkedin-circle.svg";
+import thumbsup from "../../img//thumbsup.svg";
 
 import twitterTale from "../../img/twitter-circle-tale.svg";
-import linkedinTale from "../../img/linkedin-circle-tale.svg";
-import whatsappTale from "../../img/whatsapp-circle-tale.svg";
-import facebookTale from "../../img/facebook-circle-tale.svg";
-import thumbsupTale from "../../img/thumbsup-tale.svg";
+import linkedinTale from "../../img//linkedin-circle-tale.svg";
+import whatsappTale from "../../img//whatsapp-circle-tale.svg";
+import facebookTale from "../../img//facebook-circle-tale.svg";
+import thumbsupTale from "../../img//thumbsup-tale.svg";
 const tale = true;
 
 const AR = "Arabic";
@@ -27,13 +27,15 @@ const EN = "English";
 
 console.log(avatarTale, "avatar");
 
-const Article = ({ match }) => {
-  let id = match.params.id;
-  console.log(id)
+const Article = () => {
+  let { id } = useParams();
   return (
     <Query query={ARTICLE_QUERY} id={id}>
       {({ data: { article } }) => {
-
+        const imageUrl =
+        process.env.NODE_ENV !== "development"
+          ? article.image.url
+          : process.env.REACT_APP_BACKEND_URL + article.image?.url ?? 'placeholder';
         if (article == null) {
           return (
             <section className="testimonial-section ptb-100">
@@ -87,16 +89,15 @@ const Article = ({ match }) => {
                       <hr class="green-line">
                       </hr>
                       <div className="p-2 d-inline-flex ">
-                        <img class="social-icon d-none d-md-block " src={tale ? twitterTale : linkedin} alt="linkedin" />
-                        <img class="social-icon d-none d-md-block " src={tale ? linkedinTale : twitter} alt="twitter" />
-                        <img class="social-icon d-none d-md-block " src={tale ? facebookTale : facebook} alt="facebook" />
-                        <img class="social-icon ml-4" src={tale ? thumbsupTale : thumbsup} alt="thumbsup" />
-                        <span class="pl-1 likes-number">{likes}</span>
+                        <img class="social-icon" src={tale ? twitterTale : linkedin} alt="linkedin" />
+                        <img class="social-icon" src={tale ? linkedinTale : twitter} alt="twitter" />
+                        <img class="social-icon" src={tale ? facebookTale : facebook} alt="facebook" />
                       </div>
                     </aside>
                   </div>
                 </div>
                 <div className="col-md-6">
+
                   <article class="post">
                     <div class="post-preview"><a href="#"><img src={url} alt="blog" /></a></div>
                     <div class="post-wrapper">
