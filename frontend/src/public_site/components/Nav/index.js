@@ -10,15 +10,11 @@ import { getToken, clearToken, clearUser } from "../../../utils/index";
 
 const Navbar = () => {
 
-  const [modalShow, setModalShow] = useState(false);
-  const showSearch = () => {
-    setModalShow(true);
+  const [searchShow, setSearchShow] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const toggleSearch = () => {
+    setSearchShow(!searchShow);
   }
-  const closeSearch = () => {
-    setModalShow(false);
-  }
-
-
   return (
     <header className="header">
       <nav className="navbar navbar-expand-lg fixed-top gradient-purple-bg ">
@@ -47,6 +43,7 @@ const Navbar = () => {
           <div
             className="collapse navbar-collapse main-menu"
             id="navbarSupportedContent"
+            style={{ position: 'relative' }}
           >
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
@@ -81,14 +78,18 @@ const Navbar = () => {
               <li className="nav-item">
                 <a className="nav-link" href="#contact">العربية</a>
               </li>
-              <li className="nav-item d-none d-md-none d-lg-block" onClick={showSearch}>
-                <i className="fa fa-search nav-link search-icon-color"></i>
+              <li className="nav-item d-none d-md-none d-lg-block" onClick={toggleSearch} style={{ width: 32 }}>
+                {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
+                {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
               </li>
-              <SearchModal show={modalShow} handleClose={closeSearch} />
+              {searchShow && <div class="form-inline justify-content-center  d-none d-md-none d-lg-block" style={{ position: 'absolute', right: 32, width: 300, background: '#593a6c', padding: 17 }}>
+                <input class="form-control form-control-sm mr-3 w-75 search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
+                <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category:'all' } }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
+              </div>}
             </ul>
           </div>
           <ul className="position-absolute search-nav d-sm-block d-md-block d-lg-none">
-            <li className="nav-item" onClick={showSearch}>
+            <li className="nav-item" onClick={toggleSearch}>
               <i className="fa fa-search nav-link search-icon-color"></i>
             </li>
           </ul>
