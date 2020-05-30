@@ -120,9 +120,9 @@ class Signup extends React.Component {
     const { loading } = this.state;
     return (
       <>
-        {!this.state.successmessage ? <section className="contact-us-section ptb-100">
-          <div className="container signup">
-            <div className="row">
+        {!this.state.successmessage ? <section className="hero-section pt-100">
+          <div className="container">
+            <div className="row align-tem-center justify-content-between">
               <div className="col-md-9 col-lg-9">
                 <div className="section-heading mb-4">
                   <h2>Join us a Content Creator</h2>
@@ -222,11 +222,29 @@ class Signup extends React.Component {
           </div>
 
         </section> :
-          <div className={"container text-center"}>
-            <h1 className="section-title mt-5">Thank you for applying to us</h1>
-            <h3 className="mt-2 mb-5">An admin will contact you on your email to proccess your request</h3>
-            <div className={"mt-5 testlist-name"}>you’ll be directed to home in {this.state.seconds} secounds</div>
-          </div>}
+        <section
+                    className="hero-section ptb-100 purple-gradient-img full-screen"
+                    style={{
+                        backgroundImage: "url('img/app-hero-bg.jpg')",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center center",
+                        backgroundSize: "cover",
+                    }}
+                >
+                    <div className="container">
+                        <div className="row align-items-center justify-content-center pt-5">
+                            <div className="col-md-9 col-lg-7">
+                                <div className="error-content text-center text-white">
+                                    <h1 className="score pt-5">Thank You for Your Request</h1>
+                                    <p className="will-contact">We Will contact you soon to confirm</p>
+                                    <p className="will-contact">you’ll be directed to home in {this.state.seconds} secounds</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        }
 
         <Toast
           style={{
