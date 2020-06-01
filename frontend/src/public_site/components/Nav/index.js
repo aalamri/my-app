@@ -88,7 +88,7 @@ const Navbar = () => {
               </div>}
             </ul>
           </div>
-          <ul className="position-absolute d-sm-block d-md-block d-lg-none">
+          <ul className="position-absolute d-sm-block d-md-block d-lg-none search-nav">
             <li className="nav-item" onClick={toggleSearch}>
             {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
                 {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
