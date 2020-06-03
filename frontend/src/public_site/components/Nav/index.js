@@ -82,20 +82,20 @@ const Navbar = () => {
                 {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
                 {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
               </li>
-              {searchShow && <div class="form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav">
-                <input class="form-control form-control-sm mr-3 w-75 search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
-                <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
+              {searchShow && <div class="form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav" style={{ paddingRight: 0, paddingLeft: 0 }}>
+                <input class="form-control form-control-sm search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30, width: 286 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
+                <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }} style={{ left: -22, position: 'relative', lineHeight: '30px' }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
               </div>}
             </ul>
           </div>
           <ul className="position-absolute d-sm-block d-md-block d-lg-none search-nav">
             <li className="nav-item" onClick={toggleSearch}>
-            {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
-                {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
+              {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
+              {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
             </li>
-            {searchShow && <div class="form-inline justify-content-center search-box-nav-mobile">
-              <input class="form-control form-control-sm mr-3 w-75 search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
-              <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
+            {searchShow && <div class="form-inline justify-content-center search-box-nav-mobile" style={{ paddingRight: 0, paddingLeft: 0 }}>
+              <input class="form-control form-control-sm search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30, width:286 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
+              <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }} style={{ left: -22, position: 'relative', lineHeight: '30px' }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
             </div>}
           </ul>
         </div>
