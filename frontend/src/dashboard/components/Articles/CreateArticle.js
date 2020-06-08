@@ -127,16 +127,16 @@ const CreateArticle = () => {
   function switchToAR(e) {
     e.stopPropagation();
     setValidation(initValidation);
-    setLanguage(AR)
+    setLanguage(AR);
   }
   function switchToEN(e) {
     e.stopPropagation();
     setValidation(initValidation);
-    setLanguage(EN)
+    setLanguage(EN);
   }
 
   return (
-    <div className={`container my-5 ${language === AR ? 'text-right' : ''}`} dir={language === AR ? "rtl" : "ltr"}>
+    <div className={`container max-width-880 my-5 ${language === AR ? 'text-right' : ''}`} dir={language === AR ? "rtl" : "ltr"}>
       <h3>{language === AR ? "إنشاء موضوع جديد" : "Create Article"}</h3>
       <form onSubmit={handleCreateArticle}>
 

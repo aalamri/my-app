@@ -5,37 +5,29 @@ import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import Query from "../../components/Query";
 import { ARTICLE_QUERY } from "./queries";
-import { FacebookShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
-import { FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
-import avatarTale from "../../img//avatar-circle-tale.svg";
-import avatar from "../../img//avatar-circle.svg";
-import twitter from "../../img//twitter-circle.svg";
-import whatsapp from "../../img//whatsapp-circle.svg";
-import facebook from "../../img//facebook-circle.svg";
-import linkedin from "../../img//linkedin-circle.svg";
-import thumbsup from "../../img//thumbsup.svg";
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+  TwitterIcon,
+} from "react-share";
 
-import twitterTale from "../../img/twitter-circle-tale.svg";
-import linkedinTale from "../../img//linkedin-circle-tale.svg";
-import whatsappTale from "../../img//whatsapp-circle-tale.svg";
-import facebookTale from "../../img//facebook-circle-tale.svg";
-import thumbsupTale from "../../img//thumbsup-tale.svg";
-const tale = true;
+import avatarTale from "../../img//avatar-circle-tale.svg";
+import { getString } from "../../../utils";
 
 const AR = "Arabic";
-const EN = "English";
-
-console.log(avatarTale, "avatar");
 
 const Article = () => {
   let { id } = useParams();
   return (
     <Query query={ARTICLE_QUERY} id={id}>
       {({ data: { article } }) => {
-        const imageUrl =
-        process.env.NODE_ENV !== "development"
-          ? article.image.url
-          : process.env.REACT_APP_BACKEND_URL + article.image?.url ?? 'placeholder';
+        const imageUrl = "";
+        // process.env.NODE_ENV !== "development"
+        //   ? article.image.url
+        //   : process.env.REACT_APP_BACKEND_URL + article.image?.url ?? 'placeholder';
         if (article == null) {
           return (
             <section className="testimonial-section ptb-100">
@@ -45,7 +37,7 @@ const Article = () => {
                 </div>
               </div>
             </section>
-          )
+          );
         }
 
         const {
@@ -54,61 +46,91 @@ const Article = () => {
           content,
           article_id_of_other_language,
           createdAt,
-          updatedAt,
-          is_deleted,
-          image: { url },
-          meta: { likes, visits },
-          category: { name: category = "" },
-          // author: {
-          //   id,
-          //   first_name,
-          //   last_name,
-          // }
         } = article;
-        const shareUrl = `www.google.com/card/${article.id}`
-        const shareUrlDemo = `www.google.com`
+
+        const shareUrl = `${article.title}       https://modrek.sa/article/${article.id}`;
+
         return (
           <div className="module ptb-100" dir={language === AR ? "rtl" : "ltr"}>
-            <div className={`container ${language === AR ? 'text-right' : ''}`}>
+            <div className={`container ${language === AR ? "text-right" : ""}`}>
               <div className="row">
                 <div className="col-lg-3 col-md-3">
-                  <div class="sidebar-left pr-4 text-center align-items-center justify-content-center">
-                    <aside class="widget widget-categories">
+                  <div className="sidebar-left pr-4 text-center align-items-center justify-content-center">
+                    <aside className="widget widget-categories">
                       <img
                         className="avatar-article pt-5"
-                        src={tale ? avatarTale : avatar}
+                        src={avatarTale}
                         alt="client"
                       />
-                      <hr class="green-line">
-                      </hr>
-                      <div class="widget-title text-center">
-
-                        <p class="testlist-name mb-0">Shane Jimenez</p>
-                        <h class="text-muted">Surgeon</h>
+                      <hr className="green-line"></hr>
+                      <div className="widget-title text-center">
+                        <p className="testlist-name mb-0 tajawal">
+                          {article.author.firstName} {article.author.lastName}
+                        </p>
                       </div>
-                      <hr class="green-line">
-                      </hr>
+                      <hr className="green-line"></hr>
                       <div className="p-2 d-inline-flex ">
-                        <img class="social-icon" src={tale ? twitterTale : linkedin} alt="linkedin" />
-                        <img class="social-icon" src={tale ? linkedinTale : twitter} alt="twitter" />
-                        <img class="social-icon" src={tale ? facebookTale : facebook} alt="facebook" />
+                        <TwitterShareButton
+                          url={shareUrl}
+                          quote="Check out this Morek Card"
+                          className="social-icon d-md-block"
+                          alt="twitter"
+                        >
+                          <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+                        <WhatsappShareButton
+                          url={shareUrl}
+                          quote="Check out this Morek Card"
+                          className="social-icon d-md-block"
+                          alt="whatsapp"
+                        >
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+                        <FacebookShareButton
+                          url={shareUrl}
+                          quote="Check out this Morek Card"
+                          className="social-icon d-md-block"
+                          alt="facebook"
+                        >
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
                       </div>
                     </aside>
                   </div>
                 </div>
-                <div className="col-md-6">
-
-                  <article class="post">
-                    <div class="post-preview"><a href="#"><img src={url} alt="blog" /></a></div>
-                    <div class="post-wrapper">
-                      <div class="post-header">
-                        <p class="article-title pb-0">{title}</p>
-                        <ul class="article-info">
-                          <li>Published at {createdAt.split(".")[0]}</li>
-                          <li><a href="#">Available only in english</a></li>
-                        </ul>
+                <div className="col-md-9">
+                  <article className="post">
+                    <div className="post-preview">
+                      <img
+                        src={article.image?.url || ""}
+                        className="img-fluid"
+                        alt=""
+                      />
+                    </div>
+                    <div className="post-wrapper">
+                      <div className="post-header">
+                        <h2 className="article-title pb-0 tajawal">{title}</h2>
+                        <div className="article-info d-flex">
+                          <span className="gray tajawal">
+                            {language === AR ? "نشر في " : "Published at "}
+                            <Moment format="D/M/Y">{createdAt}</Moment>
+                          </span>
+                          {article_id_of_other_language && (
+                            <>
+                              <span className="px-4">/</span>{" "}
+                              <Link
+                                className="tajawal"
+                                to={`/article/${article_id_of_other_language}`}
+                              >
+                                {language === "Arabic"
+                                  ? "English Version"
+                                  : "النسخة العربية"}
+                              </Link>
+                            </>
+                          )}
+                        </div>
                       </div>
-                      <div class="post-content">
+                      <div className="post-content tajawal">
                         <ReactMarkdown source={content} escapeHtml={false} />
                       </div>
                     </div>
@@ -117,10 +139,10 @@ const Article = () => {
               </div>
             </div>
           </div>
-        )
+        );
       }}
     </Query>
-  )
+  );
 };
 
 export default Article;

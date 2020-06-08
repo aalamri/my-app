@@ -1,0 +1,146 @@
+{
+  "home": {
+    "ar": "الرئيسية",
+    "en": "Home"
+  },
+  "tests": {
+    "ar": "اختبارات",
+    "en": "Tests"
+  },
+  "knowledge": {
+    "ar": "المعرفة",
+    "en": "Knowledge"
+  },
+  "contact-us": {
+    "ar": "اتصل بنا",
+    "en": "Contact Us"
+  },
+  "about-us": {
+    "ar": "حول الموقع",
+    "en": "About Us"
+  },
+  "join-us-as-a-content-creator": {
+    "ar": "انضم إلينا كمحرر",
+    "en": "Join us as a content creator"
+  },
+  "articles": {
+    "ar": "مقالات",
+    "en": "Articles"
+  },
+  "see-more": {
+    "ar": "المزيد",
+    "en": "See More"
+  },
+  "test-your-knowledge": {
+    "ar": "اختبر معرفتك",
+    "en": "Test your knowledge"
+  },
+  "loading": {
+    "ar": "يتم التحميل ...",
+    "en": "Loading..."
+  },
+  "published-at": {
+    "ar": "نشر في",
+    "en": "Published at"
+  },
+  "published-by": {
+    "ar": "بواسطة",
+    "en": "By"
+  },
+  "questions": {
+    "ar": "أسئلة",
+    "en": "Questions"
+  },
+  "start-the-test": {
+    "ar": "ابدأ الإختبار",
+    "en": "Start The Test"
+  },
+  "get-in-touch": {
+    "ar": "تواصل معنا",
+    "en": "Get In Touch"
+  },
+  "type-of-feedback": {
+    "ar": "سبب التواصل",
+    "en": "Type of feedback"
+  },
+  "your-email": {
+    "ar": "ايميلك",
+    "en": "Type of feedback"
+  },
+  "body-message": {
+    "ar": "رسالتك",
+    "en": "Type of feedback"
+  },
+  "send-message": {
+    "ar": "إرسال",
+    "en": "Type of feedback"
+  },
+  "your-email-placeholder": {
+    "ar": "email@example.com",
+    "en": "email@example.com"
+  },
+  "body-message-placeholder": {
+    "ar": "رسالتك ...",
+    "en": "Your message..."
+  },
+  "invalid-page": {
+    "ar": "صفحة خاطئة!",
+    "en": "Invalid page request!"
+  },
+  "previous": {
+    "ar": "السابق",
+    "en": "Previous"
+  },
+  "next": {
+    "ar": "التالي",
+    "en": "Next"
+  },
+  "end-test": {
+    "ar": "إنهاء الإختبار",
+    "en": "End test"
+  },
+  "submit-and-see-result": {
+    "ar": "إنهاء ومشاهدة النتيجة",
+    "en": "Submit and See Result"
+  },
+  "you-scored": {
+    "ar": "إنهاء ومشاهدة النتيجة",
+    "en": "You scored"
+  },
+  "thanks-for-taking-test": {
+    "ar": "شكراً لإتمامك اختبار",
+    "en": "Thank you for taking the test!"
+  },
+  "send-result-to-email": {
+    "ar": "هل ترغب بإرسال نتيجة الإختبار إلى بريدك الإلكتروني؟",
+    "en": "Do you like to receive the results on your email?"
+  },
+  "send": {
+    "ar": "إرسال",
+    "en": "Send"
+  },
+  "answers": {
+    "ar": "الإجابات",
+    "en": "Answers"
+  },
+  "answered": {
+    "ar": "تم الإجابة",
+    "en": "Answered"
+  },
+  "skipped": {
+    "ar": "لم يتم الإجابة",
+    "en": "Skipped"
+  },
+  "correct-answer": {
+    "ar": "صحيح",
+    "en": "Correct"
+  },
+  "wrong-answer": {
+    "ar": "غير صحيح",
+    "en": "Wrong"
+  },
+  "_": {
+    "ar": "",
+    "en": ""
+  }
+}

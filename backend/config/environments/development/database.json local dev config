@@ -1,0 +1,21 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "mongoose",
+      "settings": {
+        "uri": "mongodb://localhost:27017",
+        "database": "Modrek",
+        "host": "127.0.0.1",
+        "srv": false,
+        "port": 27017,
+        "username": "",
+        "password": ""
+      },
+      "options": {
+        "authenticationDatabase": "",
+        "ssl": false
+      }
+    }
+  }
+}

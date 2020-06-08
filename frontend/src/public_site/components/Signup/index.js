@@ -52,7 +52,7 @@ class Signup extends React.Component {
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(data),
-    }).then(resp => resp.json().then(res => {
+    }).then(resp => resp.json().then(async res => {
       this.setState({ loading: false });
       if (res.jwt) {
         setToken(res.jwt);
@@ -64,6 +64,14 @@ class Signup extends React.Component {
       } else {
         this.setState({ errorMessage: res.data[0].messages[0].message, toastShow: true });
       }
+      await strapi.request('POST', '/email', {
+        data: {
+          to: email,
+          subject: `Request New User - Modrek ${new Date(Date.now())}`,
+          text: "Your reuqest has been processed",
+          html: "<bold>Thank for your registration with Us</bold>"
+        }
+     });  
     }).catch(err => {
       this.setState({ loading: false });
       console.log('err', err)
@@ -125,7 +133,7 @@ class Signup extends React.Component {
             <div className="row align-tem-center justify-content-between">
               <div className="col-md-9 col-lg-9">
                 <div className="section-heading mb-4">
-                  <h2>Join us a Content Creator</h2>
+                  <h2 class="purple">Join us a Content Creator</h2>
                 </div>
               </div>
             </div>
@@ -135,7 +143,7 @@ class Signup extends React.Component {
                   <div className="row">
                     <div className="col-12">
                       <div className="form-group">
-                        <label>YOUR E-MAIL</label>
+                        <label>Your email</label>
                         <input
                           id="email"
                           name="email"
@@ -152,7 +160,7 @@ class Signup extends React.Component {
                   <div className="row">
                     <div className="col-sm-6 col-12">
                       <div className="form-group">
-                        <label>FIRST NAME</label>
+                        <label>First name</label>
                         <input
                           id="username"
                           name="username"
@@ -166,7 +174,7 @@ class Signup extends React.Component {
                     </div>
                     <div className="col-sm-6 col-12">
                       <div className="form-group">
-                        <label>LAST NAME</label>
+                        <label>Last name</label>
                         <input
                           id="lastName"
                           name="lastName"
@@ -182,7 +190,7 @@ class Signup extends React.Component {
                   <div className="row">
                     <div className="col-12">
                       <div className="form-group">
-                        <label>ABOUT YOU</label>
+                        <label>About you</label>
                         <textarea
                           onChange={this.handleChange}
                           name="message"

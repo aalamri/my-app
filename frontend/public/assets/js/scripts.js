@@ -24,11 +24,23 @@ jQuery(function ($) {
   $(window).on("scroll", function () {
     // checks if window is scrolled more than 500px, adds/removes solid class
     if ($(this).scrollTop() > 60) {
-      $(".navbar").addClass("affix");
+      $(".header").addClass("affix");
     } else {
-      $(".navbar").removeClass("affix");
+      $(".header").removeClass("affix");
     }
   });
+  // 3. fixed navbar
+//   $(window).on('scroll', function () {
+//     // checks if window is scrolled more than 500px, adds/removes solid class
+//     if ($(this).scrollTop() > 0) {
+//         $('.navbar').addClass('affix');
+//         $('.scroll-to-target').addClass('open');
+//     } else {
+//         $('.navbar').removeClass('affix');
+//         $('.scroll-to-target').removeClass('open');
+//     }
+  
+// });
 
   // 2. page scrolling feature - requires jQuery Easing plugin
   $(function () {
@@ -49,10 +61,17 @@ jQuery(function ($) {
 
   // 3. closes the responsive menu on menu item click
   $(".navbar-nav li a").on("click", function (event) {
-    if (!$(this).parent().hasClass("dropdown"))
+    if (!$('this').parent().hasClass("dropdown"))
       $(".navbar-collapse").collapse("hide");
   });
 
+  
+  $(".search-nav .nav-item .search-icon-color").on("click", function (event) {
+    if (!$('.navbar-toggler').hasClass('collapsed')){
+      $('.navbar .navbar-toggler').addClass('collapsed');
+      $('.navbar-collapse').removeClass('show');
+    }
+  });
   // 4. magnify popup video
   $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
     disableOn: 700,
@@ -77,12 +96,12 @@ jQuery(function ($) {
   });
 
   // 6. Screenshots slider
-  $(".screen-carousel").owlCarousel({
-    loop: true,
+  $(".feat-cards-carousel").owlCarousel({
+    // loop: true,
     // margin: 42,
     center: true,
     dots: true,
-    autoplay: false,
+    // autoplay: false,
     autoWidth: true,
     autoHeight: true,
     // nav: true,
@@ -102,6 +121,33 @@ jQuery(function ($) {
       },
     },
   });
+  $('.category-carousel').owlCarousel({
+    autoplay: false,
+    loop: false,
+    margin: 0,
+    nav: true,
+    rtl: true,
+    slideTransition: 'linear',
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 3
+      },
+      500: {
+        items: 3
+      },
+      600: {
+        items: 3
+      },
+      800: {
+        items: 7
+      },
+      1200: {
+        items: 7
+      }
+
+    }
+  })
 
   // 7. custom counter js with scrolling
   var isFirstTime = true;

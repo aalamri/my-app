@@ -9,19 +9,15 @@
     "timestamps": true
   },
   "attributes": {
-    "Type": {
-      "type": "enumeration",
-      "enum": [
-        "Suggestions",
-        "Issue",
-        "Feedback"
-      ]
-    },
     "email": {
       "type": "email"
     },
     "message": {
       "type": "text"
+    },
+    "feedback_type": {
+      "model": "feedback-type",
+      "via": "feedback"
     }
   }
 }

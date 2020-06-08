@@ -8,13 +8,15 @@ export const FEATURED_ARTICLE_QUERY = gql`
       content
       status
       is_pinned
+      language
       image {
         url
       }
       author {
-        first_name
-        last_name
+        firstName
+        lastName
       }
+      createdAt
     }
   }
 `;
@@ -34,9 +36,11 @@ export const FEATURED_CARDS_QUERY = gql`
         url
       }
       author {
-        first_name
-        last_name
+        id
+        firstName
+        lastName
       }
+      createdAt
     }
   }
 `;

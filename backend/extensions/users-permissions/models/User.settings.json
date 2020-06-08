@@ -78,25 +78,25 @@
       "type": "boolean",
       "default": false
     },
-    "applying_about_me": {
+    "message": {
       "type": "text"
     },
-    "first_name": {
+    "firstName": {
       "type": "string"
     },
-    "last_name": {
+    "lastName": {
       "type": "string"
     },
     "stats": {
       "type": "json"
     },
     "articles": {
-      "via": "author",
-      "collection": "article"
+      "collection": "article",
+      "via": "author"
     },
     "cards": {
-      "via": "author",
-      "collection": "cards"
+      "collection": "cards",
+      "via": "author"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "components_questions_question_single_answers",
+  "collectionName": "questions_single_answer",
   "info": {
     "name": "Question Single Answer",
     "icon": "check-circle"
@@ -31,11 +31,15 @@
     "wrong_answer_4": {
       "type": "string"
     },
-    "wrong_answer_6": {
+    "wrong_answer_5": {
       "type": "string"
     },
     "meta": {
       "type": "json"
+    },
+    "choices_type": {
+      "type": "string",
+      "default": "single"
     }
   }
 }

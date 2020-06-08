@@ -5,19 +5,25 @@ import { Link, withRouter } from "react-router-dom";
 
 import { CATEGORIES_QUERY } from "../Category/queries";
 import { getToken, clearToken, clearUser } from "../../../utils/index";
+import { getState, getString } from "../../../utils";
 
-
+const AR = "Arabic";
+const EN = "English";
 
 const Navbar = () => {
-
+  const state = getState();
   const [searchShow, setSearchShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const toggleSearch = () => {
     setSearchShow(!searchShow);
-  }
+  };
+  const rtlInput = {height: 30, width: 229 };
+  const ltrInput = {height: 30, width: 286 };
+
   return (
     <header className="header">
-      <nav className="navbar navbar-expand-lg fixed-top gradient-purple-bg ">
+      <nav className= {`navbar navbar-expand-lg fixed-top gradient-purple-bg 
+      ${state.siteLanguage === AR ? "navbar-rtl" : ""}`}>
         <div className="container">
           <a className="navbar-brand" href="/">
             <img
@@ -43,67 +49,145 @@ const Navbar = () => {
           <div
             className="collapse navbar-collapse main-menu"
             id="navbarSupportedContent"
-            style={{ position: 'relative' }}
+            style={{ position: "relative" }}
           >
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav ml-auto tajawal">
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/">
-                  Home
-                    </a>
+                  {getString("home")}
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/tests">
-                  Tests
-                    </a>
+                  {getString("tests")}
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/articles">
-                  Knowledge
-                    </a>
+                  {getString("knowledge")}
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/feedback">
-                  Contact us
-                    </a>
+                  {getString("contact-us")}
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link page-scroll" href="/about">
-                  About Us
-                    </a>
-              </li>
-
-              <li className="nav-item">
-                <a href="/signup" className="join-us-btn p-1 pl-3 pr-3 rounded-pill text-center">Join us as a content creator</a>
+                  {getString("about-us")}
+                </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#contact">العربية</a>
+                <a
+                  href="/signup"
+                  className="join-us-btn p-1 pl-3 pr-3 rounded-pill text-center"
+                >
+                  {getString("join-us-as-a-content-creator")}
+                </a>
               </li>
-              <li className="nav-item d-none d-md-none d-lg-block" onClick={toggleSearch} style={{ width: 32 }}>
-                {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
-                {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
+              <li className="nav-item">
+                <a className="nav-link" href="#contact">
+                  {state.siteLanguage === AR ? "English" : "العربية"}
+                </a>
               </li>
-              {searchShow && <div class="form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav" style={{ paddingRight: 0, paddingLeft: 0 }}>
-                <input class="form-control form-control-sm search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30, width: 286 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
-                <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }} style={{ left: -22, position: 'relative', lineHeight: '30px' }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
-              </div>}
+              <li
+                className="nav-item d-none d-md-none d-lg-block"
+                onClick={toggleSearch}
+                style={{ width: 32 }}
+              >
+                {!searchShow && (
+                  <i className="fa fa-search nav-link search-icon-color"></i>
+                )}
+                {searchShow && (
+                  <i className="fa fa-times nav-link search-icon-color"></i>
+                )}
+              </li>
+              {searchShow && (
+                <div
+                className= {`form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav 
+                ${state.siteLanguage === AR ? "search-box-nav-rtl rtl-search-box" : ""}`}
+                  style={{ paddingRight: 0, paddingLeft: 0 }}
+                >
+                  <input
+                    className="form-control form-control-sm search-input"
+                    type="text"
+                    placeholder={state.siteLanguage === AR ? "بحث" : "Search"}
+                    aria-label="Search"
+                    style={state.siteLanguage === AR ? rtlInput : ltrInput}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                    }}
+                  />
+                  <Link
+                    onClick={toggleSearch}
+                    to={{
+                      pathname: "/search",
+                      state: { searchTerm, category: "all" },
+                    }}
+                    style={{
+                      left: -22,
+                      position: "relative",
+                      lineHeight: "30px",
+                    }}
+                  >
+                    <i
+                      className="fa fa-search search-icon-modal"
+                      aria-hidden="true"
+                    ></i>
+                  </Link>
+                </div>
+              )}
             </ul>
           </div>
-          <ul className="position-absolute d-sm-block d-md-block d-lg-none search-nav">
+          <ul className= {`position-absolute d-sm-block d-md-block d-lg-none search-nav
+          ${state.siteLanguage === AR ? "rtl-search-box" : ""}`}>
             <li className="nav-item" onClick={toggleSearch}>
-              {!searchShow && <i className="fa fa-search nav-link search-icon-color"></i>}
-              {searchShow && <i className="fa fa-times nav-link search-icon-color"></i>}
+              {!searchShow && (
+                <i className="fa fa-search nav-link search-icon-color"></i>
+              )}
+              {searchShow && (
+                <i className="fa fa-times nav-link search-icon-color"></i>
+              )}
             </li>
-            {searchShow && <div class="form-inline justify-content-center search-box-nav-mobile" style={{ paddingRight: 0, paddingLeft: 0 }}>
-              <input class="form-control form-control-sm search-input" type="text" placeholder="Search" aria-label="Search" style={{ height: 30, width:286 }} onChange={(e) => { setSearchTerm(e.target.value) }} />
-              <Link onClick={toggleSearch} to={{ pathname: "/search", state: { searchTerm, category: 'all' } }} style={{ left: -22, position: 'relative', lineHeight: '30px' }}><i class="fa fa-search search-icon-modal" aria-hidden="true"></i></Link>
-            </div>}
+            {searchShow && (
+              <div
+                className="form-inline justify-content-center search-box-nav-mobile"
+                style={{ paddingRight: 0, paddingLeft: 0 }}
+              >
+                <input
+                  className="form-control form-control-sm search-input"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
+                />
+                <Link
+                  onClick={toggleSearch}
+                  to={{
+                    pathname: "/search",
+                    state: { searchTerm, category: "all" },
+                  }}
+                  style={{
+                    left: -22,
+                    position: "relative",
+                    lineHeight: "30px",
+                  }}
+                >
+                  <i
+                    className="fa fa-search search-icon-modal"
+                    aria-hidden="true"
+                  ></i>
+                </Link>
+              </div>
+            )}
           </ul>
         </div>
       </nav>
     </header>
-  )
-}
-
+  );
+};
 
 export default Navbar;
 
@@ -232,7 +316,6 @@ export default Navbar;
 //       </nav>
 //     </div>
 //   );
-
 // };
 
 // export default withRouter(Navbar);

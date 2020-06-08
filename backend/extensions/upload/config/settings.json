@@ -1,0 +1,11 @@
+{
+    "provider": "aws-s3",
+    "providerOptions": {
+        "accessKeyId": "AKIA32X3FMB75R73DOUU",
+        "secretAccessKey": "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",
+        "region": "eu-central-1",
+        "params":{
+            "Bucket":"modrek-app"
+        }
+    }
+}

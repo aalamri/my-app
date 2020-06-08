@@ -11,7 +11,12 @@ export const CARD_QUERY = gql`
       image {
         url
       }
-      published_at
+      author {
+        id
+        firstName
+        lastName
+      }
+      createdAt
       meta
     }
   }
@@ -30,7 +35,12 @@ export const CARDS_QUERY = gql`
       image {
         url
       }
-      published_at
+      author {
+        id
+        firstName
+        lastName
+      }
+      createdAt
       meta
     }
   }
@@ -48,6 +58,11 @@ export const CATEGORY_CARDS_BY_ID_QUERY = gql`
         title
         content
         meta
+        author {
+        id
+        firstName
+        lastName
+      }
       }
     }
     }
@@ -66,6 +81,11 @@ export const CATEGORY_CARDS_QUERY = gql`
         title
         content
         meta
+        author {
+        id
+        firstName
+        lastName
+      }
       }
     }
     }
@@ -85,7 +105,12 @@ query {
     image {
       url
     }
-    published_at
+    author {
+        id
+        firstName
+        lastName
+      }
+    createdAt
     meta
   }
 }`;
@@ -103,7 +128,12 @@ query {
     image {
       url
     }
-    published_at
+    author {
+        id
+        firstName
+        lastName
+      }
+    createdAt
     meta
   }
 }`;
@@ -121,7 +151,12 @@ query {
     image {
       url
     }
-    published_at
+    author {
+        id
+        firstName
+        lastName
+      }
+    createdAt
     meta
   }
 }`;
@@ -139,7 +174,12 @@ query {
     image {
       url
     }
-    published_at
+    author {
+        id
+        firstName
+        lastName
+      }
+    createdAt
     meta
   }
 }`;

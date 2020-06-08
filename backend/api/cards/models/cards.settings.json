@@ -44,10 +44,10 @@
       "required": true
     },
     "author": {
-      "columnName": "email",
+      "via": "cards",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "cards"
+      "columnName": "email",
+      "model": "user"
     },
     "status": {
       "type": "enumeration",
@@ -70,8 +70,8 @@
       "type": "text"
     },
     "category": {
-      "model": "category",
-      "via": "cards"
+      "via": "cards",
+      "model": "category"
     },
     "tags": {
       "type": "string"

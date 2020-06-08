@@ -518,8 +518,7 @@
         "required": [
           "id",
           "name",
-          "Description",
-          "icon"
+          "Description"
         ],
         "properties": {
           "id": {
@@ -578,9 +577,6 @@
                   "type": "boolean"
                 },
                 "tags": {
-                  "type": "string"
-                },
-                "multi_lang_id": {
                   "type": "string"
                 }
               }
@@ -656,56 +652,6 @@
               }
             }
           },
-          "test": {
-            "required": [
-              "id",
-              "title"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "image": {
-                "type": "string"
-              },
-              "questions": {
-                "type": "dynamiczone"
-              },
-              "category": {
-                "type": "string"
-              },
-              "meta": {
-                "type": "object"
-              },
-              "language": {
-                "type": "string"
-              },
-              "is_archived": {
-                "type": "boolean"
-              },
-              "is_deleted": {
-                "type": "boolean"
-              },
-              "test_url_in_other_language": {
-                "type": "string"
-              },
-              "is_pinned": {
-                "type": "boolean"
-              },
-              "status": {
-                "type": "string"
-              },
-              "comment": {
-                "type": "string"
-              }
-            }
-          },
           "cards": {
             "type": "array",
             "items": {
@@ -764,6 +710,62 @@
                 }
               }
             }
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "questions": {
+                  "type": "dynamiczone"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "is_archived": {
+                  "type": "boolean"
+                },
+                "is_deleted": {
+                  "type": "boolean"
+                },
+                "test_id_of_other_language": {
+                  "type": "string"
+                },
+                "is_pinned": {
+                  "type": "boolean"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "is_draft": {
+                  "type": "boolean"
+                },
+                "author": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -788,10 +790,13 @@
           "Description": {
             "type": "string"
           },
-          "test": {
-            "type": "string"
-          },
           "cards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tests": {
             "type": "array",
             "items": {
               "type": "string"

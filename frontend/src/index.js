@@ -1,18 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from "react-router-dom";
+
 import AppRouter from "./config/AppRouter";
 import client from "./utils/apolloClient";
-import { BrowserRouter as Router } from "react-router-dom";
+import configureStore from './config/store';
 import "./index.css";
-import Card from "./public_site/components/Cards/Card";
-import { ModalContainer, ModalRoute } from 'react-router-modal';
+
+const store = configureStore();
 
 ReactDOM.render(
   <Router>
-    <ApolloProvider client={client}>
-      <AppRouter />
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <AppRouter />
+      </ApolloProvider>
+    </Provider>
   </Router>,
   document.getElementById("root")
 );

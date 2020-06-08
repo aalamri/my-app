@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "components_questions_questions",
+  "collectionName": "questions_multiple_answers",
   "info": {
     "name": "Question Multiple Answers",
     "icon": "check-square"
@@ -55,11 +55,9 @@
     "meta": {
       "type": "json"
     },
-    "question_image": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": false
+    "choices_type": {
+      "type": "string",
+      "default": "multiple"
     }
   }
 }

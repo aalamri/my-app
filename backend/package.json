@@ -32,6 +32,7 @@
     "strapi-plugin-users-permissions": "3.0.0-beta.20",
     "strapi-provider-email-gmail-oauth2": "^0.1.6",
     "strapi-provider-email-sendgrid": "^3.0.0-beta.20",
+    "strapi-provider-upload-aws-s3": "^3.0.0",
     "strapi-utils": "3.0.0-beta.20",
     "unzip-stream": "^0.3.0"
   },

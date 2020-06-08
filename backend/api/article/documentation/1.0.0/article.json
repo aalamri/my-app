@@ -596,8 +596,7 @@
             "required": [
               "id",
               "name",
-              "Description",
-              "icon"
+              "Description"
             ],
             "properties": {
               "id": {
@@ -624,10 +623,13 @@
                   "type": "string"
                 }
               },
-              "test": {
-                "type": "string"
-              },
               "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tests": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -718,13 +720,13 @@
               "can_review_tests": {
                 "type": "boolean"
               },
-              "applying_about_me": {
+              "message": {
                 "type": "string"
               },
-              "first_name": {
+              "firstName": {
                 "type": "string"
               },
-              "last_name": {
+              "lastName": {
                 "type": "string"
               },
               "stats": {
@@ -749,9 +751,6 @@
             "default": false
           },
           "tags": {
-            "type": "string"
-          },
-          "multi_lang_id": {
             "type": "string"
           }
         }
@@ -811,9 +810,6 @@
             "default": false
           },
           "tags": {
-            "type": "string"
-          },
-          "multi_lang_id": {
             "type": "string"
           }
         }

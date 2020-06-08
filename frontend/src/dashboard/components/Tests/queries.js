@@ -3,30 +3,30 @@ import gql from "graphql-tag";
 /*
  * Queries
  */
-export const TEST_QUERY = gql`
-  query Tests($id: ID!) {
-    test(id: $id) {
-      id
-      title
-      description
-      questions {
-        __typename
-        ... on ComponentQuestionsGroupNewQuestion {
-          title
-          content
-          multiple_choices
-          correct_answer
-          wrong_answer_1
-          wrong_answer_2
-          wrong_answer_3
-          wrong_answer_4
-        }
-      }
-      createdAt
-      test_url_in_other_language
-    }
-  }
-`;
+// export const TEST_QUERY = gql`
+//   query Tests($id: ID!) {
+//     test(id: $id) {
+//       id
+//       title
+//       description
+//       questions {
+//         __typename
+//         ... on ComponentQuestionsGroupNewQuestion {
+//           title
+//           content
+//           multiple_choices
+//           correct_answer
+//           wrong_answer_1
+//           wrong_answer_2
+//           wrong_answer_3
+//           wrong_answer_4
+//         }
+//       }
+//       createdAt
+//       test_id_of_other_language
+//     }
+//   }
+// `;
 
 export const TESTS_QUERY = gql`
   query Tests {

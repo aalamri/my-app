@@ -663,13 +663,13 @@
               "can_review_tests": {
                 "type": "boolean"
               },
-              "applying_about_me": {
+              "message": {
                 "type": "string"
               },
-              "first_name": {
+              "firstName": {
                 "type": "string"
               },
-              "last_name": {
+              "lastName": {
                 "type": "string"
               },
               "stats": {
@@ -712,8 +712,7 @@
             "required": [
               "id",
               "name",
-              "Description",
-              "icon"
+              "Description"
             ],
             "properties": {
               "id": {
@@ -740,10 +739,13 @@
                   "type": "string"
                 }
               },
-              "test": {
-                "type": "string"
-              },
               "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tests": {
                 "type": "array",
                 "items": {
                   "type": "string"

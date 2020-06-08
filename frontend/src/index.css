@@ -43,8 +43,3 @@ img:hover {
 /* .row:hover {
     background-color: #e7e5e5;
   } */
-
-.react-router-modal__container {
-  position: fixed;
-  z-index: 1050
-}

@@ -1269,13 +1269,13 @@
             "type": "boolean",
             "default": false
           },
-          "applying_about_me": {
+          "message": {
             "type": "string"
           },
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
-          "last_name": {
+          "lastName": {
             "type": "string"
           },
           "stats": {
@@ -1331,9 +1331,6 @@
                   "type": "boolean"
                 },
                 "tags": {
-                  "type": "string"
-                },
-                "multi_lang_id": {
                   "type": "string"
                 }
               }
@@ -1459,13 +1456,13 @@
             "type": "boolean",
             "default": false
           },
-          "applying_about_me": {
+          "message": {
             "type": "string"
           },
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
-          "last_name": {
+          "lastName": {
             "type": "string"
           },
           "stats": {

@@ -14,13 +14,10 @@ export const ARTICLE_QUERY = gql`
         id
         name
       }
-      image {
-        url
-      }
       author {
         id
-        first_name
-        last_name
+        firstName
+        lastName
       }
       is_pinned
       createdAt
@@ -44,6 +41,11 @@ export const ARTICLES_QUERY = gql`
       }
       image {
         url
+      }
+      author {
+        id
+        firstName
+        lastName
       }
       meta
       is_deleted
@@ -90,6 +92,14 @@ export const CATEGORY_ARTICLES_QUERY = gql`
         title
         content
         meta
+        author {
+        id
+        firstName
+        lastName
+        image {
+        url
+      }
+      }
       }
     }
     }
@@ -108,6 +118,11 @@ export const CATEGORY_ARTICLES_BY_ID_QUERY = gql`
         image {
           url
         }
+        author {
+        id
+        firstName
+        lastName
+      }
         category {
           id
           name
@@ -130,6 +145,11 @@ query {
       image {
         url
       }
+      author {
+        id
+        firstName
+        lastName
+      }
       meta
       is_deleted
       article_id_of_other_language
@@ -150,6 +170,11 @@ query {
       }
       image {
         url
+      }
+      author {
+        id
+        firstName
+        lastName
       }
       meta
       is_deleted
@@ -172,6 +197,11 @@ query {
       image {
         url
       }
+      author {
+        id
+        firstName
+        lastName
+      }
       meta
       is_deleted
       article_id_of_other_language
@@ -192,6 +222,11 @@ query {
       }
       image {
         url
+      }
+      author {
+        id
+        firstName
+        lastName
       }
       meta
       is_deleted

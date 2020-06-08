@@ -16,8 +16,8 @@ export const ARTICLES_QUERY = gql`
       is_deleted
       author {
           id
-          first_name
-          last_name
+          firstName
+          lastName
         }
     }
   }

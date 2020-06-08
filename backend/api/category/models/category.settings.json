@@ -15,8 +15,8 @@
       "required": true
     },
     "articles": {
-      "via": "category",
-      "collection": "article"
+      "collection": "article",
+      "via": "category"
     },
     "meta": {
       "type": "json"
@@ -29,15 +29,15 @@
       "collection": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
-    },
-    "test": {
-      "via": "category",
-      "model": "tests"
+      "required": false
     },
     "cards": {
+      "collection": "cards",
+      "via": "category"
+    },
+    "tests": {
       "via": "category",
-      "collection": "cards"
+      "collection": "tests"
     }
   }
 }

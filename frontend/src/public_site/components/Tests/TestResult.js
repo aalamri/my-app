@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import Slide from 'react-reveal/Slide';
 
-import imageUrl from './q1.png'
+import { getState, getString } from "../../../utils";
 
 const AR = "Arabic";
-const EN = "English";
 
 const TestResult = (props) => {
+  const state = getState();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
   const [emailResultStatus, setEmailResultStatus] = useState(null);
-  const [email, setEmail] = useState('');
-  const language = EN;
+  const [email, setEmail] = useState("");
 
   if (props.location.state == null) {
     // user MUST come from a test with a `state` prop via the router
     return (
-      <section className="question-section ptb-100" dir={language === AR ? "rtl" : "ltr"}>
+      <section
+        className="question-section ptb-100"
+        dir={state.siteLanguage === AR ? "rtl" : "ltr"}
+      >
         <div className="container max-width-880">
-          <p>Invalid page request!</p>
+          <p>{getString("invalid-page")}</p>
         </div>
       </section>
-    )
+    );
   }
 
-  const { title, questions } = props.location.state.test;
+  const { title, questions, language } = props.location.state.test;
   function goPrevious() {
     setCurrentQuestionIndex(currentQuestionIndex - 1);
   }
@@ -34,27 +35,42 @@ const TestResult = (props) => {
   function emailResult() {
     if (/^[\w._-]+[+]?[\w._-]+@[\w.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
       const emailSentSuccessfully = (
-        <div className="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <div
+          className="alert alert-success alert-dismissible fade show mt-3"
+          role="alert"
+        >
           Result sent to your email!
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => setEmailResultStatus(null)}>
+          <button
+            type="button"
+            className="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            onClick={() => setEmailResultStatus(null)}
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       );
-      setTimeout(() =>
-        setEmailResultStatus(emailSentSuccessfully)
-        , 1000)
-
+      setTimeout(() => setEmailResultStatus(emailSentSuccessfully), 1000);
     } else {
       const invalidAlert = (
-        <div className="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+        <div
+          className="alert alert-warning alert-dismissible fade show mt-3"
+          role="alert"
+        >
           Please enter a valid email!
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => setEmailResultStatus(null)}>
+          <button
+            type="button"
+            className="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            onClick={() => setEmailResultStatus(null)}
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       );
-      setEmailResultStatus(invalidAlert)
+      setEmailResultStatus(invalidAlert);
     }
   }
   function handleOnChangeEmail({ target }) {
@@ -63,39 +79,71 @@ const TestResult = (props) => {
   }
 
   const question = questions[currentQuestionIndex - 1];
+  question.language = language;
   const questionsWithScore = calculatScores(questions);
-  const correctAnswers = questionsWithScore.filter(({ answeredCorrectly }) => answeredCorrectly).length;
+  const correctAnswers = questionsWithScore.filter(
+    ({ answeredCorrectly }) => answeredCorrectly
+  ).length;
 
   return (
-    <section className="question-section py-5" dir={language === AR ? "rtl" : "ltr"}>
-      <div className="container max-width-880 pb-5 ">
-        <div className="text-center pb-5 mb-2">
-          <h4>Thank you for taking the test!</h4>
-          <h2>"{title}"</h2>
-          <h4>You scored {`${correctAnswers}/${questions.length}`}</h4>
-          <p>Send the result to your email</p>
-          <div className="d-flex justify-content-center">
-            <input
-              type="email"
-              className="form-control share-result-email mr-1" placeholder="youremail@example.com"
-              value={email}
-              onChange={handleOnChangeEmail}
-              autoFocus
-            />
-            <span className="btn gradient-purple-btn ml-1" onClick={emailResult}>Send</span>
-          </div>
-          <div className="d-flex justify-content-center">
-            {emailResultStatus}
+    <>
+      <section className="question-section py-5 gradient-purple-bg">
+        <div className="container max-width-880 py-3">
+          <div className="text-center">
+            <h3 className="roboto-black color-white tajawal">
+              {getString("thanks-for-taking-test")}
+            </h3>
+            <h1 className="roboto-black color-white rem4 tajawal">"{title}"</h1>
+            <h2 className="roboto-black color-white tajawal">
+              {getString("you-scored")}{" "}
+              {`${correctAnswers}/${questions.length}`}
+            </h2>
           </div>
         </div>
+      </section>
 
-        <h3 className="answers-header">
-          <span>Answers</span>
-        </h3>
+      <div className="text-center pt-3 mt-5">
+        <h4 className="sent-email-text my-2 tajawal">
+          {getString("send-result-to-email")}
+        </h4>
+        <div className="text-center mt-5">
+          <form
+            action="#"
+            method="post"
+            className="send-form text-center m-auto"
+          >
+            <div className="d-flex align-items-center">
+              <input
+                type="text"
+                className="form-control search-input px-4"
+                id="email"
+                name="email"
+                placeholder="info@yourdomain.com"
+              />
+              <input
+                type="send"
+                className="button btn send-btn tajawal"
+                id="send"
+                defaultValue={getString("send")}
+              />
+            </div>
+          </form>
+        </div>
+        <div className="d-flex justify-content-center">{emailResultStatus}</div>
+      </div>
 
-        <div className="">
-          <h4>{question.title}</h4>
-          {/* {currentQuestionIndex % 2 === 0 &&
+      <div className="text-center mt-5">
+        <h1 className="tale roboto-black rem4 tajawal">
+          {getString("answers")}
+        </h1>
+      </div>
+
+      <div
+        className={`container max-width-880 py-3 ${
+          language === AR ? "text-right" : ""
+        }`}
+      >
+        {/* {currentQuestionIndex % 2 === 0 &&
                 <img
                   src={imageUrl}
                   className="card-img-top position-relative border-q-img"
@@ -103,28 +151,48 @@ const TestResult = (props) => {
                   alt=""
                 />
               } */}
-          <p className="py-4">{question.content}</p>
-        </div>
-        <div className="mb-5">
-          <h5>Choices: <span className="answer-status ml-3">({question.userSelection == null ? "Skipped" : "Answered"})</span></h5>
-          <div className="custom-control custom-checkbox">
-            {displayChoices(question)}
-          </div>
-        </div>
+        <p className="test-no my-3">{`${currentQuestionIndex}/${questions.length}`}</p>
+        <h4 className="question tajawal">{question.title}</h4>
+        <p className="py-2 tajawal">{question.content}</p>
+      </div>
 
-        <div className="text-center">
-          {currentQuestionIndex > 1 &&
-            <button className="btn mx-2 btn-info" onClick={goPrevious}>Previous</button>
-          }
-          {currentQuestionIndex < questions.length &&
-            <button className="btn mx-2 btn-info" onClick={goNext}>Next</button>
-          }
+      <div
+        className={`container max-width-880 py-3 text-${
+          language === AR ? "right" : "left"
+        }`}
+      >
+        <h5>
+          <span className="answer-status ml-3 tajawal">
+            (
+            {question.userSelection == null
+              ? getString("skipped")
+              : getString("answered")}
+            )
+          </span>
+        </h5>
+        <div className="custom-control custom-checkbox">
+          {displayChoices(question)}
         </div>
       </div>
-    </section>
+      <section className="container max-width-880">
+        <hr className="yellow-hr-thin" />
+
+        <div className={`text-${language === AR ? "left" : "right"}`}>
+          {currentQuestionIndex > 1 && (
+            <span className="next-previous mx-2 tajawal" onClick={goPrevious}>
+              {getString("previous")}
+            </span>
+          )}
+          {currentQuestionIndex < questions.length && (
+            <span className="next-previous mx-2 tajawal" onClick={goNext}>
+              {getString("next")}
+            </span>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
-
 
 function calculatScores(questions) {
   return questions.map((question, i) => {
@@ -160,12 +228,16 @@ function calculatScores(questions) {
         { choice_4, choice_4_is_correct, choice: 4 },
         { choice_5, choice_5_is_correct, choice: 5 },
         { choice_6, choice_6_is_correct, choice: 6 },
-      ].filter(c => Object.values(c)[0] != null && Object.values(c)[0].trim() != '');
+      ].filter(
+        (c) => Object.values(c)[0] != null && Object.values(c)[0].trim() != ""
+      );
       const correctChoices = validChoices
         .filter((q, i) => q[`choice_${q.choice}_is_correct`])
         .map((q, i) => q[`choice_${q.choice}`]);
-      const markChoices = correctChoices.map(c => userSelection.includes(c));
-      question.answeredCorrectly = correctChoices.length === userSelection.length && !markChoices.some(c => c === false);
+      const markChoices = correctChoices.map((c) => userSelection.includes(c));
+      question.answeredCorrectly =
+        correctChoices.length === userSelection.length &&
+        !markChoices.some((c) => c === false);
     }
     return question;
   });
@@ -174,13 +246,13 @@ function calculatScores(questions) {
 function displayChoices(question) {
   const { choices_type } = question;
   if (choices_type === "multiple") {
-    return <MultipleChoicesQuestion {...question} />
+    return <MultipleChoicesQuestion {...question} />;
   } else if (choices_type === "single") {
-    return <SingleChoiceQuestion {...question} />
+    return <SingleChoiceQuestion {...question} />;
   } else {
-    throw Error(`ERROR displayChoices: Unknown choices type ${choices_type}`)
+    throw Error(`ERROR displayChoices: Unknown choices type ${choices_type}`);
   }
-};
+}
 
 const MultipleChoicesQuestion = (question) => {
   const {
@@ -197,7 +269,8 @@ const MultipleChoicesQuestion = (question) => {
     choice_4_is_correct,
     choice_5_is_correct,
     choice_6_is_correct,
-    userSelection = []
+    userSelection = [],
+    language,
   } = question;
 
   const validChoices = [
@@ -207,7 +280,9 @@ const MultipleChoicesQuestion = (question) => {
     { choice_4, choice_4_is_correct, choice: 4 },
     { choice_5, choice_5_is_correct, choice: 5 },
     { choice_6, choice_6_is_correct, choice: 6 },
-  ].filter(c => Object.values(c)[0] != null && Object.values(c)[0].trim() != '');
+  ].filter(
+    (c) => Object.values(c)[0] != null && Object.values(c)[0].trim() != ""
+  );
 
   const correctChoices = validChoices
     .filter((q, i) => q[`choice_${q.choice}_is_correct`])
@@ -217,13 +292,16 @@ const MultipleChoicesQuestion = (question) => {
     .map((q, i) => q[`choice_${q.choice}`]);
 
   const choiceComponent = (text) => {
-    const isSelected = userSelection && userSelection.includes(text) || false;
+    const isSelected = (userSelection && userSelection.includes(text)) || false;
     const isCorrectAnswer = correctChoices.includes(text);
     const isWrongAnswer = wrongChoices.includes(text);
 
     return (
-      <div key={text}
-        className={`d-flex p-2 form-check question-choice-result ${isSelected ? 'selected-choice' : ''}`}
+      <div
+        key={text}
+        className={`d-flex p-2 form-check question-choice-result ${
+          isSelected ? "selected-choice" : ""
+        }`}
       >
         <input
           id={`choice_${text}`}
@@ -234,18 +312,24 @@ const MultipleChoicesQuestion = (question) => {
           defaultChecked={isSelected}
           disabled
         />
-        <label className="form-check-label" htmlFor={`choice_${text}`}>{text}</label>
-        <div className="ml-auto">
-          {isCorrectAnswer &&
-            <span className="badge badge-pill ml-1 badge-success align-self-end">Correct</span>
-          }
-          {isWrongAnswer && isSelected &&
-            <span className="badge badge-pill ml-1 badge-danger align-self-end">Wrong</span>
-          }
+        <label className="form-check-label tajawal" htmlFor={`choice_${text}`}>
+          {text}
+        </label>
+        <div className={language === AR ? "mr-auto" : "ml-auto"}>
+          {isCorrectAnswer && (
+            <span className="badge badge-pill ml-1 badge-success align-self-end tajawal">
+              {getString("correct-answer")}
+            </span>
+          )}
+          {isWrongAnswer && isSelected && (
+            <span className="badge badge-pill ml-1 badge-danger align-self-end tajawal">
+              {getString("wrong-answer")}
+            </span>
+          )}
         </div>
-      </div >
+      </div>
     );
-  }
+  };
 
   const allChoices = [
     choice_1,
@@ -254,24 +338,28 @@ const MultipleChoicesQuestion = (question) => {
     choice_4,
     choice_5,
     choice_6,
-  ].filter((_, i) => _ != null && _.trim() != '');
+  ].filter((_, i) => _ != null && _.trim() != "");
 
-  const choicesComponents = allChoices.map(choice => choiceComponent(choice));
+  const choicesComponents = allChoices.map((choice) => choiceComponent(choice));
   return choicesComponents;
-}
+};
 
 const SingleChoiceQuestion = (question) => {
   const {
     choices,
     correct_answer,
     userSelection,
-    answeredCorrectly
+    answeredCorrectly,
+    language,
   } = question;
 
   const choiceComponent = (text, index) => {
     return (
-      <div key={index}
-        className={`d-flex p-2 form-check question-choice-result ${userSelection === text ? 'selected-choice' : ''}`}
+      <div
+        key={index}
+        className={`d-flex p-2 form-check question-choice-result ${
+          userSelection === text ? "selected-choice" : ""
+        }`}
       >
         <input
           className="position-relative form-check-input mx-2"
@@ -281,27 +369,35 @@ const SingleChoiceQuestion = (question) => {
           checked={userSelection === text}
           disabled
         />
-        <label className="form-check-label" htmlFor={`choice_${text}`}>
+        <label className="form-check-label tajawal" htmlFor={`choice_${text}`}>
           {text}
         </label>
-        <div className="ml-auto">
-          {userSelection === text && answeredCorrectly &&
-            <span className="badge badge-pill ml-1 badge-success align-self-end">Correct</span>
-          }
-          {userSelection === text && !answeredCorrectly &&
-            <span className="badge badge-pill ml-1 badge-danger">Wrong</span>
-          }
-          {correct_answer === text && userSelection !== text &&
-            <span className="badge badge-pill ml-1 badge-success">Correct</span>
-          }
+        <div className={language === AR ? "mr-auto" : "ml-auto"}>
+          {userSelection === text && answeredCorrectly && (
+            <span className="badge badge-pill ml-1 badge-success align-self-end tajawal">
+              {getString("correct-answer")}
+            </span>
+          )}
+          {userSelection === text && !answeredCorrectly && (
+            <span className="badge badge-pill ml-1 badge-danger tajawal">
+              {getString("wrong-answer")}
+            </span>
+          )}
+          {correct_answer === text && userSelection !== text && (
+            <span className="badge badge-pill ml-1 badge-success tajawal">
+              {getString("correct-answer")}
+            </span>
+          )}
         </div>
       </div>
     );
-  }
+  };
 
-  const validChoices = choices.filter(_ => _ != null && _.trim() != '');
-  const choicesComponents = validChoices.map((choice, i) => choiceComponent(choice, i));
+  const validChoices = choices.filter((_) => _ != null && _.trim() != "");
+  const choicesComponents = validChoices.map((choice, i) =>
+    choiceComponent(choice, i)
+  );
   return choicesComponents;
-}
+};
 
 export default TestResult;

@@ -627,13 +627,13 @@
                 "can_review_tests": {
                   "type": "boolean"
                 },
-                "applying_about_me": {
+                "message": {
                   "type": "string"
                 },
-                "first_name": {
+                "firstName": {
                   "type": "string"
                 },
-                "last_name": {
+                "lastName": {
                   "type": "string"
                 },
                 "stats": {

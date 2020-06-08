@@ -529,67 +529,6 @@
           "description": {
             "type": "string"
           },
-          "image": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              }
-            }
-          },
           "questions": {
             "type": "array",
             "items": {
@@ -651,66 +590,9 @@
                     "meta": {
                       "type": "object"
                     },
-                    "question_image": {
-                      "required": [
-                        "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
-                          "type": "string"
-                        }
-                      }
+                    "choices_type": {
+                      "type": "string",
+                      "default": "multiple"
                     }
                   },
                   "required": [
@@ -753,11 +635,15 @@
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "wrong_answer_6": {
+                    "wrong_answer_5": {
                       "type": "string"
                     },
                     "meta": {
                       "type": "object"
+                    },
+                    "choices_type": {
+                      "type": "string",
+                      "default": "single"
                     }
                   },
                   "required": [
@@ -774,8 +660,7 @@
             "required": [
               "id",
               "name",
-              "Description",
-              "icon"
+              "Description"
             ],
             "properties": {
               "id": {
@@ -802,10 +687,13 @@
                   "type": "string"
                 }
               },
-              "test": {
-                "type": "string"
-              },
               "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tests": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -829,7 +717,7 @@
           "is_deleted": {
             "type": "boolean"
           },
-          "test_url_in_other_language": {
+          "test_id_of_other_language": {
             "type": "string"
           },
           "is_pinned": {
@@ -847,6 +735,88 @@
           },
           "comment": {
             "type": "string"
+          },
+          "is_draft": {
+            "type": "boolean",
+            "default": false
+          },
+          "author": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "can_create_articles": {
+                "type": "boolean"
+              },
+              "can_create_cards": {
+                "type": "boolean"
+              },
+              "can_create_tests": {
+                "type": "boolean"
+              },
+              "can_review_articles": {
+                "type": "boolean"
+              },
+              "can_review_cards": {
+                "type": "boolean"
+              },
+              "can_review_tests": {
+                "type": "boolean"
+              },
+              "message": {
+                "type": "string"
+              },
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "stats": {
+                "type": "object"
+              },
+              "articles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -922,66 +892,9 @@
                     "meta": {
                       "type": "object"
                     },
-                    "question_image": {
-                      "required": [
-                        "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
-                          "type": "string"
-                        }
-                      }
+                    "choices_type": {
+                      "type": "string",
+                      "default": "multiple"
                     }
                   },
                   "required": [
@@ -1024,11 +937,15 @@
                     "wrong_answer_4": {
                       "type": "string"
                     },
-                    "wrong_answer_6": {
+                    "wrong_answer_5": {
                       "type": "string"
                     },
                     "meta": {
                       "type": "object"
+                    },
+                    "choices_type": {
+                      "type": "string",
+                      "default": "single"
                     }
                   },
                   "required": [
@@ -1060,7 +977,7 @@
           "is_deleted": {
             "type": "boolean"
           },
-          "test_url_in_other_language": {
+          "test_id_of_other_language": {
             "type": "string"
           },
           "is_pinned": {
@@ -1077,6 +994,13 @@
             ]
           },
           "comment": {
+            "type": "string"
+          },
+          "is_draft": {
+            "type": "boolean",
+            "default": false
+          },
+          "author": {
             "type": "string"
           }
         }

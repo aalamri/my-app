@@ -3,7 +3,7 @@
   "connection": "default",
   "collectionName": "articles",
   "info": {
-    "name": "articles"
+    "name": "article"
   },
   "options": {
     "increments": true,
@@ -25,8 +25,8 @@
       "required": false
     },
     "category": {
-      "model": "category",
-      "via": "articles"
+      "via": "articles",
+      "model": "category"
     },
     "meta": {
       "type": "json"
@@ -62,9 +62,9 @@
       "type": "text"
     },
     "author": {
+      "via": "articles",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "articles"
+      "model": "user"
     },
     "is_pinned": {
       "type": "boolean",
@@ -72,10 +72,6 @@
     },
     "tags": {
       "type": "string"
-    },
-    "multi_lang_id": {
-      "type": "string"
-
     }
   }
 }

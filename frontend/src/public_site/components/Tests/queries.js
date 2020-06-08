@@ -12,6 +12,10 @@ export const TEST_QUERY = gql`
       language
       status
       test_id_of_other_language
+      author {
+        firstName
+        lastName
+      }
       questions {
         __typename
         ... on ComponentQuestionsQuestionSingleAnswer {
@@ -44,7 +48,7 @@ export const TEST_QUERY = gql`
           choice_4_is_correct
           choice_5_is_correct
           choice_6_is_correct
-          meta        
+          meta
         }
       }
       createdAt
@@ -55,9 +59,7 @@ export const TEST_QUERY = gql`
 
 export const GET_TESTS_LIST = gql`
   query Tests {
-    tests(where: {
-      status: "Approved"
-    }) {
+    tests(where: { status: "Approved" }) {
       id
       title
       description

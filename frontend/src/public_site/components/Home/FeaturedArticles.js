@@ -1,81 +1,159 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+  TwitterIcon,
+} from "react-share";
+import Moment from "react-moment";
 
 import { FEATURED_ARTICLE_QUERY } from "./queries";
+import { getState, getString } from "../../../utils";
+
+const AR = "Arabic";
+const EN = "English";
 
 export default function (props) {
-    const { data: articlesData, loading, error } = useQuery(FEATURED_ARTICLE_QUERY);
-    const [articles, setArticles] = useState([])
+  const state = getState();
+  const { data: articlesData, loading, error } = useQuery(
+    FEATURED_ARTICLE_QUERY
+  );
+  const [articles, setArticles] = useState([]);
 
-    useEffect(() => {
-        if (articlesData?.articles.length > 0) {
-            const featuredArticles = articlesData.articles.filter((a) =>
-                a.status === 'Approved' && a.is_pinned
-            )
-            return setArticles(featuredArticles)
-        }
-    }, [articlesData])
+  useEffect(() => {
+    if (articlesData?.articles.length > 0) {
+      const featuredArticles = articlesData.articles.filter(
+        (a) => a.status === "Approved" && a.is_pinned
+      );
+      return setArticles(featuredArticles);
+    }
+  }, [articlesData]);
 
-    return (
-        <section id="about" className="about-us">
-            <div className="container">
-                <div class="d-flex justify-content-between align-items center">
-                    <h1 class="titles mb-5 section-title">Articles</h1>
-                    <span class="pt-4 d-none d-md-block"><Link to="/articles" className="see-more-link">See More</Link></span>
-                </div >
-                {loading && <p className="text-center">Loading...</p>}
-                <div className="row align-items-center">
-                    {articles?.map(article =>
-                        <SingleArticle key={article.id} {...article} />
-                    )}
-                </div>
-                <div class="d-flex justify-content-center mt-4">
-                    <span class="d-md-none"><Link to="/articles" className="see-more-link-mobile">See More</Link></span>
-                </div >
-            </div>
-        </section>
-    );
-}
-
-const SingleArticle = (props) => {
-    const { title, content, image } = props
-    const imageUrl =
-        process.env.NODE_ENV !== "development"
-            ? image.url
-            : process.env.REACT_APP_BACKEND_URL + image?.url ?? 'placeholder';
-
-    return (
-        <div className="col-lg-6 col-md-12">
-            <div className="single-blog-card card border-0">
-                <img
-                    src={imageUrl}
-                    className="card-img-top position-relative"
-                    alt=""
-                />
-                <div className="card-body">
-                    <h3 className="card-title">
-                        {title}
-                    </h3>
-                    <p className="card-content">
-                        {content.split(' ').slice(0, 35).join(' ')} </p>
-
-                </div>
-                <div class="card-footer d-flex align-items-center justify-content-between border-0">
-                    <div className="author-meta text-left">
-                        <h6>By Ahmad Ali</h6>
-                        <span>11/11/2020</span>
-                    </div>
-                    <div className="social-icons text-right">
-                        <ul className="list-inline">
-                            <li className="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
+  return (
+    <section id="about" className="about-us">
+      <div className="container">
+        <div className="d-flex justify-content-between align-items center tajawal">
+          <h1 className="titles mb-5 section-title tajawal">
+            {getString("articles")}
+          </h1>
+          <span className="pt-4 d-none d-md-block">
+            <Link to="/articles" className="see-more-link">
+              {getString("see-more")}
+            </Link>
+          </span>
         </div>
-    )
+        {loading && <p className="text-center">{getString("loading")}</p>}
+        <div className="row align-items-center">
+          {articles?.map((article, i) => (
+            <SingleArticle
+              key={article.id}
+              {...article}
+              index={i}
+              siteLanguage={state.siteLanguage}
+            />
+          ))}
+        </div>
+        <div className="d-flex justify-content-center mt-4">
+          <span className="d-md-none tajawal">
+            <Link to="/articles" className="see-more-link-mobile">
+              {getString("see-more")}
+            </Link>
+          </span>
+        </div>
+      </div>
+    </section>
+  );
 }
+
+const SingleArticle = (props, i) => {
+  const {
+    index,
+    id,
+    title,
+    content,
+    image,
+    createdAt,
+    author,
+    language,
+    siteLanguage,
+  } = props;
+  console.log("languagelanguagelanguage", language);
+
+  const imageUrl =
+    process.env.NODE_ENV !== "development"
+      ? image.url
+      : process.env.REACT_APP_BACKEND_URL + image?.url ?? "placeholder";
+  const shareUrl = `${title}       https://modrek.sa/article/${id}`;
+
+  return (
+    <div
+      className={`col-lg-6 col-md-12 ${language === AR ? "text-right" : ""}`}
+    >
+      <div className="single-blog-card card border-0">
+        <Link to={`/article/${id}`}>
+          <img
+            src={image?.url || ""}
+            className="card-img-top position-relative"
+            alt=""
+            height="250"
+          />
+        </Link>
+        <div className="card-body">
+          <Link to={`/article/${id}`}>
+            <h3 className="card-title tajawal">{title}</h3>
+            <p className="text-justify article-content tajawal">
+              {content}
+            </p>
+          </Link>
+        </div>
+        <hr className="yellow-hr hover-to-color" />
+        <div className="media author-info myflex card-footer">
+          <div className="d-inline-flex">
+            <div
+              className={`d-flex flex-column hover-to-color tajawal text-${
+                siteLanguage === AR ? "right" : "left"
+              }`}
+            >
+              <small className="text-muted ml-2 tale-author">
+                {author.firstName} {author.lastName}
+              </small>
+              <small className="text-muted ml-2 tale-author">
+                <Moment format="D/M/Y">{createdAt}</Moment>
+              </small>
+            </div>
+          </div>
+          <div className="p-2 d-inline-flex ">
+            <TwitterShareButton
+              url={shareUrl}
+              quote="Check out this Morek Card"
+              className="hover-to-color social-icon d-md-block"
+              alt="twitter"
+            >
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <WhatsappShareButton
+              url={shareUrl}
+              quote="Check out this Morek Card"
+              className="hover-to-color social-icon d-md-block"
+              alt="whatsapp"
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <FacebookShareButton
+              url={shareUrl}
+              quote="Check out this Morek Card"
+              className="hover-to-color social-icon d-md-block"
+              alt="facebook"
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

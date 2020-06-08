@@ -21,7 +21,6 @@ export const CATEGORY_ARTICLES_QUERY = gql`
   }
 `;
 
-
 export const CATEGORIES_QUERY = gql`
   query Categories {
     categories {
