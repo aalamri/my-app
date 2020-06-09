@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route, Router, Redirect } from "react-router-dom";
 import { ModalContainer, ModalRoute } from "react-router-modal";
 import "react-router-modal/css/react-router-modal.css";
 
@@ -38,9 +38,12 @@ import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
 import ReviewTest from "../dashboard/components/Tests/ReviewTest";
 import Feedback from "../public_site/components/Feedback/CreateFeedback";
 import About from "../public_site/components/About/About";
+import { PrivateRoute } from "../components/PrivateRoute";
 
 const AR = "Arabic";
 const EN = "English";
+
+const NotFoundRedirect = () => <Redirect to='/signin' />
 
 // class AppRouter extends React.Component {
 const AppRouter = () => {
@@ -59,7 +62,6 @@ const AppRouter = () => {
         <Route path="/test/:id/question/:qid" component={Questions} exact />
         <Route path="/test/:id/result" component={TestResult} exact />
         <Route path="/category/:id" component={Category} exact />
-        <Route path="/dashboard" component={Dashboard} exact />
         <Route path="/signup" component={Signup} exact />
         <Route path="/signin" component={Signin} exact />
         <Route path="/search" component={Search} exact />
@@ -67,58 +69,61 @@ const AppRouter = () => {
         <Route path="/about" component={About} exact />
 
         {/* Dashboard all users */}
-        <Route path="/dashboard/profile" component={Profile} exact />
+        <PrivateRoute path="/dashboard" component={Dashboard} exact />
+        <PrivateRoute path="/dashboard/profile" component={Profile} exact />
 
         {/* Dashboaed routes: Initiator */}
-        <Route path="/dashboard/cards" component={DBCards} exact />
-        <Route path="/dashboard/cards/edit/:id" component={EditCard} exact />
-        <Route path="/dashboard/create-card" component={CreateCard} exact />
-        <Route path="/dashboard/articles" component={DBArticles} exact />
-        <Route
+        <PrivateRoute path="/dashboard/cards" component={DBCards} exact />
+        <PrivateRoute path="/dashboard/cards/edit/:id" component={EditCard} exact />
+        <PrivateRoute path="/dashboard/create-card" component={CreateCard} exact />
+        <PrivateRoute path="/dashboard/articles" component={DBArticles} exact />
+        <PrivateRoute
           path="/dashboard/articles/edit/:id"
           component={EditArticle}
           exact
         />
-        <Route
+        <PrivateRoute
           path="/dashboard/create-article"
           component={CreateArticle}
           exact
         />
-        <Route path="/dashboard/tests" component={DBTests} exact />
-        <Route path="/dashboard/tests/edit/:id" component={EditTest} exact />
-        <Route path="/dashboard/create-test" component={CreateTest} exact />
+        <PrivateRoute path="/dashboard/tests" component={DBTests} exact />
+        <PrivateRoute path="/dashboard/tests/edit/:id" component={EditTest} exact />
+        <PrivateRoute path="/dashboard/create-test" component={CreateTest} exact />
 
         {/* Dashboaed routes: Reivewer */}
-        <Route path="/dashboard/reviews" component={Reviewes} exact />
-        <Route
+        <PrivateRoute path="/dashboard/reviews" component={Reviewes} exact />
+        <PrivateRoute
           path="/dashboard/reviews/articles/review/:id"
           component={ReviewArticle}
           exact
         />
-        <Route
+        <PrivateRoute
           path="/dashboard/reviews/tests/review/:id"
           component={ReviewTest}
           exact
         />
-        <Route
+        <PrivateRoute
           path="/dashboard/reviews/cards/review/:id"
           component={ReviewCard}
-        ></Route>
-        <Route
+        />
+        <PrivateRoute
           path="/dashboard/review/article/:id"
           // component={REVIEW ARTICLE COMPONENT}
           exact
         />
-        <Route
+        <PrivateRoute
           path="/dashboard/review/card/:id"
           // component={REVIEW CARD COMPONENT}
           exact
         />
-        <Route
+        <PrivateRoute
           path="/dashboard/review/test/:id"
           // component={REVIEW TEST COMPONENT}
           exact
         />
+
+        <Route component={NotFoundRedirect} />
 
         {/* TODO: handle 404 */}
       </Switch>

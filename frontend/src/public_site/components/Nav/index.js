@@ -17,12 +17,12 @@ const Navbar = () => {
   const toggleSearch = () => {
     setSearchShow(!searchShow);
   };
-  const rtlInput = {height: 30, width: 229 };
-  const ltrInput = {height: 30, width: 286 };
+  const rtlInput = { height: 30, width: 229 };
+  const ltrInput = { height: 30, width: 286 };
 
   return (
     <header className="header">
-      <nav className= {`navbar navbar-expand-lg fixed-top gradient-purple-bg 
+      <nav className={`navbar navbar-expand-lg fixed-top gradient-purple-bg 
       ${state.siteLanguage === AR ? "navbar-rtl" : ""}`}>
         <div className="container">
           <a className="navbar-brand" href="/">
@@ -104,7 +104,7 @@ const Navbar = () => {
               </li>
               {searchShow && (
                 <div
-                className= {`form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav 
+                  className={`form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav 
                 ${state.siteLanguage === AR ? "search-box-nav-rtl rtl-search-box" : ""}`}
                   style={{ paddingRight: 0, paddingLeft: 0 }}
                 >
@@ -139,7 +139,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <ul className= {`position-absolute d-sm-block d-md-block d-lg-none search-nav
+          <ul className={`position-absolute d-sm-block d-md-block d-lg-none search-nav
           ${state.siteLanguage === AR ? "rtl-search-box" : ""}`}>
             <li className="nav-item" onClick={toggleSearch}>
               {!searchShow && (
