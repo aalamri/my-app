@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import SearchModal from "../Search/SearchModal";
-import Query from "../Query";
-import { Link, withRouter } from "react-router-dom";
-
-import { CATEGORIES_QUERY } from "../Category/queries";
-import { getToken, clearToken, clearUser } from "../../../utils/index";
-import { getState, getString } from "../../../utils";
+import { Link} from "react-router-dom";
+import { getState, getString } from "../../utils";
 
 const AR = "Arabic";
 const EN = "English";
