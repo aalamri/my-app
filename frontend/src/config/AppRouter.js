@@ -59,7 +59,6 @@ const AppRouter = () => {
           <PublicRouter />
         </Route>
       </Switch>
-      <Footer />
       <ModalContainer />
     </div>
   );
