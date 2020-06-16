@@ -48,7 +48,7 @@ const Article = () => {
           createdAt,
         } = article;
 
-        const shareUrl = `${article.title}       https://modrek.sa/article/${article.id}`;
+        const shareUrl = `${article.title}       https://modrek-app.herokuapp.com/article/${article.id}`;
 
         return (
           <div className="module ptb-100" dir={language === AR ? "rtl" : "ltr"}>

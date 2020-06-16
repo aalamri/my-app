@@ -39,7 +39,7 @@ export default function (props) {
     center: true,
     dots: true,
     nav: true,
-    rtl:true,
+    rtl: true,
     autoplay: true,
     autoWidth: true,
     autoHeight: true,
@@ -104,7 +104,7 @@ const SingleCard = (props) => {
     author,
     createdAt,
   } = props;
-  const shareUrl = `${title}       https://modrek.sa/cards/${id}`;
+  const shareUrl = `${title}       https://modrek-app.herokuapp.com/cards/${id}`;
 
   return (
     <div className="item ml-lg-5 mr-lg-5 ml-md-4 lr-md-4 card-item-slider">
@@ -139,12 +139,12 @@ const SingleCard = (props) => {
         <div className="media author-info myflex">
           <div className="d-inline-flex">
             <img className="avatar-placeholder" src={avatarTale} alt="client" />
-            <div className="d-flex flex-column">
-              <small className="text-muted ml-1 tale">
+            <div className="d-flex flex-column mr-3">
+              <small className="text-muted mx-auto tale tajawal">
                 {author.firstName} {author.lastName}
               </small>
-              <small className="text-muted ml-1 tale">
-                <Moment format="D MMM YYYY">{createdAt}</Moment>
+              <small className="text-muted tale ml-auto tajawal">
+                <Moment format="D/M/Y">{createdAt}</Moment>
               </small>
             </div>
           </div>
@@ -152,7 +152,7 @@ const SingleCard = (props) => {
             <TwitterShareButton
               url={shareUrl}
               quote="Check out this Morek Card"
-              className="social-icon d-md-block"
+              className="social-icon mx-1 d-md-block"
               alt="twitter"
             >
               <TwitterIcon size={32} round />
@@ -160,7 +160,7 @@ const SingleCard = (props) => {
             <WhatsappShareButton
               url={shareUrl}
               quote="Check out this Morek Card"
-              className="social-icon d-md-block"
+              className="social-icon mx-1 d-md-block"
               alt="whatsapp"
             >
               <WhatsappIcon size={32} round />
@@ -168,7 +168,7 @@ const SingleCard = (props) => {
             <FacebookShareButton
               url={shareUrl}
               quote="Check out this Morek Card"
-              className="social-icon d-md-block"
+              className="social-icon mx-1 d-md-block"
               alt="facebook"
             >
               <FacebookIcon size={32} round />

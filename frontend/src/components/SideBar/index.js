@@ -17,9 +17,15 @@ const SideBar = () => {
 
     return (
         <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
-            </div>
+           <a className="sidebar-header" href="/">
+            <img
+              src={`${window.location.origin}/img/modrek-logo.svg`}
+              width="120"
+              // height="auto"
+              alt="Modrek Logo"
+              className="logo"
+            />
+          </a>
 
             <ul class="list-unstyled components">
 

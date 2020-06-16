@@ -7,13 +7,18 @@ import {
 } from "./queries";
 import { Redirect } from "react-router-dom";
 import Strapi from "strapi-sdk-javascript/build/main";
-import { getString } from "../../../utils";
+import { getState, getString } from "../../../utils";
 
 const CreateFeedback = () => {
+  const state = getState();
   const emailUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:1337";
   const strapi = new Strapi(emailUrl);
   const [toHome, setToHome] = useState(false);
+  const [formError, setFormError] = useState({ error: false, message: "" });
+  const [bodyMessage, setBodyMessage] = useState("");
+  const [toastShow, setToastShow] = useState(false);
   const [message, setMessage] = useState("");
+  const [submitLoading, setSubmitLoading] = useState(false);
   const { data, loading, error } = useQuery(FEEDBACK_TYPE_QUERY);
   const intialTypes = data ? data.feedbackTypes : [];
   const [createFeedback, { data: createFeedbackData }] = useMutation(
@@ -56,6 +61,11 @@ const CreateFeedback = () => {
     return <span>error</span>;
   }
 
+  function handleBodyMessage(e) {
+    setBodyMessage(e.target.value);
+    setFormError({ error: false, message: "" });
+  }
+
   async function handleCreateFeedback(e) {
     e.preventDefault();
     try {
@@ -63,6 +73,15 @@ const CreateFeedback = () => {
       const email = formData.get("email");
       const message = formData.get("message");
 
+      if (message.length > 1000) {
+        setFormError({
+          error: true,
+          message: getString("message-longer-than-1000-char"),
+        });
+        return;
+      }
+
+      setSubmitLoading(true);
       const payload = {
         email,
         message,
@@ -79,34 +98,40 @@ const CreateFeedback = () => {
           html: "<bold>Feedback message:</bold>" + message,
         },
       });
-      setTimeout(
-        () => setToHome(true),
-        2000
-      ); /* After clearing Todos, wait two secconds and then let's go back home */
+      console.log("test feedback");
+      /* After clearing Todos, wait two secconds and then let's go back home */
     } catch (error) {
-      console.log("Error handleCreateArticle:", error);
+      setSubmitLoading(false);
+      setTimeout(() => setToHome(true), 5000);
+      console.log("Error handleCreateArticle:", JSON.stringify(error, null, 2));
     }
   }
-
+  if (toHome) {
+    return <Redirect to={{ pathname: "/" }} />;
+  }
   return (
-    <div>
+    <div className="main-content-wrap">
       {message}
       <form onSubmit={handleCreateFeedback}>
         <section className="hero-section pt-100">
-          <div className="container">
-            <div className="row align-tem-center justify-content-between">
-              <div className="col-md-9 col-lg-9">
-                <div className="section-heading mb-4">
-                  <h2 class="purple">{getString("get-in-touch")}</h2>
-                </div>
+          <div className="container max-width-880">
+            <div
+              className={state.siteLanguage === "Arabic" ? "text-right" : ""}
+            >
+              <div className="section-heading mb-4">
+                <h3 class="purple tajawal">{getString("get-in-touch")}</h3>
               </div>
             </div>
             <br></br>
             <div className="row align-items-center">
-              <div className="col-12 max-width-880">
+              <div className="col-12">
                 <div className="row">
-                  <div className="col-sm-6 col-12">
-                    <div className="form-group">
+                  <div className="col-md-6">
+                    <div
+                      className={`form-group tajawal ${
+                        state.siteLanguage === "Arabic" ? "text-right" : ""
+                      }`}
+                    >
                       <label>{getString("type-of-feedback")}</label>
                       <select
                         className="form-control"
@@ -128,8 +153,12 @@ const CreateFeedback = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="col-sm-6 col-12">
-                    <div className="form-group">
+                  <div className="col-md-6">
+                    <div
+                      className={`form-group tajawal ${
+                        state.siteLanguage === "Arabic" ? "text-right" : ""
+                      }`}
+                    >
                       <label>{getString("your-email")}</label>
                       <input
                         id="email"
@@ -146,25 +175,46 @@ const CreateFeedback = () => {
                 <br></br>
                 <div className="row">
                   <div className="col-12">
-                    <div className="form-group">
+                    <div
+                      className={`form-group tajawal ${
+                        state.siteLanguage === "Arabic" ? "text-right" : ""
+                      }`}
+                    >
                       <label>{getString("body-message")}</label>
                       <textarea
+                        value={bodyMessage}
+                        onChange={handleBodyMessage}
                         name="message"
                         id="message"
                         className="form-control"
-                        rows="7"
+                        rows="5"
                         cols="25"
                         placeholder={getString("body-message-placeholder")}
+                        required
                       ></textarea>
                     </div>
                   </div>
                 </div>
+                {formError.error && (
+                  <div
+                    class={`alert alert-danger tajawal ${
+                      state.siteLanguage === "Arabic" ? "text-right" : ""
+                    }`}
+                    role="alert"
+                  >
+                    {formError.message}
+                  </div>
+                )}
                 <div className="row">
-                  <div className="col-sm-12 mt-3">
+                  <div
+                    className={`col-sm-12 my-3 ${
+                      state.siteLanguage === "Arabic" ? "text-right" : ""
+                    }`}
+                  >
                     <button
                       type="submit"
-                      className="btn solid-btn signupBtn"
-                      disabled={loading}
+                      className="btn solid-btn signupBtn tajawal mb-5"
+                      disabled={submitLoading}
                     >
                       {getString("send-message")}
                     </button>

@@ -81,13 +81,12 @@ const SingleArticle = (props, i) => {
     language,
     siteLanguage,
   } = props;
-  console.log("languagelanguagelanguage", language);
 
   const imageUrl =
     process.env.NODE_ENV !== "development"
       ? image.url
       : process.env.REACT_APP_BACKEND_URL + image?.url ?? "placeholder";
-  const shareUrl = `${title}       https://modrek.sa/article/${id}`;
+  const shareUrl = `${title}       https://modrek-app.herokuapp.com/article/${id}`;
 
   return (
     <div
@@ -105,9 +104,7 @@ const SingleArticle = (props, i) => {
         <div className="card-body">
           <Link to={`/article/${id}`}>
             <h3 className="card-title tajawal">{title}</h3>
-            <p className="text-justify article-content tajawal">
-              {content}
-            </p>
+            <p className="text-justify article-content tajawal">{content}</p>
           </Link>
         </div>
         <hr className="yellow-hr hover-to-color" />

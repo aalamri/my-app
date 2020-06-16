@@ -28,22 +28,20 @@ const Card = ({ match }) => {
   return (
     <Query query={CARD_QUERY} id={id}>
       {({ data: { card } }) => {
-        console.log("card", card.language);
-
-        const shareUrl = `${card.title}       https://modrek.sa/cards/${card.id}`;
+        const shareUrl = `${card.title}       https://modrek-app.herokuapp.com/cards/${card.id}`;
         return (
-          <div key={card.id} class="col-lg-12" style={{ padding: 0 }}>
-            <div className="rounded white-bg shadow-md p-4 min-width-400">
-              <div className="full-card d-flex flex-column tale">
+          <div key={card.id} class="col-12 col-lg-12" style={{ padding: 0 }}>
+            <div className="shadow-md modal-card min-width-400">
+              <div className="full-card d-flex flex-column">
                 <h3 className="tale text-center card-name tajawal">
                   {card.title}
                 </h3>
                 <div
-                  className={`tajawal text-${
-                    card.language === AR ? "right" : "left"
+                  className={`tajawal  ${
+                    card.language === AR ? "text-rtl" : "text-justify"
                   }`}
                 >
-                  <p className="full-card tale tajawal">{card.content}</p>
+                  <p className="full-card tajawal">{card.content}</p>
                 </div>
                 {card.card_url_in_other_language && (
                   <Link
@@ -78,7 +76,7 @@ const Card = ({ match }) => {
                   <TwitterShareButton
                     url={shareUrl}
                     quote="Check out this Morek Card"
-                    className="social-icon d-none d-md-block"
+                    className="social-icon d-md-block"
                     alt="twitter"
                   >
                     <TwitterIcon size={32} round />
@@ -86,7 +84,7 @@ const Card = ({ match }) => {
                   <WhatsappShareButton
                     url={shareUrl}
                     quote="Check out this Morek Card"
-                    className="social-icon d-none d-md-block"
+                    className="social-icon d-md-block"
                     alt="whatsapp"
                   >
                     <WhatsappIcon size={32} round />
@@ -94,7 +92,7 @@ const Card = ({ match }) => {
                   <FacebookShareButton
                     url={shareUrl}
                     quote="Check out this Morek Card"
-                    className="social-icon d-none d-md-block"
+                    className="social-icon d-md-block"
                     alt="facebook"
                   >
                     <FacebookIcon size={32} round />

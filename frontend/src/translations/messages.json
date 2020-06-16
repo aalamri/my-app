@@ -65,15 +65,15 @@
   },
   "your-email": {
     "ar": "ايميلك",
-    "en": "Type of feedback"
+    "en": "Your Email"
   },
   "body-message": {
     "ar": "رسالتك",
-    "en": "Type of feedback"
+    "en": "Message"
   },
   "send-message": {
     "ar": "إرسال",
-    "en": "Type of feedback"
+    "en": "Send"
   },
   "your-email-placeholder": {
     "ar": "email@example.com",
@@ -104,7 +104,7 @@
     "en": "Submit and See Result"
   },
   "you-scored": {
-    "ar": "إنهاء ومشاهدة النتيجة",
+    "ar": "نتيجة الإختبار",
     "en": "You scored"
   },
   "thanks-for-taking-test": {
@@ -138,6 +138,42 @@
   "wrong-answer": {
     "ar": "غير صحيح",
     "en": "Wrong"
+  },
+  "message-longer-than-1000-char": {
+    "ar": "عفواً! الرسالة يجب أن تكون أقل من 1000 حرف",
+    "en": "Sorry! The message should not exceed 1000 character"
+  },
+  "join-as-content-creator": {
+    "ar": "إنضم إلينا كمحرر",
+    "en": "Join as a Content Creator"
+  },
+  "first-name": {
+    "ar": "الإسم الأول",
+    "en": "First Name"
+  },
+  "last-name": {
+    "ar": "الإسم الأخير",
+    "en": "Last Name"
+  },
+  "about-you": {
+    "ar": "نبذة عنك",
+    "en": "About You"
+  },
+  "about-you-placeholder": {
+    "ar": "فضلاً اذكر نبذة عن نفسك",
+    "en": "Tell us more about yourself"
+  },
+  "apply": {
+    "ar": "أرسل الطلب",
+    "en": "Apply"
+  },
+  "result-sent-to-email": {
+    "ar": "تم إرسال النتيجة إلى ايميك",
+    "en": "Result sent to your email!"
+  },
+  "enter-valid-email": {
+    "ar": "يرجى إدخال إيميل صحيح",
+    "en": "Please enter a valid email!"
   },
   "_": {
     "ar": "",

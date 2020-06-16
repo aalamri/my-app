@@ -110,3 +110,13 @@ export function getString(id) {
   const lang = siteLanguage === AR ? "ar" : "en";
   return strings[id][lang];
 }
+export async function switchLanguage() {
+  return new Promise((res) => {
+    const { siteLanguage } = getState();
+    const lang = siteLanguage === AR ? EN : AR;
+    const state = localStorage.getItem(LOCALSTORAGE_KEY);
+    const newState = { ...JSON.parse(state), siteLanguage: lang };
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(newState));
+    res();
+  });
+}

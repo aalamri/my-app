@@ -19,28 +19,28 @@
 // 11. wow js
 
 jQuery(function ($) {
-  "use strict";
+  ("use strict");
   // 1. fixed navbar
   $(window).on("scroll", function () {
     // checks if window is scrolled more than 500px, adds/removes solid class
-    if ($(this).scrollTop() > 60) {
+    if ($(this).scrollTop() > 500) {
       $(".header").addClass("affix");
     } else {
       $(".header").removeClass("affix");
     }
   });
   // 3. fixed navbar
-//   $(window).on('scroll', function () {
-//     // checks if window is scrolled more than 500px, adds/removes solid class
-//     if ($(this).scrollTop() > 0) {
-//         $('.navbar').addClass('affix');
-//         $('.scroll-to-target').addClass('open');
-//     } else {
-//         $('.navbar').removeClass('affix');
-//         $('.scroll-to-target').removeClass('open');
-//     }
-  
-// });
+  //   $(window).on('scroll', function () {
+  //     // checks if window is scrolled more than 500px, adds/removes solid class
+  //     if ($(this).scrollTop() > 0) {
+  //         $('.navbar').addClass('affix');
+  //         $('.scroll-to-target').addClass('open');
+  //     } else {
+  //         $('.navbar').removeClass('affix');
+  //         $('.scroll-to-target').removeClass('open');
+  //     }
+
+  // });
 
   // 2. page scrolling feature - requires jQuery Easing plugin
   $(function () {
@@ -61,17 +61,33 @@ jQuery(function ($) {
 
   // 3. closes the responsive menu on menu item click
   $(".navbar-nav li a").on("click", function (event) {
-    if (!$('this').parent().hasClass("dropdown"))
+    if (!$("this").parent().hasClass("dropdown"))
       $(".navbar-collapse").collapse("hide");
   });
 
-  
   $(".search-nav .nav-item .search-icon-color").on("click", function (event) {
-    if (!$('.navbar-toggler').hasClass('collapsed')){
-      $('.navbar .navbar-toggler').addClass('collapsed');
-      $('.navbar-collapse').removeClass('show');
+    if (!$(".navbar-toggler").hasClass("collapsed")) {
+      $(".navbar .navbar-toggler").addClass("collapsed");
+      $(".navbar-collapse").removeClass("show");
     }
   });
+
+  // close burger menu on clicking elsewhere
+  $("body").on("click", function (e) {
+    const x = e.clientX;
+    const y = e.clientY;
+    var elementMouseIsOver = document.elementFromPoint(x, y);
+    const classes = [...elementMouseIsOver.classList];
+    if (
+      !classes.includes("ti-menu") &&
+      !classes.includes("fa") &&
+      !classes.includes("nav-link")
+    ) {
+      $(".navbar .navbar-toggler").addClass("collapsed");
+      $(".navbar-collapse").removeClass("show");
+    }
+  });
+
   // 4. magnify popup video
   $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
     disableOn: 700,
@@ -121,33 +137,32 @@ jQuery(function ($) {
       },
     },
   });
-  $('.category-carousel').owlCarousel({
+  $(".category-carousel").owlCarousel({
     autoplay: false,
     loop: false,
     margin: 0,
     nav: true,
     rtl: true,
-    slideTransition: 'linear',
+    slideTransition: "linear",
     autoplayHoverPause: true,
     responsive: {
       0: {
-        items: 3
+        items: 3,
       },
       500: {
-        items: 3
+        items: 3,
       },
       600: {
-        items: 3
+        items: 3,
       },
       800: {
-        items: 7
+        items: 7,
       },
       1200: {
-        items: 7
-      }
-
-    }
-  })
+        items: 7,
+      },
+    },
+  });
 
   // 7. custom counter js with scrolling
   var isFirstTime = true;
@@ -295,24 +310,24 @@ jQuery(function ($) {
       $(this).html(
         event.strftime(
           "" +
-          '<div class="row">' +
-          '<div class="col">' +
-          '<h2 class="mb-1">%-D</h2>' +
-          "<h5>Day%!d</h5>" +
-          "</div>" +
-          '<div class="col">' +
-          '<h2 class="mb-1">%H</h2>' +
-          "<h5>Hours</h5>" +
-          "</div>" +
-          '<div class="col">' +
-          '<h2 class="mb-1">%M</h2>' +
-          "<h5>Minutes</h5>" +
-          "</div>" +
-          '<div class="col">' +
-          '<h2 class="mb-1">%S</h2>' +
-          "<h5>Seconds</h5>" +
-          "</div>" +
-          "</div>"
+            '<div class="row">' +
+            '<div class="col">' +
+            '<h2 class="mb-1">%-D</h2>' +
+            "<h5>Day%!d</h5>" +
+            "</div>" +
+            '<div class="col">' +
+            '<h2 class="mb-1">%H</h2>' +
+            "<h5>Hours</h5>" +
+            "</div>" +
+            '<div class="col">' +
+            '<h2 class="mb-1">%M</h2>' +
+            "<h5>Minutes</h5>" +
+            "</div>" +
+            '<div class="col">' +
+            '<h2 class="mb-1">%S</h2>' +
+            "<h5>Seconds</h5>" +
+            "</div>" +
+            "</div>"
         )
       );
     });

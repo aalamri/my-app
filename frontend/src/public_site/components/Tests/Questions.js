@@ -106,14 +106,14 @@ const Questions = (props) => {
     >
       <div className="container max-width-880 pb-5">
         <div className={`pb-0 ${language === AR ? "text-right" : ""}`}>
-          {currentQuestionIndex % 2 === 0 && (
+          {/* {currentQuestionIndex % 2 === 0 && (
             <img
               src={imageUrl}
               className="card-img-top position-relative border-q-img mt-5"
               height="80%"
               alt=""
             />
-          )}
+          )} */}
           <p
             className={`test-no my-3 ${language === AR ? "text-right" : ""}`}
           >{`${currentQuestionIndex}/${questions.length}`}</p>
@@ -125,7 +125,7 @@ const Questions = (props) => {
             {displayChoices(question)}
           </div>
         </div>
-        {/* </Slide> */}
+
         <hr className="yellow-hr-thin" />
 
         <div className={`text-${language === AR ? "left" : "right"}`}>

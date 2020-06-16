@@ -52,7 +52,7 @@ const Tests = () => {
   const state = getState(); // get from localStorage, or return initial default state
   const [activeCatId, setActiveCatId] = useState(null);
   const { data, loading, error } = useQuery(GET_TESTS_LIST);
-  const [fetchedTests, setFetchedTests] = useState([]); // TODO useRef instead
+  const [fetchedTests, setFetchedTests] = useState(data?.tests || []);
   const [displayedTests, setDisplayedTests] = useState([]);
 
   useEffect(() => {
@@ -72,15 +72,17 @@ const Tests = () => {
   }, [activeCatId]);
 
   const categories =
-    data?.tests
-      .map(({ category: { id, name } }) => ({ id, name }))
-      .filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i) || [];
+    data && data.tests
+      ? data.tests
+          .map(({ category: { id, name } }) => ({ id, name }))
+          .filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i)
+      : [];
 
   const CategoriesList =
     state.siteLanguage === AR ? CategoriesListAR : CategoriesListEN;
 
   return (
-    <section>
+    <div className="main-content-wrap">
       <div className="container">
         <div className="row mt-5 p-3">
           <h2 className="section-title tajawal">{getString("tests")}</h2>
@@ -126,7 +128,7 @@ const Tests = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

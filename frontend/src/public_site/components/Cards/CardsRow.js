@@ -103,7 +103,7 @@ const CardsRow = ({ match }) => {
   };
 
   return (
-    <div>
+    <div className="main-content-wrap">
       <section className="hero-section pt-100">
         <div className="container">
           {state.siteLanguage === AR ? (
@@ -167,7 +167,7 @@ const CardsRow = ({ match }) => {
           </div>
           <div className="row">
             {cards.map((card) => {
-              const shareUrl = `${card.title} http://modrek.sa/cards/${card.id}`;
+              const shareUrl = `${card.title} https://modrek-app.herokuapp.com/cards/${card.id}`;
               return (
                 <div key={card.id} class="col-lg-6 pt-5">
                   <div class="rounded card border-0">
@@ -215,9 +215,9 @@ const CardsRow = ({ match }) => {
                               state.siteLanguage === AR ? "right" : "left"
                             }`}
                           >
-                            <small class="text-muted ml-2 tale tajawal">
+                            <h6 class="text-muted ml-2 tale tajawal">
                               {card.author?.firstName} {card.author?.lastName}
-                            </small>
+                            </h6>
                             <Moment
                               class="text-muted ml-2 tale tajawal"
                               format="D/M/Y"
@@ -314,7 +314,7 @@ const TopRowAR = ({ setCards }) => (
                   <div
                     class="dropdown-item tajawal"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     أبجدي (أ - ي)
@@ -328,7 +328,7 @@ const TopRowAR = ({ setCards }) => (
                   <div
                     class="dropdown-item tajawal"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     أبجدي (ي - أ)
@@ -342,7 +342,7 @@ const TopRowAR = ({ setCards }) => (
                   <div
                     class="dropdown-item tajawal"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     الأحدث
@@ -356,7 +356,7 @@ const TopRowAR = ({ setCards }) => (
                   <div
                     class="dropdown-item tajawal"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     الأقدم
@@ -407,7 +407,7 @@ const TopRowEN = ({ setCards }) => (
                   <div
                     class="dropdown-item"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     Alphabetic(A-Z)
@@ -421,7 +421,7 @@ const TopRowEN = ({ setCards }) => (
                   <div
                     class="dropdown-item"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     Alphabetic(Z-A)
@@ -435,7 +435,7 @@ const TopRowEN = ({ setCards }) => (
                   <div
                     class="dropdown-item"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     Newest Published
@@ -449,7 +449,7 @@ const TopRowEN = ({ setCards }) => (
                   <div
                     class="dropdown-item"
                     onClick={() => {
-                      setCards(data.articles);
+                      setCards(data.cards);
                     }}
                   >
                     Oldest Published

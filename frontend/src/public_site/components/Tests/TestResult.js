@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Strapi from "strapi-sdk-javascript/build/main";
 
 import { getState, getString } from "../../../utils";
 
+const emailUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:1337";
+const strapi = new Strapi(emailUrl);
 const AR = "Arabic";
 
 const TestResult = (props) => {
@@ -10,6 +12,11 @@ const TestResult = (props) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
   const [emailResultStatus, setEmailResultStatus] = useState(null);
   const [email, setEmail] = useState("");
+  const [testScore, setTestScore] = useState(null);
+
+  useEffect(() => {
+    setTestScore(calcScore(props.location.state.test.questions));
+  }, []);
 
   if (props.location.state == null) {
     // user MUST come from a test with a `state` prop via the router
@@ -25,40 +32,53 @@ const TestResult = (props) => {
     );
   }
 
-  const { title, questions, language } = props.location.state.test;
+  const { id, title, questions, language } = props.location.state.test;
   function goPrevious() {
     setCurrentQuestionIndex(currentQuestionIndex - 1);
   }
   function goNext() {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
-  function emailResult() {
+  async function handleSendEmail(e) {
+    e.preventDefault();
     if (/^[\w._-]+[+]?[\w._-]+@[\w.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
-      const emailSentSuccessfully = (
-        <div
-          className="alert alert-success alert-dismissible fade show mt-3"
-          role="alert"
-        >
-          Result sent to your email!
-          <button
-            type="button"
-            className="close"
-            data-dismiss="alert"
-            aria-label="Close"
-            onClick={() => setEmailResultStatus(null)}
+      try {
+        await strapi.request("POST", "/email", {
+          data: {
+            to: email,
+            subject: `Test Result: ${title}`,
+            text: `Your test result: ${testScore}`,
+            html: `<bold>Your test result: ${testScore}</bold><br/><a href="https://modrek.sa">Modrek</a>`,
+          },
+        });
+        const emailSentSuccessfully = (
+          <div
+            className="alert alert-success alert-dismissible fade show mt-3 tajawal"
+            role="alert"
           >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      );
-      setTimeout(() => setEmailResultStatus(emailSentSuccessfully), 1000);
+            {getString("result-sent-to-email")}
+            <button
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setEmailResultStatus(null)}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        );
+        setEmailResultStatus(emailSentSuccessfully);
+      } catch (error) {
+        console.log("send result error", error);
+      }
     } else {
       const invalidAlert = (
         <div
-          className="alert alert-warning alert-dismissible fade show mt-3"
+          className="alert alert-warning alert-dismissible fade show mt-3 tajawal"
           role="alert"
         >
-          Please enter a valid email!
+          {getString("enter-valid-email")}
           <button
             type="button"
             className="close"
@@ -80,30 +100,38 @@ const TestResult = (props) => {
 
   const question = questions[currentQuestionIndex - 1];
   question.language = language;
-  const questionsWithScore = calculatScores(questions);
-  const correctAnswers = questionsWithScore.filter(
-    ({ answeredCorrectly }) => answeredCorrectly
-  ).length;
+
+  function calcScore(questions) {
+    const questionsWithScore = calculatScores(questions);
+    const correctAnswers = questionsWithScore.filter(
+      ({ answeredCorrectly }) => answeredCorrectly
+    ).length;
+    const score = `${correctAnswers}/${questions.length}`;
+    return score;
+  }
+
+  const score = calcScore(questions);
 
   return (
-    <>
-      <section className="question-section py-5 gradient-purple-bg">
+    <section dir={`${language === AR ? "rtl" : "ltr"}`}>
+      <div className="question-section py-5 gradient-purple-bg">
         <div className="container max-width-880 py-3">
           <div className="text-center">
             <h3 className="roboto-black color-white tajawal">
               {getString("thanks-for-taking-test")}
             </h3>
-            <h1 className="roboto-black color-white rem4 tajawal">"{title}"</h1>
+            <h1 className="roboto-black color-white larger-header tajawal">
+              "{title}"
+            </h1>
             <h2 className="roboto-black color-white tajawal">
-              {getString("you-scored")}{" "}
-              {`${correctAnswers}/${questions.length}`}
+              {getString("you-scored")} {score}
             </h2>
           </div>
         </div>
-      </section>
+      </div>
 
       <div className="text-center pt-3 mt-5">
-        <h4 className="sent-email-text my-2 tajawal">
+        <h4 className="sent-email-text my-2 tajawal mx-1">
           {getString("send-result-to-email")}
         </h4>
         <div className="text-center mt-5">
@@ -112,20 +140,24 @@ const TestResult = (props) => {
             method="post"
             className="send-form text-center m-auto"
           >
-            <div className="d-flex align-items-center">
+            <div
+              className="subscribe-form w-100 d-flex align-items-center"
+              dir="ltr"
+            >
               <input
                 type="text"
-                className="form-control search-input px-4"
+                className="form-control search-input px-4 "
                 id="email"
                 name="email"
                 placeholder="info@yourdomain.com"
+                onChange={handleOnChangeEmail}
               />
-              <input
-                type="send"
-                className="button btn send-btn tajawal"
-                id="send"
-                defaultValue={getString("send")}
-              />
+              <button
+                className="button btn primary-solid-btn tajawal bg-purple"
+                onClick={handleSendEmail}
+              >
+                {getString("send")}
+              </button>
             </div>
           </form>
         </div>
@@ -190,7 +222,7 @@ const TestResult = (props) => {
           )}
         </div>
       </section>
-    </>
+    </section>
   );
 };
 
@@ -352,7 +384,8 @@ const SingleChoiceQuestion = (question) => {
     answeredCorrectly,
     language,
   } = question;
-
+  const state = getState();
+  const { siteLanguage } = state;
   const choiceComponent = (text, index) => {
     return (
       <div

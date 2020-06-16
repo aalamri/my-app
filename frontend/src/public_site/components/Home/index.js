@@ -5,8 +5,8 @@ import FeaturedArticles from "./FeaturedArticles";
 
 const Home = () => {
   return (
-    <div>
-      <CardsSlider /> 
+    <div className="main-content-wrap">
+      <CardsSlider />
       <FeaturedTests />
       <FeaturedArticles />
     </div>

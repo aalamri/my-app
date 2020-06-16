@@ -98,7 +98,7 @@ const ArticlesRow = () => {
   };
 
   return (
-    <div>
+    <div className="main-content-wrap">
       <section className="hero-section pt-100">
         <div className="container">
           {state.siteLanguage === AR ? (
@@ -180,7 +180,7 @@ const ArticlesRow = () => {
               // process.env.NODE_ENV !== "development"
               //   ? article.image.url
               //   : process.env.REACT_APP_BACKEND_URL + article.image?.url ?? 'placeholder';
-              const shareUrl = `${title}   http://modrek.sa/article/${id}`;
+              const shareUrl = `${title}   https://modrek-app.herokuapp.com/article/${id}`;
               return (
                 <div key={id} className="col-lg-6 col-md-12">
                   <div className="single-blog-card card border-0">

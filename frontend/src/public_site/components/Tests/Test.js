@@ -61,87 +61,91 @@ const Test = () => {
           createdAt,
           test_id_of_other_language,
         } = data?.test;
-        const shareUrl = `${title}       https://modrek.sa/test/${id}`;
+        const shareUrl = `${title}       https://modrek-app.herokuapp.com/test/${id}`;
 
         return (
-          <div
-            className={`container my-5 pt-4 max-width-880 ${
-              language === AR ? "text-right" : ""
-            }`}
-            dir={language === AR ? "rtl" : "ltr"}
-          >
-            <div className="d-flex justify-content-between align-items-center">
-              <div
-                className={`my-3 tajawal ${
-                  language === AR ? "text-right" : ""
-                }`}
-              >
-                <h2 className="p-0 m-0 test-page-title tajawal">{title}</h2>
-                <small>
-                  {getString("published-at")}{" "}
-                  <Moment format="D/M/Y">{createdAt}</Moment>
-                </small>
-                {test_id_of_other_language && (
-                  <>
-                    <span className="px-3">/</span>
-                    <Link to={`/test/${test_id_of_other_language}`}>
-                      <u className="my-auto gray tajawal">
-                        {language === AR ? "English version" : "النسخة العربية"}
-                      </u>
-                    </Link>
-                  </>
-                )}
-              </div>
-              <div className="px-1"></div>
-              <div className="px-1">
-                <div className="p-2 d-inline-flex ">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    quote="Check out this Morek Card"
-                    className="social-icon d-none d-md-block"
-                    alt="twitter"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    quote="Check out this Morek Card"
-                    className="social-icon d-none d-md-block"
-                    alt="whatsapp"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote="Check out this Morek Card"
-                    className="social-icon d-none d-md-block"
-                    alt="facebook"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
+          <div className="main-content-wrap">
+            <div
+              className={`container my-5 pt-4 max-width-880 ${
+                language === AR ? "text-right" : ""
+              }`}
+              dir={language === AR ? "rtl" : "ltr"}
+            >
+              <div className="d-flex justify-content-between align-items-center">
+                <div
+                  className={`my-3 tajawal ${
+                    language === AR ? "text-right" : ""
+                  }`}
+                >
+                  <h2 className="p-0 m-0 test-page-title tajawal">{title}</h2>
+                  <small>
+                    {getString("published-at")}{" "}
+                    <Moment format="D/M/Y">{createdAt}</Moment>
+                  </small>
+                  {test_id_of_other_language && (
+                    <>
+                      <span className="px-3">/</span>
+                      <Link to={`/test/${test_id_of_other_language}`}>
+                        <u className="my-auto gray tajawal">
+                          {language === AR
+                            ? "English version"
+                            : "النسخة العربية"}
+                        </u>
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <div className="px-1"></div>
+                <div className="px-1">
+                  <div className="p-2 d-inline-flex ">
+                    <TwitterShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon mx-1"
+                      alt="twitter"
+                    >
+                      <TwitterIcon size={32} round />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon mx-1"
+                      alt="whatsapp"
+                    >
+                      <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon mx-1"
+                      alt="facebook"
+                    >
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="tajawal">
-              <ReactMarkdown source={description} escapeHtml={false} />
-            </div>
+              <div className="tajawal">
+                <ReactMarkdown source={description} escapeHtml={false} />
+              </div>
 
-            <div className="row d-flex justify-content-between my-5 pb-5 mx-1">
-              <span className="px-1 pt-3 tajawal">
-                {questions.length} {getString("questions")}
-              </span>
-              <Link
-                to={{
-                  pathname: `/test/${id}/question/1`,
-                  state: { test: data.test, fromTestPage: true },
-                }}
-                className="my-auto"
-              >
-                <span className="start-test vertical-center tajawal">
-                  {getString("start-the-test")}
+              <div className="row d-flex justify-content-between my-5 pb-5 mx-1">
+                <span className="px-1 pt-3 tajawal">
+                  {questions.length} {getString("questions")}
                 </span>
-              </Link>
+                <Link
+                  to={{
+                    pathname: `/test/${id}/question/1`,
+                    state: { test: data.test, fromTestPage: true },
+                  }}
+                  className="my-auto"
+                >
+                  <span className="start-test vertical-center tajawal">
+                    {getString("start-the-test")}
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         );

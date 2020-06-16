@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-// import SearchModal from "../Search/SearchModal";
-import { getState, getString, switchLanguage } from "../../utils";
+import React, { useState } from "react";
+import SearchModal from "../Search/SearchModal";
+import Query from "../Query";
+import { Link, withRouter } from "react-router-dom";
+
+import { CATEGORIES_QUERY } from "../Category/queries";
+import { getToken, clearToken, clearUser } from "../../../utils/index";
+import { getState, getString, switchLanguage } from "../../../utils";
 
 const AR = "Arabic";
 const EN = "English";
@@ -19,19 +23,6 @@ const Navbar = () => {
   const handleSwitchLanguage = () => {
     switchLanguage().then(() => window.location.reload());
   };
-
-  useEffect(() => {
-    // close search input on clicking elsewhere
-    document.addEventListener("click", function (e) {
-      const x = e.clientX;
-      const y = e.clientY;
-      var elementMouseIsOver = document.elementFromPoint(x, y);
-      const classes = [...elementMouseIsOver.classList];
-      if (!classes.includes("fa") && !classes.includes("search-input")) {
-        setSearchShow(false);
-      }
-    });
-  }, []);
 
   return (
     <header className="header">
@@ -106,6 +97,11 @@ const Navbar = () => {
                 </span>
               </li>
 
+              {/* <li className="nav-item">
+                <a className="nav-link" href="#contact">
+                  {state.siteLanguage === AR ? "English" : "العربية"}
+                </a>
+              </li> */}
               <li
                 className="nav-item d-none d-md-none d-lg-block"
                 onClick={toggleSearch}
@@ -177,7 +173,7 @@ const Navbar = () => {
                 style={{ paddingRight: 0, paddingLeft: 0 }}
               >
                 <input
-                  className="form-control form-control-sm pl-auto search-input"
+                  className="form-control form-control-sm search-input"
                   type="text"
                   placeholder="Search"
                   aria-label="Search"
