@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Router, Redirect } from "react-router-dom";
 import "react-router-modal/css/react-router-modal.css";
 
@@ -22,7 +22,7 @@ import ReviewCard from "../dashboard/components/Cards/ReviewCard";
 import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
 import ReviewTest from "../dashboard/components/Tests/ReviewTest";
 import { PrivateRoute } from "./PrivateRoute";
-import Profile from "../public_site/components/Profile";
+import Profile from "../dashboard/components/Profile";
 import SideBar from "./SideBar";
 
 const AR = "Arabic";
@@ -33,60 +33,89 @@ const NotFoundRedirect = () => <Redirect to='/signin' />
 // class AppRouter extends React.Component {
 function DashboardRouter({ match }) {
   const state = getState(); // get from localStorage, or return initial default state
+  const [title, setTitle] = useState('Dashboard');
   const dir = state.siteLanguage && state.siteLanguage === AR ? "rtl" : "ltr";
+  const changeTitle = (title) => {
+    setTitle(title);
+  };
+
   return (
     <div class="wrapper">
       <SideBar />
       <div id="content">
+        <nav class="top-navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid" style={{alignItems:'center', display:'flex'}}>
+
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <h4 style={{margin:'0px 0px 0px 20px'}}>{title}</h4>
+            {/* <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-align-justify"></i>
+            </button> */}
+
+
+          </div>
+        </nav>
         <Switch>
-          <PrivateRoute path="/dashboard" component={Dashboard} exact />
-          <PrivateRoute path="/dashboard/profile" component={Profile} exact />
-          <PrivateRoute path="/dashboard/cards" component={DBCards} exact />
-          <PrivateRoute path="/dashboard/cards/edit/:id" component={EditCard} exact />
-          <PrivateRoute path="/dashboard/create-card" component={CreateCard} exact />
-          <PrivateRoute path="/dashboard/articles" component={DBArticles} exact />
+          <PrivateRoute path="/dashboard" component={Dashboard} exact title="Dashboard" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/profile" component={Profile} exact title="Profile" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/cards" component={DBCards} exact title="Cards" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/cards/edit/:id" component={EditCard} exact title="Edit Card" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/create-card" component={CreateCard} exact title="Create Card" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/articles" component={DBArticles} exact title="Articles" onOpen={changeTitle} />
           <PrivateRoute
             path="/dashboard/articles/edit/:id"
             component={EditArticle}
             exact
+            title="Edit Article" onOpen={changeTitle}
           />
           <PrivateRoute
             path="/dashboard/create-article"
             component={CreateArticle}
             exact
+            title="Create Article" onOpen={changeTitle}
           />
-          <PrivateRoute path="/dashboard/tests" component={DBTests} exact />
-          <PrivateRoute path="/dashboard/tests/edit/:id" component={EditTest} exact />
-          <PrivateRoute path="/dashboard/create-test" component={CreateTest} exact />
-          <PrivateRoute path="/dashboard/reviews" component={Reviewes} exact />
+          <PrivateRoute path="/dashboard/tests" component={DBTests} exact title="Tests" onOpen={changeTitle}/>
+          <PrivateRoute path="/dashboard/tests/edit/:id" component={EditTest} exact title="Edit Test" onOpen={changeTitle}/>
+          <PrivateRoute path="/dashboard/create-test" component={CreateTest} exact title="Create Test" onOpen={changeTitle}/>
+          <PrivateRoute path="/dashboard/reviews" component={Reviewes} exact title="Reviews" onOpen={changeTitle}/>
           <PrivateRoute
             path="/dashboard/reviews/articles/review/:id"
             component={ReviewArticle}
             exact
+            title="Review Article" onOpen={changeTitle}
           />
           <PrivateRoute
             path="/dashboard/reviews/tests/review/:id"
             component={ReviewTest}
             exact
+            title="Review Test" onOpen={changeTitle}
           />
           <PrivateRoute
             path="/dashboard/reviews/cards/review/:id"
             component={ReviewCard}
+            title="Review Card" onOpen={changeTitle}
           />
           <PrivateRoute
             path="/dashboard/review/article/:id"
             // component={REVIEW ARTICLE COMPONENT}
             exact
+            title="Review Article" onOpen={changeTitle}
           />
           <PrivateRoute
             path="/dashboard/review/card/:id"
             // component={REVIEW CARD COMPONENT}
             exact
+            title="Articles" onOpen={changeTitle}
           />
           <PrivateRoute
             path="/dashboard/review/test/:id"
             // component={REVIEW TEST COMPONENT}
             exact
+            title="Articles" onOpen={changeTitle}
           />
 
           <Route component={NotFoundRedirect} />

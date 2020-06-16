@@ -17,26 +17,24 @@ const SideBar = () => {
 
     return (
         <nav id="sidebar">
-           <a className="sidebar-header" href="/">
-            <img
-              src={`${window.location.origin}/img/modrek-logo.svg`}
-              width="120"
-              // height="auto"
-              alt="Modrek Logo"
-              className="logo"
-            />
-          </a>
+            <a className="sidebar-header" href="/">
+                <img
+                    src={`${window.location.origin}/img/modrek-logo.svg`}
+                    width="120"
+                    alt="Modrek Logo"
+                    className="logo"
+                />
+            </a>
 
             <ul class="list-unstyled components">
-
                 <li>
                     <a href="/dashboard/articles">
                         <span
                             className="uk-margin-small-right"
                             uk-icon="icon: file-text"
                         ></span>{" "}
-              Article
-            </a>
+                        Article
+                    </a>
                 </li>
                 <li>
                     <a href="/dashboard/cards">
@@ -44,8 +42,8 @@ const SideBar = () => {
                             className="uk-margin-small-right"
                             uk-icon="icon: album"
                         ></span>{" "}
-              Card
-            </a>
+                        Card
+                    </a>
                 </li>
                 <li>
                     <a href="/dashboard/tests">
@@ -53,8 +51,17 @@ const SideBar = () => {
                             className="uk-margin-small-right"
                             uk-icon="icon: file-edit"
                         ></span>{" "}
-              Test
-            </a>
+                        Test
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/profile">
+                        <span
+                            className="uk-margin-small-right"
+                            uk-icon="icon: file-edit"
+                        ></span>{" "}
+                        Profile
+                    </a>
                 </li>
             </ul>
         </nav>

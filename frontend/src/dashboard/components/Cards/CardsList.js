@@ -2,12 +2,12 @@ import React from "react";
 import CardTable from "./CardsTable";
 import Query from "../Query";
 import { CARDS_QUERY } from "./queries";
-import Dashboard from "../MainDash";
+// import Dashboard from "../MainDash";
 
 const Cards = () => {
   return (
     <div>
-      <Dashboard />
+      {/* <Dashboard /> */}
       <div className="uk-container uk-container-medium">
         <Query query={CARDS_QUERY}>
           {({ data: { cards } }) => {
