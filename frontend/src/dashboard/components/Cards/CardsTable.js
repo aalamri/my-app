@@ -26,7 +26,7 @@ const CardsTable = ({ cards }) => {
                 </td>
                 <td>{card.language}</td>
                 <td>
-                  <Link to={`/card/${card.id}`} className="uk-link-reset">
+                  <Link to={`/cards/${card.id}`} className="uk-link-reset">
                     <button className="uk-button uk-button-default">
                       View
                     </button>
