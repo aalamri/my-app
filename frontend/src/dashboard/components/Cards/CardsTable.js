@@ -5,7 +5,7 @@ import Moment from "react-moment";
 const CardsTable = ({ cards }) => {
   return (
     <div>
-      <table className="uk-table uk-table-striped">
+      <table className="table table-striped projects">
         <thead>
           <tr>
             <th> Title</th>
