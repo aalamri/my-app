@@ -19,14 +19,17 @@ class Profile extends React.Component {
     //    }
   }
   render() {
-    const { email } = this.state;
+    const { email, lastName, firstName} = this.state;
     return (
       <div>
         <div className="uk-child-width-1-2" data-uk-grid dir="auto">
-          username: {this.state.user.username}
+        First Name: {this.state.user.lastName}
+      </div>
+      <div className="uk-child-width-1-2" data-uk-grid dir="auto">
+      Last Name: {this.state.user.firstName}
         </div>
         <div className="uk-child-width-1-2" data-uk-grid dir="auto">
-          email: {this.state.user.email}
+          Email: {this.state.user.email}
         </div>
       </div>
     );

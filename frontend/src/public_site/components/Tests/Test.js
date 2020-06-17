@@ -115,7 +115,7 @@ const Test = () => {
                       <WhatsappIcon size={32} round />
                     </WhatsappShareButton>
                     <FacebookShareButton
-                      url={shareUrl}
+                      url={`https://modrek-app.herokuapp.com/test/${id}`}
                       quote="Check out this Morek Card"
                       className="social-icon mx-1"
                       alt="facebook"

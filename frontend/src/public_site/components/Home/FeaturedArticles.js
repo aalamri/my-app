@@ -141,7 +141,7 @@ const SingleArticle = (props, i) => {
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
             <FacebookShareButton
-              url={shareUrl}
+              url={`https://modrek-app.herokuapp.com/article/${id}`}
               quote="Check out this Morek Card"
               className="hover-to-color social-icon d-md-block"
               alt="facebook"

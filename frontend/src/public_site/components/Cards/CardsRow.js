@@ -244,7 +244,7 @@ const CardsRow = ({ match }) => {
                             <WhatsappIcon size={32} round />
                           </WhatsappShareButton>
                           <FacebookShareButton
-                            url={shareUrl}
+                            url={`https://modrek-app.herokuapp.com/cards/${card.id}`}
                             quote="Check out this Morek Card"
                             className="social-icon d-md-block"
                             alt="facebook"

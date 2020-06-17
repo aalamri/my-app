@@ -238,7 +238,7 @@ const ArticlesRow = () => {
                           <WhatsappIcon size={32} round />
                         </WhatsappShareButton>
                         <FacebookShareButton
-                          url={shareUrl}
+                          url={`https://modrek-app.herokuapp.com/article/${id}`}
                           quote="Check out this Morek Card"
                           className="hover-to-color social-icon"
                           alt="facebook"
@@ -263,7 +263,7 @@ export default ArticlesRow;
 const TopRowAR = ({ setArticles }) => (
   <div className="row align-tem-center justify-content-between">
     <div className="col-lg-7 col-md-4 text-right">
-      <h1 className="section-title page-title tajawal">المعرفة</h1>
+      <h1 className="section-title page-title tajawal pt-1">المعرفة</h1>
     </div>
     <div className="col-lg-5 col-md-7 d-flex justify-content-end">
       <div className="d-flex align-items-center action-btn-wrap">

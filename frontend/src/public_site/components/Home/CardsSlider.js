@@ -166,7 +166,7 @@ const SingleCard = (props) => {
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
             <FacebookShareButton
-              url={shareUrl}
+              url={`https://modrek-app.herokuapp.com/cards/${id}`}
               quote="Check out this Morek Card"
               className="social-icon mx-1 d-md-block"
               alt="facebook"

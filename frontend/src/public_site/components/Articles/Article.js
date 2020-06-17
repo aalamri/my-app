@@ -51,14 +51,14 @@ const Article = () => {
         const shareUrl = `${article.title}       https://modrek-app.herokuapp.com/article/${article.id}`;
 
         return (
-          <div className="module ptb-100" dir={language === AR ? "rtl" : "ltr"}>
+          <div className="module pb-100" dir={language === AR ? "rtl" : "ltr"}>
             <div className={`container ${language === AR ? "text-right" : ""}`}>
               <div className="row">
-                <div className="col-lg-3 col-md-3">
+                <div className="col-lg-3 col-md-3 mt-md-5 my-3">
                   <div className="sidebar-left pr-4 text-center align-items-center justify-content-center">
-                    <aside className="widget widget-categories">
+                    <aside className="widget-categories">
                       <img
-                        className="avatar-article pt-5"
+                        className="avatar-article"
                         src={avatarTale}
                         alt="client"
                       />
@@ -87,7 +87,7 @@ const Article = () => {
                           <WhatsappIcon size={32} round />
                         </WhatsappShareButton>
                         <FacebookShareButton
-                          url={shareUrl}
+                          url={`https://modrek-app.herokuapp.com/article/${article.id}`}
                           quote="Check out this Morek Card"
                           className="social-icon d-md-block"
                           alt="facebook"
@@ -98,7 +98,7 @@ const Article = () => {
                     </aside>
                   </div>
                 </div>
-                <div className="col-md-9">
+                <div className="col-md-9 mt-md-5">
                   <article className="post">
                     <div className="post-preview">
                       <img

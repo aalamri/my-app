@@ -7,7 +7,6 @@ import Dashboard from "../MainDash";
 const Cards = () => {
   return (
     <div>
-      <Dashboard />
       <div className="uk-container uk-container-medium">
         <Query query={CARDS_QUERY}>
           {({ data: { cards } }) => {
