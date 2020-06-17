@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+
+.sidebar-color {
+	background-color: #593B6B;
+}
+
+
+.modrek-logo-size {
+	width: 30%;
+}
+
+.nav-item-color {
+	color: white;
+	background-color: none;
+}
+
+
+.nav-item-color:hover {
+	color: white;
+	background-color: #645077;
+}
+
+
+.nav-highlight {
+	color: #7C426C;
+	background-color: white;
+}
+
+.admin-page-title {
+	font-size: 30px;
+	font-weight: 300;
+	color: #333333;
+}
+
+.admin-cards-filter {
+	opacity: 50%;
+}
+
+.pin-color{
+	color: #333333;
+}
+
+
+.pin-low-opacity{
+	color: #333333;
+	opacity: 50%;
+}
+
+.plus-size {
+	font-size: 60%;
+}
+
+
+.view-btn-color {
+	background-color: #71B5AC;
+	border: none;
+    border-color: #71B5AC;
+	box-shadow: none;
+	color: #fff;
+}
+
+.view-btn-color:hover {
+	background-color: #568980;
+	border: none;
+}

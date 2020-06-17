@@ -1,4 +1,3 @@
-
 a, a:hover, a:focus {
     color: inherit;
     text-decoration: none;
@@ -13,7 +12,6 @@ a, a:hover, a:focus {
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
-
 .navbar-btn {
     box-shadow: none;
     outline: none !important;
@@ -42,11 +40,10 @@ a, a:hover, a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background-image: linear-gradient(to right, #713e6d, #593a6c);
+    background: #593B6B;
     color: #fff;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
     transform-origin: bottom left;
-    padding:20px;
 }
 
 #sidebar.active {
@@ -55,10 +52,6 @@ a, a:hover, a:focus {
 }
 
 #sidebar .sidebar-header {
-    /* font-size: inherit;
-    height: auto;
-    padding: 0;
-    margin-left: 60px */
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -66,7 +59,6 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    /* border-bottom: 1px solid white; */
 }
 
 #sidebar ul p {
@@ -80,7 +72,7 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #593B6B;
     background: #fff;
 }
 

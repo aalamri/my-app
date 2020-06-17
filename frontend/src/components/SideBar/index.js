@@ -17,51 +17,46 @@ const SideBar = () => {
 
     return (
         <nav id="sidebar">
-            <a className="sidebar-header" href="/">
-                <img
-                    src={`${window.location.origin}/img/modrek-logo.svg`}
-                    width="120"
-                    alt="Modrek Logo"
-                    className="logo"
-                />
-            </a>
+           <a className="sidebar-header" href="/">
+            <img
+              src={`${window.location.origin}/img/modrek-logo.svg`}
+              width="120"
+              // height="auto"
+              alt="Modrek Logo"
+              className="logo"
+            />
+          </a>
 
             <ul class="list-unstyled components">
+            <li>
+            <a href="/dashboard/profile" class="nav-link">
+              <i
+                className="fa fa-user-circle-o pr-2"
+              ></i>{" "}
+              Profile
+            </a>
+          </li>
                 <li>
-                    <a href="/dashboard/articles">
-                        <span
-                            className="uk-margin-small-right"
-                            uk-icon="icon: file-text"
-                        ></span>{" "}
-                        Article
-                    </a>
+                    <a href="/dashboard/articles" class="nav-link">
+                        <i
+                        className="fa fa-newspaper pr-2"
+                        ></i>{" "}
+              Article
+            </a>
                 </li>
                 <li>
                     <a href="/dashboard/cards">
-                        <span
-                            className="uk-margin-small-right"
-                            uk-icon="icon: album"
-                        ></span>{" "}
-                        Card
-                    </a>
+                    <i class="fa fa-book pr-2"></i>
+                    {" "}
+              Card
+            </a>
                 </li>
                 <li>
                     <a href="/dashboard/tests">
-                        <span
-                            className="uk-margin-small-right"
-                            uk-icon="icon: file-edit"
-                        ></span>{" "}
-                        Test
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/profile">
-                        <span
-                            className="uk-margin-small-right"
-                            uk-icon="icon: file-edit"
-                        ></span>{" "}
-                        Profile
-                    </a>
+                    <i class="fa fa-copy pr-2"></i>
+                    {" "}
+              Test
+            </a>
                 </li>
             </ul>
         </nav>
