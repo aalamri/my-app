@@ -6,7 +6,6 @@ const CardsTable = ({ cards }) => {
   return (
     <div class="box">
     <div class="box-header">
-              <h3 class="pl-3 admin-page-title">Card</h3>
             </div>
             <section class="content-header">
             <div class="container-fluid">
