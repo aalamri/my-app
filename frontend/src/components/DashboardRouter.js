@@ -25,6 +25,8 @@ import { PrivateRoute } from "./PrivateRoute";
 import Profile from "../dashboard/components/Profile";
 import SideBar from "./SideBar";
 
+import TopBar from "./TopNavBar";
+
 const AR = "Arabic";
 const EN = "English";
 
@@ -43,22 +45,26 @@ function DashboardRouter({ match }) {
     <div class="wrapper">
       <SideBar />
       <div id="content">
-        <nav class="top-navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid" style={{alignItems:'center', display:'flex'}}>
-
+        {/* <nav class="top-navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid" style={{ alignItems: 'center', display: 'flex' }}>
             <button type="button" id="sidebarCollapse" class="navbar-btn">
               <span></span>
               <span></span>
               <span></span>
             </button>
-            <h4 style={{margin:'0px 0px 0px 20px'}}>{title}</h4>
-            {/* <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="fas fa-align-justify"></i>
-            </button> */}
-
-
+            <h4 style={{ margin: '0px 0px 0px 20px' }}>{title}</h4>
+            <div className="col-auto active">
+              <div className={"dropdown-toggle"} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i className="flag-icon flag-icon-gb-eng" /> EN
+              </div>
+              <ul className={"dropdown-menu"}>
+                <li className={"dropdown-item"}><img src={uk_flag} alt=""/> EN </li>
+                <li className={"dropdown-item"}><img src={sd_flag} alt="" />عربى</li>
+              </ul>
+            </div>
           </div>
-        </nav>
+        </nav> */}
+        <TopBar title={title} />
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} exact title="Dashboard" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/profile" component={Profile} exact title="Profile" onOpen={changeTitle} />
@@ -78,10 +84,10 @@ function DashboardRouter({ match }) {
             exact
             title="Create Article" onOpen={changeTitle}
           />
-          <PrivateRoute path="/dashboard/tests" component={DBTests} exact title="Tests" onOpen={changeTitle}/>
-          <PrivateRoute path="/dashboard/tests/edit/:id" component={EditTest} exact title="Edit Test" onOpen={changeTitle}/>
-          <PrivateRoute path="/dashboard/create-test" component={CreateTest} exact title="Create Test" onOpen={changeTitle}/>
-          <PrivateRoute path="/dashboard/reviews" component={Reviewes} exact title="Reviews" onOpen={changeTitle}/>
+          <PrivateRoute path="/dashboard/tests" component={DBTests} exact title="Tests" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/tests/edit/:id" component={EditTest} exact title="Edit Test" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/create-test" component={CreateTest} exact title="Create Test" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/reviews" component={Reviewes} exact title="Reviews" onOpen={changeTitle} />
           <PrivateRoute
             path="/dashboard/reviews/articles/review/:id"
             component={ReviewArticle}

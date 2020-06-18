@@ -49,6 +49,8 @@ function PublicRouter({ match }) {
                 <Route path="/search" component={Search} exact />
                 <Route path="/feedback" component={Feedback} exact />
                 <Route path="/about" component={About} exact />
+                <Redirect to="/"/>
+
             </Switch>
             <Footer/>
         </div>
