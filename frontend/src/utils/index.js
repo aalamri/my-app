@@ -25,6 +25,13 @@ export const setUser = (value, user = USER) => {
   }
 };
 
+export const getUserRole = (tokenKey = USER) => {
+  if (localStorage && localStorage.getItem(tokenKey)) {
+    return JSON.parse(localStorage.getItem(tokenKey)).role.type;
+  }
+  return null;
+};
+
 export const clearToken = (tokenKey = TOKEN_KEY) => {
   if (localStorage) {
     localStorage.removeItem(tokenKey);

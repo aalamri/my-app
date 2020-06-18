@@ -21,7 +21,7 @@ import CreateTest from "../dashboard/components/Tests/CreateTest";
 import ReviewCard from "../dashboard/components/Cards/ReviewCard";
 import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
 import ReviewTest from "../dashboard/components/Tests/ReviewTest";
-import { PrivateRoute } from "./PrivateRoute";
+import { PrivateRoute, AdminRoute } from "./PrivateRoute";
 import Profile from "../dashboard/components/Profile";
 import SideBar from "./SideBar";
 
@@ -44,26 +44,7 @@ function DashboardRouter({ match }) {
   return (
     <div class="wrapper">
       <SideBar />
-      <div id="content">
-        {/* <nav class="top-navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid" style={{ alignItems: 'center', display: 'flex' }}>
-            <button type="button" id="sidebarCollapse" class="navbar-btn">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-            <h4 style={{ margin: '0px 0px 0px 20px' }}>{title}</h4>
-            <div className="col-auto active">
-              <div className={"dropdown-toggle"} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="flag-icon flag-icon-gb-eng" /> EN
-              </div>
-              <ul className={"dropdown-menu"}>
-                <li className={"dropdown-item"}><img src={uk_flag} alt=""/> EN </li>
-                <li className={"dropdown-item"}><img src={sd_flag} alt="" />عربى</li>
-              </ul>
-            </div>
-          </div>
-        </nav> */}
+      <div id="content">        
         <TopBar title={title} />
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} exact title="Dashboard" onOpen={changeTitle} />
@@ -123,6 +104,7 @@ function DashboardRouter({ match }) {
             exact
             title="Articles" onOpen={changeTitle}
           />
+          <AdminRoute path="/dashboard/users" component={DBTests} exact title="User Management" onOpen={changeTitle} />
 
           <Route component={NotFoundRedirect} />
 

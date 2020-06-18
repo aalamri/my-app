@@ -16,6 +16,10 @@ const TopBar = (props) => {
         window.location.reload();
     }
 
+    const setLanguage = () => {
+        
+    }
+
     return (
         <nav class="top-navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid" style={{ alignItems: 'center', display: 'flex' }}>
