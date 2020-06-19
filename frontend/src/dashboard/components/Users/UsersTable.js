@@ -6,16 +6,16 @@ import { ROLES_QUERY } from "./queries";
 import Query from "../Query";
 
 const UsersTable = ({ users }) => {
-  const getRoles = () => {
+  const getRoles = (type) => {
     return <Query query={ROLES_QUERY}>
       {({ data: { roles } }) => {
         return <select
-          required
+          
           className={"form-control"}
           name={"value"}
           onChange={(e) => { }}>
           {roles.map((role) => {
-            return <option value={role.type}>{role.name}</option>
+            return <option value={role.type} key={role.id} selected={role.type === type}>{role.name}</option>
           })}
         </select>
       }}
@@ -43,7 +43,7 @@ const UsersTable = ({ users }) => {
                       <td>{user.firstName + ' ' + user.lastName}</td>
                       <td>{user.email}</td>
                       <td>
-                        {getRoles()}
+                        {getRoles(user.role.type)}
                       </td>
                       <td>
                         <Button className="view-btn-color btn-sm">
