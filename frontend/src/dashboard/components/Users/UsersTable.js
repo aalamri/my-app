@@ -14,28 +14,16 @@ const UsersTable = ({ users }) => {
           className={"form-control"}
           name={"value"}
           onChange={(e) => { }}>
-            {roles.map((role)=>{
-              return <option value={role.type}>{role.name}</option>
-            })}
+          {roles.map((role) => {
+            return <option value={role.type}>{role.name}</option>
+          })}
         </select>
       }}
     </Query>;
   };
   return (
     <div class="box">
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <Link to="/dashboard/create-card">
-                <ol class="breadcrumb float-sm-right">
-                  <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Card</button>
-                </ol>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <section class="content">
 
         <div class="card">
