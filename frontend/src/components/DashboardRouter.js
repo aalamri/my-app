@@ -14,6 +14,8 @@ import EditArticle from "../dashboard/components/Articles/EditArticle";
 import DBCards from "../dashboard/components/Cards/CardsList";
 import EditCard from "../dashboard/components/Cards/EditCard";
 import DBTests from "../dashboard/components/Tests/TestsList";
+import DBUsers from "../dashboard/components/Users/UsersList";
+
 import EditTest from "../dashboard/components/Tests/EditTest";
 import CreateArticle from "../dashboard/components/Articles/CreateArticle";
 import CreateCard from "../dashboard/components/Cards/CreateCard";
@@ -104,7 +106,7 @@ function DashboardRouter({ match }) {
             exact
             title="Articles" onOpen={changeTitle}
           />
-          <AdminRoute path="/dashboard/users" component={DBTests} exact title="User Management" onOpen={changeTitle} />
+          <AdminRoute path="/dashboard/users" component={DBUsers} exact title="User Management" onOpen={changeTitle} />
 
           <Route component={NotFoundRedirect} />
 
