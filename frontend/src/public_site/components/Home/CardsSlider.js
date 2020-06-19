@@ -100,7 +100,7 @@ const SingleCard = (props) => {
     title,
     content,
     language,
-    card_url_in_other_language,
+    card_id_of_other_language,
     author,
     createdAt,
   } = props;
@@ -118,14 +118,14 @@ const SingleCard = (props) => {
 
         <div
           className={`d-flex justify-content-end pt-${
-            card_url_in_other_language ? 1 : 4
+            card_id_of_other_language ? 1 : 4
           } position-relative`}
         >
           <small className="align-self-end otherlang-row">
-            {card_url_in_other_language && (
+            {card_id_of_other_language && (
               <Link
                 className="tale"
-                to={`/cards/${card_url_in_other_language}`}
+                to={`/cards/${card_id_of_other_language}`}
               >
                 <u>
                   {language === "Arabic" ? "النسخة العربية" : "English Version"}

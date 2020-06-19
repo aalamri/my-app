@@ -30,7 +30,7 @@ export const FEATURED_CARDS_QUERY = gql`
       status
       is_pinned
       language
-      card_url_in_other_language
+      card_id_of_other_language
       meta
       image {
         url

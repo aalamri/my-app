@@ -7,7 +7,7 @@ export const CARD_QUERY = gql`
       title
       content
       language
-      card_url_in_other_language
+      card_id_of_other_language
       image {
         url
       }

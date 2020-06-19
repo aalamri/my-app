@@ -2,7 +2,7 @@ import React from "react";
 
 import uk_flag from "../../assets/image/uk.svg";
 import sd_flag from "../../assets/image/sd.svg";
-import fake_user from "../../assets/image/adam.jpg"
+import fake_user from "../../assets/image/avatar-circle-tale.svg"
 
 
 import './style.css'
