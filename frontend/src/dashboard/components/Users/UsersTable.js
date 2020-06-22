@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { ROLES_QUERY, DELETE_USER_QUERY, USERS_QUERY } from "./queries";
+import { ROLES_QUERY, DELETE_USER_QUERY, USERS_QUERY, UPDATE_USER_QUERY } from "./queries";
 import Query from "../Query";
 import { useMutation, useLazyQuery } from "@apollo/react-hooks";
 import { Mutation } from 'react-apollo'
@@ -10,25 +10,16 @@ const UsersTable = ({ users }) => {
   const [currentUsers, getUsers] = useState(users);
   const [deleteModal, deleteModalShow] = useState(false);
   const [deleteId, deleteIdSet] = useState(undefined);
+  const [updateUser, updateUserSet] = useState({});
 
-  // const [deleteUserMutation] = useMutation(DELETE_USER_QUERY);
-  // const [getUsersQuery, { loading, data }] = useLazyQuery(USERS_QUERY, {
-  //   onCompleted: data => {
-  //     console.log('data ', data);
-  //     getUsers(data.users); // multiple times
-  //   }
-  // });
-
-
-  const getRoles = (type) => {
+  const getRoles = (user) => {
     return <Query query={ROLES_QUERY}>
       {({ data: { roles } }) => {
         return <select
           className={"form-control"}
-          name={"value"}
-          onChange={(e) => { }}>
+          onChange={(e) => { var temp = { id: user.id, data: {} }; temp.data.role = roles[e.target.selectedIndex].id; updateUserSet(temp); }}>
           {roles.map((role) => {
-            return <option value={role.type} key={role.id} selected={role.type === type}>{role.name}</option>
+            return <option value={role.type} key={role.id} selected={role.type === user.role.type}>{role.name}</option>
           })}
         </select>
       }}
@@ -41,14 +32,7 @@ const UsersTable = ({ users }) => {
     deleteModalShow(true);
     deleteIdSet(id);
   }
-  // const deleteUser = async () => {
-  //   await deleteUserMutation({ variables: { id: deleteId } });
-  //   deleteModalShow(false);
-  //   getUsersQuery();
-  //   // getUsers(data.users);
 
-  //   // console.log(data.users);
-  // }
   return (
     <div class="box">
 
@@ -71,13 +55,16 @@ const UsersTable = ({ users }) => {
                       <td>{user.firstName + ' ' + user.lastName}</td>
                       <td>{user.email}</td>
                       <td>
-                        {getRoles(user.role.type)}
+                        {getRoles(user)}
                       </td>
                       <td>
-                        <Button className="view-btn-color btn-sm">
-                          Save
-                          </Button>
-
+                        <Mutation mutation={UPDATE_USER_QUERY} refetchQueries={[{ query: USERS_QUERY, }]} update={(cache, { data: data }) => { console.log(data, cache); }}>
+                          {(update) => (
+                            <Button className="view-btn-color btn-sm" onClick={() => { update({ variables: { id: updateUser.id, data: updateUser.data } }); console.log(updateUser.data) }}>
+                              Save
+                            </Button>
+                          )}
+                        </Mutation>
                         <Button className="uk-button uk-button-default" onClick={() => handleShow(user.id)}>
                           <i className={"fa fa-trash"} />
                         </Button>
@@ -103,7 +90,7 @@ const UsersTable = ({ users }) => {
           <Button variant="secondary" onClick={() => { handleClose() }}>
             Cancel
           </Button>
-          <Mutation mutation={DELETE_USER_QUERY} refetchQueries={[{ query: USERS_QUERY, }]} update={(cache, { data: data }) => {console.log(data, cache); handleClose();}}>
+          <Mutation mutation={DELETE_USER_QUERY} refetchQueries={[{ query: USERS_QUERY, }]} update={(cache, { data: data }) => { console.log(data, cache); handleClose(); }}>
             {(deleteUser, { data }) => (
               <Button variant="secondary" onClick={() => { deleteUser({ variables: { id: deleteId } }) }}>
                 Delete
