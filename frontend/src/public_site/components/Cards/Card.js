@@ -43,10 +43,10 @@ const Card = ({ match }) => {
                 >
                   <p className="full-card tajawal">{card.content}</p>
                 </div>
-                {card.card_url_in_other_language && (
+                {card.card_id_of_other_language && (
                   <Link
                     className="d-flex justify-content-end pt-3"
-                    to={`/cards/${card.card_url_in_other_language}`}
+                    to={`/cards/${card.card_id_of_other_language}`}
                   >
                     <u className="align-self-end gray tajawal">
                       {card.language === AR

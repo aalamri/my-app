@@ -183,14 +183,14 @@ const CardsRow = ({ match }) => {
                         </Link>
                         <div
                           className={`d-flex justify-content-end pt-${
-                            card.card_url_in_other_language ? 0 : 4
+                            card.card_id_of_other_language ? 0 : 4
                           } pb-0`}
                         >
                           <small className="otherlang-row">
-                            {card.card_url_in_other_language && (
+                            {card.card_id_of_other_language && (
                               <Link
                                 className="gray tajawal"
-                                to={`/cards/${card.card_url_in_other_language}`}
+                                to={`/cards/${card.card_id_of_other_language}`}
                               >
                                 <u>
                                   {card.language === "Arabic"

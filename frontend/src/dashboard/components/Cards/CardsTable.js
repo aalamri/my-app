@@ -5,6 +5,8 @@ import Moment from "react-moment";
 const CardsTable = ({ cards }) => {
   return (
     <div class="box">
+      <div class="box-header">
+      </div>
       <section class="content-header">
         <div class="container-fluid">
           <div class="row">
@@ -34,7 +36,9 @@ const CardsTable = ({ cards }) => {
                 </tr>
               </thead>
               <tbody>
-                {cards.map((card) => {
+              {cards
+                .filter(({ is_deleted }) => !is_deleted)
+                .map((card) => {
                   return (
                     <tr key={card.id}>
                       <td>{card.title}</td>
@@ -53,7 +57,7 @@ const CardsTable = ({ cards }) => {
                           to={`/dashboard/cards/edit/${card.id}`}
                           className="uk-link-reset"
                         >
-                          <button className="uk-button uk-button-default">
+                          <button className="view-btn-color btn-sm">
                             Edit
                     </button>
                         </Link>
@@ -61,7 +65,7 @@ const CardsTable = ({ cards }) => {
                           to={`/dashboard/reviews/cards/review/${card.id}`}
                           className="uk-link-reset"
                         >
-                          <button className="uk-button uk-button-default">
+                          <button className="view-btn-color btn-sm">
                             Review
                     </button>
                         </Link>

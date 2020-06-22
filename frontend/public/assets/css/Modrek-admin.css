@@ -76,3 +76,20 @@
     margin-bottom: 5px;
     font-weight: 700;
 }
+
+.btn-info {
+	background-color:gray;
+	border-color: #202877;
+	color: white;
+}
+.btn-info:hover {
+	background-color: gray;
+	border-color: #202877;
+	color: white;
+}
+
+.btn-info:not(:disabled):not(.disabled).active {
+	background-color: #593a6c;
+	border-color: #202877;
+	color: white;
+}

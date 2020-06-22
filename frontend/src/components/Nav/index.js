@@ -122,10 +122,10 @@ const Navbar = () => {
                 <div
                   className={`form-inline justify-content-center  d-none d-md-none d-lg-block search-box-nav 
                 ${
-                    state.siteLanguage === AR
-                      ? "search-box-nav-rtl rtl-search-box"
-                      : ""
-                    }`}
+                  state.siteLanguage === AR
+                    ? "search-box-nav-rtl rtl-search-box"
+                    : ""
+                }`}
                   style={{ paddingRight: 0, paddingLeft: 0 }}
                 >
                   <input

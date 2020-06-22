@@ -40,7 +40,7 @@ export const GET_CARD = gql`
     card(id: $id) {
       id
       language
-      card_url_in_other_language
+      card_id_of_other_language
       title
       content
       tags {

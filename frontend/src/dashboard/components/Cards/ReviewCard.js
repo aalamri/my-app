@@ -57,7 +57,7 @@ const ReviewCard = () => {
     if (data) {
       console.log("useEffect", data.card.language);
       setLanguage(data.card.language);
-      setUrlOtherLanguage(data.card.card_url_in_other_language);
+      setUrlOtherLanguage(data.card.card_id_of_other_language);
       setTitle(data.card.title);
       setContent(data.card.content);
       populateCurrentTag();
@@ -157,7 +157,7 @@ const ReviewCard = () => {
         Card URL in {language === "Arabic" ? "English" : "Arabic"} language
       </label>
       <input
-        name="card_url_in_other_language"
+        name="card_id_of_other_language"
         type="text"
         placeholder="URL"
         value={urlOtherLanguage}
