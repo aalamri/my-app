@@ -10,7 +10,7 @@ const Users = () => {
       <div className="uk-container uk-container-medium">
         <Query query={USERS_QUERY}>
           {({ data: { users } }) => {
-            return <UsersTable users={users } />;
+            return <UsersTable users={users} />;
           }}
         </Query>
       </div>
