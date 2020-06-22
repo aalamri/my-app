@@ -6,6 +6,8 @@ import "react-quill/dist/quill.snow.css";
 import { CATEGORIES_QUERY } from "../Category/queries";
 import { CREATE_CARD, CARDS_QUERY, UPDATE_CARD } from "./queries";
 import Editor from "../Editor";
+import swal from 'sweetalert';
+
 
 const AR = "Arabic";
 const EN = "English";
@@ -115,7 +117,7 @@ const CreateCard = () => {
           }
         });
       }
-
+      swal("Success", "Send to Review!", "success");
     } catch (error) {
       console.log("Error handleCreateCard:", error);
     }
