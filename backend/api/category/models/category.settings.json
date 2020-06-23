@@ -32,8 +32,8 @@
       "required": false
     },
     "cards": {
-      "collection": "cards",
-      "via": "category"
+      "via": "category",
+      "collection": "cards"
     },
     "tests": {
       "via": "category",

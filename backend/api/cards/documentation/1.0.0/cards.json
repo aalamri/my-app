@@ -698,7 +698,7 @@
               "Approved"
             ]
           },
-          "card_url_in_other_language": {
+          "card_id_of_other_language": {
             "type": "string"
           },
           "is_deleted": {
@@ -802,7 +802,7 @@
               "Approved"
             ]
           },
-          "card_url_in_other_language": {
+          "card_id_of_other_language": {
             "type": "string"
           },
           "is_deleted": {

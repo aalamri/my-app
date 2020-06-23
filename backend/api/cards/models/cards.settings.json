@@ -44,10 +44,10 @@
       "required": true
     },
     "author": {
-      "via": "cards",
-      "plugin": "users-permissions",
       "columnName": "email",
-      "model": "user"
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "cards"
     },
     "status": {
       "type": "enumeration",
@@ -59,7 +59,7 @@
       "default": "Pending",
       "required": true
     },
-    "card_url_in_other_language": {
+    "card_id_of_other_language": {
       "type": "string"
     },
     "is_deleted": {
@@ -70,8 +70,8 @@
       "type": "text"
     },
     "category": {
-      "via": "cards",
-      "model": "category"
+      "model": "category",
+      "via": "cards"
     },
     "tags": {
       "type": "string"
