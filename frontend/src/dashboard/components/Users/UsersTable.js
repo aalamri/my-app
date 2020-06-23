@@ -6,11 +6,12 @@ import { useMutation, useLazyQuery } from "@apollo/react-hooks";
 import { Mutation } from 'react-apollo'
 const UsersTable = ({ users }) => {
 
-
   const [currentUsers, getUsers] = useState(users);
   const [deleteModal, deleteModalShow] = useState(false);
   const [deleteId, deleteIdSet] = useState(undefined);
   const [updateUser, updateUserSet] = useState({});
+
+  const [getCurrentUsers] = useLazyQuery(USERS_QUERY, { onCompleted: e => { console.log('here') } });
 
   const getRoles = (user) => {
     return <Query query={ROLES_QUERY}>
@@ -59,7 +60,7 @@ const UsersTable = ({ users }) => {
                         {getRoles(user)}
                       </td>
                       <td>
-                        <Mutation mutation={UPDATE_USER_QUERY} refetchQueries={[{ query: USERS_QUERY, }]} update={(cache, { data: data }) => { console.log(data, cache); }}>
+                        <Mutation mutation={UPDATE_USER_QUERY} >
                           {(update) => (
                             <Button className="view-btn-color btn-sm" onClick={() => { update({ variables: { id: updateUser.id, data: updateUser.data } }); }}>
                               Save
@@ -91,7 +92,7 @@ const UsersTable = ({ users }) => {
           <Button variant="secondary" onClick={() => { handleClose() }}>
             Cancel
           </Button>
-          <Mutation mutation={DELETE_USER_QUERY} refetchQueries={[{ query: USERS_QUERY, }]} update={(cache, { data: data }) => { console.log(data, cache); handleClose(); }}>
+          <Mutation mutation={DELETE_USER_QUERY} onCompleted={(data) => { console.log(data); getCurrentUsers(); handleClose(); }}>
             {(deleteUser, { data }) => (
               <Button variant="secondary" onClick={() => { deleteUser({ variables: { id: deleteId } }) }}>
                 Delete
