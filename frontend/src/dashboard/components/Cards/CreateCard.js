@@ -90,6 +90,7 @@ const CreateCard = () => {
       const card1 = await createCard({
         variables: { data: payload1 } /*TODO add headers token here*/,
       });
+      swal("Success", "Send to Review!", "success");
       const currentCardID = card1.data.createCard.card.id;
 
       // create another article if other article is not empty
