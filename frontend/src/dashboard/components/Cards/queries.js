@@ -60,7 +60,6 @@ export const UPDATE_CARD = gql`
     updateCard(input: { where: { id: $id }, data: $data }) {
       card {
         id
-        title
       }
     }
   }
@@ -71,9 +70,6 @@ export const CREATE_CARD = gql`
     createCard(input: { data: $data }) {
       card {
         id
-        title
-        content
-        published_at
       }
     }
   }

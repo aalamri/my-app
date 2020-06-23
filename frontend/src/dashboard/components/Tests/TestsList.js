@@ -8,7 +8,6 @@ const Tests = () => {
     <div>
       <div className="uk-section">
         <div className="uk-container uk-container-large">
-          <h1>Tests</h1>
           <Query query={TESTS_QUERY}>
             {({ data: { tests } }) => {
               return <TestsTable tests={tests} />;

@@ -8,7 +8,6 @@ import { CREATE_CARD, CARDS_QUERY, UPDATE_CARD } from "./queries";
 import Editor from "../Editor";
 import swal from 'sweetalert';
 
-
 const AR = "Arabic";
 const EN = "English";
 
@@ -59,7 +58,7 @@ const CreateCard = () => {
   async function handleCreateCard(e) {
     e.preventDefault();
     const currentCard = language === AR ? contentAR : contentEN;
-    const otherCardID = language === EN ? contentAR : contentEN;
+    const otherCard = language === EN ? contentAR : contentEN;
 
     // validate required fields in current lang
     const errors = validate(currentCard, language);
@@ -78,7 +77,7 @@ const CreateCard = () => {
         title: currentCard.title,
         content: currentCard.content,
         category: getCatID(intialCategories, formData.get("category")),
-        published_at: getDate(new Date()),
+        // published_at: getDate(new Date()),
         status: "Pending",
         // author: "5e93e0d2c266b30fa0d7fad9", // sultan
         author: "5eb1f731147f722414b44c30", // sarah
@@ -90,22 +89,24 @@ const CreateCard = () => {
       const card1 = await createCard({
         variables: { data: payload1 } /*TODO add headers token here*/,
       });
-      swal("Success", "Send to Review!", "success");
       const currentCardID = card1.data.createCard.card.id;
 
       // create another article if other article is not empty
-      const isOtherLangEmpty = isEmpty(otherCardID);
+      const isOtherLangEmpty = isEmpty(otherCard);
       if (isOtherLangEmpty === false) {
         const payload2 = {
           ...payload1,
           language: language === AR ? EN : EN,
-          title: otherCardID.title || "null",
-          content: otherCardID.content || "null",
+          title: otherCard.title || "null",
+          content: otherCard.content || "null",
           card_id_of_other_language: currentCardID
         };
         const card2 = await createCard({
-          variables: { data: payload2 } /*TODO add headers token here*/,
+          variables: { data: payload2 } 
+          /*TODO add headers token here*/,
         });
+        swal("Success", "Send to Review!", "success");
+
         const otherCardID = card2.data.createCard.card.id
 
         // update article1 with article2's id
@@ -119,6 +120,7 @@ const CreateCard = () => {
         });
       }
       swal("Success", "Send to Review!", "success");
+
     } catch (error) {
       console.log("Error handleCreateCard:", error);
     }
@@ -219,8 +221,8 @@ const ENCard = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
   </>
 );
 
-function validate(article, lang) {
-  const { title, content } = article;
+function validate(card, lang) {
+  const { title, content } = card;
   const errors = [];
   if (title.trim() == "") {
     errors.push(lang === EN ? "Title must not be empty" : "عنوان الموضوع فارغ");
@@ -234,8 +236,8 @@ function validate(article, lang) {
   return errors;
 }
 
-function isEmpty(article) {
-  const { title, content } = article;
+function isEmpty(card) {
+  const { title, content } = card;
   if (title.trim() == "" && StrippedString(content).trim() == "") {
     return true;
   }

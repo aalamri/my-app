@@ -4,8 +4,26 @@ import Moment from "react-moment";
 
 const TestsTable = ({ tests }) => {
   return (
-    <div>
-      <table className="uk-table uk-table-striped">
+    <div class="box">
+    <div class="box-header">
+    </div>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <Link to="/dashboard/create-test">
+              <ol class="breadcrumb float-sm-right">
+                <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Test</button>
+              </ol>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+
+    <div class="card-body p-0">
+    <table class="table table-striped projects">
         <thead>
           <tr>
             <th> Title</th>
@@ -27,25 +45,25 @@ const TestsTable = ({ tests }) => {
                 <td>{test.language}</td>
                 <td>
                   <Link to={`/test/${test.id}`} className="uk-link-reset">
-                    <button className="uk-button uk-button-default">
-                      View
-                    </button>
+                  <button className="view-btn-color btn-sm">
+                  View
+                  </button>
                   </Link>
                   <Link
                     to={`/dashboard/test/edit/${test.id}`}
                     className="uk-link-reset"
                   >
-                    <button className="uk-button uk-button-default">
-                      Edit
-                    </button>
+                  <button className="view-btn-color btn-sm">
+                  Edit
+                  </button>
                   </Link>
                   <Link
                     to={`/dashboard/reviews/tests/review/${test.id}`}
                     className="uk-link-reset"
                   >
-                    <button className="uk-button uk-button-default">
-                      Review
-                    </button>
+                  <button className="view-btn-color btn-sm">
+                  Review
+                  </button>
                   </Link>
                 </td>
               </tr>
@@ -53,6 +71,8 @@ const TestsTable = ({ tests }) => {
           })}
         </tbody>
       </table>
+    </div>
+    </section>
     </div>
   );
 };
