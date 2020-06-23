@@ -95,8 +95,8 @@
       "via": "author"
     },
     "cards": {
-      "collection": "cards",
-      "via": "author"
+      "via": "author",
+      "collection": "cards"
     }
   }
 }

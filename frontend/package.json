@@ -37,7 +37,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "speakeasy": "^2.0.0",
-    "strapi-sdk-javascript": "^0.3.3"
+    "strapi-sdk-javascript": "^0.3.3",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

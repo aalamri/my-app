@@ -6,6 +6,8 @@ import "react-quill/dist/quill.snow.css";
 import { CATEGORIES_QUERY } from "../Category/queries";
 import { CREATE_CARD, CARDS_QUERY, UPDATE_CARD } from "./queries";
 import Editor from "../Editor";
+import swal from 'sweetalert';
+
 
 const AR = "Arabic";
 const EN = "English";
@@ -88,6 +90,7 @@ const CreateCard = () => {
       const card1 = await createCard({
         variables: { data: payload1 } /*TODO add headers token here*/,
       });
+      swal("Success", "Send to Review!", "success");
       const currentCardID = card1.data.createCard.card.id;
 
       // create another article if other article is not empty
@@ -115,7 +118,7 @@ const CreateCard = () => {
           }
         });
       }
-
+      swal("Success", "Send to Review!", "success");
     } catch (error) {
       console.log("Error handleCreateCard:", error);
     }

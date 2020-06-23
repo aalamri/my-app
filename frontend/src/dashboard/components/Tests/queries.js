@@ -37,7 +37,7 @@ export const TESTS_QUERY = gql`
       createdAt
       status
       language
-      test_url_in_other_language
+      test_id_of_other_language
     }
   }
 `;
@@ -47,7 +47,7 @@ export const GET_TEST = gql`
     test(id: $id) {
       id
       language
-      test_url_in_other_language
+      test_id_of_other_language
       title
       description
       category {

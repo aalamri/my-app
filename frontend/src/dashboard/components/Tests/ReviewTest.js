@@ -57,7 +57,7 @@ const ReviewTest = () => {
     if (data) {
       console.log("useEffect", data.test.language);
       setLanguage(data.test.language);
-      setUrlOtherLanguage(data.test.test_url_in_other_language);
+      setUrlOtherLanguage(data.test.test_id_of_other_language);
       setTitle(data.test.title);
       setContent(data.test.description);
       populateCurrentCategory();
@@ -157,7 +157,7 @@ const ReviewTest = () => {
         Test URL in {language === "Arabic" ? "English" : "Arabic"} language
       </label>
       <input
-        name="test_url_in_other_language"
+        name="test_id_of_other_language"
         type="text"
         placeholder="URL"
         value={urlOtherLanguage}
