@@ -17,9 +17,10 @@ const UsersTable = ({ users }) => {
       {({ data: { roles } }) => {
         return <select
           className={"form-control"}
+          defaultValue={user.role.type}
           onChange={(e) => { var temp = { id: user.id, data: {} }; temp.data.role = roles[e.target.selectedIndex].id; updateUserSet(temp); }}>
           {roles.map((role) => {
-            return <option value={role.type} key={role.id} selected={role.type === user.role.type}>{role.name}</option>
+            return <option value={role.type} key={role.id} >{role.name}</option>
           })}
         </select>
       }}
@@ -60,7 +61,7 @@ const UsersTable = ({ users }) => {
                       <td>
                         <Mutation mutation={UPDATE_USER_QUERY} refetchQueries={[{ query: USERS_QUERY, }]} update={(cache, { data: data }) => { console.log(data, cache); }}>
                           {(update) => (
-                            <Button className="view-btn-color btn-sm" onClick={() => { update({ variables: { id: updateUser.id, data: updateUser.data } }); console.log(updateUser.data) }}>
+                            <Button className="view-btn-color btn-sm" onClick={() => { update({ variables: { id: updateUser.id, data: updateUser.data } }); }}>
                               Save
                             </Button>
                           )}
