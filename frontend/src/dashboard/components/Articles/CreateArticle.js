@@ -8,6 +8,7 @@ import { CATEGORIES_QUERY } from "../Category/queries";
 import { CREATE_ARTICLE, UPDATE_ARTICLE } from "./queries";
 import { getToken } from "../../../utils/index";
 // import { GET_USER_ID } from "../../../utils/queries";
+import swal from 'sweetalert';
 
 // const token = getToken();
 const AR = "Arabic";
@@ -79,7 +80,7 @@ const CreateArticle = () => {
         title: currentArticle.title,
         content: currentArticle.content,
         category: getCatID(intialCategories, formData.get("category")),
-        published_at: getDate(new Date()),
+        // published_at: getDate(new Date()),
         status: "Pending",
         // author: "5e93e0d2c266b30fa0d7fad9", // sultan
         author: "5eb1f731147f722414b44c30", // sarah
@@ -106,6 +107,7 @@ const CreateArticle = () => {
         const article2 = await createArticle({
           variables: { data: payload2 } /*TODO add headers token here*/,
         });
+        swal("Success", "Send to Review!", "success");
         const otherArticleID = article2.data.createArticle.article.id
 
         // update article1 with article2's id
@@ -118,6 +120,7 @@ const CreateArticle = () => {
           }
         });
       }
+      swal("Success", "Send to Review!", "success");
 
     } catch (error) {
       console.log("Error handleCreateArticle:", error);
@@ -175,7 +178,7 @@ const CreateArticle = () => {
               );
             })}
         </select>
-
+            <br/>
         {validation.hasError &&
           <div class="alert alert-danger mt-3" role="alert">
             <ul>
@@ -184,7 +187,7 @@ const CreateArticle = () => {
           </div>
         }
         <br />
-        <button class="mt-3" type="submit">{language === AR ? "إنشاء" : "Create"}</button>
+        <button className="btn solid-btn signupBtn tajawal mb-5" type="submit">{language === AR ? "إنشاء" : "Create"}</button>
       </form>
     </div>
   );
