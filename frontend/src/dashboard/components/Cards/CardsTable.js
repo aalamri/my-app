@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import { Pagination } from "react-bootstrap";
 
 const CardsTable = ({ cards }) => {
   return (
@@ -36,46 +37,62 @@ const CardsTable = ({ cards }) => {
                 </tr>
               </thead>
               <tbody>
-              {cards
-                .filter(({ is_deleted }) => !is_deleted)
-                .map((card) => {
-                  return (
-                    <tr key={card.id}>
-                      <td>{card.title}</td>
-                      <td>{card.status}</td>
-                      <td>
-                        <Moment format="MMM Do YYYY">{card.published_at}</Moment>
-                      </td>
-                      <td>{card.language}</td>
-                      <td>
-                        <Link to={`/cards/${card.id}`}>
-                          <button className="view-btn-color btn-sm">
-                            View
+                {cards
+                  .filter(({ is_deleted }) => !is_deleted)
+                  .map((card) => {
+                    return (
+                      <tr key={card.id}>
+                        <td>{card.title}</td>
+                        <td>{card.status}</td>
+                        <td>
+                          <Moment format="MMM Do YYYY">{card.published_at}</Moment>
+                        </td>
+                        <td>{card.language}</td>
+                        <td>
+                          <Link to={`/cards/${card.id}`}>
+                            <button className="view-btn-color btn-sm">
+                              View
                     </button>
-                        </Link>
-                        <Link
-                          to={`/dashboard/cards/edit/${card.id}`}
-                          className="uk-link-reset"
-                        >
-                          <button className="view-btn-color btn-sm">
-                            Edit
+                          </Link>
+                          <Link
+                            to={`/dashboard/cards/edit/${card.id}`}
+                            className="uk-link-reset"
+                          >
+                            <button className="view-btn-color btn-sm">
+                              Edit
                     </button>
-                        </Link>
-                        <Link
-                          to={`/dashboard/reviews/cards/review/${card.id}`}
-                          className="uk-link-reset"
-                        >
-                          <button className="view-btn-color btn-sm">
-                            Review
+                          </Link>
+                          <Link
+                            to={`/dashboard/reviews/cards/review/${card.id}`}
+                            className="uk-link-reset"
+                          >
+                            <button className="view-btn-color btn-sm">
+                              Review
                     </button>
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
+            <Pagination>
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Item>{1}</Pagination.Item>
+              <Pagination.Ellipsis />
 
+              <Pagination.Item>{10}</Pagination.Item>
+              <Pagination.Item>{11}</Pagination.Item>
+              <Pagination.Item active>{12}</Pagination.Item>
+              <Pagination.Item>{13}</Pagination.Item>
+              <Pagination.Item disabled>{14}</Pagination.Item>
+
+              <Pagination.Ellipsis />
+              <Pagination.Item>{20}</Pagination.Item>
+              <Pagination.Next />
+              <Pagination.Last />
+            </Pagination>
           </div>
         </div>
       </section>
