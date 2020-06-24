@@ -27,7 +27,7 @@ const CreateCard = () => {
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
   const [createCard] = useMutation(CREATE_CARD);
   const [updateCard] = useMutation(UPDATE_CARD);
-  
+
   const intialCategories = data ? data.categories : [];
 
   if (loading) {
@@ -102,7 +102,7 @@ const CreateCard = () => {
           card_id_of_other_language: currentCardID
         };
         const card2 = await createCard({
-          variables: { data: payload2 } 
+          variables: { data: payload2 }
           /*TODO add headers token here*/,
         });
         swal("Success", "Send to Review!", "success");
@@ -139,56 +139,56 @@ const CreateCard = () => {
 
   return (
     <div className={`container max-width-880 my-5 ${language === AR ? 'text-right' : ''}`} dir={language === AR ? "rtl" : "ltr"}>
-    <h3>{language === AR ? "إنشاء بطاقة جديدة" : "Create Card"}</h3>
+      <h3>{language === AR ? "إنشاء بطاقة جديدة" : "Create Card"}</h3>
 
-    <form onSubmit={handleCreateCard}>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class={`btn btn-info no-radius ${language === AR ? 'active' : ''}`} onClick={switchToAR}>
-      <input type="radio" name="language" /> الموضوع بالعربية
+      <form onSubmit={handleCreateCard}>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class={`btn btn-info no-radius ${language === AR ? 'active' : ''}`} onClick={switchToAR}>
+            <input type="radio" name="language" /> الموضوع بالعربية
     </label>
-    <label class={`btn btn-info no-radius ${language === EN ? 'active' : ''}`} onClick={switchToEN}>
-      <input type="radio" name="language" /> Article in English
+          <label class={`btn btn-info no-radius ${language === EN ? 'active' : ''}`} onClick={switchToEN}>
+            <input type="radio" name="language" /> Article in English
     </label>
-  </div>
-
-  <br />
-  <br/>
-  {language === AR && <ARCard
-    handleChangeEditor={handleChangeEditor}
-    handleChangeTitle={handleChangeTitle}
-    content={contentAR.content}
-    title={contentAR.title}
-  />}
-  {language === EN && <ENCard
-    handleChangeEditor={handleChangeEditor}
-    handleChangeTitle={handleChangeTitle}
-    content={contentEN.content}
-    title={contentEN.title}
-  />}
-    
-  <br />
-  <label>{language === AR ? "القسم" : "Category"}</label>
-  <select name="category" id="cars">
-    {intialCategories.length > 0 &&
-      intialCategories.map((cat) => {
-        return (
-          <option name="option" key={cat.id} value={cat.name}>
-            {cat.name}
-          </option>
-        );
-      })}
-  </select>
-      <br />
-      {validation.hasError &&
-        <div class="alert alert-danger mt-3" role="alert">
-          <ul>
-            {validation.errors.map((err, i) => <li key={i}>{err}</li>)}
-          </ul>
         </div>
-      }
-      <br />
-      <button className="btn solid-btn signupBtn tajawal mb-5" type="submit">{language === AR ? "إنشاء" : "Create"}</button>
-    </form>
+
+        <br />
+        <br />
+        {language === AR && <ARCard
+          handleChangeEditor={handleChangeEditor}
+          handleChangeTitle={handleChangeTitle}
+          content={contentAR.content}
+          title={contentAR.title}
+        />}
+        {language === EN && <ENCard
+          handleChangeEditor={handleChangeEditor}
+          handleChangeTitle={handleChangeTitle}
+          content={contentEN.content}
+          title={contentEN.title}
+        />}
+
+        <br />
+        <label>{language === AR ? "القسم" : "Category"}</label>
+        <select name="category" id="cars">
+          {intialCategories.length > 0 &&
+            intialCategories.map((cat) => {
+              return (
+                <option name="option" key={cat.id} value={cat.name}>
+                  {cat.name}
+                </option>
+              );
+            })}
+        </select>
+        <br />
+        {validation.hasError &&
+          <div class="alert alert-danger mt-3" role="alert">
+            <ul>
+              {validation.errors.map((err, i) => <li key={i}>{err}</li>)}
+            </ul>
+          </div>
+        }
+        <br />
+        <button className="btn solid-btn signupBtn tajawal mb-5" type="submit">{language === AR ? "إنشاء" : "Create"}</button>
+      </form>
     </div>
   );
 };
@@ -196,8 +196,8 @@ const CreateCard = () => {
 const ARCard = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
   <>
     <label>عنوان البطاقة</label>
-    <input className="form-control" style={{ width:"33.4rem" }} name="title" type="text" placeholder="Card title" value={title} onChange={handleChangeTitle} />
-    <br/>
+    <input className="form-control" style={{ width: "33.4rem" }} name="title" type="text" placeholder="Card title" value={title} onChange={handleChangeTitle} />
+    <br />
     <label>المحتوى</label>
     <Editor
       handleChangeEditorValue={handleChangeEditor}
@@ -210,8 +210,8 @@ const ARCard = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
 const ENCard = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
   <>
     <label>Card title</label>
-    <input className="form-control"  style={{ width:"33.4rem" }} name="title" type="text" placeholder="Card title" value={title} onChange={handleChangeTitle} />
-    <br/>
+    <input className="form-control" style={{ width: "33.4rem" }} name="title" type="text" placeholder="Card title" value={title} onChange={handleChangeTitle} />
+    <br />
     <label>Card content</label>
     <Editor
       handleChangeEditorValue={handleChangeEditor}

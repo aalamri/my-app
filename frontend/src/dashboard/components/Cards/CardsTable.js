@@ -1,104 +1,116 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-import { Pagination } from "react-bootstrap";
+import Axios from "axios";
 
-const CardsTable = ({ cards }) => {
-  return (
-    <div class="box">
-      <div class="box-header">
-      </div>
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <Link to="/dashboard/create-card">
-                <ol class="breadcrumb float-sm-right">
-                  <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Card</button>
-                </ol>
-              </Link>
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+
+
+const columns = [{
+  dataField: 'title',
+  text: 'Title'
+}, {
+  dataField: 'status',
+  text: 'Status'
+}, {
+  dataField: 'published_at',
+  text: 'Published_at',
+  formatter: (cell, row, rowIndex) => (
+    <Moment format="MMM Do YYYY">{cell}</Moment>
+  )
+}, {
+  dataField: 'language',
+  text: 'Language'
+}, {
+  dataField: 'id',
+  text: 'Action',
+  formatter: (cell, row, rowIndex) => (
+    <div style={{ display: 'flex' }}>
+      <Link to={`/cards/${cell}`}>
+        <button className="view-btn-color btn-sm">
+          View
+        </button>
+      </Link>
+      <Link
+        to={`/dashboard/cards/edit/${cell}`}
+        className="uk-link-reset"
+      >
+        <button className="view-btn-color btn-sm">
+          Edit
+      </button>
+      </Link>
+      <Link
+        to={`/dashboard/reviews/cards/review/${cell}`}
+        className="uk-link-reset"
+      >
+        <button className="view-btn-color btn-sm">
+          Review
+        </button>
+      </Link>
+    </div>
+  )
+},];
+class CardsTable extends React.Component {
+
+  state = {
+    cards: [],
+    total: 0,
+    start: 0,
+    pageSize: 10
+  }
+
+  componentDidMount() {
+    this.fetchCards(1);
+    Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards/count').then(response => {
+      this.setState({ total: response.data });
+      console.log(this.state.total)
+    })
+  }
+
+  fetchCards(i) {
+    Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards?_limit=' + this.state.pageSize + "&_start=" + (i - 1) * this.state.pageSize).then(response => {
+      this.setState({ cards: response.data });
+    })
+  }
+  render() {
+    return (
+      <div class="box">
+        <div class="box-header">
+        </div>
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <Link to="/dashboard/create-card">
+                  <ol class="breadcrumb float-sm-right">
+                    <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Card</button>
+                  </ol>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="content">
+        </section>
+        <section class="content">
 
-        <div class="card">
-
-          <div class="card-body p-0">
-            <table class="table table-striped projects">
-              <thead>
-                <tr>
-                  <th> Title</th>
-                  <th> Status</th>
-                  <th> Published_at</th>
-                  <th> Language</th>
-                  <th> Action </th>
-                </tr>
-              </thead>
-              <tbody>
-                {cards
-                  .filter(({ is_deleted }) => !is_deleted)
-                  .map((card) => {
-                    return (
-                      <tr key={card.id}>
-                        <td>{card.title}</td>
-                        <td>{card.status}</td>
-                        <td>
-                          <Moment format="MMM Do YYYY">{card.published_at}</Moment>
-                        </td>
-                        <td>{card.language}</td>
-                        <td>
-                          <Link to={`/cards/${card.id}`}>
-                            <button className="view-btn-color btn-sm">
-                              View
-                    </button>
-                          </Link>
-                          <Link
-                            to={`/dashboard/cards/edit/${card.id}`}
-                            className="uk-link-reset"
-                          >
-                            <button className="view-btn-color btn-sm">
-                              Edit
-                    </button>
-                          </Link>
-                          <Link
-                            to={`/dashboard/reviews/cards/review/${card.id}`}
-                            className="uk-link-reset"
-                          >
-                            <button className="view-btn-color btn-sm">
-                              Review
-                    </button>
-                          </Link>
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-            <Pagination>
-              <Pagination.First />
-              <Pagination.Prev />
-              <Pagination.Item>{1}</Pagination.Item>
-              <Pagination.Ellipsis />
-
-              <Pagination.Item>{10}</Pagination.Item>
-              <Pagination.Item>{11}</Pagination.Item>
-              <Pagination.Item active>{12}</Pagination.Item>
-              <Pagination.Item>{13}</Pagination.Item>
-              <Pagination.Item disabled>{14}</Pagination.Item>
-
-              <Pagination.Ellipsis />
-              <Pagination.Item>{20}</Pagination.Item>
-              <Pagination.Next />
-              <Pagination.Last />
-            </Pagination>
+          <div class="card">
+            <div class="card-body p-0">
+              <BootstrapTable keyField={'id'} data={this.state.cards} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
+                pagination={paginationFactory({
+                  withFirstAndLast: true,
+                  hideSizePerPage: true,
+                  showTotal: true,
+                  totalSize: this.state.total,
+                  paginationSize: 9,
+                  onPageChange: (i) => { this.fetchCards(i) }
+                })} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
-export default CardsTable;
+export default CardsTable;  

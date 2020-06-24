@@ -11,7 +11,7 @@ import Dashboard from "../dashboard/components/MainDash";
 import Reviewes from "../dashboard/components/Reviews";
 import DBArticles from "../dashboard/components/Articles/ArticlesList";
 import EditArticle from "../dashboard/components/Articles/EditArticle";
-import DBCards from "../dashboard/components/Cards/CardsList";
+import DBCards from "../dashboard/components/Cards/CardsTable";
 import EditCard from "../dashboard/components/Cards/EditCard";
 import DBTests from "../dashboard/components/Tests/TestsList";
 import DBUsers from "../dashboard/components/Users/UsersList";
