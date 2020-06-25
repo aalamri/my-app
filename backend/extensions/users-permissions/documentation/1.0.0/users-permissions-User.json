@@ -1391,6 +1391,9 @@
                 },
                 "tags": {
                   "type": "string"
+                },
+                "author_id": {
+                  "type": "string"
                 }
               }
             }

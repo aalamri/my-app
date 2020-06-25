@@ -755,6 +755,9 @@
           },
           "tags": {
             "type": "string"
+          },
+          "author_id": {
+            "type": "string"
           }
         }
       },
@@ -816,6 +819,9 @@
             "type": "string"
           },
           "tags": {
+            "type": "string"
+          },
+          "author_id": {
             "type": "string"
           }
         }
