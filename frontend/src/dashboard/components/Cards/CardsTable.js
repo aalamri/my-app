@@ -64,13 +64,13 @@ class CardsTable extends React.Component {
     this.fetchCards(1);
     Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards/count').then(response => {
       this.setState({ total: response.data });
-      console.log(this.state.total)
     })
   }
 
   fetchCards(i) {
     Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards?_limit=' + this.state.pageSize + "&_start=" + (i - 1) * this.state.pageSize).then(response => {
       this.setState({ cards: response.data });
+      console.log(response.data)
     })
   }
   render() {
