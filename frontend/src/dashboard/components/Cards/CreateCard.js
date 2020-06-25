@@ -79,8 +79,7 @@ const CreateCard = () => {
         category: getCatID(intialCategories, formData.get("category")),
         // published_at: getDate(new Date()),
         status: "Pending",
-        // author: "5e93e0d2c266b30fa0d7fad9", // sultan
-        author: "5eb1f731147f722414b44c30", // sarah
+        author_id: "5eb1f731147f722414b44c30",
         meta: {
           visits: 0,
           likes: 0,
