@@ -9,7 +9,7 @@ import Footer from "../public_site/components/Footer";
 // Dashboard
 import Dashboard from "../dashboard/components/MainDash";
 import Reviewes from "../dashboard/components/Reviews";
-import DBArticles from "../dashboard/components/Articles/ArticlesList";
+import DBArticles from "../dashboard/components/Articles/ArticlesTable";
 import EditArticle from "../dashboard/components/Articles/EditArticle";
 import DBCards from "../dashboard/components/Cards/CardsTable";
 import EditCard from "../dashboard/components/Cards/EditCard";

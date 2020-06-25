@@ -1,89 +1,113 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import Axios from "axios";
 
-const ArticlesTable = ({ articles }) => {
-  return (
-    <div class="box">
-      <div class="box-header">
-      </div>
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <Link to="/dashboard/create-article">
-                <ol class="breadcrumb float-sm-right">
-                  <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Article</button>
-                </ol>
-              </Link>
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+const columns = [{
+  dataField: 'title',
+  text: 'Title'
+}, {
+  dataField: 'status',
+  text: 'Status'
+}, {
+  dataField: 'published_at',
+  text: 'Published_at',
+  formatter: (cell, row, rowIndex) => (
+    <Moment format="MMM Do YYYY">{cell}</Moment>
+  )
+}, {
+  dataField: 'language',
+  text: 'Language'
+}, {
+  dataField: 'id',
+  text: 'Action',
+  formatter: (cell, row, rowIndex) => (
+    <div style={{ display: 'flex' }}>
+      <Link to={`/articles/${cell}`}>
+        <button className="view-btn-color btn-sm">
+          View
+        </button>
+      </Link>
+      <Link
+        to={`/dashboard/articles/edit/${cell}`}
+        className="uk-link-reset"
+      >
+        <button className="view-btn-color btn-sm">
+          Edit
+      </button>
+      </Link>
+      <Link
+        to={`/dashboard/reviews/articles/review/${cell}`}
+        className="uk-link-reset"
+      >
+        <button className="view-btn-color btn-sm">
+          Review
+        </button>
+      </Link>
+    </div>
+  )
+},];
+class ArticlesTable extends React.Component {
+  state = {
+    articles: [],
+    total: 0,
+    start: 0,
+    pageSize: 10
+  }
+
+  componentDidMount() {
+    this.fetchArticles(1);
+    Axios.get(process.env.REACT_APP_BACKEND_URL + '/articles/count').then(response => {
+      this.setState({ total: response.data });
+      console.log(this.state.total)
+    })
+  }
+
+  fetchArticles(i) {
+    Axios.get(process.env.REACT_APP_BACKEND_URL + '/articles?_limit=' + this.state.pageSize + "&_start=" + (i - 1) * this.state.pageSize).then(response => {
+      this.setState({ articles: response.data });
+    })
+  }
+  render() {
+    return (
+      <div class="box">
+        <div class="box-header">
+        </div>
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <Link to="/dashboard/create-article">
+                  <ol class="breadcrumb float-sm-right">
+                    <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Article</button>
+                  </ol>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="content">
+        </section>
+        <section class="content">
 
-        <div class="card">
-
-          <div class="card-body p-0">
-            <table class="table table-striped projects">
-              <thead>
-                <tr>
-                  <th> Title</th>
-                  <th> Status</th>
-                  <th> Published_at</th>
-                  <th> Language</th>
-                  <th> Action </th>
-                </tr>
-              </thead>
-              <tbody>
-                {articles
-                  .filter(({ is_deleted }) => !is_deleted)
-                  .map((article) => {
-                    return (
-                      <tr key={article.id}>
-                        <td>{article.title}</td>
-                        <td>{article.status}</td>
-                        <td>
-                          <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-                        </td>
-                        <td>{article.language}</td>
-                        <td>
-                          <Link
-                            to={`/article/${article.id}`}
-                          >
-                            <button className="view-btn-color btn-sm">
-                              View
-                      </button>
-                          </Link>
-                          <Link
-                            to={`/dashboard/articles/edit/${article.id}`}
-                            className="uk-link-reset"
-                          >
-                            <button className="view-btn-color btn-sm">
-                              Edit
-                      </button>
-                          </Link>
-                          <Link
-                            to={`/dashboard/reviews/articles/review/${article.id}`}
-                            className="uk-link-reset"
-                          >
-                            <button className="view-btn-color btn-sm">
-                              Review
-                      </button>
-                          </Link>
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-
+          <div class="card">
+            <div class="card-body p-0">
+              <BootstrapTable keyField={'id'} data={this.state.articles} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
+                pagination={paginationFactory({
+                  withFirstAndLast: true,
+                  hideSizePerPage: true,
+                  showTotal: true,
+                  totalSize: this.state.total,
+                  paginationSize: 9,
+                  onPageChange: (i) => { this.fetchArticles(i) }
+                })} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default ArticlesTable;
