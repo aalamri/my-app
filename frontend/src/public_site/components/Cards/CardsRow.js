@@ -49,7 +49,7 @@ const options = {
       items: 3,
     },
     800: {
-      items: 7,
+      items: 6,
     },
     1200: {
       items: 7,
@@ -170,7 +170,7 @@ const CardsRow = ({ match }) => {
               const shareUrl = `${card.title} https://modrek-app.herokuapp.com/cards/${card.id}`;
               return (
                 <div key={card.id} class="col-lg-6 pt-5">
-                  <div class="rounded card border-0">
+                  <div class="rounded border-0">
                     <div className="rounded-card white-bg shadow-md p-4 mb-4 min-width-400">
                       <div className="d-flex flex-column text-center">
                         <Link key={card.id} to={`${match.url}/${card.id}`}>
@@ -233,7 +233,7 @@ const CardsRow = ({ match }) => {
                             className="social-icon d-md-block"
                             alt="twitter"
                           >
-                            <TwitterIcon size={32} round />
+                            <TwitterIcon size={30} round />
                           </TwitterShareButton>
                           <WhatsappShareButton
                             url={shareUrl}
@@ -241,7 +241,7 @@ const CardsRow = ({ match }) => {
                             className="social-icon d-md-block"
                             alt="whatsapp"
                           >
-                            <WhatsappIcon size={32} round />
+                            <WhatsappIcon size={30} round />
                           </WhatsappShareButton>
                           <FacebookShareButton
                             url={`https://modrek-app.herokuapp.com/cards/${card.id}`}
@@ -249,7 +249,7 @@ const CardsRow = ({ match }) => {
                             className="social-icon d-md-block"
                             alt="facebook"
                           >
-                            <FacebookIcon size={32} round />
+                            <FacebookIcon size={30} round />
                           </FacebookShareButton>
                         </div>
                       </div>
@@ -274,26 +274,28 @@ export default CardsRow;
 
 const TopRowAR = ({ setCards }) => (
   <div className="row align-tem-center justify-content-between">
-    <div className="col-lg-7 col-md-4 text-right">
-      <h1 className="section-title page-title tajawal">
+    <div className="col-5 col-lg-7 col-md-4 text-right">
+      <h1 className="section-title page-title tajawal mb-0">
         {getString("knowledge")}
       </h1>
     </div>
-    <div className="col-lg-5 col-md-7 d-flex justify-content-end">
-      <div className="d-flex align-items-center pt-2 action-btn-wrap">
+    <div className="col-7 col-lg-5 col-md-7 d-flex justify-content-end">
+      <div className="d-flex align-items-center action-btn-wrap">
         <span class="col-lg-1 col-md-1 pl-0 knowldege-btn">
+          <a className="/cards">
           <span>
             <img
               class="img-responsive"
-              src={`${window.location.origin}/img/cards-color-btn-ar.svg`}
+              src={`${window.location.origin}/img/article-yellow-ar-mobile.svg`}
             />
           </span>
+          </a>
         </span>
-        <span class="col-lg-1 col-md-1 pr-0 knowldege-btn" href="#">
+        <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
           <a href="/articles">
             <img
               class="img-responsive"
-              src={`${window.location.origin}/img/article-gray-btn-ar.svg`}
+              src={`${window.location.origin}/img/card-gray-ar-mobile.svg`}
             />
           </a>
         </span>
@@ -372,25 +374,27 @@ const TopRowAR = ({ setCards }) => (
 );
 
 const TopRowEN = ({ setCards }) => (
-  <div className="row align-tem-center justify-content-between">
-    <div className="col-lg-7 col-md-4">
-      <h1 className="section-title page-title roboto">
+  <div className="row align-items-center justify-content-between">
+    <div className="col-5 col-lg-7 col-md-4">
+      <h1 className="section-title page-title roboto mb-0">
         {getString("knowledge")}
       </h1>
     </div>
-    <div className="col-lg-5 col-md-7 text-md-right">
-      <div className="pt-2 action-btn-wrap">
-        <span class="col-lg-1 col-md-1 pr-0 knowldege-btn" href="#">
+    <div className="col-7 col-lg-5 col-md-7 text-right">
+    <div className="d-flex flex-row justify-content-end">
+        <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
           <a href="/articles">
-            <img class="img-responsive" src="img/article-gray-btn.svg" />
+            <img class="img-responsive" src="img/article-yellow-mobile.svg" />
           </a>
         </span>
-        <span class="col-lg-1 col-md-1 pl-0 knowldege-btn">
+        <span class="col-lg-1 col-md-1 pl-0 knowldege-btn last-type">
+          <a href="/cards">
           <span>
-            <img class="img-responsive" src="img/cards-color-btn.svg" />
+            <img class="img-responsive" src="img/card-gray-mobile.svg" />
           </span>
+          </a>
         </span>
-        <span class="col-lg-1 sm-align-right">
+        <span class="short-icon sm-align-left">
           <img
             src="img/sort-icon.svg"
             class="dropdown btn sort-btn"

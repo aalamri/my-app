@@ -21,7 +21,7 @@ import Moment from "react-moment";
 import Query from "../Query";
 import { useQuery } from "@apollo/react-hooks";
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { getState } from "../../../utils";
+import { getState, getString } from "../../../utils";
 
 const AR = "Arabic";
 const EN = "English";
@@ -49,7 +49,7 @@ const options = {
       items: 3,
     },
     800: {
-      items: 5,
+      items: 6,
     },
     1200: {
       items: 7,
@@ -104,21 +104,21 @@ const ArticlesRow = () => {
           {state.siteLanguage === AR ? (
             <TopRowAR setArticles={setArticles} />
           ) : (
-            <TopRowEN setArticles={setArticles} />
-          )}
+              <TopRowEN setArticles={setArticles} />
+            )}
           <div className="row justify-content-center">
             <div className="col-md-12">
               <OwlCarousel
                 className="mt-5 mb-5 text-center owl-carousel category-carousel nav-indicator"
                 options={options}
-                // events={events}
+              // events={events}
               >
                 <>
                   {state.siteLanguage === AR && (
                     <div
                       className={`px-1 cat-title tajawal ${
                         selectedCategory === null ? "cat-title-active" : ""
-                      }`}
+                        }`}
                       onClick={() => {
                         setSelectCategory(null);
                         selectAll();
@@ -136,7 +136,7 @@ const ArticlesRow = () => {
                             selectedCategory === cat.id
                               ? "cat-title-active"
                               : ""
-                          }`}
+                            }`}
                           onClick={() => {
                             setSelectCategory(cat.id);
                             selectCategory(cat.id);
@@ -150,7 +150,7 @@ const ArticlesRow = () => {
                     <div
                       className={`px-1 cat-title tajawal ${
                         selectedCategory === null ? "cat-title-active" : ""
-                      }`}
+                        }`}
                       onClick={() => {
                         setSelectCategory(null);
                         selectAll();
@@ -195,7 +195,7 @@ const ArticlesRow = () => {
                     <div
                       className={`card-body ${
                         state.siteLanguage === AR ? "text-right" : ""
-                      }`}
+                        }`}
                     >
                       <Link to={`/article/${id}`}>
                         <h3 className="card-title tajawal">{title}</h3>
@@ -210,7 +210,7 @@ const ArticlesRow = () => {
                         <div
                           className={`d-flex flex-column hover-to-color tajawal text-${
                             state.siteLanguage === AR ? "right" : "left"
-                          }`}
+                            }`}
                         >
                           <small className="text-muted ml-2 tale">
                             {author.firstName} {author.lastName}
@@ -227,7 +227,7 @@ const ArticlesRow = () => {
                           className="hover-to-color social-icon"
                           alt="twitter"
                         >
-                          <TwitterIcon size={32} round />
+                          <TwitterIcon size={30} round />
                         </TwitterShareButton>
                         <WhatsappShareButton
                           url={shareUrl}
@@ -235,7 +235,7 @@ const ArticlesRow = () => {
                           className="hover-to-color social-icon"
                           alt="whatsapp"
                         >
-                          <WhatsappIcon size={32} round />
+                          <WhatsappIcon size={30} round />
                         </WhatsappShareButton>
                         <FacebookShareButton
                           url={`https://modrek-app.herokuapp.com/article/${id}`}
@@ -243,7 +243,7 @@ const ArticlesRow = () => {
                           className="hover-to-color social-icon"
                           alt="facebook"
                         >
-                          <FacebookIcon size={32} round />
+                          <FacebookIcon size={30} round />
                         </FacebookShareButton>
                       </div>
                     </div>
@@ -262,26 +262,32 @@ export default ArticlesRow;
 
 const TopRowAR = ({ setArticles }) => (
   <div className="row align-tem-center justify-content-between">
-    <div className="col-lg-7 col-md-4 text-right">
-      <h1 className="section-title page-title tajawal pt-1">المعرفة</h1>
+    <div className="col-5 col-lg-7 col-md-4 text-right">
+      <h1 className="section-title page-title tajawal mb-0">
+        {getString("knowledge")}
+      </h1>
     </div>
-    <div className="col-lg-5 col-md-7 d-flex justify-content-end">
+    <div className="col-7 col-lg-5 col-md-7 d-flex justify-content-end">
       <div className="d-flex align-items-center action-btn-wrap">
-        <span className="col-lg-1 col-md-1 pl-0 knowldege-btn" href="#">
+        <span className="col-lg-1 col-md-1 pl-0 knowldege-btn">
           <a href="/cards">
-            <img
-              className="img-responsive"
-              src={`${window.location.origin}/img/cards-gray-btn-ar.svg`}
-            />
+            <span>
+              <img
+                className="img-responsive"
+                src={`${window.location.origin}/img/article-gray-ar-mobile.svg`}
+              />
+            </span>
           </a>
         </span>
         <span className="col-lg-1 col-md-1 pr-0 knowldege-btn">
-          <span>
-            <img
-              className="img-responsive"
-              src={`${window.location.origin}/img/article-color-btn-ar.svg`}
-            />
-          </span>
+          <a href="/articles">
+            <span>
+              <img
+                className="img-responsive"
+                src={`${window.location.origin}/img/card-yellow-ar-mobile.svg`}
+              />
+            </span>
+          </a>
         </span>
 
         <span className="col-lg-1 sm-align-right-rtl">
@@ -359,119 +365,31 @@ const TopRowAR = ({ setArticles }) => (
 );
 
 const TopRowEN = ({ setArticles }) => (
-  <div className="row align-tem-center justify-content-between">
-    <div className="col-lg-7 col-md-4">
-      <h1 className="section-title page-title roboto">Knowledge</h1>
+  <div className="row align-items-center justify-content-between">
+    <div className="col-5 col-lg-7 col-md-4">
+      <h1 className="section-title page-title roboto mb-0">
+        {getString("knowledge")}
+      </h1>
     </div>
-    {/* small screens */}
-    <div className="d-flex flex-row d-md-none text-md-right mx-4">
-      <div class="knowledge-btn-mobile">
-        <a href="#">Previous</a>
-      </div>
-      <div class="knowledge-btn-mobile">
-        <a href="/articles">Articles</a>
-      </div>
-
-      <span className="">
-        <img
-          src="img/sort-icon.svg"
-          className="dropdown btn sort-btn"
-          type="button"
-          id="dropdownMenu1"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        />
-        <div className="dropdown-menu dropdown-primary" id="dropDiv">
-          <Query query={ARTICLES_SORT_ALPHA_ASC}>
-            {({ data }) => {
-              return (
-                <div
-                  className="dropdown-item"
-                  onClick={() => {
-                    setArticles(data.articles);
-                  }}
-                >
-                  Alphabetic(A-Z)
-                </div>
-              );
-            }}
-          </Query>
-          <Query query={ARTICLES_SORT_ALPHA_DESC}>
-            {({ data }) => {
-              return (
-                <div
-                  className="dropdown-item"
-                  onClick={() => {
-                    setArticles(data.articles);
-                  }}
-                >
-                  Alphabetic(Z-A)
-                </div>
-              );
-            }}
-          </Query>
-          <Query query={ARTICLES_SORT_CREATED_DESC}>
-            {({ data }) => {
-              return (
-                <div
-                  className="dropdown-item"
-                  onClick={() => {
-                    setArticles(data.articles);
-                  }}
-                >
-                  Newest Published
-                </div>
-              );
-            }}
-          </Query>
-          <Query query={ARTICLES_SORT_CREATED_ASC}>
-            {({ data }) => {
-              return (
-                <div
-                  className="dropdown-item"
-                  onClick={() => {
-                    setArticles(data.articles);
-                  }}
-                >
-                  Oldest Published
-                </div>
-              );
-            }}
-          </Query>
-        </div>
-      </span>
-    </div>
-    {/* large screens */}
-    <div className="d-none d-md-block col-lg-5 col-md-7 text-md-right">
-      <div className="pt-2 action-btn-wrap">
+    <div className="col-7 col-lg-5 col-md-8 text-right">
+      <div className="d-flex flex-row justify-content-end">
         <span className="col-lg-1 col-md-1 pr-0 knowldege-btn">
-          <span>
-            <img
-              className="img-responsive"
-              src={`${window.location.origin}/img/article-color-btn.svg`}
-            />
-          </span>
+          <a href="/articles">
+              <img
+                className="img-responsive"
+                src={`${window.location.origin}/img/article-yellow-mobile.svg`}
+              />
+          </a>
         </span>
-        <span className="col-lg-1 col-md-1 pl-0 knowldege-btn" href="#">
+        <span className="col-lg-1 col-md-1 pl-0 knowldege-btn last-type">
           <a href="/cards">
             <img
               className="img-responsive"
-              src={`${window.location.origin}/img/cards-gray-btn.svg`}
+              src={`${window.location.origin}/img/card-gray-mobile.svg`}
             />
           </a>
         </span>
-
-        {/* <div className="d-flex d-md-none">
-          <button type="button" class="btn btn-primary btn-sm">
-            Small button
-          </button>
-          <button type="button" class="btn btn-secondary btn-sm">
-            Small button
-          </button>
-        </div> */}
-
-        <span className="col-lg-1 sm-align-right">
+        <span className="short-icon">
           <img
             src="img/sort-icon.svg"
             className="dropdown btn sort-btn"
@@ -481,7 +399,7 @@ const TopRowEN = ({ setArticles }) => (
             aria-haspopup="true"
             aria-expanded="false"
           />
-          <div className="dropdown-menu dropdown-primary" id="dropDiv">
+          <div className="dropdown-menu dropdown-primary position-relative" id="dropDiv">
             <Query query={ARTICLES_SORT_ALPHA_ASC}>
               {({ data }) => {
                 return (
@@ -542,5 +460,8 @@ const TopRowEN = ({ setArticles }) => (
         </span>
       </div>
     </div>
+    {/* small screens */}
+
+    {/* large screens */}
   </div>
 );

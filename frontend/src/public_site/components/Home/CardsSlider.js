@@ -111,8 +111,8 @@ const SingleCard = (props) => {
       <div className="rounded-card white-bg shadow-md p-4 mb-4 min-width-400">
         <Link to={`/cards/${id}`}>
           <div className=" d-flex flex-column tale text-center">
-            <h3 className="tale feat-card-title">{title}</h3>
-            <p className="tale feat-card-content m-0">{content}</p>
+            <h3 className="tale feat-card-title tajawal">{title}</h3>
+            <p className="tale feat-card-content m-0 tajawal">{content}</p>
           </div>
         </Link>
 
@@ -123,10 +123,7 @@ const SingleCard = (props) => {
         >
           <small className="align-self-end otherlang-row">
             {card_id_of_other_language && (
-              <Link
-                className="tale"
-                to={`/cards/${card_id_of_other_language}`}
-              >
+              <Link className="tale" to={`/cards/${card_id_of_other_language}`}>
                 <u>
                   {language === "Arabic" ? "النسخة العربية" : "English Version"}
                 </u>
@@ -139,8 +136,8 @@ const SingleCard = (props) => {
         <div className="media author-info myflex">
           <div className="d-inline-flex">
             <img className="avatar-placeholder" src={avatarTale} alt="client" />
-            <div className="d-flex flex-column mr-3">
-              <small className="text-muted mx-auto tale tajawal">
+            <div className="d-flex flex-column mr-2">
+              <small className="text-muted mx-auto author-name tale tajawal">
                 {author.firstName} {author.lastName}
               </small>
               <small className="text-muted tale ml-auto tajawal">
@@ -148,14 +145,14 @@ const SingleCard = (props) => {
               </small>
             </div>
           </div>
-          <div className="p-2 d-inline-flex ">
+          <div className="py-2 d-inline-flex social-share-icon">
             <TwitterShareButton
               url={shareUrl}
               quote="Check out this Morek Card"
               className="social-icon mx-1 d-md-block"
               alt="twitter"
             >
-              <TwitterIcon size={32} round />
+              <TwitterIcon size={30} round />
             </TwitterShareButton>
             <WhatsappShareButton
               url={shareUrl}
@@ -163,7 +160,7 @@ const SingleCard = (props) => {
               className="social-icon mx-1 d-md-block"
               alt="whatsapp"
             >
-              <WhatsappIcon size={32} round />
+              <WhatsappIcon size={30} round />
             </WhatsappShareButton>
             <FacebookShareButton
               url={`https://modrek-app.herokuapp.com/cards/${id}`}
@@ -171,7 +168,7 @@ const SingleCard = (props) => {
               className="social-icon mx-1 d-md-block"
               alt="facebook"
             >
-              <FacebookIcon size={32} round />
+              <FacebookIcon size={30} round />
             </FacebookShareButton>
           </div>
         </div>

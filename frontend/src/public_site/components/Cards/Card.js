@@ -30,73 +30,94 @@ const Card = ({ match }) => {
       {({ data: { card } }) => {
         const shareUrl = `${card.title}       https://modrek-app.herokuapp.com/cards/${card.id}`;
         return (
-          <div key={card.id} class="col-12 col-lg-12" style={{ padding: 0 }}>
-            <div className="shadow-md modal-card min-width-400">
-              <div className="full-card d-flex flex-column">
-                <h3 className="tale text-center card-name tajawal">
-                  {card.title}
-                </h3>
-                <div
-                  className={`tajawal  ${
-                    card.language === AR ? "text-rtl" : "text-justify"
-                  }`}
-                >
-                  <p className="full-card tajawal">{card.content}</p>
-                </div>
-                {card.card_id_of_other_language && (
-                  <Link
-                    className="d-flex justify-content-end pt-3"
-                    to={`/cards/${card.card_id_of_other_language}`}
-                  >
-                    <u className="align-self-end gray tajawal">
-                      {card.language === AR
-                        ? "English Version"
-                        : "النسخة العربية"}
-                    </u>
-                  </Link>
-                )}
-              </div>
-              <hr className="yellow-hr" />
-              <div className="media author-info myflex">
-                <div className="d-inline-flex">
+          <div
+            key={card.id}
+            id="fullCard"
+            tabindex="-1"
+            role="modal"
+            aria-labelledby="fullCard"
+            aria-hidden="true"
+          >
+            <div class="col-12 col-lg-12 p-0">
+              <div className="shadow-md modal-card min-width-400">
+                <div className="full-card d-flex flex-column">
+                  <div class="modal-eader">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      data-target="#fullCard"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 className="tale text-center card-name tajawal">
+                      {card.title}
+                    </h3>
+                  </div>
+
                   <div
-                    className={`d-flex flex-column tajawal text-${
-                      card.language === AR ? "right" : "left"
+                    className={`tajawal  ${
+                      card.language === AR ? "text-rtl" : "text-justify"
                     }`}
                   >
-                    <small class="text-muted ml-2 tale">
-                      {card.author?.firstName} {card.author?.lastName}
-                    </small>
-                    <small class="text-muted ml-2 tale">
-                      <Moment format="D/M/Y">{card.createdAt}</Moment>
-                    </small>
+                    <p className="full-card tajawal">{card.content}</p>
                   </div>
+                  {card.card_url_in_other_language && (
+                    <Link
+                      className="d-flex justify-content-end pt-3"
+                      to={`/cards/${card.card_url_in_other_language}`}
+                    >
+                      <u className="align-self-end gray tajawal">
+                        {card.language === AR
+                          ? "English Version"
+                          : "النسخة العربية"}
+                      </u>
+                    </Link>
+                  )}
                 </div>
-                <div className="p-2 d-inline-flex ">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    quote="Check out this Morek Card"
-                    className="social-icon d-md-block"
-                    alt="twitter"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    quote="Check out this Morek Card"
-                    className="social-icon d-md-block"
-                    alt="whatsapp"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-                  <FacebookShareButton
-                    url={`https://modrek-app.herokuapp.com/cards/${card.id}`}
-                    quote="Check out this Morek Card"
-                    className="social-icon d-md-block"
-                    alt="facebook"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
+                <hr className="yellow-hr" />
+                <div className="media author-info myflex">
+                  <div className="d-inline-flex">
+                    <div
+                      className={`d-flex flex-column tajawal text-${
+                        card.language === AR ? "right" : "left"
+                      }`}
+                    >
+                      <small class="text-muted ml-2 tale">
+                        {card.author?.firstName} {card.author?.lastName}
+                      </small>
+                      <small class="text-muted ml-2 tale">
+                        <Moment format="D/M/Y">{card.createdAt}</Moment>
+                      </small>
+                    </div>
+                  </div>
+                  <div className="p-2 d-inline-flex ">
+                    <TwitterShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon d-md-block"
+                      alt="twitter"
+                    >
+                      <TwitterIcon size={30} round />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon d-md-block"
+                      alt="whatsapp"
+                    >
+                      <WhatsappIcon size={30} round />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                      url={`https://modrek-app.herokuapp.com/cards/${card.id}`}
+                      quote="Check out this Morek Card"
+                      className="social-icon d-md-block"
+                      alt="facebook"
+                    >
+                      <FacebookIcon size={30} round />
+                    </FacebookShareButton>
+                  </div>
                 </div>
               </div>
             </div>

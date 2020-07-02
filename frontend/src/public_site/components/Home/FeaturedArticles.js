@@ -130,7 +130,7 @@ const SingleArticle = (props, i) => {
               className="hover-to-color social-icon d-md-block"
               alt="twitter"
             >
-              <TwitterIcon size={32} round />
+              <TwitterIcon size={30} round />
             </TwitterShareButton>
             <WhatsappShareButton
               url={shareUrl}
@@ -138,7 +138,7 @@ const SingleArticle = (props, i) => {
               className="hover-to-color social-icon d-md-block"
               alt="whatsapp"
             >
-              <WhatsappIcon size={32} round />
+              <WhatsappIcon size={30} round />
             </WhatsappShareButton>
             <FacebookShareButton
               url={`https://modrek-app.herokuapp.com/article/${id}`}
@@ -146,7 +146,7 @@ const SingleArticle = (props, i) => {
               className="hover-to-color social-icon d-md-block"
               alt="facebook"
             >
-              <FacebookIcon size={32} round />
+              <FacebookIcon size={30} round />
             </FacebookShareButton>
           </div>
         </div>

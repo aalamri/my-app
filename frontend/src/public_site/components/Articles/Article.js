@@ -56,7 +56,7 @@ const Article = () => {
               <div className="row">
                 <div className="col-lg-3 col-md-3 mt-md-5 my-3">
                   <div className="sidebar-left pr-4 text-center align-items-center justify-content-center">
-                    <aside className="widget-categories">
+                    <aside className="widget-categories d-none d-sm-none d-md-block d-lg-block">
                       <img
                         className="avatar-article"
                         src={avatarTale}
@@ -76,7 +76,7 @@ const Article = () => {
                           className="social-icon d-md-block"
                           alt="twitter"
                         >
-                          <TwitterIcon size={32} round />
+                          <TwitterIcon size={30} round />
                         </TwitterShareButton>
                         <WhatsappShareButton
                           url={shareUrl}
@@ -84,7 +84,7 @@ const Article = () => {
                           className="social-icon d-md-block"
                           alt="whatsapp"
                         >
-                          <WhatsappIcon size={32} round />
+                          <WhatsappIcon size={30} round />
                         </WhatsappShareButton>
                         <FacebookShareButton
                           url={`https://modrek-app.herokuapp.com/article/${article.id}`}
@@ -92,7 +92,7 @@ const Article = () => {
                           className="social-icon d-md-block"
                           alt="facebook"
                         >
-                          <FacebookIcon size={32} round />
+                          <FacebookIcon size={30} round />
                         </FacebookShareButton>
                       </div>
                     </aside>
@@ -110,11 +110,37 @@ const Article = () => {
                     <div className="post-wrapper">
                       <div className="post-header">
                         <h2 className="article-title pb-0 tajawal">{title}</h2>
-                        <div className="article-info d-flex">
+                        <div className="article-info d-flex align-items-center justify-content-between">
                           <span className="gray tajawal">
                             {language === AR ? "نشر في " : "Published at "}
                             <Moment format="D/M/Y">{createdAt}</Moment>
                           </span>
+                          <div className="p-2 d-inline-flex d-sm-block d-md-none d-lg-none">
+                        <TwitterShareButton
+                          url={shareUrl}
+                          quote="Check out this Morek Card"
+                          className="social-icon d-md-block"
+                          alt="twitter"
+                        >
+                          <TwitterIcon size={30} round />
+                        </TwitterShareButton>
+                        <WhatsappShareButton
+                          url={shareUrl}
+                          quote="Check out this Morek Card"
+                          className="social-icon d-md-block"
+                          alt="whatsapp"
+                        >
+                          <WhatsappIcon size={30} round />
+                        </WhatsappShareButton>
+                        <FacebookShareButton
+                          url={`https://modrek-app.herokuapp.com/article/${article.id}`}
+                          quote="Check out this Morek Card"
+                          className="social-icon d-md-block"
+                          alt="facebook"
+                        >
+                          <FacebookIcon size={30} round />
+                        </FacebookShareButton>
+                      </div>
                           {article_id_of_other_language && (
                             <>
                               <span className="px-4">/</span>{" "}
@@ -130,8 +156,19 @@ const Article = () => {
                           )}
                         </div>
                       </div>
-                      <div className="post-content tajawal">
+                      <div className="post-content tajawal text-justify">
                         <ReactMarkdown source={content} escapeHtml={false} />
+                      </div>
+                      <div className="pt-4 avatar-form-mobile d-flex align-items-center d-sm-block d-md-none d-lg-none">
+                    
+                      <img
+                      className="avatar-article pl-2"
+                      src={avatarTale}
+                      alt="client"
+                    />
+                      <p className="testlist-name mb-0 tajawal pl-2">
+                        {article.author.firstName} {article.author.lastName}
+                      </p>
                       </div>
                     </div>
                   </article>

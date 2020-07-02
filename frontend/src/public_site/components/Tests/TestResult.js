@@ -165,9 +165,9 @@ const TestResult = (props) => {
       </div>
 
       <div className="text-center mt-5">
-        <h1 className="tale roboto-black rem4 tajawal">
+        <h2 className="tale roboto-black rem4 tajawal">
           {getString("answers")}
-        </h1>
+        </h2>
       </div>
 
       <div

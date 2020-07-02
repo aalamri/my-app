@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { getState } from "../../../utils/index";
 
 const url = process.env.REACT_APP_BACKEND_URL;
 
@@ -11,6 +12,9 @@ class Search extends Component {
     searchTerm: "",
     loadingBrands: true,
     category: "all",
+    AR : "Arabic",
+    EN : "English",
+
   };
 
   componentDidMount() {
@@ -49,6 +53,7 @@ class Search extends Component {
   onSearch() {}
 
   render() {
+    const { siteLanguage = "Arabic" } = getState();
     const { searchTerm, loadingBrands, cards, articles, tests } = this.state;
 
     return (
@@ -64,10 +69,14 @@ class Search extends Component {
               }}
               value={this.state.searchTerm}
               id="searchField"
-              placeholder="Search..."
+              placeholder={
+                siteLanguage === "Arabic" ? "بحث" : "Search" 
+              }
             />
             <i
-              class="fa fa-search search-icon-modal search-icon-lg"
+              className={
+                siteLanguage === "Arabic" ?  "fa fa-search search-icon-modal search-icon-lg" : "fa fa-search search-icon-modal search-icon-lg"
+              }
               aria-hidden="true"
               onClick={() => {
                 this.searchBrands();

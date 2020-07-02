@@ -71,13 +71,48 @@ const Test = () => {
               }`}
               dir={language === AR ? "rtl" : "ltr"}
             >
-              <div className="d-flex justify-content-between align-items-center">
+            <div className="row justify-content-between align-items-center">
+                  <div className="col-12 col-lg-9 col-md-9">
+                  <h2 className="p-0 pb-3 m-0 test-page-title tajawal">{title}</h2>
+                  </div>
+                  <div className="col-lg-3 col-md-3 d-none d-lg-block d-md-block">
+                  <div className="px-1 d-flex align-items-end social-share-icons">
+                  <div className="p-2 d-inline-flex ">
+                    <TwitterShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon mx-1"
+                      alt="twitter"
+                    >
+                      <TwitterIcon size={30} round />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      url={shareUrl}
+                      quote="Check out this Morek Card"
+                      className="social-icon mx-1"
+                      alt="whatsapp"
+                    >
+                      <WhatsappIcon size={30} round />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                      url={`https://modrek-app.herokuapp.com/test/${id}`}
+                      quote="Check out this Morek Card"
+                      className="social-icon mx-1"
+                      alt="facebook"
+                    >
+                      <FacebookIcon size={30} round />
+                    </FacebookShareButton>
+                  </div>
+                </div>
+                  </div>
+              </div>
+              <div className="d-flex justify-content-between">
                 <div
                   className={`my-3 tajawal ${
                     language === AR ? "text-right" : ""
                   }`}
                 >
-                  <h2 className="p-0 m-0 test-page-title tajawal">{title}</h2>
+                 
                   <small>
                     {getString("published-at")}{" "}
                     <Moment format="D/M/Y">{createdAt}</Moment>
@@ -96,7 +131,7 @@ const Test = () => {
                   )}
                 </div>
                 <div className="px-1"></div>
-                <div className="px-1">
+                <div className="px-1 d-flex align-items-end social-share-icons d-sm-block d-lg-none d-md-none">
                   <div className="p-2 d-inline-flex ">
                     <TwitterShareButton
                       url={shareUrl}
@@ -104,7 +139,7 @@ const Test = () => {
                       className="social-icon mx-1"
                       alt="twitter"
                     >
-                      <TwitterIcon size={32} round />
+                      <TwitterIcon size={30} round />
                     </TwitterShareButton>
                     <WhatsappShareButton
                       url={shareUrl}
@@ -112,7 +147,7 @@ const Test = () => {
                       className="social-icon mx-1"
                       alt="whatsapp"
                     >
-                      <WhatsappIcon size={32} round />
+                      <WhatsappIcon size={30} round />
                     </WhatsappShareButton>
                     <FacebookShareButton
                       url={`https://modrek-app.herokuapp.com/test/${id}`}
@@ -120,7 +155,7 @@ const Test = () => {
                       className="social-icon mx-1"
                       alt="facebook"
                     >
-                      <FacebookIcon size={32} round />
+                      <FacebookIcon size={30} round />
                     </FacebookShareButton>
                   </div>
                 </div>
