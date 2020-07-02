@@ -87,7 +87,7 @@ const CardsRow = ({ match }) => {
   };
 
   const selectCategory = (id) => {
-    fetch(url + "/cards?category=" + id).then((res) =>
+    fetch(url + "/cards?category=" + id+"&language=" + lan).then((res) =>
       res.json().then((response) => {
         setCards(response);
       })
@@ -95,7 +95,7 @@ const CardsRow = ({ match }) => {
   };
 
   const selectAll = () => {
-    fetch(url + "/cards").then((res) =>
+    fetch(url + "/cards?language=" + lan).then((res) =>
       res.json().then((response) => {
         setCards(response);
       })
