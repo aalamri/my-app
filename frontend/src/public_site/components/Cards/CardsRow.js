@@ -73,13 +73,13 @@ const CardsRow = ({ match }) => {
   const [selectedCategory, setSelectCategory] = useState(null);
   const [cards, setCards] = useState([]);
   const url = process.env.REACT_APP_BACKEND_URL;
-
+  const lan = JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage
   useEffect(() => {
     initialize();
   }, []);
 
   const initialize = () => {
-    fetch(url + "/cards").then((res) =>
+    fetch(url + "/cards?language=" + lan).then((res) =>
       res.json().then((response) => {
         setCards(response);
       })
@@ -109,8 +109,8 @@ const CardsRow = ({ match }) => {
           {state.siteLanguage === AR ? (
             <TopRowAR setCards={setCards} />
           ) : (
-            <TopRowEN setCards={setCards} />
-          )}
+              <TopRowEN setCards={setCards} />
+            )}
 
           <div className="row justify-content-center">
             <div className="col-md-12">
@@ -123,7 +123,7 @@ const CardsRow = ({ match }) => {
                   <div
                     className={`px-1 cat-title tajawal ${
                       selectedCategory === null ? "cat-title-active" : ""
-                    }`}
+                      }`}
                     onClick={() => {
                       setSelectCategory(null);
                       selectAll();
@@ -139,7 +139,7 @@ const CardsRow = ({ match }) => {
                         key={index}
                         className={`px-1 cat-title ${
                           selectedCategory === cat.id ? "cat-title-active" : ""
-                        }`}
+                          }`}
                         onClick={() => {
                           setSelectCategory(cat.id);
                           selectCategory(cat.id);
@@ -153,7 +153,7 @@ const CardsRow = ({ match }) => {
                   <div
                     className={`px-1 cat-title tajawal ${
                       selectedCategory === null ? "cat-title-active" : ""
-                    }`}
+                      }`}
                     onClick={() => {
                       setSelectCategory(null);
                       selectAll();
@@ -184,7 +184,7 @@ const CardsRow = ({ match }) => {
                         <div
                           className={`d-flex justify-content-end pt-${
                             card.card_id_of_other_language ? 0 : 4
-                          } pb-0`}
+                            } pb-0`}
                         >
                           <small className="otherlang-row">
                             {card.card_id_of_other_language && (
@@ -213,7 +213,7 @@ const CardsRow = ({ match }) => {
                           <div
                             className={`d-flex flex-column text-${
                               state.siteLanguage === AR ? "right" : "left"
-                            }`}
+                              }`}
                           >
                             <h6 class="text-muted ml-2 tale tajawal">
                               {card.author?.firstName} {card.author?.lastName}
@@ -283,12 +283,12 @@ const TopRowAR = ({ setCards }) => (
       <div className="d-flex align-items-center action-btn-wrap">
         <span class="col-lg-1 col-md-1 pl-0 knowldege-btn">
           <a className="/cards">
-          <span>
-            <img
-              class="img-responsive"
-              src={`${window.location.origin}/img/article-yellow-ar-mobile.svg`}
-            />
-          </span>
+            <span>
+              <img
+                class="img-responsive"
+                src={`${window.location.origin}/img/article-yellow-ar-mobile.svg`}
+              />
+            </span>
           </a>
         </span>
         <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
@@ -381,7 +381,7 @@ const TopRowEN = ({ setCards }) => (
       </h1>
     </div>
     <div className="col-7 col-lg-5 col-md-7 text-right">
-    <div className="d-flex flex-row justify-content-end">
+      <div className="d-flex flex-row justify-content-end">
         <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
           <a href="/articles">
             <img class="img-responsive" src="img/article-yellow-mobile.svg" />
@@ -389,9 +389,9 @@ const TopRowEN = ({ setCards }) => (
         </span>
         <span class="col-lg-1 col-md-1 pl-0 knowldege-btn last-type">
           <a href="/cards">
-          <span>
-            <img class="img-responsive" src="img/card-gray-mobile.svg" />
-          </span>
+            <span>
+              <img class="img-responsive" src="img/card-gray-mobile.svg" />
+            </span>
           </a>
         </span>
         <span class="short-icon sm-align-left">
