@@ -93,8 +93,8 @@ export const CATEGORY_CARDS_QUERY = gql`
 `;
 
 export const CARDS_SORT_ALPHA_ASC = gql`
-query {
-  cards(sort:"title:asc") {
+query Cards($lan:ENUM_CARDS_LANGUAGE){
+  cards(sort:"title:asc", where: {language:$lan}) {
     id
     title
     content
@@ -116,8 +116,8 @@ query {
 }`;
 
 export const CARDS_SORT_ALPHA_DESC = gql`
-query {
-  cards(sort:"title:desc") {
+query Cards($lan:ENUM_CARDS_LANGUAGE){
+  cards(sort:"title:desc", where: {language:$lan}) {
     id
     title
     content
@@ -139,8 +139,8 @@ query {
 }`;
 
 export const CARDS_SORT_CREATED_ASC = gql`
-query {
-  cards(sort:"createdAt:asc") {
+query Cards($lan:ENUM_CARDS_LANGUAGE){
+  cards(sort:"createdAt:asc", where: {language:$lan}) {
     id
     title
     content
@@ -162,8 +162,8 @@ query {
 }`;
 
 export const CARDS_SORT_CREATED_DESC = gql`
-query {
-  cards(sort:"createdAt:desc") {
+query Cards($lan:ENUM_CARDS_LANGUAGE){
+  cards(sort:"createdAt:desc", where: {language:$lan}) {
     id
     title
     content

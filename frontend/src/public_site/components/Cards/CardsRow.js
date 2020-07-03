@@ -88,7 +88,7 @@ const CardsRow = ({ match }) => {
   };
 
   const selectCategory = (id) => {
-    fetch(url + "/cards?category=" + id+"&language=" + lan).then((res) =>
+    fetch(url + "/cards?category=" + id + "&language=" + lan).then((res) =>
       res.json().then((response) => {
         setCards(response);
       })
@@ -118,7 +118,7 @@ const CardsRow = ({ match }) => {
               <OwlCarousel
                 className="mt-5 mb-5 text-center owl-carousel category-carousel nav-indicator"
                 options={options}
-                // events={events}
+              // events={events}
               >
                 {state.siteLanguage === AR && (
                   <div
@@ -311,7 +311,7 @@ const TopRowAR = ({ setCards }) => (
             aria-expanded="false"
           />
           <div class="dropdown-menu dropdown-primary" id="dropDiv">
-            <Query query={CARDS_SORT_ALPHA_ASC}>
+            <Query query={CARDS_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -325,7 +325,7 @@ const TopRowAR = ({ setCards }) => (
                 );
               }}
             </Query>
-            <Query query={CARDS_SORT_ALPHA_DESC}>
+            <Query query={CARDS_SORT_ALPHA_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -339,7 +339,7 @@ const TopRowAR = ({ setCards }) => (
                 );
               }}
             </Query>
-            <Query query={CARDS_SORT_CREATED_DESC}>
+            <Query query={CARDS_SORT_CREATED_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -353,7 +353,7 @@ const TopRowAR = ({ setCards }) => (
                 );
               }}
             </Query>
-            <Query query={CARDS_SORT_CREATED_ASC}>
+            <Query query={CARDS_SORT_CREATED_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -406,7 +406,7 @@ const TopRowEN = ({ setCards }) => (
             aria-expanded="false"
           />
           <div class="dropdown-menu dropdown-primary" id="dropDiv">
-            <Query query={CARDS_SORT_ALPHA_ASC}>
+            <Query query={CARDS_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -420,7 +420,7 @@ const TopRowEN = ({ setCards }) => (
                 );
               }}
             </Query>
-            <Query query={CARDS_SORT_ALPHA_DESC}>
+            <Query query={CARDS_SORT_ALPHA_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -434,7 +434,7 @@ const TopRowEN = ({ setCards }) => (
                 );
               }}
             </Query>
-            <Query query={CARDS_SORT_CREATED_DESC}>
+            <Query query={CARDS_SORT_CREATED_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
@@ -448,7 +448,7 @@ const TopRowEN = ({ setCards }) => (
                 );
               }}
             </Query>
-            <Query query={CARDS_SORT_CREATED_ASC}>
+            <Query query={CARDS_SORT_CREATED_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
