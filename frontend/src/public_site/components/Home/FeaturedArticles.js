@@ -23,16 +23,19 @@ export default function (props) {
     FEATURED_ARTICLE_QUERY
   );
   const [articles, setArticles] = useState([]);
-
+  const url = process.env.REACT_APP_BACKEND_URL;
+  const lan = JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage
   useEffect(() => {
-    if (articlesData?.articles.length > 0) {
-      const featuredArticles = articlesData.articles.filter(
-        (a) => a.status === "Approved" && a.is_pinned
-      );
-      return setArticles(featuredArticles);
-    }
-  }, [articlesData]);
+    initialize();
+  }, []);
 
+  const initialize = () => {
+    fetch(url + "/articles?language=" + lan + "&status=Approved&is_pinned=true").then((res) =>
+      res.json().then((response) => {
+        setArticles(response);
+      })
+    );
+  };
   return (
     <section id="about" className="about-us">
       <div className="container">

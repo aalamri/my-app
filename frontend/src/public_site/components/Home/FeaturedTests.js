@@ -14,14 +14,19 @@ export default function (props) {
   );
   const [tests, setTests] = useState([]);
 
+  const url = process.env.REACT_APP_BACKEND_URL;
+  const lan = JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage
   useEffect(() => {
-    if (testsData?.tests.length > 0) {
-      const featuredTests = testsData.tests.filter(
-        (a) => a.status === "Approved" && a.is_pinned
-      );
-      return setTests(featuredTests);
-    }
-  }, [testsData]);
+    initialize();
+  }, []);
+
+  const initialize = () => {
+    fetch(url + "/tests?status=Approved&is_pinned=true").then((res) =>
+      res.json().then((response) => {
+        setTests(response);
+      })
+    );
+  };
 
   const icons = [
     "la-fingerprint",

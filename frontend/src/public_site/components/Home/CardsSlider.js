@@ -19,20 +19,22 @@ const avatarTale = "img/avatar-circle-tale.svg";
 // const whatsappTale = "img/whatsapp-circle-tale.svg";
 // const facebookTale = "img/facebook-circle-tale.svg";
 
-export default function (props) {
-  const { data: cardsData /*, loading, error*/ } = useQuery(
-    FEATURED_CARDS_QUERY
-  );
+export default function (props) {  
   const [cards, setCards] = useState([]);
+  const url = process.env.REACT_APP_BACKEND_URL;
+  const lan = JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage
 
   useEffect(() => {
-    if (cardsData?.cards.length > 0) {
-      const featuredCards = cardsData.cards.filter(
-        (a) => a.status === "Approved" && a.is_pinned // TODO move to the query & limit to 5
-      );
-      return setCards(featuredCards);
-    }
-  }, [cardsData]);
+    initialize()
+  }, []);
+  // (a) => a.status === "Approved" && a.is_pinned 
+  const initialize = () => {
+    fetch(url + "/cards?language=" + lan + "&status=Approved&is_pinned=true").then((res) =>
+      res.json().then((response) => {
+        setCards(response);
+      })
+    );
+  };
 
   const options = {
     loop: true,
