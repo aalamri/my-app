@@ -31,6 +31,7 @@ const options = {
   autoplay: false,
   loop: false,
   margin: 0,
+  rtl: true,
   nav: true,
   slideTransition: "linear",
   autoplayHoverPause: true,
@@ -115,9 +116,9 @@ const CardsRow = ({ match }) => {
           <div className="row justify-content-center">
             <div className="col-md-12">
               <OwlCarousel
-                className="mt-5 text-center owl-carousel category-carousel nav-indicator"
+                className="mt-5 mb-5 text-center owl-carousel category-carousel nav-indicator"
                 options={options}
-                events={events}
+                // events={events}
               >
                 {state.siteLanguage === AR && (
                   <div
@@ -281,21 +282,21 @@ const TopRowAR = ({ setCards }) => (
     </div>
     <div className="col-7 col-lg-5 col-md-7 d-flex justify-content-end">
       <div className="d-flex align-items-center action-btn-wrap">
-        <span class="col-lg-1 col-md-1 pl-0 knowldege-btn">
+        <span className="col-lg-1 col-md-1 pl-0 knowldege-btn">
           <a className="/cards">
             <span>
               <img
-                class="img-responsive"
-                src={`${window.location.origin}/img/article-yellow-ar-mobile.svg`}
+                className="img-responsive"
+                src={`${window.location.origin}/img/card-yellow-ar-mobile.svg`}
               />
             </span>
           </a>
         </span>
-        <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
+        <span className="col-lg-1 col-md-1 pr-0 knowldege-btn">
           <a href="/articles">
             <img
-              class="img-responsive"
-              src={`${window.location.origin}/img/card-gray-ar-mobile.svg`}
+              className="img-responsive"
+              src={`${window.location.origin}/img/article-gray-ar-mobile.svg`}
             />
           </a>
         </span>
@@ -384,13 +385,13 @@ const TopRowEN = ({ setCards }) => (
       <div className="d-flex flex-row justify-content-end">
         <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
           <a href="/articles">
-            <img class="img-responsive" src="img/article-yellow-mobile.svg" />
+            <img class="img-responsive" src={`${window.location.origin}/img/article-gray-mobile.svg`} />
           </a>
         </span>
         <span class="col-lg-1 col-md-1 pl-0 knowldege-btn last-type">
           <a href="/cards">
             <span>
-              <img class="img-responsive" src="img/card-gray-mobile.svg" />
+              <img class="img-responsive" src={`${window.location.origin}/img/card-yellow-mobile.svg`} />
             </span>
           </a>
         </span>

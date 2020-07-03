@@ -76,13 +76,21 @@ const ArticlesRow = () => {
   const [selectedCategory, setSelectCategory] = useState(null);
   const [articles, setArticles] = useState([]);
   const url = process.env.REACT_APP_BACKEND_URL;
+  const lan = JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage
 
   useEffect(() => {
-    setArticles(initialArticles);
-  }, [initialArticles]);
+    initialize();
+  }, []);
 
+  const initialize = () => {
+    fetch(url + "/articles?language=" + lan).then((res) =>
+      res.json().then((response) => {
+        setArticles(response);
+      })
+    );
+  };
   const selectCategory = (id) => {
-    fetch(url + "/articles?category=" + id).then((res) =>
+    fetch(url + "/articles?category=" + id+"&language=" + lan).then((res) =>
       res.json().then((response) => {
         setArticles(response);
       })
@@ -90,7 +98,7 @@ const ArticlesRow = () => {
   };
 
   const selectAll = () => {
-    fetch(url + "/articles").then((res) =>
+    fetch(url + "/articles?language=" + lan).then((res) =>
       res.json().then((response) => {
         setArticles(response);
       })
@@ -274,7 +282,7 @@ const TopRowAR = ({ setArticles }) => (
             <span>
               <img
                 className="img-responsive"
-                src={`${window.location.origin}/img/article-gray-ar-mobile.svg`}
+                src={`${window.location.origin}/img/card-gray-ar-mobile.svg`}
               />
             </span>
           </a>
@@ -284,7 +292,7 @@ const TopRowAR = ({ setArticles }) => (
             <span>
               <img
                 className="img-responsive"
-                src={`${window.location.origin}/img/card-yellow-ar-mobile.svg`}
+                src={`${window.location.origin}/img/article-yellow-ar-mobile.svg`}
               />
             </span>
           </a>
