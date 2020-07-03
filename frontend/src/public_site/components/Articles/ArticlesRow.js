@@ -309,7 +309,7 @@ const TopRowAR = ({ setArticles }) => (
             aria-expanded="false"
           />
           <div className="dropdown-menu dropdown-primary" id="dropDiv">
-            <Query query={ARTICLES_SORT_ALPHA_ASC}>
+            <Query query={ARTICLES_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -323,7 +323,7 @@ const TopRowAR = ({ setArticles }) => (
                 );
               }}
             </Query>
-            <Query query={ARTICLES_SORT_ALPHA_DESC}>
+            <Query query={ARTICLES_SORT_ALPHA_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -337,7 +337,7 @@ const TopRowAR = ({ setArticles }) => (
                 );
               }}
             </Query>
-            <Query query={ARTICLES_SORT_CREATED_DESC}>
+            <Query query={ARTICLES_SORT_CREATED_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -351,7 +351,7 @@ const TopRowAR = ({ setArticles }) => (
                 );
               }}
             </Query>
-            <Query query={ARTICLES_SORT_CREATED_ASC}>
+            <Query query={ARTICLES_SORT_CREATED_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -408,7 +408,7 @@ const TopRowEN = ({ setArticles }) => (
             aria-expanded="false"
           />
           <div className="dropdown-menu dropdown-primary position-relative" id="dropDiv">
-            <Query query={ARTICLES_SORT_ALPHA_ASC}>
+            <Query query={ARTICLES_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -422,7 +422,7 @@ const TopRowEN = ({ setArticles }) => (
                 );
               }}
             </Query>
-            <Query query={ARTICLES_SORT_ALPHA_DESC}>
+            <Query query={ARTICLES_SORT_ALPHA_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -436,7 +436,7 @@ const TopRowEN = ({ setArticles }) => (
                 );
               }}
             </Query>
-            <Query query={ARTICLES_SORT_CREATED_DESC}>
+            <Query query={ARTICLES_SORT_CREATED_DESC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div
@@ -450,7 +450,7 @@ const TopRowEN = ({ setArticles }) => (
                 );
               }}
             </Query>
-            <Query query={ARTICLES_SORT_CREATED_ASC}>
+            <Query query={ARTICLES_SORT_CREATED_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data }) => {
                 return (
                   <div

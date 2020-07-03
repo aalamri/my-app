@@ -133,8 +133,8 @@ export const CATEGORY_ARTICLES_BY_ID_QUERY = gql`
 `;
 
 export const ARTICLES_SORT_ALPHA_ASC = gql`
-query {
-  articles(sort:"title:asc") {
+query Articles($lan:ENUM_CARDS_LANGUAGE){
+  articles(sort:"title:asc", where: {language:$lan}) {
     id
       title
       content
@@ -159,8 +159,8 @@ query {
 }`;
 
 export const ARTICLES_SORT_ALPHA_DESC = gql`
-query {
-  articles(sort:"title:desc") {
+query Articles($lan:ENUM_CARDS_LANGUAGE){
+  articles(sort:"title:desc", where: {language:$lan}) {
     id
       title
       content
@@ -185,8 +185,8 @@ query {
 }`;
 
 export const ARTICLES_SORT_CREATED_ASC = gql`
-query {
-  articles(sort:"createdAt:asc") {
+query Articles($lan:ENUM_CARDS_LANGUAGE){
+  articles(sort:"createdAt:asc", where: {language:$lan}) {
     id
       title
       content
@@ -211,8 +211,8 @@ query {
 }`;
 
 export const ARTICLES_SORT_CREATED_DESC = gql`
-query {
-  articles(sort:"createdAt:desc") {
+query Articles($lan:ENUM_CARDS_LANGUAGE){
+  articles(sort:"createdAt:desc", where: {language:$lan}) {
     id
       title
       content
