@@ -18,6 +18,9 @@ const CreateFeedback = () => {
   const [bodyMessage, setBodyMessage] = useState("");
   const [toastShow, setToastShow] = useState(false);
   const [message, setMessage] = useState("");
+
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [seconds, setSeconds] = useState(10);
   const [submitLoading, setSubmitLoading] = useState(false);
   const { data, loading, error } = useQuery(FEEDBACK_TYPE_QUERY);
   const intialTypes = data ? data.feedbackTypes : [];
@@ -67,6 +70,7 @@ const CreateFeedback = () => {
   }
 
   async function handleCreateFeedback(e) {
+    var temp_sec = seconds;
     e.preventDefault();
     try {
       const formData = new FormData(e.target);
@@ -90,6 +94,15 @@ const CreateFeedback = () => {
       createFeedback({
         variables: { data: payload } /*TODO add headers token here*/,
       });
+      setSuccessMessage(true);
+
+      this.timer = setInterval(() => {
+        if (temp_sec === 1) {
+          setToHome(true);
+        }
+
+        setSeconds(--temp_sec);
+      }, 1000);
       await strapi.request("POST", "/email", {
         data: {
           to: email,
@@ -98,11 +111,12 @@ const CreateFeedback = () => {
           html: "<bold>Feedback message:</bold>" + message,
         },
       });
+
       console.log("test feedback");
       /* After clearing Todos, wait two secconds and then let's go back home */
     } catch (error) {
       setSubmitLoading(false);
-      setTimeout(() => setToHome(true), 5000);
+      setTimeout(() => setToHome(true), 10000);
       console.log("Error handleCreateArticle:", JSON.stringify(error, null, 2));
     }
   }
@@ -113,13 +127,13 @@ const CreateFeedback = () => {
     <div className="main-content-wrap">
       {message}
       <form onSubmit={handleCreateFeedback}>
-        <section className="hero-section pt-100">
+        {!successMessage ? (<section className="hero-section pt-100">
           <div className="container max-width-880">
             <div
               className={state.siteLanguage === "Arabic" ? "text-right" : ""}
             >
               <div className="section-heading mb-4">
-                <h3 class="purple tajawal">{getString("get-in-touch")}</h3>
+                <h3 className="purple tajawal">{getString("get-in-touch")}</h3>
               </div>
             </div>
             <br></br>
@@ -130,7 +144,7 @@ const CreateFeedback = () => {
                     <div
                       className={`form-group tajawal ${
                         state.siteLanguage === "Arabic" ? "text-right" : ""
-                      }`}
+                        }`}
                     >
                       <label>{getString("type-of-feedback")}</label>
                       <select
@@ -157,7 +171,7 @@ const CreateFeedback = () => {
                     <div
                       className={`form-group tajawal ${
                         state.siteLanguage === "Arabic" ? "text-right" : ""
-                      }`}
+                        }`}
                     >
                       <label>{getString("your-email")}</label>
                       <input
@@ -178,7 +192,7 @@ const CreateFeedback = () => {
                     <div
                       className={`form-group tajawal ${
                         state.siteLanguage === "Arabic" ? "text-right" : ""
-                      }`}
+                        }`}
                     >
                       <label>{getString("body-message")}</label>
                       <textarea
@@ -197,9 +211,9 @@ const CreateFeedback = () => {
                 </div>
                 {formError.error && (
                   <div
-                    class={`alert alert-danger tajawal ${
+                    className={`alert alert-danger tajawal ${
                       state.siteLanguage === "Arabic" ? "text-right" : ""
-                    }`}
+                      }`}
                     role="alert"
                   >
                     {formError.message}
@@ -209,7 +223,7 @@ const CreateFeedback = () => {
                   <div
                     className={`col-sm-12 my-3 ${
                       state.siteLanguage === "Arabic" ? "text-right" : ""
-                    }`}
+                      }`}
                   >
                     <button
                       type="submit"
@@ -223,7 +237,34 @@ const CreateFeedback = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section>) : (
+            <section
+              className="hero-section ptb-100 purple-gradient-img full-screen"
+              style={{
+                backgroundImage: "url('img/app-hero-bg.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+              }}
+            >
+              <div className="container">
+                <div className="row align-items-center justify-content-center pt-5">
+                  <div className="col-md-9 col-lg-7">
+                    <div className="error-content text-center text-white">
+                      <h1 className="score pt-5">Thank You for Your Feedback</h1>
+                      <p className="will-contact">
+                        We Will contact you soon to confirm
+                    </p>
+                      <p className="will-contact">
+                        you’ll be directed to home in {seconds}{" "}
+                      secounds
+                    </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
       </form>
     </div>
   );
