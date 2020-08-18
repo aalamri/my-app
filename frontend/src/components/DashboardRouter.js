@@ -46,7 +46,7 @@ function DashboardRouter({ match }) {
   return (
     <div class="wrapper">
       <SideBar />
-      <div id="content">        
+      <div id="content">
         <TopBar title={title} />
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} exact title="Dashboard" onOpen={changeTitle} />
@@ -55,41 +55,16 @@ function DashboardRouter({ match }) {
           <PrivateRoute path="/dashboard/cards/edit/:id" component={EditCard} exact title="Edit Card" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/create-card" component={CreateCard} exact title="Create Card" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/articles" component={DBArticles} exact title="Articles" onOpen={changeTitle} />
-          <PrivateRoute
-            path="/dashboard/articles/edit/:id"
-            component={EditArticle}
-            exact
-            title="Edit Article" onOpen={changeTitle}
-          />
-          <PrivateRoute
-            path="/dashboard/create-article"
-            component={CreateArticle}
-            exact
-            title="Create Article" onOpen={changeTitle}
-          />
+          <PrivateRoute path="/dashboard/articles/edit/:id" component={EditArticle} exact title="Edit Article" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/create-article" component={CreateArticle} exact title="Create Article" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/tests" component={DBTests} exact title="Tests" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/tests/edit/:id" component={EditTest} exact title="Edit Test" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/create-test" component={CreateTest} exact title="Create Test" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/reviews" component={Reviewes} exact title="Reviews" onOpen={changeTitle} />
-          <PrivateRoute
-            path="/dashboard/reviews/articles/review/:id"
-            component={ReviewArticle}
-            exact
-            title="Review Article" onOpen={changeTitle}
-          />
-          <PrivateRoute
-            path="/dashboard/reviews/tests/review/:id"
-            component={ReviewTest}
-            exact
-            title="Review Test" onOpen={changeTitle}
-          />
-          <PrivateRoute
-            path="/dashboard/reviews/cards/review/:id"
-            component={ReviewCard}
-            title="Review Card" onOpen={changeTitle}
-          />
-          <PrivateRoute
-            path="/dashboard/review/article/:id"
+          <PrivateRoute path="/dashboard/reviews/articles/review/:id" component={ReviewArticle} exact title="Review Article" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/reviews/tests/review/:id" component={ReviewTest} exact title="Review Test" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/reviews/cards/review/:id" component={ReviewCard} title="Review Card" onOpen={changeTitle} />
+          <PrivateRoute path="/dashboard/review/article/:id"
             // component={REVIEW ARTICLE COMPONENT}
             exact
             title="Review Article" onOpen={changeTitle}

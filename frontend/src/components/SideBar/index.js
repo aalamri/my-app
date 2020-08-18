@@ -36,6 +36,9 @@ const SideBar = () => {
         <li>
           <a href="/dashboard/tests"><i class="fa fa-copy pr-2" />Tests</a>
         </li>
+        {user && user.role.type === "reviewer" && <li>
+          <a href="/dashboard/reviews"><i class="fa fa-users pr-2" />Reviews</a>
+        </li>}
         {user && user.role.type === "admin" && <li>
           <a href="/dashboard/users"><i class="fa fa-users pr-2" />User Management</a>
         </li>}
