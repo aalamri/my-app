@@ -241,7 +241,7 @@ const MultipleChoicesQuestion = (question) => {
     choice_4,
     choice_5,
     choice_6,
-  ].filter((_, i) => _ != null && _.trim() != "");
+  ].filter((_, i) => _ !== null && _.trim() !== "");
 
   const choicesComponents = allChoices.map((choice, i) =>
     choiceComponent(choice, i)
@@ -283,7 +283,7 @@ const SingleChoiceQuestion = (question) => {
     );
   };
 
-  const validChoices = choices.filter((_, i) => _ != null && _.trim() != "");
+  const validChoices = choices.filter((_, i) => _ !== null && _.trim() !== "");
   const choicesComponents = validChoices.map((choice, i) =>
     choiceComponent(choice, i)
   );

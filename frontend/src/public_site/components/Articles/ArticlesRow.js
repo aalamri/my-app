@@ -35,8 +35,8 @@ const options = {
   slideTransition: "linear",
   autoplayHoverPause: true,
   navText: [
-    "<i class='fa fa-chevron-left'></i>",
-    "<i class='fa fa-chevron-right'></i>",
+    "<i className='fa fa-chevron-left'></i>",
+    "<i className='fa fa-chevron-right'></i>",
   ],
   responsive: {
     0: {
@@ -283,6 +283,7 @@ const TopRowAR = ({ setArticles }) => (
               <img
                 className="img-responsive"
                 src={`${window.location.origin}/img/card-gray-ar-mobile.svg`}
+                alt=""
               />
             </span>
           </a>
@@ -293,6 +294,7 @@ const TopRowAR = ({ setArticles }) => (
               <img
                 className="img-responsive"
                 src={`${window.location.origin}/img/article-yellow-ar-mobile.svg`}
+                alt=""
               />
             </span>
           </a>
@@ -307,6 +309,7 @@ const TopRowAR = ({ setArticles }) => (
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            alt=""
           />
           <div className="dropdown-menu dropdown-primary" id="dropDiv">
             <Query query={ARTICLES_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
@@ -386,6 +389,7 @@ const TopRowEN = ({ setArticles }) => (
               <img
                 className="img-responsive"
                 src={`${window.location.origin}/img/article-yellow-mobile.svg`}
+                alt=""
               />
           </a>
         </span>
@@ -394,6 +398,7 @@ const TopRowEN = ({ setArticles }) => (
             <img
               className="img-responsive"
               src={`${window.location.origin}/img/card-gray-mobile.svg`}
+              alt=""
             />
           </a>
         </span>
@@ -406,6 +411,7 @@ const TopRowEN = ({ setArticles }) => (
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            alt=""
           />
           <div className="dropdown-menu dropdown-primary position-relative" id="dropDiv">
             <Query query={ARTICLES_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>

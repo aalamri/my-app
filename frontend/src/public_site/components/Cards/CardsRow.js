@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel2";
 import { ModalRoute } from "react-router-modal";
 import Query from "../Query";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, } from "@apollo/react-hooks";
 import { CATEGORIES_QUERY } from "../Category/queries";
 import {
   CARDS_SORT_ALPHA_ASC,
@@ -36,8 +36,8 @@ const options = {
   slideTransition: "linear",
   autoplayHoverPause: true,
   navText: [
-    "<i class='fa fa-chevron-left'></i>",
-    "<i class='fa fa-chevron-right'></i>",
+    "<i className='fa fa-chevron-left'></i>",
+    "<i className='fa fa-chevron-right'></i>",
   ],
   responsive: {
     0: {
@@ -58,14 +58,6 @@ const options = {
   },
 };
 
-const events = {
-  onDragged: function (event) {
-    // console.log("onDragged", event);
-  },
-  onChanged: function (event) {
-    // console.log("onChanged", event);
-  },
-};
 
 const CardsRow = ({ match }) => {
   const state = getState();
@@ -118,7 +110,6 @@ const CardsRow = ({ match }) => {
               <OwlCarousel
                 className="mt-5 mb-5 text-center owl-carousel category-carousel nav-indicator"
                 options={options}
-              // events={events}
               >
                 {state.siteLanguage === AR && (
                   <div
@@ -170,8 +161,8 @@ const CardsRow = ({ match }) => {
             {cards.map((card) => {
               const shareUrl = `${card.title} https://modrek-app.herokuapp.com/cards/${card.id}`;
               return (
-                <div key={card.id} class="col-lg-6 pt-5">
-                  <div class="rounded border-0">
+                <div key={card.id} className="col-lg-6 pt-5">
+                  <div className="rounded border-0">
                     <div className="rounded-card white-bg shadow-md p-4 mb-4 min-width-400">
                       <div className="d-flex flex-column text-center">
                         <Link key={card.id} to={`${match.url}/${card.id}`}>
@@ -216,11 +207,11 @@ const CardsRow = ({ match }) => {
                               state.siteLanguage === AR ? "right" : "left"
                               }`}
                           >
-                            <h6 class="text-muted ml-2 tale tajawal">
+                            <h6 className="text-muted ml-2 tale tajawal">
                               {card.author?.firstName} {card.author?.lastName}
                             </h6>
                             <Moment
-                              class="text-muted ml-2 tale tajawal"
+                              className="text-muted ml-2 tale tajawal"
                               format="D/M/Y"
                             >
                               {card.createdAt}
@@ -288,6 +279,7 @@ const TopRowAR = ({ setCards }) => (
               <img
                 className="img-responsive"
                 src={`${window.location.origin}/img/card-yellow-ar-mobile.svg`}
+                alt=""
               />
             </span>
           </a>
@@ -297,25 +289,27 @@ const TopRowAR = ({ setCards }) => (
             <img
               className="img-responsive"
               src={`${window.location.origin}/img/article-gray-ar-mobile.svg`}
+              alt=""
             />
           </a>
         </span>
-        <span class="col-lg-1 sm-align-right-rtl">
+        <span className="col-lg-1 sm-align-right-rtl">
           <img
             src={`${window.location.origin}/img/sort-icon.svg`}
-            class="dropdown btn sort-btn-rtl"
+            className="dropdown btn sort-btn-rtl"
             type="button"
             id="dropdownMenu1"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            alt=""
           />
-          <div class="dropdown-menu dropdown-primary" id="dropDiv">
+          <div className="dropdown-menu dropdown-primary" id="dropDiv">
             <Query query={CARDS_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item tajawal"
+                    className="dropdown-item tajawal"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -329,7 +323,7 @@ const TopRowAR = ({ setCards }) => (
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item tajawal"
+                    className="dropdown-item tajawal"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -343,7 +337,7 @@ const TopRowAR = ({ setCards }) => (
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item tajawal"
+                    className="dropdown-item tajawal"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -357,7 +351,7 @@ const TopRowAR = ({ setCards }) => (
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item tajawal"
+                    className="dropdown-item tajawal"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -383,34 +377,35 @@ const TopRowEN = ({ setCards }) => (
     </div>
     <div className="col-7 col-lg-5 col-md-7 text-right">
       <div className="d-flex flex-row justify-content-end">
-        <span class="col-lg-1 col-md-1 pr-0 knowldege-btn">
+        <span className="col-lg-1 col-md-1 pr-0 knowldege-btn">
           <a href="/articles">
-            <img class="img-responsive" src={`${window.location.origin}/img/article-gray-mobile.svg`} />
+            <img className="img-responsive" src={`${window.location.origin}/img/article-gray-mobile.svg`} alt="" />
           </a>
         </span>
-        <span class="col-lg-1 col-md-1 pl-0 knowldege-btn last-type">
+        <span className="col-lg-1 col-md-1 pl-0 knowldege-btn last-type">
           <a href="/cards">
             <span>
-              <img class="img-responsive" src={`${window.location.origin}/img/card-yellow-mobile.svg`} />
+              <img className="img-responsive" src={`${window.location.origin}/img/card-yellow-mobile.svg`} alt="" />
             </span>
           </a>
         </span>
-        <span class="short-icon sm-align-left">
+        <span className="short-icon sm-align-left">
           <img
             src="img/sort-icon.svg"
-            class="dropdown btn sort-btn"
+            className="dropdown btn sort-btn"
             type="button"
             id="dropdownMenu1"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            alt=""
           />
-          <div class="dropdown-menu dropdown-primary" id="dropDiv">
+          <div className="dropdown-menu dropdown-primary" id="dropDiv">
             <Query query={CARDS_SORT_ALPHA_ASC} variables={{ lan: JSON.parse(localStorage.getItem('__modrek_initial_state__')).siteLanguage }}>
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item"
+                    className="dropdown-item"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -424,7 +419,7 @@ const TopRowEN = ({ setCards }) => (
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item"
+                    className="dropdown-item"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -438,7 +433,7 @@ const TopRowEN = ({ setCards }) => (
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item"
+                    className="dropdown-item"
                     onClick={() => {
                       setCards(data.cards);
                     }}
@@ -452,7 +447,7 @@ const TopRowEN = ({ setCards }) => (
               {({ data, loading, error }) => {
                 return (
                   <div
-                    class="dropdown-item"
+                    className="dropdown-item"
                     onClick={() => {
                       setCards(data.cards);
                     }}

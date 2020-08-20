@@ -8,24 +8,20 @@ const EN = "English";
 const About = () => {
   const state = getState(); // get from localStorage, or return initial default state
   return (
-    <div class="module main-content-wrap ptb-100">
-      <div class="container">
-        <div class="row align-items-center justify-content-between">
-          <div class="col-md-4">
-            <div class="download-img">
-              <img src={photo} alt="download" class="img-fluid" />
+    <div className="module main-content-wrap ptb-100">
+      <div className="container">
+        <div className="row align-items-center justify-content-between">
+          <div className="col-md-4">
+            <div className="download-img">
+              <img src={photo} alt="download" className="img-fluid" />
             </div>
           </div>
-          <div class="col-md-7">
-            <div
-              class={`feature-contents section-heading text-${
-                state.siteLanguage === AR ? "right" : "left"
-              }`}
-            >
-              <div class="post-header">
-                <p class="article-title pb-0">Who we are? </p>
+          <div className="col-md-7">
+            <div className={`feature-contents section-heading text-${state.siteLanguage === AR ? "right" : "left"}`}>
+              <div className="post-header">
+                <p className="article-title pb-0">Who we are? </p>
               </div>
-              <div class="post-content text-justify">
+              <div className="post-content text-justify">
                 <p>
                   Just then her head struck against the roof of the hall in fact
                   she was now more than nine feet high and she at once took up
@@ -37,10 +33,10 @@ const About = () => {
                 </p>
               </div>
 
-              <div class="post-header">
-                <p class="article-title mt-5">Our vission and mission </p>
+              <div className="post-header">
+                <p className="article-title mt-5">Our vission and mission </p>
               </div>
-              <div class="post-content">
+              <div className="post-content">
                 <p>
                   Just then her head struck against the roof of the hall in fact
                   she was now more than nine feet high and she at once took up

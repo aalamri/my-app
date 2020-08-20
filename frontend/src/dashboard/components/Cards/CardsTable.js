@@ -71,7 +71,7 @@ class CardsTable extends React.Component {
     Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards/count').then(response => {
       this.setState({ total: response.data });
     })
-    Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards/count?author_id='+this.state.user.id).then(response => {
+    Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards/count?author_id=' + this.state.user.id).then(response => {
       this.setState({ mytotal: response.data });
     })
   }
@@ -86,68 +86,64 @@ class CardsTable extends React.Component {
   fetchMyCards(i) {
     Axios.get(process.env.REACT_APP_BACKEND_URL + '/cards?author_id=' + this.state.user.id + '&_limit=' + this.state.pageSize + "&_start=" + (i - 1) * this.state.pageSize).then(response => {
       this.setState({ myCards: response.data });
-    console.log('here',response.data)
-  })
-}
-render() {
-  return (
-    <div class="box">
-      <div class="box-header">
-      </div>
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <Link to="/dashboard/create-card">
-                <ol class="breadcrumb float-sm-right">
-                  <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Card</button>
-                </ol>
-              </Link>
+      console.log('here', response.data)
+    })
+  }
+  render() {
+    return (
+      <div className="box">
+        <div className="box-header">
+        </div>
+        <section className="content-header">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-6">
+                <Link to="/dashboard/create-card">
+                  <ol className="breadcrumb float-sm-right">
+                    <button type="button" className="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Card</button>
+                  </ol>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="content">
-        <Tabs defaultActiveKey="all" transition={false} id="noanim-tab-example">
-          <Tab eventKey="all" title="All Cards">
-            <div class="card" style={{ marginTop: 10 }}>
-              <div class="card-body p-0">
-                <BootstrapTable keyField={'id'} data={this.state.cards} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
-                  pagination={paginationFactory({
-                    withFirstAndLast: true,
-                    hideSizePerPage: true,
-                    showTotal: true,
-                    totalSize: this.state.total,
-                    paginationSize: 9,
-                    onPageChange: (i) => { this.fetchCards(i) }
-                  })} />
+        </section>
+        <section className="content">
+          <Tabs defaultActiveKey="all" transition={false} id="noanim-tab-example">
+            <Tab eventKey="all" title="All Cards">
+              <div className="card" style={{ marginTop: 10 }}>
+                <div className="card-body p-0">
+                  <BootstrapTable keyField={'id'} data={this.state.cards} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
+                    pagination={paginationFactory({
+                      withFirstAndLast: true,
+                      hideSizePerPage: true,
+                      showTotal: true,
+                      totalSize: this.state.total,
+                      paginationSize: 9,
+                      onPageChange: (i) => { this.fetchCards(i) }
+                    })} />
+                </div>
               </div>
-            </div>
-          </Tab>
-          <Tab eventKey="mine" title="My Cards">
-            <div class="card" style={{ marginTop: 10 }}>
-              <div class="card-body p-0">
-                <BootstrapTable keyField={'id'} data={this.state.myCards} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
-                  pagination={paginationFactory({
-                    withFirstAndLast: true,
-                    hideSizePerPage: true,
-                    showTotal: true,
-                    totalSize: this.state.mytotal,
-                    paginationSize: 9,
-                    onPageChange: (i) => { this.fetchMyCards(i) }
-                  })} />
+            </Tab>
+            <Tab eventKey="mine" title="My Cards">
+              <div className="card" style={{ marginTop: 10 }}>
+                <div className="card-body p-0">
+                  <BootstrapTable keyField={'id'} data={this.state.myCards} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
+                    pagination={paginationFactory({
+                      withFirstAndLast: true,
+                      hideSizePerPage: true,
+                      showTotal: true,
+                      totalSize: this.state.mytotal,
+                      paginationSize: 9,
+                      onPageChange: (i) => { this.fetchMyCards(i) }
+                    })} />
+                </div>
               </div>
-            </div>
-          </Tab>
-
-        </Tabs>
-
-
-      </section>
-
-    </div>
-  );
-}
+            </Tab>
+          </Tabs>
+        </section>
+      </div>
+    );
+  }
 };
 
 export default CardsTable;  

@@ -17,8 +17,8 @@ const options = {
   slideTransition: "linear",
   autoplayHoverPause: true,
   navText: [
-    "<i class='fa fa-chevron-left'></i>",
-    "<i class='fa fa-chevron-right'></i>",
+    "<i className='fa fa-chevron-left'></i>",
+    "<i className='fa fa-chevron-right'></i>",
   ],
   responsive: {
     0: {
@@ -140,7 +140,7 @@ const CategoriesListAR = ({ categories, activeCatId, setActiveCatId }) => (
       <span
         href="#"
         className={`py-2 px-3 cat-title tajawal ${
-          activeCatId == null ? "cat-title-active" : ""
+          activeCatId === null ? "cat-title-active" : ""
         }`}
         onClick={() => setActiveCatId(null)}
       >
@@ -182,7 +182,7 @@ const CategoriesListEN = ({ categories, activeCatId, setActiveCatId }) => (
       <span
         href="#"
         className={`py-2 px-3 cat-title ${
-          activeCatId == null ? "cat-title-active" : ""
+          activeCatId === null ? "cat-title-active" : ""
         }`}
         onClick={() => setActiveCatId(null)}
       >

@@ -18,7 +18,7 @@ const TestResult = (props) => {
     setTestScore(calcScore(props.location.state.test.questions));
   }, []);
 
-  if (props.location.state == null) {
+  if (props.location.state === null) {
     // user MUST come from a test with a `state` prop via the router
     return (
       <section
@@ -196,7 +196,7 @@ const TestResult = (props) => {
         <h5>
           <span className="answer-status ml-3 tajawal">
             (
-            {question.userSelection == null
+            {question.userSelection === null
               ? getString("skipped")
               : getString("answered")}
             )
@@ -246,7 +246,7 @@ function calculatScores(questions) {
       choice_6_is_correct,
     } = question;
 
-    if (userSelection == null) return question; // a skipped question
+    if (userSelection === null) return question; // a skipped question
 
     if (choices_type === "single") {
       question.answeredCorrectly = userSelection === correct_answer;
@@ -261,7 +261,7 @@ function calculatScores(questions) {
         { choice_5, choice_5_is_correct, choice: 5 },
         { choice_6, choice_6_is_correct, choice: 6 },
       ].filter(
-        (c) => Object.values(c)[0] != null && Object.values(c)[0].trim() != ""
+        (c) => Object.values(c)[0] !== null && Object.values(c)[0].trim() !== ""
       );
       const correctChoices = validChoices
         .filter((q, i) => q[`choice_${q.choice}_is_correct`])
@@ -313,7 +313,7 @@ const MultipleChoicesQuestion = (question) => {
     { choice_5, choice_5_is_correct, choice: 5 },
     { choice_6, choice_6_is_correct, choice: 6 },
   ].filter(
-    (c) => Object.values(c)[0] != null && Object.values(c)[0].trim() != ""
+    (c) => Object.values(c)[0] !== null && Object.values(c)[0].trim() !== ""
   );
 
   const correctChoices = validChoices
@@ -370,7 +370,7 @@ const MultipleChoicesQuestion = (question) => {
     choice_4,
     choice_5,
     choice_6,
-  ].filter((_, i) => _ != null && _.trim() != "");
+  ].filter((_, i) => _ !== null && _.trim() !== "");
 
   const choicesComponents = allChoices.map((choice) => choiceComponent(choice));
   return choicesComponents;
@@ -426,7 +426,7 @@ const SingleChoiceQuestion = (question) => {
     );
   };
 
-  const validChoices = choices.filter((_) => _ != null && _.trim() != "");
+  const validChoices = choices.filter((_) => _ !== null && _.trim() !== "");
   const choicesComponents = validChoices.map((choice, i) =>
     choiceComponent(choice, i)
   );

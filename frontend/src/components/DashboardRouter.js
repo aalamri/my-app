@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Switch, Route, Router, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "react-router-modal/css/react-router-modal.css";
 
-import { getState, getToken } from "../utils";
+import { getState, } from "../utils";
+import { PrivateRoute, AdminRoute } from "./PrivateRoute";
 
-// publisc site
-import Footer from "../public_site/components/Footer";
-// Dashboard
 import Dashboard from "../dashboard/components/MainDash";
 import Reviewes from "../dashboard/components/Reviews";
 import DBArticles from "../dashboard/components/Articles/ArticlesTable";
@@ -15,7 +13,6 @@ import DBCards from "../dashboard/components/Cards/CardsTable";
 import EditCard from "../dashboard/components/Cards/EditCard";
 import DBTests from "../dashboard/components/Tests/TestsList";
 import DBUsers from "../dashboard/components/Users/UsersList";
-
 import EditTest from "../dashboard/components/Tests/EditTest";
 import CreateArticle from "../dashboard/components/Articles/CreateArticle";
 import CreateCard from "../dashboard/components/Cards/CreateCard";
@@ -23,10 +20,9 @@ import CreateTest from "../dashboard/components/Tests/CreateTest";
 import ReviewCard from "../dashboard/components/Cards/ReviewCard";
 import ReviewArticle from "../dashboard/components/Articles/ReviewArticle";
 import ReviewTest from "../dashboard/components/Tests/ReviewTest";
-import { PrivateRoute, AdminRoute } from "./PrivateRoute";
 import Profile from "../dashboard/components/Profile";
-import SideBar from "./SideBar";
 
+import SideBar from "./SideBar";
 import TopBar from "./TopNavBar";
 
 const AR = "Arabic";
@@ -44,7 +40,7 @@ function DashboardRouter({ match }) {
   };
 
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <SideBar />
       <div id="content">
         <TopBar title={title} />
@@ -64,27 +60,8 @@ function DashboardRouter({ match }) {
           <PrivateRoute path="/dashboard/reviews/articles/review/:id" component={ReviewArticle} exact title="Review Article" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/reviews/tests/review/:id" component={ReviewTest} exact title="Review Test" onOpen={changeTitle} />
           <PrivateRoute path="/dashboard/reviews/cards/review/:id" component={ReviewCard} title="Review Card" onOpen={changeTitle} />
-          <PrivateRoute path="/dashboard/review/article/:id"
-            // component={REVIEW ARTICLE COMPONENT}
-            exact
-            title="Review Article" onOpen={changeTitle}
-          />
-          <PrivateRoute
-            path="/dashboard/review/card/:id"
-            // component={REVIEW CARD COMPONENT}
-            exact
-            title="Articles" onOpen={changeTitle}
-          />
-          <PrivateRoute
-            path="/dashboard/review/test/:id"
-            // component={REVIEW TEST COMPONENT}
-            exact
-            title="Articles" onOpen={changeTitle}
-          />
           <AdminRoute path="/dashboard/users" component={DBUsers} exact title="User Management" onOpen={changeTitle} />
-
           <Route component={NotFoundRedirect} />
-
         </Switch>
       </div>
     </div>

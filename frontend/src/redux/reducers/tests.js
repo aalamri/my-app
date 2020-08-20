@@ -63,7 +63,7 @@ export default (state = initState, action) => {
                 ...state,
                 questions: state.questions.map(q => {
                     if (q.id === id) {
-                        if (q.userSelection == null) {
+                        if (q.userSelection === null) {
                             q.userSelection = [choiceValue];
                         } else {
                             q.userSelection = q.userSelection.concat(choiceValue);
@@ -78,7 +78,7 @@ export default (state = initState, action) => {
                 ...state,
                 questions: state.questions.map(q => {
                     if (q.id === id) {
-                        if (q.userSelection == null) {
+                        if (q.userSelection === null) {
                             q.userSelection = [];
                         } else {
                             q.userSelection = q.userSelection.filter(value => value !== choiceValue);

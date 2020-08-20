@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { TAGS_QUERY } from "../Tag/queries";
 import "react-quill/dist/quill.snow.css";
 
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { CREATE_CARD, CARDS_QUERY, UPDATE_CARD } from "./queries";
+import { CREATE_CARD, UPDATE_CARD } from "./queries";
 import Editor from "../Editor";
 import swal from 'sweetalert';
 
@@ -141,11 +140,11 @@ const CreateCard = () => {
       <h3>{language === AR ? "إنشاء بطاقة جديدة" : "Create Card"}</h3>
 
       <form onSubmit={handleCreateCard}>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class={`btn btn-info no-radius ${language === AR ? 'active' : ''}`} onClick={switchToAR}>
+        <div className="btn-group btn-group-toggle" data-toggle="buttons">
+          <label className={`btn btn-info no-radius ${language === AR ? 'active' : ''}`} onClick={switchToAR}>
             <input type="radio" name="language" /> الموضوع بالعربية
     </label>
-          <label class={`btn btn-info no-radius ${language === EN ? 'active' : ''}`} onClick={switchToEN}>
+          <label className={`btn btn-info no-radius ${language === EN ? 'active' : ''}`} onClick={switchToEN}>
             <input type="radio" name="language" /> Article in English
     </label>
         </div>
@@ -179,7 +178,7 @@ const CreateCard = () => {
         </select>
         <br />
         {validation.hasError &&
-          <div class="alert alert-danger mt-3" role="alert">
+          <div className="alert alert-danger mt-3" role="alert">
             <ul>
               {validation.errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
@@ -223,13 +222,13 @@ const ENCard = ({ handleChangeEditor, handleChangeTitle, content, title }) => (
 function validate(card, lang) {
   const { title, content } = card;
   const errors = [];
-  if (title.trim() == "") {
+  if (title.trim() === "") {
     errors.push(lang === EN ? "Title must not be empty" : "عنوان الموضوع فارغ");
   }
   if (title.trim() !== "" && title.length < 4) {
     errors.push(lang === EN ? "Title is too short" : "عنوان الموضوع قصير جداً");
   }
-  if (StrippedString(content).trim() == "") {
+  if (StrippedString(content).trim() === "") {
     errors.push(lang === EN ? "Content must not be empty" : "محتوى الموضوع فارغ");
   }
   return errors;
@@ -237,7 +236,7 @@ function validate(card, lang) {
 
 function isEmpty(card) {
   const { title, content } = card;
-  if (title.trim() == "" && StrippedString(content).trim() == "") {
+  if (title.trim() === "" && StrippedString(content).trim() === "") {
     return true;
   }
   return false;

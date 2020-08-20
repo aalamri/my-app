@@ -156,7 +156,7 @@ class Signup extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="section-heading mb-4">
-                  <h3 class="purple tajawal mx-3">
+                  <h3 className="purple tajawal mx-3">
                     {getString("join-as-content-creator")}
                   </h3>
                 </div>

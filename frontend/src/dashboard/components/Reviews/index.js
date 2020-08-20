@@ -12,16 +12,8 @@ const Reviewes = () => {
   return (
     <div>
       <div className="uk-container uk-container-medium">
-        <Query query={CARDS_QUERY}>
-          {({ data: { cards } }) => {
-            return <CardTable cards={cards} />;
-          }}
-        </Query>
-        <Query query={ARTICLES_QUERY}>
-          {({ data: { articles } }) => {
-            return <ArticleTable articles={articles} />;
-          }}
-        </Query>
+        <CardTable />
+        <ArticleTable />
         <Query query={TESTS_QUERY}>
           {({ data: { tests } }) => {
             return <TestsTable tests={tests} />;

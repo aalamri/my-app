@@ -59,9 +59,9 @@ class Search extends Component {
     return (
       <div className="main-content-wrap">
         <div className="container">
-          <div class="form-inline d-flex justify-content-center md-form form-sm active-pink-2 mt-5">
+          <div className="form-inline d-flex justify-content-center md-form form-sm active-pink-2 mt-5">
             <input
-              class="form-control form-control-sm mr-3 w-75 search-input search-box-font purple"
+              className="form-control form-control-sm mr-3 w-75 search-input search-box-font purple"
               type="text"
               aria-label="Search"
               onChange={(e) => {
@@ -83,8 +83,8 @@ class Search extends Component {
               }}
             ></i>
           </div>
-          <div class="row justify-content-center">
-            <div class="post-footer text-right pt-5">
+          <div className="row justify-content-center">
+            <div className="post-footer text-right pt-5">
               <button
                 className={
                   "search-btn search-all mx-2 " +
@@ -134,11 +134,11 @@ class Search extends Component {
           {/* Brands Section */}
 
           {/* Brands */}
-          <div class="row">
+          <div className="row">
             {cards.length < 1 &&
               articles.length < 1 &&
               tests.length < 1 &&
-              searchTerm.trim() != "" &&
+              searchTerm.trim() !== "" &&
               this.state.category === "all" && (
                 <div className="mx-auto">
                   <h3 className="purple py-5">No result found</h3>
@@ -152,10 +152,10 @@ class Search extends Component {
             {(this.state.category === "all" ||
               this.state.category === "cards") &&
               cards.map((card) => (
-                <div class="col-lg-4 pt-4" key={card._id}>
-                  <div class="card search-tag-cards">
+                <div className="col-lg-4 pt-4" key={card._id}>
+                  <div className="card search-tag-cards">
                     <div
-                      class="card-header py-4"
+                      className="card-header py-4"
                       id="heading-1-1"
                       data-toggle="collapse"
                       role="button"
@@ -163,10 +163,10 @@ class Search extends Component {
                       aria-expanded="false"
                       aria-controls="collapse-1-1"
                     >
-                      <Link class="mb-0" key={card.id} to={`/cards/${card.id}`}>
-                        <h6 class="mb-0 search-title-box">{card.title}</h6>
+                      <Link className="mb-0" key={card.id} to={`/cards/${card.id}`}>
+                        <h6 className="mb-0 search-title-box">{card.title}</h6>
                       </Link>
-                      <ul class="article-info">
+                      <ul className="article-info">
                         <li>{card.createdAt}</li>
                         <li>
                           {card.author.firstName} {card.author.lastName}
@@ -185,10 +185,10 @@ class Search extends Component {
             {(this.state.category === "all" ||
               this.state.category === "articles") &&
               articles.map((article) => (
-                <div class="col-lg-4 pt-4" key={article._id}>
-                  <div class="card search-tag-articles">
+                <div className="col-lg-4 pt-4" key={article._id}>
+                  <div className="card search-tag-articles">
                     <div
-                      class="card-header py-4"
+                      className="card-header py-4"
                       id="heading-1-1"
                       data-toggle="collapse"
                       role="button"
@@ -197,9 +197,9 @@ class Search extends Component {
                       aria-controls="collapse-1-1"
                     >
                       <Link key={article.id} to={`/article/${article.id}`}>
-                        <h6 class="mb-0 search-title-box">{article.title}</h6>
+                        <h6 className="mb-0 search-title-box">{article.title}</h6>
                       </Link>
-                      <ul class="article-info">
+                      <ul className="article-info">
                         <li>{article.createdAt}</li>
                         <li>
                           {article.author.firstName} {article.author.lastName}
@@ -217,10 +217,10 @@ class Search extends Component {
             {(this.state.category === "all" ||
               this.state.category === "tests") &&
               tests.map((test) => (
-                <div class="col-lg-4 pt-4" key={test._id}>
-                  <div class="card search-tag-tests">
+                <div className="col-lg-4 pt-4" key={test._id}>
+                  <div className="card search-tag-tests">
                     <div
-                      class="card-header py-4"
+                      className="card-header py-4"
                       id="heading-1-1"
                       data-toggle="collapse"
                       role="button"
@@ -228,10 +228,10 @@ class Search extends Component {
                       aria-expanded="false"
                       aria-controls="collapse-1-1"
                     >
-                      <Link class="mb-0 " key={test.id} to={`/test/${test.id}`}>
-                        <h6 class="mb-0 search-title-box">{test.title}</h6>
+                      <Link className="mb-0 " key={test.id} to={`/test/${test.id}`}>
+                        <h6 className="mb-0 search-title-box">{test.title}</h6>
                       </Link>
-                      <ul class="article-info">
+                      <ul className="article-info">
                         <li>{test.createdAt}</li>
                         {/* <li>{test.author.firstName} {test.author.lastName}</li> */}
                         <li>Nora Ahmad</li>

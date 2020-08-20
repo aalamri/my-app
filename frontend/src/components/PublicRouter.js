@@ -1,9 +1,8 @@
 import React from "react";
-import { Switch, Route, Router, Redirect } from "react-router-dom";
-import { ModalContainer, ModalRoute } from "react-router-modal";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "react-router-modal/css/react-router-modal.css";
 
-import { getState, getToken } from "../utils";
+import { getState, } from "../utils";
 
 // publisc site
 import Home from "../public_site/components/Home";
@@ -21,7 +20,8 @@ import Search from "../public_site/components/Search";
 import Footer from "../public_site/components/Footer";
 import Feedback from "../public_site/components/Feedback/CreateFeedback";
 import About from "../public_site/components/About/About";
-import Nav from './Nav'
+import Nav from './Nav';
+
 const AR = "Arabic";
 const EN = "English";
 
@@ -49,9 +49,9 @@ function PublicRouter({ match }) {
                 <Route path="/search" component={Search} exact />
                 <Route path="/feedback" component={Feedback} exact />
                 <Route path="/about" component={About} exact />
-                <Redirect to="/"/>
+                <Redirect to="/" />
             </Switch>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

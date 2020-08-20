@@ -57,14 +57,14 @@ class UsersTable extends React.Component {
 
   render() {
     return (
-      <div class="box" >
+      <div className="box" >
 
-        <section class="content">
+        <section className="content">
 
-          <div class="card">
+          <div className="card">
 
-            <div class="card-body p-0">
-              <table class="table table-striped projects">
+            <div className="card-body p-0">
+              <table className="table table-striped projects">
                 <thead>
                   <tr>
                     <th> Name</th>

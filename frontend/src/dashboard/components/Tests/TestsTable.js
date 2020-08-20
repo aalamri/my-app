@@ -4,26 +4,26 @@ import Moment from "react-moment";
 
 const TestsTable = ({ tests }) => {
   return (
-    <div class="box">
-    <div class="box-header">
+    <div className="box">
+    <div className="box-header">
     </div>
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
+    <section className="content-header">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-sm-6">
             <Link to="/dashboard/create-test">
-              <ol class="breadcrumb float-sm-right">
-                <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Test</button>
+              <ol className="breadcrumb float-sm-right">
+                <button type="button" className="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Test</button>
               </ol>
             </Link>
           </div>
         </div>
       </div>
     </section>
-    <section class="content">
+    <section className="content">
 
-    <div class="card-body p-0">
-    <table class="table table-striped projects">
+    <div className="card-body p-0">
+    <table className="table table-striped projects">
         <thead>
           <tr>
             <th> Title</th>

@@ -72,26 +72,26 @@ class ArticlesTable extends React.Component {
   }
   render() {
     return (
-      <div class="box">
-        <div class="box-header">
+      <div className="box">
+        <div className="box-header">
         </div>
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-6">
+        <section className="content-header">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-6">
                 <Link to="/dashboard/create-article">
-                  <ol class="breadcrumb float-sm-right">
-                    <button type="button" class="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Article</button>
+                  <ol className="breadcrumb float-sm-right">
+                    <button type="button" className="btn btn-outline-secondary">  <i className="fa fa-plus plus-size pr-2"></i>New Article</button>
                   </ol>
                 </Link>
               </div>
             </div>
           </div>
         </section>
-        <section class="content">
+        <section className="content">
 
-          <div class="card">
-            <div class="card-body p-0">
+          <div className="card">
+            <div className="card-body p-0">
               <BootstrapTable keyField={'id'} data={this.state.articles} columns={columns} remote={true} onTableChange={(i) => { console.log('here', i) }}
                 pagination={paginationFactory({
                   withFirstAndLast: true,

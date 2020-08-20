@@ -15,7 +15,6 @@ import {
 } from "react-share";
 
 import avatarTale from "../../img//avatar-circle-tale.svg";
-import { getString } from "../../../utils";
 
 const AR = "Arabic";
 
@@ -28,7 +27,7 @@ const Article = () => {
         // process.env.NODE_ENV !== "development"
         //   ? article.image.url
         //   : process.env.REACT_APP_BACKEND_URL + article.image?.url ?? 'placeholder';
-        if (article == null) {
+        if (article === null) {
           return (
             <section className="testimonial-section ptb-100">
               <div className="container">
@@ -116,31 +115,31 @@ const Article = () => {
                             <Moment format="D/M/Y">{createdAt}</Moment>
                           </span>
                           <div className="p-2 d-inline-flex d-sm-block d-md-none d-lg-none">
-                        <TwitterShareButton
-                          url={shareUrl}
-                          quote="Check out this Morek Card"
-                          className="social-icon d-md-block"
-                          alt="twitter"
-                        >
-                          <TwitterIcon size={30} round />
-                        </TwitterShareButton>
-                        <WhatsappShareButton
-                          url={shareUrl}
-                          quote="Check out this Morek Card"
-                          className="social-icon d-md-block"
-                          alt="whatsapp"
-                        >
-                          <WhatsappIcon size={30} round />
-                        </WhatsappShareButton>
-                        <FacebookShareButton
-                          url={`https://modrek-app.herokuapp.com/article/${article.id}`}
-                          quote="Check out this Morek Card"
-                          className="social-icon d-md-block"
-                          alt="facebook"
-                        >
-                          <FacebookIcon size={30} round />
-                        </FacebookShareButton>
-                      </div>
+                            <TwitterShareButton
+                              url={shareUrl}
+                              quote="Check out this Morek Card"
+                              className="social-icon d-md-block"
+                              alt="twitter"
+                            >
+                              <TwitterIcon size={30} round />
+                            </TwitterShareButton>
+                            <WhatsappShareButton
+                              url={shareUrl}
+                              quote="Check out this Morek Card"
+                              className="social-icon d-md-block"
+                              alt="whatsapp"
+                            >
+                              <WhatsappIcon size={30} round />
+                            </WhatsappShareButton>
+                            <FacebookShareButton
+                              url={`https://modrek-app.herokuapp.com/article/${article.id}`}
+                              quote="Check out this Morek Card"
+                              className="social-icon d-md-block"
+                              alt="facebook"
+                            >
+                              <FacebookIcon size={30} round />
+                            </FacebookShareButton>
+                          </div>
                           {article_id_of_other_language && (
                             <>
                               <span className="px-4">/</span>{" "}
@@ -160,15 +159,15 @@ const Article = () => {
                         <ReactMarkdown source={content} escapeHtml={false} />
                       </div>
                       <div className="pt-4 avatar-form-mobile d-flex align-items-center d-sm-block d-md-none d-lg-none">
-                    
-                      <img
-                      className="avatar-article pl-2"
-                      src={avatarTale}
-                      alt="client"
-                    />
-                      <p className="testlist-name mb-0 tajawal pl-2">
-                        {article.author.firstName} {article.author.lastName}
-                      </p>
+
+                        <img
+                          className="avatar-article pl-2"
+                          src={avatarTale}
+                          alt="client"
+                        />
+                        <p className="testlist-name mb-0 tajawal pl-2">
+                          {article.author.firstName} {article.author.lastName}
+                        </p>
                       </div>
                     </div>
                   </article>

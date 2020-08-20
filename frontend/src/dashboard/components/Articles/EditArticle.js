@@ -80,7 +80,7 @@ const EditArticle = () => {
     }
   }
 
-  if (id == null) {
+  if (id === null) {
     return <p>Error: Invalid Article id!</p>;
   }
 
@@ -143,7 +143,7 @@ const EditArticle = () => {
     setCurrentCategory({ id, name });
   }
 
-  if (author_id == null) {
+  if (author_id === null) {
     return <span>You're not authorizd to see this page!</span>;
   }
   if (loading) {
@@ -215,7 +215,7 @@ const EditArticle = () => {
       <br />
       <label>Comments:</label>
       <div className="uk-margin">
-        <textarea class="uk-textarea" rows="4" value={comment}></textarea>
+        <textarea className="uk-textarea" rows="4" value={comment}></textarea>
       </div>
 
       <button type="submit">Update</button>

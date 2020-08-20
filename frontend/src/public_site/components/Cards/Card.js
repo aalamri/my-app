@@ -38,13 +38,13 @@ const Card = ({ match }) => {
             aria-labelledby="fullCard"
             aria-hidden="true"
           >
-            <div class="col-12 col-lg-12 p-0">
+            <div className="col-12 col-lg-12 p-0">
               <div className="shadow-md modal-card min-width-400">
                 <div className="full-card d-flex flex-column">
-                  <div class="modal-eader">
+                  <div className="modal-eader">
                     <button
                       type="button"
-                      class="close"
+                      className="close"
                       data-dismiss="modal"
                       aria-label="Close"
                       data-target="#fullCard"
@@ -84,10 +84,10 @@ const Card = ({ match }) => {
                         card.language === AR ? "right" : "left"
                       }`}
                     >
-                      <small class="text-muted ml-2 tale">
+                      <small className="text-muted ml-2 tale">
                         {card.author?.firstName} {card.author?.lastName}
                       </small>
-                      <small class="text-muted ml-2 tale">
+                      <small className="text-muted ml-2 tale">
                         <Moment format="D/M/Y">{card.createdAt}</Moment>
                       </small>
                     </div>

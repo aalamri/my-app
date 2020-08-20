@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { v4 as uuid } from 'uuid';
 
 import "react-quill/dist/quill.snow.css";
 import Editor from "../Editor";
 import { CATEGORIES_QUERY } from "../Category/queries";
 import { CREATE_ARTICLE, UPDATE_ARTICLE } from "./queries";
-import { getToken } from "../../../utils/index";
-// import { GET_USER_ID } from "../../../utils/queries";
+
 import swal from 'sweetalert';
 
-// const token = getToken();
 const AR = "Arabic";
 const EN = "English";
 
@@ -32,6 +29,8 @@ const CreateArticle = () => {
   const [updateArticle] = useMutation(UPDATE_ARTICLE);
 
   const intialCategories = data ? data.categories : [];
+
+  const currentUser = JSON.parse(localStorage.getItem('user'));
 
   if (loading) {
     return <span>loading...</span>;
@@ -74,16 +73,13 @@ const CreateArticle = () => {
     try {
       // check if content in other lang is not empty to bind both articles if so
       const formData = new FormData(e.target);
-      // payload of current article
       const payload1 = {
         language,
         title: currentArticle.title,
         content: currentArticle.content,
         category: getCatID(intialCategories, formData.get("category")),
-        // published_at: getDate(new Date()),
         status: "Pending",
-        // author: "5e93e0d2c266b30fa0d7fad9", // sultan
-        author: "5eb1f731147f722414b44c30", // sarah
+        author: currentUser._id,
         meta: {
           visits: 0,
           likes: 0,
@@ -143,11 +139,11 @@ const CreateArticle = () => {
       <h3>{language === AR ? "إنشاء موضوع جديد" : "Create Article"}</h3>
       <form onSubmit={handleCreateArticle}>
 
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class={`btn btn-info no-radius ${language === AR ? 'active' : ''}`} onClick={switchToAR}>
+        <div className="btn-group btn-group-toggle" data-toggle="buttons">
+          <label className={`btn btn-info no-radius ${language === AR ? 'active' : ''}`} onClick={switchToAR}>
             <input type="radio" name="language" /> الموضوع بالعربية
           </label>
-          <label class={`btn btn-info no-radius ${language === EN ? 'active' : ''}`} onClick={switchToEN}>
+          <label className={`btn btn-info no-radius ${language === EN ? 'active' : ''}`} onClick={switchToEN}>
             <input type="radio" name="language" /> Article in English
           </label>
         </div>
@@ -178,9 +174,9 @@ const CreateArticle = () => {
               );
             })}
         </select>
-            <br/>
+        <br />
         {validation.hasError &&
-          <div class="alert alert-danger mt-3" role="alert">
+          <div className="alert alert-danger mt-3" role="alert">
             <ul>
               {validation.errors.map((err, i) => <li key={i}>{err}</li>)}
             </ul>
@@ -226,13 +222,13 @@ const ENArticle = ({ handleChangeEditor, handleChangeTitle, content, title }) =>
 function validate(article, lang) {
   const { title, content } = article;
   const errors = [];
-  if (title.trim() == "") {
+  if (title.trim() === "") {
     errors.push(lang === EN ? "Title must not be empty" : "عنوان الموضوع فارغ");
   }
   if (title.trim() !== "" && title.length < 4) {
     errors.push(lang === EN ? "Title is too short" : "عنوان الموضوع قصير جداً");
   }
-  if (StrippedString(content).trim() == "") {
+  if (StrippedString(content).trim() === "") {
     errors.push(lang === EN ? "Content must not be empty" : "محتوى الموضوع فارغ");
   }
   return errors;
@@ -240,16 +236,11 @@ function validate(article, lang) {
 
 function isEmpty(article) {
   const { title, content } = article;
-  if (title.trim() == "" && StrippedString(content).trim() == "") {
+  if (title.trim() === "" && StrippedString(content).trim() === "") {
     return true;
   }
   return false;
 }
-
-const getDate = (date) =>
-  `${date.getUTCFullYear()}-${(date.getMonth() + 1)
-    .toString()
-    .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`; // the desired format by Strapi
 
 const getCatID = (cats, cat) => cats?.find(({ name }) => name === cat).id;
 

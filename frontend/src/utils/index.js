@@ -117,6 +117,7 @@ export function getString(id) {
   const lang = siteLanguage === AR ? "ar" : "en";
   return strings[id][lang];
 }
+
 export async function switchLanguage() {
   return new Promise((res) => {
     const { siteLanguage } = getState();
@@ -126,4 +127,8 @@ export async function switchLanguage() {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(newState));
     res();
   });
+}
+
+export function getCurrentUser() {
+  
 }

@@ -49,8 +49,8 @@ export default function (props) {
     slideTransition: "linear",
     autoplayHoverPause: true,
     navText: [
-      "<i class='las la-angle-left d-none d-sm-block'></i>",
-      "<i class='las la-angle-right d-none d-sm-block'></i>",
+      "<i className='las la-angle-left d-none d-sm-block'></i>",
+      "<i className='las la-angle-right d-none d-sm-block'></i>",
     ],
     responsive: {
       0: {

@@ -15,7 +15,7 @@ const Editor = (props) => {
       ],
       [{ 'direction': 'rtl' }],
       ["link", "blockquote"],
-    ],
+    ],    
   };
 
   const formats = [
@@ -38,7 +38,7 @@ const Editor = (props) => {
         modules={modules}
         formats={formats}
         onChange={props.handleChangeEditorValue}
-        value={props.value || ""}
+        defaultValue={props.value || ""}
       ></ReactQuill>
     </div>
   );

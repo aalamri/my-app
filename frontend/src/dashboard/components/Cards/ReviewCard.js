@@ -14,9 +14,9 @@ const author_id = "123"; // TODO get user's id
 const token = getToken();
 
 const ReviewCard = () => {
-    let { id } = useParams();
+  let { id } = useParams();
 
-  const [cardStatus,setCardStatus] = useState("Pending")
+  const [cardStatus, setCardStatus] = useState("Pending")
   const { data, loading, error } = useQuery(GET_CARD, {
     variables: { id },
   });
@@ -66,7 +66,7 @@ const ReviewCard = () => {
 
   useEffect(() => {
     if (tags) {
-        populateCurrentTag();
+      populateCurrentTag();
     }
   }, [tags]);
 
@@ -79,7 +79,7 @@ const ReviewCard = () => {
     }
   }
 
-  if (id == null) {
+  if (id === null) {
     return <p>Error: Invalid Card id!</p>;
   }
 
@@ -95,27 +95,27 @@ const ReviewCard = () => {
   function handleSubmit(e) {
     e.preventDefault();
     const payload = {
-        status: cardStatus
+      status: cardStatus
     }
-    updateCard (
-        {
-            context: {
-                    headers: {
-                        Authorization: `bearer ${token}`,
-                    },
-            },
-            variables: {
-                    data: payload,
-                    id: id
-                },
+    updateCard(
+      {
+        context: {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        },
+        variables: {
+          data: payload,
+          id: id
+        },
 
-        } 
+      }
     )
     alert("submitted");
-}
+  }
 
   function handleComment(status) {
-    setCardStatus (status)
+    setCardStatus(status)
   }
 
   function handleChangeTag(e) {
@@ -124,7 +124,7 @@ const ReviewCard = () => {
     setCurrentTag({ id, name });
   }
 
-  if (author_id == null) {
+  if (author_id === null) {
     return <span>You're not authorizd to see this page!</span>;
   }
   if (loading) {
@@ -195,21 +195,21 @@ const ReviewCard = () => {
       </select>
       <br />
       <div className="uk-margin">
-            <label> Approved
-                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={cardStatus === "Approved"}> 
-                </input>
-            </label>
-            <label> Reject
-                <input class="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={cardStatus === "Rejected"}> 
-                </input>
-            </label>
-            {cardStatus === "Rejected" && 
-            <div className="uk-margin">
-            <textarea class="uk-textarea" rows="4" placeholder="Comments"></textarea>    
-            </div>
-            }
-            </div>
-      <button class="uk-button uk-button-primary" onClick={handleSubmit}>Submit</button>
+        <label> Approved
+                <input className="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={cardStatus === "Approved"}>
+          </input>
+        </label>
+        <label> Reject
+                <input className="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Rejected")} checked={cardStatus === "Rejected"}>
+          </input>
+        </label>
+        {cardStatus === "Rejected" &&
+          <div className="uk-margin">
+            <textarea className="uk-textarea" rows="4" placeholder="Comments"></textarea>
+          </div>
+        }
+      </div>
+      <button className="uk-button uk-button-primary" onClick={handleSubmit}>Submit</button>
     </form>
   );
 };

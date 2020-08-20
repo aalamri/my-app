@@ -4,7 +4,6 @@ import uk_flag from "../../assets/image/uk.svg";
 import sd_flag from "../../assets/image/sd.svg";
 import fake_user from "../../assets/image/avatar-circle-tale.svg"
 
-
 import './style.css'
 const TopBar = (props) => {
 
@@ -17,13 +16,13 @@ const TopBar = (props) => {
     }
 
     const setLanguage = () => {
-        
+
     }
 
     return (
-        <nav class="top-navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid" style={{ alignItems: 'center', display: 'flex' }}>
-                <button type="button" id="sidebarCollapse" class="navbar-btn">
+        <nav className="top-navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid" style={{ alignItems: 'center', display: 'flex' }}>
+                <button type="button" id="sidebarCollapse" className="navbar-btn">
                     <span></span>
                     <span></span>
                     <span></span>

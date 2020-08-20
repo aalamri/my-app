@@ -79,7 +79,7 @@ const ReviewTest = () => {
     }
   }
 
-  if (id == null) {
+  if (id === null) {
     return <p>Error: Invalid Test id!</p>;
   }
 
@@ -124,7 +124,7 @@ const ReviewTest = () => {
     setCurrentCategory({ id, name });
   }
 
-  if (author_id == null) {
+  if (author_id === null) {
     return <span>You're not authorizd to see this page!</span>;
   }
   if (loading) {
@@ -196,20 +196,20 @@ const ReviewTest = () => {
       <br />
       <div className="uk-margin">
             <label> Approved
-                <input class="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={testStatus === "Approved"}> 
+                <input className="uk-radio" type="radio" name="radio2" onClick={() => handleComment("Approved")} checked={testStatus === "Approved"}> 
                 </input>
             </label>
             <label> Reject
-                <input class="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={testStatus === "Rejected"}> 
+                <input className="uk-radio" type="radio" name="radio2"  onClick={() => handleComment("Rejected")} checked={testStatus === "Rejected"}> 
                 </input>
             </label>
             {testStatus === "Rejected" && 
             <div className="uk-margin">
-            <textarea class="uk-textarea" rows="4" placeholder="Comments"></textarea>    
+            <textarea className="uk-textarea" rows="4" placeholder="Comments"></textarea>    
             </div>
             }
             </div>
-      <button class="uk-button uk-button-primary" onClick={handleSubmit}>Submit</button>
+      <button className="uk-button uk-button-primary" onClick={handleSubmit}>Submit</button>
     </form>
   );
 };
