@@ -1,7 +1,7 @@
 import React from "react";
 import ArticlesTable from "./ArticlesTable";
 import Query from "../Query";
-import { ARTICLES_QUERY } from "./queries";
+import { ARTICLES_QUERY } from "./1";
 
 const Articles = () => {
   return (

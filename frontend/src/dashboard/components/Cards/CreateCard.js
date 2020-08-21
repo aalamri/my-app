@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import "react-quill/dist/quill.snow.css";
+import Axios from 'axios';
 
 import { CATEGORIES_QUERY } from "../Category/queries";
 import { CREATE_CARD, UPDATE_CARD } from "./queries";
@@ -28,7 +29,8 @@ const CreateCard = () => {
   const [updateCard] = useMutation(UPDATE_CARD);
 
   const intialCategories = data ? data.categories : [];
-
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const token = JSON.parse(localStorage.getItem('jwt'));
   if (loading) {
     return <span>loading...</span>;
   }
@@ -78,16 +80,30 @@ const CreateCard = () => {
         category: getCatID(intialCategories, formData.get("category")),
         // published_at: getDate(new Date()),
         status: "Pending",
-        author_id: "5eb1f731147f722414b44c30",
+        author_id: currentUser._id,
         meta: {
           visits: 0,
           likes: 0,
         },
       };
-      const card1 = await createCard({
-        variables: { data: payload1 } /*TODO add headers token here*/,
+      const card1 = await Axios({
+        method: 'post',
+        url: process.env.REACT_APP_BACKEND_URL + '/cards',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        data: payload1
       });
-      const currentCardID = card1.data.createCard.card.id;
+
+      const review = await Axios({
+        method: 'post',
+        url: process.env.REACT_APP_BACKEND_URL + '/reviews',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        data: { Type: 'Card', card: card1.data._id, author: currentUser._id }
+      });
+      const currentCardID = card1.data.id;
 
       // create another article if other article is not empty
       const isOtherLangEmpty = isEmpty(otherCard);
@@ -99,21 +115,26 @@ const CreateCard = () => {
           content: otherCard.content || "null",
           card_id_of_other_language: currentCardID
         };
-        const card2 = await createCard({
-          variables: { data: payload2 }
-          /*TODO add headers token here*/,
+        const card2 = await Axios({
+          method: 'post',
+          url: process.env.REACT_APP_BACKEND_URL + '/cards',
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          data: payload2
         });
         swal("Success", "Send to Review!", "success");
 
-        const otherCardID = card2.data.createCard.card.id
+        const otherCardID = card2.data.id;
 
-        // update article1 with article2's id
-        await updateCard({
-          variables: {
-            id: currentCardID,
-            data: {
-              card_id_of_other_language: otherCardID
-            }
+        await Axios({
+          method: 'put',
+          url: process.env.REACT_APP_BACKEND_URL + `/cards/${currentCardID}`,
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          data: {
+            article_id_of_other_language: otherCardID
           }
         });
       }

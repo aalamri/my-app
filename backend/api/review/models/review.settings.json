@@ -25,6 +25,10 @@
         "Article",
         "Test"
       ]
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

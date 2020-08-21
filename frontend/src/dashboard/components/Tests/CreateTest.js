@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import "react-quill/dist/quill.snow.css";
+import Axios from 'axios';
 
 import { CATEGORIES_QUERY } from "../Category/queries";
 import { CREATE_TEST, TESTS_QUERY } from "./queries";
@@ -13,6 +14,11 @@ const CreateTest = () => {
   const [testTitle, setTestTitle] = useState("");
   const [editorValue, setEditorValue] = useState("");
   const [questions, setQuestion] = useState([]);
+
+  
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const token = JSON.parse(localStorage.getItem('jwt'));
+
   const [createTest, { data: createTestData }] = useMutation(CREATE_TEST, {
     update(cache, { data: { createTest } }) {
       try {
@@ -42,7 +48,7 @@ const CreateTest = () => {
     return <span>error</span>;
   }
 
-  function handleCreateTest(e) {
+  async function handleCreateTest(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const questionsX = questions.map((q) => {
@@ -61,6 +67,24 @@ const CreateTest = () => {
         completed: 0,
       },
     };
+
+    // const test = await Axios({
+    //   method: 'post',
+    //   url: 'http://localhost:1337/tests',
+    //   headers: {
+    //     Authorization: `Bearer ${token}`
+    //   },
+    //   data: newTest
+    // });
+
+    // const review = await Axios({
+    //   method: 'post',
+    //   url: 'http://localhost:1337/reviews',
+    //   headers: {
+    //     Authorization: `Bearer ${token}`
+    //   },
+    //   data: { Type: 'Test', test: test.data._id }
+    // });
 
     createTest({
       variables: {

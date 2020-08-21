@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import Axios from 'axios';
 
 import "react-quill/dist/quill.snow.css";
 import Editor from "../Editor";
 import { CATEGORIES_QUERY } from "../Category/queries";
-import { CREATE_ARTICLE, UPDATE_ARTICLE } from "./queries";
+
 
 import swal from 'sweetalert';
 
@@ -25,12 +26,11 @@ const CreateArticle = () => {
   const [language, setLanguage] = useState(AR);
   const [validation, setValidation] = useState(initValidation);
   const { data, loading, error } = useQuery(CATEGORIES_QUERY);
-  const [createArticle] = useMutation(CREATE_ARTICLE);
-  const [updateArticle] = useMutation(UPDATE_ARTICLE);
 
   const intialCategories = data ? data.categories : [];
 
   const currentUser = JSON.parse(localStorage.getItem('user'));
+  const token = JSON.parse(localStorage.getItem('jwt'));
 
   if (loading) {
     return <span>loading...</span>;
@@ -85,10 +85,25 @@ const CreateArticle = () => {
           likes: 0,
         },
       };
-      const article1 = await createArticle({
-        variables: { data: payload1 } /*TODO add headers token here*/,
+
+      const article1 = await Axios({
+        method: 'post',
+        url: process.env.REACT_APP_BACKEND_URL + '/articles',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        data: payload1
       });
-      const currentArticleID = article1.data.createArticle.article.id;
+
+      const review = await Axios({
+        method: 'post',
+        url: process.env.REACT_APP_BACKEND_URL + '/reviews',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        data: { Type: 'Article', article: article1.data._id, author: currentUser._id }
+      });
+      const currentArticleID = article1.data.id;
 
       // create another article if other article is not empty
       const isOtherLangEmpty = isEmpty(otherArticle);
@@ -100,21 +115,38 @@ const CreateArticle = () => {
           content: otherArticle.content || "null",
           article_id_of_other_language: currentArticleID
         };
-        const article2 = await createArticle({
-          variables: { data: payload2 } /*TODO add headers token here*/,
+        const article2 = await Axios({
+          method: 'post',
+          url: process.env.REACT_APP_BACKEND_URL + '/articles',
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          data: payload2
         });
+
         swal("Success", "Send to Review!", "success");
-        const otherArticleID = article2.data.createArticle.article.id
+        const otherArticleID = article2.data.id
 
         // update article1 with article2's id
-        await updateArticle({
-          variables: {
-            id: currentArticleID,
-            data: {
-              article_id_of_other_language: otherArticleID
-            }
+
+        await Axios({
+          method: 'put',
+          url: process.env.REACT_APP_BACKEND_URL + `/articles/${currentArticleID}`,
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          data: {
+            article_id_of_other_language: otherArticleID
           }
         });
+        // await updateArticle({
+        //   variables: {
+        //     id: currentArticleID,
+        //     data: {
+        //       article_id_of_other_language: otherArticleID
+        //     }
+        //   }
+        // });
       }
       swal("Success", "Send to Review!", "success");
 
