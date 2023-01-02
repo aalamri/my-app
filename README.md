@@ -1,4 +1,4 @@
-# Strapi Starter React Blog
+# Strapi React Blog
 
 React starter for creating a blog with Strapi.
 
